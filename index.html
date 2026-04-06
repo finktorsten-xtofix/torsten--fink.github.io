@@ -365,7 +365,8 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
         .social-links a {
             color: var(--text-muted);
@@ -376,9 +377,31 @@
             transition: var(--transition);
         }
         .social-links a:hover { color: var(--text-primary); }
+
+        /* NEU: Impressum/Datenschutz Styles */
+        .footer-legal {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .footer-legal a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+        .footer-legal a:hover { color: var(--text-primary); }
+
         .copyright {
             font-size: 0.8rem;
             color: var(--text-muted);
+            margin-top: 2rem;
         }
         @media (max-width: 1024px) {
             .about-grid, .golf-content { grid-template-columns: 1fr; }
@@ -390,6 +413,8 @@
             .nav-links { display: none; }
             section, .destinations, .gallery { padding: 4rem 2rem; }
             .hero h1 { font-size: 2.5rem; }
+            .social-links { gap: 1.5rem; }
+            .footer-legal { flex-direction: column; gap: 1rem; }
         }
         .fade-in {
             opacity: 0;
@@ -401,6 +426,7 @@
             transform: translateY(0);
         }
     </style>
+<base target="_blank">
 </head>
 <body>
     <nav>
@@ -562,16 +588,26 @@
         </div>
     </section>
 
+    <!-- Footer mit Social Links, Impressum und Datenschutz -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">Torsten Fink</div>
             <p class="footer-tagline">Reisen · Fotografie · Geschichten · Golf</p>
+
+            <!-- Social Media Links - NEU -->
             <div class="social-links">
-                <a href="#">Instagram</a>
-                <a href="#">Twitter</a>
-                <a href="#">LinkedIn</a>
-                <a href="mailto:hello@torsten-fink.de">Email</a>
+                <a href="https://www.instagram.com/xtofix" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://x.com/finktorsten" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+                <a href="https://www.linkedin.com/in/torsten-fink-20220860" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:fink.torsten@gmail.com">Email</a>
             </div>
+
+            <!-- Impressum und Datenschutz - NEU -->
+            <div class="footer-legal">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </div>
+
             <p class="copyright">© 2024 Torsten Fink. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
@@ -590,7 +626,7 @@
             });
         }, observerOptions);
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-        
+
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero-content');
