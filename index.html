@@ -1,45 +1,10 @@
 <!DOCTYPE html>
-<html lang="de" dir="ltr">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    <!-- Primary Meta Tags -->
-    <title>Torsten Fink | Reiseblog – Tokio, Hongkong, Ascona & Golf</title>
-    <meta name="description" content="Reisegeschichten und Fotografie aus Tokio, Hongkong und dem Tessin. Torsten Fink erzählt von urbanen Entdeckungen, dem perfekten Golfspiel und Momenten jenseits des Alltags.">
-    <meta name="keywords" content="Reiseblog, Tokio, Hongkong, Ascona, Locarno, Reisegeschichten, Fotografie, Golf, Japan Reise, Tessin, Lago Maggiore">
-    <meta name="author" content="Torsten Fink">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow">
-    <link rel="canonical" href="https://finktorsten-xtofix.github.io/torsten--fink.github.io/">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://finktorsten-xtofix.github.io/torsten--fink.github.io/">
-    <meta property="og:title" content="Torsten Fink | Reisen · Fotografie · Geschichten · Golf">
-    <meta property="og:description" content="Zwischen den Wolkenkratzern von Tokio und dem Lago Maggiore: Ein Reiseblog über urbane Entdeckungen, Golf und das Langsame Reisen.">
-    <meta property="og:image" content="https://finktorsten-xtofix.github.io/torsten--fink.github.io/assets/images/tokyo-1.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="de_DE">
-    <meta property="og:site_name" content="Torsten Fink">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://finktorsten-xtofix.github.io/torsten--fink.github.io/">
-    <meta property="twitter:title" content="Torsten Fink | Reiseblog & Fotografie">
-    <meta property="twitter:description" content="Reisegeschichten aus Tokio, Hongkong und dem Tessin. Golf, Fotografie und urbane Entdeckungen.">
-    <meta property="twitter:image" content="https://finktorsten-xtofix.github.io/torsten--fink.github.io/assets/images/tokyo-1.jpg">
-    
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" as="style">
-    <link rel="preload" as="image" href="assets/images/tokyo-1.jpg" fetchpriority="high">
-    
-    <!-- Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torsten Fink | Reisen · Fotografie · Geschichten</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
     <style>
         :root {
             --bg-primary: #0a0a0a;
@@ -58,18 +23,6 @@
             color: var(--text-primary);
             line-height: 1.6;
         }
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--text-primary);
-            color: var(--bg-primary);
-            padding: 8px;
-            text-decoration: none;
-            z-index: 100;
-        }
-        .skip-link:focus { top: 0; }
-        
         nav {
             position: fixed;
             top: 0;
@@ -293,9 +246,6 @@
             padding: 2.5rem;
             transition: var(--transition);
             cursor: pointer;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
         }
         .story-card:hover {
             border-color: var(--text-primary);
@@ -320,7 +270,6 @@
             color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 1.5rem;
-            flex-grow: 1;
         }
         .read-more {
             font-size: 0.8rem;
@@ -332,7 +281,6 @@
             align-items: center;
             gap: 0.5rem;
             transition: var(--transition);
-            margin-top: auto;
         }
         .read-more:hover {
             color: var(--text-primary);
@@ -407,35 +355,12 @@
             font-weight: 300;
             margin-bottom: 1rem;
         }
-        
-        /* NEU: Sekundäre Navigation im Footer */
-        .footer-nav {
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-        .footer-tag {
-            font-family: 'Inter', sans-serif;
+        .footer-tagline {
+            color: var(--text-muted);
             font-size: 0.9rem;
             letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: var(--transition);
-            padding: 0.2rem 0.5rem;
+            margin-bottom: 2rem;
         }
-        .footer-tag:hover {
-            color: var(--text-primary);
-        }
-        .footer-dot {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            user-select: none;
-        }
-        
         .social-links {
             display: flex;
             justify-content: center;
@@ -453,6 +378,7 @@
         }
         .social-links a:hover { color: var(--text-primary); }
 
+        /* NEU: Impressum/Datenschutz Styles */
         .footer-legal {
             margin-top: 2rem;
             padding-top: 2rem;
@@ -489,8 +415,6 @@
             .hero h1 { font-size: 2.5rem; }
             .social-links { gap: 1.5rem; }
             .footer-legal { flex-direction: column; gap: 1rem; }
-            .footer-nav { flex-direction: column; gap: 0.5rem; }
-            .footer-dot { display: none; }
         }
         .fade-in {
             opacity: 0;
@@ -502,288 +426,189 @@
             transform: translateY(0);
         }
     </style>
-    
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Person",
-          "@id": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/#person",
-          "name": "Torsten Fink",
-          "jobTitle": "Reiseblogger & Fotograf",
-          "description": "Geschichtenerzähler mit Kamera, Golfspieler und Entdecker urbaner Landschaften Asiens",
-          "url": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/",
-          "sameAs": [
-            "https://www.instagram.com/xtofix",
-            "https://x.com/finktorsten",
-            "https://www.linkedin.com/in/torsten-fink-20220860"
-          ],
-          "knowsAbout": ["Reisen", "Fotografie", "Golf", "Städtereisen", "Japan", "Hongkong", "Schweiz", "Asien"],
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/"
-          }
-        },
-        {
-          "@type": "Blog",
-          "@id": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/#blog",
-          "name": "Torsten Fink Reiseblog",
-          "description": "Reisegeschichten und Fotografie aus Tokio, Hongkong, Locarno und Ascona. Ein Blog über urbane Entdeckungen, Golf und das Langsame Reisen.",
-          "url": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/",
-          "author": { "@id": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/#person" },
-          "publisher": { "@id": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/#person" },
-          "blogPost": [
-            {
-              "@type": "BlogPosting",
-              "headline": "Locarno & Ascona: Das Tessin im Entschleunigungsmodus",
-              "datePublished": "2025-09-01",
-              "dateModified": "2025-09-01",
-              "url": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/ascona.html",
-              "author": { "@id": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/#person" },
-              "articleSection": "Reisen",
-              "about": [
-                { "@type": "Place", "name": "Locarno", "address": { "@type": "PostalAddress", "addressLocality": "Locarno", "addressRegion": "Tessin", "addressCountry": "CH" } },
-                { "@type": "Place", "name": "Ascona", "address": { "@type": "PostalAddress", "addressLocality": "Ascona", "addressRegion": "Tessin", "addressCountry": "CH" } }
-              ],
-              "image": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/assets/images/locarno-1.jpg"
-            },
-            {
-              "@type": "BlogPosting",
-              "headline": "Hongkong: Ein Duft von Abenteuer und Feuerwerk",
-              "datePublished": "2019-02-01",
-              "dateModified": "2019-02-01",
-              "url": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/hongkong.html",
-              "author": { "@id": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/#person" },
-              "articleSection": "Reisen",
-              "about": { "@type": "City", "name": "Hongkong", "address": { "@type": "PostalAddress", "addressCountry": "HK" } },
-              "image": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/assets/images/hongkong-1.jpg"
-            },
-            {
-              "@type": "BlogPosting",
-              "headline": "Tokio: Überlebenstraining für Reizüberflutete",
-              "datePublished": "2017-03-01",
-              "dateModified": "2017-03-01",
-              "url": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/tokio.html",
-              "author": { "@id": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/#person" },
-              "articleSection": "Reisen",
-              "about": { "@type": "City", "name": "Tokio", "address": { "@type": "PostalAddress", "addressLocality": "Tokio", "addressCountry": "JP" } },
-              "image": "https://finktorsten-xtofix.github.io/torsten--fink.github.io/assets/images/tokyo-1.jpg"
-            }
-          ]
-        }
-      ]
-    }
-    </script>
 <base target="_blank">
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+    <nav>
+        <div class="logo">Torsten Fink</div>
+        <ul class="nav-links">
+            <li><a href="#about">Über</a></li>
+            <li><a href="#destinations">Reisen</a></li>
+            <li><a href="#stories">Geschichten</a></li>
+            <li><a href="#gallery">Fotografie</a></li>
+            <li><a href="#golf">Golf</a></li>
+        </ul>
+    </nav>
 
-    <header>
-        <nav aria-label="Hauptnavigation">
-            <div class="logo" itemprop="name">Torsten Fink</div>
-            <ul class="nav-links">
-                <li><a href="#about" aria-label="Über Torsten Fink">Über</a></li>
-                <li><a href="#destinations" aria-label="Reiseziele">Reisen</a></li>
-                <li><a href="#stories" aria-label="Reisegeschichten">Geschichten</a></li>
-                <li><a href="#gallery" aria-label="Fotogalerie">Fotografie</a></li>
-                <li><a href="#golf" aria-label="Golf und Leidenschaft">Golf</a></li>
-            </ul>
-        </nav>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Die Welt durch ein <span>Objektiv</span></h1>
+            <p class="hero-subtitle">Reisen · Fotografie · Geschichten</p>
+            <p class="hero-intro">
+                Zwischen den Wolkenkratzern von Tokio und den lebendigen Straßen Hongkongs finde ich Inspiration. 
+                Jede Reise ist eine Geschichte, die darauf wartet, erzählt zu werden.
+            </p>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </section>
 
-        <section class="hero" role="banner" aria-labelledby="hero-heading">
-            <div class="hero-content">
-                <h1 id="hero-heading">Die Welt durch ein <span>Objektiv</span></h1>
-                <p class="hero-subtitle">Reisen · Fotografie · Geschichten</p>
-                <p class="hero-intro" itemprop="description">
-                    Zwischen den Wolkenkratzern von Tokio und den lebendigen Straßen Hongkongs finde ich Inspiration. 
-                    Jede Reise ist eine Geschichte, die darauf wartet, erzählt zu werden.
+    <section id="about">
+        <div class="section-header fade-in">
+            <span class="section-tag">Über mich</span>
+            <h2 class="section-title">Hinter der Linse</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-image fade-in">
+                <img src="assets/images/portrait-1.jpg" alt="Torsten Fink - Portrait">
+            </div>
+            <div class="about-text fade-in">
+                <p>
+                    Ich bin Torsten – ein Geschichtenerzähler mit Kamera, Golfspieler mit Leidenschaft und Entdecker der urbanen Landschaften Asiens.
+                </p>
+                <p>
+                    Meine Kamera begleitet mich durch die pulsierenden Metropolen dieser Welt. Tokio fasziniert mich mit seiner perfekten Symbiose aus Tradition und Hypermoderne. Hongkong begeistert mich mit seiner unvergleichlichen Energie.
+                </p>
+                <div class="interests">
+                    <span class="interest-tag">Reisen</span>
+                    <span class="interest-tag">Fotografie</span>
+                    <span class="interest-tag">Golf</span>
+                    <span class="interest-tag">Tokyo</span>
+                    <span class="interest-tag">Hongkong</span>
+                    <span class="interest-tag">Geschichten</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destinations" class="destinations">
+        <div class="section-header fade-in">
+            <span class="section-tag">Lieblingsorte</span>
+            <h2 class="section-title">Zwei Städte, ein Herz</h2>
+        </div>
+        <div class="destinations-grid">
+            <div class="destination-card fade-in">
+                <img src="assets/images/tokyo-1.jpg" alt="Tokio - Akihabara">
+                <div class="destination-overlay">
+                    <h3 class="destination-name">Tokio</h3>
+                    <p class="destination-desc">Wo Zen-Gärten auf Neonlichter treffen</p>
+                </div>
+            </div>
+            <div class="destination-card fade-in">
+                <img src="assets/images/hongkong-1.jpg" alt="Hongkong Street">
+                <div class="destination-overlay">
+                    <h3 class="destination-name">Hongkong</h3>
+                    <p class="destination-desc">Die Stadt, die niemals schläft</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stories">
+        <div class="section-header fade-in">
+            <span class="section-tag">Kurze Geschichten</span>
+            <h2 class="section-title">Momente, die bleiben</h2>
+        </div>
+        <div class="stories-grid">
+            <article class="story-card fade-in">
+    <span class="story-date">September 2025</span>
+    <h3 class="story-title">Locarno & Ascona: Das Tessin im Entschleunigungsmodus</h3>
+    <p class="story-excerpt">
+        Es gibt Orte, die brauchen keinen Lärm, um zu beeindrucken. Locarno und Ascona gehören dazu. Hier am Lago Maggiore tickt die Uhr langsamer...
+    </p>
+    <a href="stories/ascona.html" class="read-more">Weiterlesen →</a>
+</article>
+           <article class="story-card fade-in">
+    <span class="story-date">Februar 2019</span>
+    <h3 class="story-title">Hongkong: Ein Duft von Abenteuer und Feuerwerk</h3>
+    <p class="story-excerpt">
+        Das vierte Mal in Hongkong, aber das erste Mal, zum Frühlingsfest. Das Chinesische Neujahr verwandelt diese Metropole in ein buntes Feuerwerk...
+    </p>
+    <a href="stories/hongkong.html" class="read-more">Weiterlesen →</a>
+</article>
+           <article class="story-card fade-in">
+    <span class="story-date">März 2017</span>
+    <h3 class="story-title">Tokio: Überlebenstraining für Reizüberflutete</h3>
+    <p class="story-excerpt">
+        Groß. Größer. Mega. Tokio - Meine Traumstmetropole...
+    </p>
+    <a href="stories/tokio.html" class="read-more">Weiterlesen →</a>
+</article>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="section-header fade-in">
+            <span class="section-tag">Visuelle Geschichten</span>
+            <h2 class="section-title">Durch das Objektiv</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+                <img src="assets/images/portrait-2.jpg" alt="Portrait">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="assets/images/yin-yang.jpg" alt="Yin Yang Symbol">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="assets/images/tokyo-2.jpg" alt="Tokio Street">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="assets/images/hongkong-1.jpg" alt="Hongkong">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="assets/images/portrait-1.jpg" alt="Portrait">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="assets/images/tokyo-1.jpg" alt="Tokio">
+            </div>
+        </div>
+    </section>
+
+    <section id="golf">
+        <div class="section-header fade-in">
+            <span class="section-tag">Auf dem Grün</span>
+            <h2 class="section-title">Golf & Leidenschaft</h2>
+        </div>
+        <div class="golf-content">
+            <div class="golf-text fade-in">
+                <p>
+                    Golf ist für mich mehr als ein Sport – es ist die perfekte Symbiose aus Präzision, Geduld und der Liebe zur Natur. Golf ist meine Auszeit vom Alltag. Ob am Lago Maggiore in Ascona, der Golftange in Nürnberg oder in meinem Lieblingsclub in Herzogenaurach.
+                </p>
+                <p>
+                    Jeder Abschlag erzählt eine Geschichte, jede Runde ist eine neue Herausforderung. Die Ruhe des Grüns kontrastiert wunderbar mit der Hektik des Alltags.
                 </p>
             </div>
-            <div class="scroll-indicator">
-                <span>Scroll</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-                    <path d="M12 5v14M19 12l-7 7-7-7"/>
-                </svg>
-            </div>
-        </section>
-    </header>
+            <blockquote class="golf-quote fade-in">
+                „Golf ist wie das Leben – man braucht Balance, Fokus und manchmal einfach Glück."
+            </blockquote>
+        </div>
+    </section>
 
-    <main id="main-content">
-        <section id="about" aria-labelledby="about-heading">
-            <div class="section-header fade-in">
-                <span class="section-tag">Über mich</span>
-                <h2 class="section-title" id="about-heading">Hinter der Linse</h2>
-            </div>
-            <div class="about-grid" itemscope itemtype="https://schema.org/Person">
-                <meta itemprop="name" content="Torsten Fink">
-                <div class="about-image fade-in">
-                    <img src="assets/images/portrait-1.jpg" alt="Torsten Fink - Reiseblogger und Fotograf vor Kakteen" itemprop="image" loading="lazy" width="600" height="800">
-                </div>
-                <div class="about-text fade-in">
-                    <p itemprop="description">
-                        Ich bin Torsten – ein Geschichtenerzähler mit Kamera, Golfspieler mit Leidenschaft und Entdecker der urbanen Landschaften Asiens.
-                    </p>
-                    <p>
-                        Meine Kamera begleitet mich durch die pulsierenden Metropolen dieser Welt. Tokio fasziniert mich mit seiner perfekten Symbiose aus Tradition und Hypermoderne. Hongkong begeistert mich mit seiner unvergleichlichen Energie.
-                    </p>
-                    <div class="interests">
-                        <span class="interest-tag" itemprop="knowsAbout">Reisen</span>
-                        <span class="interest-tag" itemprop="knowsAbout">Fotografie</span>
-                        <span class="interest-tag" itemprop="knowsAbout">Golf</span>
-                        <span class="interest-tag">Tokyo</span>
-                        <span class="interest-tag">Hongkong</span>
-                        <span class="interest-tag">Geschichten</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="destinations" class="destinations" aria-labelledby="destinations-heading">
-            <div class="section-header fade-in">
-                <span class="section-tag">Lieblingsorte</span>
-                <h2 class="section-title" id="destinations-heading">Zwei Städte, ein Herz</h2>
-            </div>
-            <div class="destinations-grid">
-                <article class="destination-card fade-in" itemscope itemtype="https://schema.org/Place">
-                    <img src="assets/images/tokyo-1.jpg" alt="Leuchtende Anime Werbetafeln in Akihabara bei Nacht, Tokio" itemprop="image" loading="lazy" width="600" height="750">
-                    <div class="destination-overlay">
-                        <h3 class="destination-name" itemprop="name">Tokio</h3>
-                        <p class="destination-desc" itemprop="description">Wo Zen-Gärten auf Neonlichter treffen</p>
-                    </div>
-                </article>
-                <article class="destination-card fade-in" itemscope itemtype="https://schema.org/Place">
-                    <img src="assets/images/hongkong-1.jpg" alt="Belebte Straße in Hongkong bei Nacht mit Neonlichtern" itemprop="image" loading="lazy" width="600" height="750">
-                    <div class="destination-overlay">
-                        <h3 class="destination-name" itemprop="name">Hongkong</h3>
-                        <p class="destination-desc" itemprop="description">Die Stadt, die niemals schläft</p>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section id="stories" aria-labelledby="stories-heading">
-            <div class="section-header fade-in">
-                <span class="section-tag">Kurze Geschichten</span>
-                <h2 class="section-title" id="stories-heading">Momente, die bleiben</h2>
-            </div>
-            <div class="stories-grid">
-                <article class="story-card fade-in" itemscope itemtype="https://schema.org/BlogPosting" aria-labelledby="story-title-1">
-                    <meta itemprop="author" content="Torsten Fink">
-                    <meta itemprop="datePublished" content="2025-09-01">
-                    <span class="story-date">September 2025</span>
-                    <h3 class="story-title" id="story-title-1" itemprop="headline">Locarno & Ascona: Das Tessin im Entschleunigungsmodus</h3>
-                    <p class="story-excerpt" itemprop="description">
-                        Es gibt Orte, die brauchen keinen Lärm, um zu beeindrucken. Locarno und Ascona gehören dazu. Hier am Lago Maggiore tickt die Uhr langsamer...
-                    </p>
-                    <a href="stories/ascona.html" class="read-more" itemprop="url" aria-label="Weiterlesen: Locarno & Ascona">Weiterlesen →</a>
-                </article>
-
-                <article class="story-card fade-in" itemscope itemtype="https://schema.org/BlogPosting" aria-labelledby="story-title-2">
-                    <meta itemprop="author" content="Torsten Fink">
-                    <meta itemprop="datePublished" content="2019-02-01">
-                    <span class="story-date">Februar 2019</span>
-                    <h3 class="story-title" id="story-title-2" itemprop="headline">Hongkong: Ein Duft von Abenteuer und Feuerwerk</h3>
-                    <p class="story-excerpt" itemprop="description">
-                        Das vierte Mal in Hongkong, aber das erste Mal, zum Frühlingsfest. Das Chinesische Neujahr verwandelt diese Metropole in ein buntes Feuerwerk...
-                    </p>
-                    <a href="stories/hongkong.html" class="read-more" itemprop="url" aria-label="Weiterlesen: Hongkong">Weiterlesen →</a>
-                </article>
-
-                <article class="story-card fade-in" itemscope itemtype="https://schema.org/BlogPosting" aria-labelledby="story-title-3">
-                    <meta itemprop="author" content="Torsten Fink">
-                    <meta itemprop="datePublished" content="2017-03-01">
-                    <span class="story-date">März 2017</span>
-                    <h3 class="story-title" id="story-title-3" itemprop="headline">Tokio: Überlebenstraining für Reizüberflutete</h3>
-                    <p class="story-excerpt" itemprop="description">
-                        Groß. Größer. Mega. Tokio - Meine Traumstmetropole...
-                    </p>
-                    <a href="stories/tokio.html" class="read-more" itemprop="url" aria-label="Weiterlesen: Tokio">Weiterlesen →</a>
-                </article>
-            </div>
-        </section>
-
-        <section id="gallery" class="gallery" aria-labelledby="gallery-heading">
-            <div class="section-header fade-in">
-                <span class="section-tag">Visuelle Geschichten</span>
-                <h2 class="section-title" id="gallery-heading">Durch das Objektiv</h2>
-            </div>
-            <div class="gallery-grid">
-                <figure class="gallery-item fade-in">
-                    <img src="assets/images/portrait-2.jpg" alt="Portrait-Aufnahme von Torsten Fink im urbanen Umfeld" loading="lazy" width="400" height="400">
-                </figure>
-                <figure class="gallery-item fade-in">
-                    <img src="assets/images/yin-yang.jpg" alt="Yin Yang Symbol als künstlerische Fotografie" loading="lazy" width="400" height="800">
-                </figure>
-                <figure class="gallery-item fade-in">
-                    <img src="assets/images/tokyo-2.jpg" alt="Straßenszene in Tokio mit typischer Architektur" loading="lazy" width="400" height="400">
-                </figure>
-                <figure class="gallery-item fade-in">
-                    <img src="assets/images/hongkong-1.jpg" alt="Hongkong Skyline und Straßenleben bei Nacht" loading="lazy" width="400" height="400">
-                </figure>
-                <figure class="gallery-item fade-in">
-                    <img src="assets/images/portrait-1.jpg" alt="Torsten Fink Portrait vor Kakteen" loading="lazy" width="400" height="400">
-                </figure>
-                <figure class="gallery-item fade-in">
-                    <img src="assets/images/tokyo-1.jpg" alt="Akihabara Electric Town in Tokio bei Nacht" loading="lazy" width="400" height="400">
-                </figure>
-            </div>
-        </section>
-
-        <section id="golf" aria-labelledby="golf-heading">
-            <div class="section-header fade-in">
-                <span class="section-tag">Auf dem Grün</span>
-                <h2 class="section-title" id="golf-heading">Golf & Leidenschaft</h2>
-            </div>
-            <div class="golf-content" itemscope itemtype="https://schema.org/Article">
-                <meta itemprop="author" content="Torsten Fink">
-                <meta itemprop="headline" content="Golf & Leidenschaft">
-                <div class="golf-text fade-in" itemprop="articleBody">
-                    <p>
-                        Golf ist für mich mehr als ein Sport – es ist die perfekte Symbiose aus Präzision, Geduld und der Liebe zur Natur. Golf ist meine Auszeit vom Alltag. Ob am Lago Maggiore in Ascona, der Golftange in Nürnberg oder in meinem Lieblingsclub in Herzogenaurach.
-                    </p>
-                    <p>
-                        Jeder Abschlag erzählt eine Geschichte, jede Runde ist eine neue Herausforderung. Die Ruhe des Grüns kontrastiert wunderbar mit der Hektik des Alltags.
-                    </p>
-                </div>
-                <blockquote class="golf-quote fade-in" itemprop="citation">
-                    „Golf ist wie das Leben – man braucht Balance, Fokus und manchmal einfach Glück."
-                </blockquote>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer mit sekundärer Navigation -->
-    <footer itemscope itemtype="https://schema.org/WPFooter">
+    <!-- Footer mit Social Links, Impressum und Datenschutz -->
+    <footer>
         <div class="footer-content">
-            <div class="footer-logo" itemprop="name">Torsten Fink</div>
-            
-            <!-- Sekundäre Navigation (verlinkt) -->
-            <nav class="footer-nav" aria-label="Footer Navigation">
-                <a href="#destinations" class="footer-tag">Reisen</a>
-                <span class="footer-dot">·</span>
-                <a href="#gallery" class="footer-tag">Fotografie</a>
-                <span class="footer-dot">·</span>
-                <a href="#stories" class="footer-tag">Geschichten</a>
-                <span class="footer-dot">·</span>
-                <a href="#golf" class="footer-tag">Golf</a>
-            </nav>
+            <div class="footer-logo">Torsten Fink</div>
+            <p class="footer-tagline">Reisen · Fotografie · Geschichten · Golf</p>
 
-            <div class="social-links" aria-label="Social Media Links">
-                <a href="https://www.instagram.com/xtofix" target="_blank" rel="noopener noreferrer me" itemprop="sameAs" aria-label="Folge Torsten auf Instagram">Instagram</a>
-                <a href="https://x.com/finktorsten" target="_blank" rel="noopener noreferrer me" itemprop="sameAs" aria-label="Folge Torsten auf X / Twitter">X / Twitter</a>
-                <a href="https://www.linkedin.com/in/torsten-fink-20220860" target="_blank" rel="noopener noreferrer me" itemprop="sameAs" aria-label="Torstens LinkedIn Profil">LinkedIn</a>
-                <a href="mailto:fink.torsten@gmail.com" itemprop="email" aria-label="E-Mail an Torsten senden">Email</a>
+            <!-- Social Media Links - NEU -->
+            <div class="social-links">
+                <a href="https://www.instagram.com/xtofix" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <a href="https://x.com/finktorsten" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+                <a href="https://www.linkedin.com/in/torsten-fink-20220860" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:fink.torsten@gmail.com">Email</a>
             </div>
 
-            <div class="footer-legal" aria-label="Rechtliche Informationen">
+            <!-- Impressum und Datenschutz - NEU -->
+            <div class="footer-legal">
                 <a href="impressum.html">Impressum</a>
                 <a href="datenschutz.html">Datenschutz</a>
             </div>
 
-            <p class="copyright">&copy; 2024 <span itemprop="name">Torsten Fink</span>. Alle Rechte vorbehalten.</p>
+            <p class="copyright">© 2024 Torsten Fink. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
 
