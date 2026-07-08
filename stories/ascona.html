@@ -1,181 +1,97 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locarno & Ascona: Das Tessin im Entschleunigungsmodus | Torsten Fink</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --text-muted: #666666;
-            --border: #2a2a2a;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.8;
-        }
-        .back {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            z-index: 100;
-        }
-        .back:hover { color: var(--text-primary); }
-        .hero {
-            height: 70vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-primary)), url('../assets/images/stories/locarno-1.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: flex-end;
-            padding: 4rem;
-        }
-        .hero-content h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-        }
-        .hero-content .date {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-        }
-        .content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        .content p {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-        .content h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            color: var(--text-primary);
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-        }
-        .content blockquote {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
-            font-style: italic;
-            color: var(--text-primary);
-            border-left: 3px solid var(--text-muted);
-            padding-left: 2rem;
-            margin: 3rem 0;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 3rem 0;
-        }
-        .gallery img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: all 0.3s;
-        }
-        .gallery img:hover {
-            filter: grayscale(0%);
-        }
-        footer {
-            text-align: center;
-            padding: 3rem;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 0.8rem;
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .gallery { grid-template-columns: 1fr; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Locarno &amp; Ascona: Das Tessin im Entschleunigungsmodus | Torsten Fink</title>
+<meta name="description" content="Reisebericht Tessin: Locarno und Ascona am Lago Maggiore – Madonna del Sasso, Grotto-Küche, Golf mit Bergblick und die Kunst des Nichtstuns.">
+<meta name="author" content="Torsten Fink">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/ascona.html">
+<meta name="theme-color" content="#0B0D12">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Torsten Fink — Reisen & Fotografie">
+<meta property="og:title" content="Locarno &amp; Ascona: Das Tessin im Entschleunigungsmodus">
+<meta property="og:description" content="Am Lago Maggiore tickt die Uhr langsamer: Madonna del Sasso, Grottos und Golf mit Bergblick.">
+<meta property="og:url" content="https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/ascona.html">
+<meta property="og:image" content="https://finktorsten-xtofix.github.io/torsten--fink.github.io/assets/images/stories/ascona-1.jpg">
+<meta property="article:published_time" content="2025-09-15">
+<meta property="article:author" content="Torsten Fink">
+<meta property="article:section" content="Reisen">
+<meta property="article:tag" content="Tessin">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B0D12'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23FF5C8A' font-family='sans-serif' font-weight='bold'%3ETF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/story.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BlogPosting",
+  "headline":"Locarno & Ascona: Das Tessin im Entschleunigungsmodus",
+  "description":"Locarno und Ascona am Lago Maggiore: Madonna del Sasso, Grotto-Küche, Golf mit Bergblick und die Kunst des Nichtstuns.",
+  "inLanguage":"de",
+  "datePublished":"2025-09-15",
+  "image":"https://finktorsten-xtofix.github.io/torsten--fink.github.io/assets/images/stories/ascona-1.jpg",
+  "author":{"@type":"Person","name":"Torsten Fink","url":"https://finktorsten-xtofix.github.io/torsten--fink.github.io/"},
+  "mainEntityOfPage":"https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/ascona.html",
+  "keywords":"Tessin, Locarno, Ascona, Lago Maggiore, Golf, Reisebericht"
+}
+</script>
 </head>
 <body>
-    <a href="../index.html" class="back">← Zurück</a>
-    
-    <header class="hero">
-        <div class="hero-content">
-            <div class="date">April 2026</div>
-            <h1>Locarno & Ascona: Das Tessin im Entschleunigungsmodus</h1>
-        </div>
-    </header>
 
-    <article class="content">
-        <p>
-            Es gibt Orte, die brauchen keinen Lärm, um zu beeindrucken. Locarno und Ascona gehören dazu. Hier am Lago Maggiore tickt die Uhr langsamer.
-        </p>
-        
-        <p>
-            Der See glitzert. Das ist keine Metapher, sondern Tatsache. Morgens um acht steht Dunst über dem Wasser, die Berge sind noch blass, und die einzigen Geräusche kommen von einer Kaffeemaschine irgendwo am Ufer. Das Leben hier ist keine Choreografie, sondern ein lang gezogener Atemzug.
-        </p>
+<nav>
+  <a class="brand" href="../index.html">Torsten<em>·</em>Fink</a>
+  <a class="back" href="../index.html#geschichten">← Alle Geschichten</a>
+</nav>
 
-        <h2>Zwischen Palmen und Sakralbauten</h2>
-        
-        <p>
-            Locarno ist das rustikale Gegenstück zum mondänen Ascona. Während Locarno mit seiner Piazza Grande und den engen Gassen noch echtes Tessiner Leben atmet, flaniert Ascona in weißen Leinenhemden entlang der Promenade. Beide Städte teilen sich denselben See, dieselbe Sonne und dieselbe Faulheit, die hier als Tugend gilt.
-        </p>
-        
-        <p>
-            Das Herzstück ist die Madonna del Sasso, das Wallfahrtsheiligtum hoch über Locarno. Der Blick von dort oben – über Dächer, über den See, bis hinüber zu den verschneiten Gipfeln – erklärt alles, ohne Worte. Warum hier jeder langsamer wird. Warum das Hier und Jetzt plötzlich genug ist.
-        </p>
+<header class="hero">
+  <img class="bg" src="../assets/images/stories/ascona-1.jpg" alt="" aria-hidden="true" fetchpriority="high">
+  <div class="inner">
+    <p class="exif"><span>Schweiz · Tessin</span><span class="dot">·</span><span>September 2025</span><span class="dot">·</span><span>46.1590° N, 8.7738° O</span></p>
+    <h1>Locarno &amp; Ascona: Das Tessin im Entschleunigungsmodus</h1>
+    <p class="sub">48 Stunden Nichtstun, professionell durchgezogen. Der See glitzert, ich bleibe sitzen.</p>
+  </div>
+</header>
 
-        <h2>Die Kunst des Nichtstuns</h2>
-        
-        <p>
-            In Locarno und Ascona zu essen bedeutet: sitzen bleiben. Der Espresso dauert seine fünf Minuten, der Aperitivo seine zwei Stunden. Hier gibt es keine Sterneküche, die sich in die Länge zieht, sondern Grottos, wo der Wirt selbst kocht und dir erzählt, woher der Käse kommt. Die Risotti sind cremig, die Fische frisch vom Boot, und die Weine kommen aus dem Tal hinterm Haus.
-        </p>
+<article>
+  <p>Es gibt Orte, die brauchen keinen Lärm, um zu beeindrucken. Locarno und Ascona gehören dazu. Hier am Lago Maggiore tickt die Uhr langsamer.</p>
+  <p>Der See glitzert. Das ist keine Metapher, sondern Tatsache. Morgens um acht steht Dunst über dem Wasser, die Berge sind noch blass, und die einzigen Geräusche kommen von einer Kaffeemaschine irgendwo am Ufer. Das Leben hier ist keine Choreografie, sondern ein lang gezogener Atemzug.</p>
 
-        <blockquote>
-            "Im Tessin isst man nicht, um satt zu werden. Man isst, um stillzusitzen und zuzuschauen, wie das Licht sich über dem See bewegt."
-        </blockquote>
+  <h2>Zwischen Palmen und Sakralbauten</h2>
+  <p>Locarno ist das rustikale Gegenstück zum mondänen Ascona. Während Locarno mit seiner Piazza Grande und den engen Gassen noch echtes Tessiner Leben atmet, flaniert Ascona in weißen Leinenhemden entlang der Promenade. Beide Städte teilen sich denselben See, dieselbe Sonne und dieselbe Faulheit, die hier als Tugend gilt.</p>
+  <p>Das Herzstück ist die Madonna del Sasso, das Wallfahrtsheiligtum hoch über Locarno. Der Blick von dort oben – über Dächer, über den See, bis hinüber zu den verschneiten Gipfeln – erklärt alles, ohne Worte. Warum hier jeder langsamer wird. Warum das Hier und Jetzt plötzlich genug ist.</p>
 
-        <h2>Warum ich wiederkomme</h2>
-        
-        <p>
-            Der erste Besuch war Urlaub. Der zweite ist Heimkommen. Ich habe mich an der Driving Range in Ascona versucht, ein paar Bälle geschlagen, den Blick auf die Berge genossen. Golf ist hier nicht nur ein Sport, sondern eine Passion die Körper und Geist in Einklang versetzt.
-        </p>
+  <h2>Die Kunst des Nichtstuns</h2>
+  <p>In Locarno und Ascona zu essen bedeutet: sitzen bleiben. Der Espresso dauert seine fünf Minuten, der Aperitivo seine zwei Stunden. Hier gibt es keine Sterneküche, die sich in die Länge zieht, sondern Grottos, wo der Wirt selbst kocht und dir erzählt, woher der Käse kommt. Die Risotti sind cremig, die Fische frisch vom Boot, und die Weine kommen aus dem Tal hinterm Haus.</p>
+  <blockquote>„Im Tessin isst man nicht, um satt zu werden. Man isst, um stillzusitzen und zuzuschauen, wie das Licht sich über dem See bewegt."</blockquote>
 
-        <div class="gallery">
-            <img src="../assets/images/stories/locarno-2.jpg" alt="Piazza Grande Locarno">
-            <img src="../assets/images/stories/ascona-1.jpg" alt="Ascona Uferpromenade">
-        </div>
+  <h2>Warum ich wiederkomme</h2>
+  <p>Der erste Besuch war Urlaub. Der zweite ist Heimkommen. Ich habe mich an der Driving Range in Ascona versucht, ein paar Bälle geschlagen, den Blick auf die Berge genossen. Golf ist hier nicht nur ein Sport, sondern eine Passion, die Körper und Geist in Einklang versetzt.</p>
 
-        <p>
-            Was bleibt? Das Gefühl, dass Zeit nicht gleich Zeit ist. Dass 48 Stunden hier mehr wert sind als eine Woche woanders. Dass man nachts um elf noch draußen sitzen kann, ohne frieren zu müssen, und dass niemand dich fragt, was du den ganzen Tag gemacht hast. Weil die Antwort eh lautet: Nichts. Und das ist in Ordnung.
-        </p>
+  <div class="duo">
+    <figure><img src="../assets/images/stories/locarno-2.jpg" alt="Piazza Grande in Locarno" loading="lazy"><figcaption>Piazza Grande, Locarno</figcaption></figure>
+    <figure><img src="../assets/images/stories/ascona-1.jpg" alt="Uferpromenade von Ascona am Lago Maggiore" loading="lazy"><figcaption>Uferpromenade, Ascona</figcaption></figure>
+  </div>
 
-        <p>
-            Mein Rat? Komm mit leeren Händen. Lass das Handy im Hotel. Setz dich an den See und warte ab, was passiert. Wahrscheinlich nichts. Und genau das ist der Punkt.
-        </p>
+  <p>Was bleibt? Das Gefühl, dass Zeit nicht gleich Zeit ist. Dass 48 Stunden hier mehr wert sind als eine Woche woanders. Dass man nachts um elf noch draußen sitzen kann, ohne frieren zu müssen, und dass niemand dich fragt, was du den ganzen Tag gemacht hast. Weil die Antwort eh lautet: nichts. Und das ist in Ordnung.</p>
+  <p><strong>Mein Rat?</strong> Komm mit leeren Händen. Lass das Handy im Hotel. Setz dich an den See und warte ab, was passiert. Wahrscheinlich nichts. Und genau das ist der Punkt.</p>
+  <p><strong>Warnung:</strong> Wer einmal diese Art von Langsamkeit geschmeckt hat, findet zuhause den Wecker plötzlich sehr laut. Bis bald, Tessin.</p>
 
-        <p>
-            Warnung: Wer einmal diese Art von Langsamkeit geschmeckt hat, findet zuhause den Wecker plötzlich sehr laut. Bis bald, Tessin.
-        </p>
-    </article>
+  <div class="topics"><span>Schweiz</span><span>Tessin</span><span>Lago Maggiore</span><span>Golf</span><span>Entschleunigung</span></div>
+</article>
 
-    <footer>
-        <p>© 2025 Torsten Fink</p>
-    </footer>
+<div class="pager">
+  <a href="hongkong.html"><span class="lbl">← Vorherige Geschichte</span><span class="ttl">Hongkong: Ein Duft von Abenteuer und Feuerwerk</span></a>
+  <a class="next" href="beldibi.html"><span class="lbl">Nächste Geschichte →</span><span class="ttl">Beldibi: Türkisfarbenes Wasser &amp; Russische Geschichten</span></a>
+</div>
+
+<footer>
+  <span>© 2025–2026 Torsten Fink</span>
+  <span><a href="../index.html">Startseite</a> · <a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></span>
+</footer>
 </body>
 </html>
