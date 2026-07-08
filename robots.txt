@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://finktorsten-xtofix.github.io/torsten--fink.github.io/sitemap.xml

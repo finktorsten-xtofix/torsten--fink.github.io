@@ -1,0 +1,15 @@
+# Torsten Fink — Die Welt durch ein Objektiv
+
+> Persönliche Website von Torsten Fink: Reisegeschichten, Fotografie und Golf.
+> Schwerpunkte: Tokio, Hongkong, Tessin (Locarno/Ascona), Türkische Riviera (Beldibi).
+> Sprache: Deutsch. Alle Fotografien und Texte © Torsten Fink.
+
+## Geschichten
+- [Beldibi: Türkisfarbenes Wasser & Russische Geschichten](https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/beldibi.html): Türkische Riviera, April 2026
+- [Locarno & Ascona: Das Tessin im Entschleunigungsmodus](https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/ascona.html): Lago Maggiore, September 2025
+- [Hongkong: Ein Duft von Abenteuer und Feuerwerk](https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/hongkong.html): Chinesisches Neujahr, Februar 2019
+- [Tokio: Der Puls einer Welt, die niemals schläft](https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/tokio.html): Japan, März 2017
+
+## Rechtliches
+- [Impressum](https://finktorsten-xtofix.github.io/torsten--fink.github.io/impressum.html)
+- [Datenschutz](https://finktorsten-xtofix.github.io/torsten--fink.github.io/datenschutz.html)
