@@ -1,1 +1,4 @@
-www.torsten-fink.de
+User-agent: *
+Allow: /
+
+Sitemap: https://www.torsten-fink.de/sitemap.xml
