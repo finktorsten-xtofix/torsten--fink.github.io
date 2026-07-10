@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://finktorsten-xtofix.github.io/torsten--fink.github.io/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/beldibi.html</loc><lastmod>2026-04-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/ascona.html</loc><lastmod>2025-09-15</lastmod><priority>0.8</priority></url>
-  <url><loc>https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/hongkong.html</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
-  <url><loc>https://finktorsten-xtofix.github.io/torsten--fink.github.io/stories/tokio.html</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.torsten-fink.de/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.torsten-fink.de/stories/beldibi.html</loc><lastmod>2026-04-12</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.torsten-fink.de/stories/ascona.html</loc><lastmod>2025-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.torsten-fink.de/stories/hongkong.html</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.torsten-fink.de/stories/tokio.html</loc><lastmod>2026-07-08</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.torsten-fink.de/stories/singapur.html</loc><lastmod>2026-07-10</lastmod><priority>0.7</priority></url>
 </urlset>
