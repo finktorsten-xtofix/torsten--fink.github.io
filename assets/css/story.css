@@ -28,7 +28,7 @@ nav .back:hover{color:var(--neon)}
 .hero .inner{position:relative;z-index:2;max-width:860px;margin:0 auto;width:100%}
 .exif{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);display:flex;gap:1.2em;flex-wrap:wrap;margin-bottom:18px}
 .exif .dot{color:var(--neon)}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,6vw,4rem);line-height:1.04;letter-spacing:-.01em}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,6vw,4rem);line-height:1.08;letter-spacing:-.01em;overflow-wrap:break-word;hyphens:auto}
 .sub{color:var(--paper-dim);font-size:clamp(1rem,1.6vw,1.2rem);margin-top:14px;max-width:52ch}
 
 article{max-width:760px;margin:0 auto;padding:clamp(44px,6vw,80px) clamp(20px,6vw,40px) 30px}
