@@ -133,8 +133,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--neon);outline-offse
 /* vertical JP signature */
 .tategaki{position:absolute;top:50%;right:clamp(14px,4vw,64px);transform:translateY(-50%);z-index:2;
   writing-mode:vertical-rl;font-family:var(--jp);font-weight:600;font-size:clamp(1.3rem,3vw,2.3rem);
-  letter-spacing:.42em;color:rgba(236,231,220,.5);border-right:1px solid var(--line);padding-right:.7em;user-select:none}
-.tategaki span{color:var(--neon);opacity:.85}
+  letter-spacing:.42em;color:rgba(236,231,220,.85);text-shadow:0 1px 3px rgba(11,13,18,.9),0 0 10px rgba(11,13,18,.5);border-right:1px solid var(--line);padding-right:.7em;user-select:none}
+.tategaki span{color:var(--neon);opacity:1;text-shadow:0 0 12px rgba(255,92,138,.8)}
 @media(max-width:760px){.tategaki{display:none}}
 .scrollhint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.66rem;
   letter-spacing:.3em;text-transform:uppercase;color:var(--paper-dim);z-index:2;text-decoration:none}
@@ -173,7 +173,7 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.6vw,3.4re
 .city .meta .exif{margin-bottom:8px;font-size:.64rem}
 .city h3{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.6rem);line-height:1}
 .city p{color:var(--paper-dim);margin-top:6px;font-size:.95rem}
-.city .kanji{position:absolute;top:18px;right:18px;writing-mode:vertical-rl;font-family:var(--jp);font-size:1.15rem;letter-spacing:.3em;color:rgba(236,231,220,.75);text-shadow:0 0 18px rgba(0,0,0,.6)}
+.city .kanji{position:absolute;top:18px;right:18px;writing-mode:vertical-rl;font-family:var(--jp);font-size:1.3rem;letter-spacing:.3em;color:var(--neon);text-shadow:0 1px 2px rgba(11,13,18,.95), 0 0 6px rgba(11,13,18,.7), 0 0 14px rgba(255,92,138,.9), 0 0 30px rgba(255,92,138,.55)}
 @media(max-width:680px){.city-grid{grid-template-columns:1fr}.city img{aspect-ratio:4/3}}
 
 /* stories */
@@ -385,6 +385,18 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
     <figure class="frame">
       <img src="assets/images/stories/beldibi-meer.jpg" alt="Türkisfarbenes Meer an der Küste von Beldibi" loading="lazy">
       <figcaption><span>Frame 06</span><b>Beldibi · Türkis</b></figcaption>
+    </figure>
+    <figure class="frame">
+      <img src="assets/images/stories/hongkong-taxi.jpg" alt="Rotes Taxi vor Kompositfassade in Hongkong" loading="lazy">
+      <figcaption><span>Frame 07</span><b>Hongkong · Rotes Taxi</b></figcaption>
+    </figure>
+    <figure class="frame">
+      <img src="assets/images/stories/tokio-meiji.jpg" alt="Shintō-Hochzeit am Meiji-jingū in Tokio" loading="lazy">
+      <figcaption><span>Frame 08</span><b>Tokio · Meiji-jingū</b></figcaption>
+    </figure>
+    <figure class="frame">
+      <img src="assets/images/stories/hongkong-wanchai.jpg" alt="Boote im Typhoon Shelter vor der Skyline von Wan Chai" loading="lazy">
+      <figcaption><span>Frame 09</span><b>Hongkong · Wan Chai</b></figcaption>
     </figure>
   </div>
 </section>
