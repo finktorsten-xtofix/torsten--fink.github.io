@@ -9,6 +9,7 @@ Sieben Reisegeschichten zwischen Tokio und Bad Heilbrunn, erzählt in eigenem To
 
 | Jahr | Geschichte |
 |---|---|
+| 2026 | [Passau — Hier fließt zusammen, was zusammengehört](https://torsten-fink.de/stories/passau.html) |
 | 2026 | [Bad Heilbrunn — Bayerisches Lakeland](https://torsten-fink.de/stories/bad-heilbrunn.html) |
 | 2026 | [Beldibi — Türkisfarbenes Wasser & Russische Geschichten](https://torsten-fink.de/stories/beldibi.html) |
 | 2025 | [Locarno & Ascona — Das Tessin im Entschleunigungsmodus](https://torsten-fink.de/stories/ascona.html) |
