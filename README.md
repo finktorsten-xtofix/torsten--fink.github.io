@@ -3,12 +3,13 @@
 **Live:** [https://torsten-fink.de](https://torsten-fink.de)
 
 Persönliche Website von **Torsten Fink** — Reiseerzähler, Fotograf und Golfer aus Fürth.
-Sieben Reisegeschichten zwischen Tokio und Bad Heilbrunn, erzählt in eigenem Ton und bebildert mit eigenen Fotografien.
+Acht Reisegeschichten zwischen Kamakura und Bad Heilbrunn, erzählt in eigenem Ton und bebildert mit eigenen Fotografien.
 
 ## Geschichten
 
 | Jahr | Geschichte |
 |---|---|
+| 2026 | [Kamakura — Wo die Shogun surften?](https://torsten-fink.de/stories/kamakura.html) |
 | 2026 | [Passau — Hier fließt zusammen, was zusammengehört](https://torsten-fink.de/stories/passau.html) |
 | 2026 | [Bad Heilbrunn — Bayerisches Lakeland](https://torsten-fink.de/stories/bad-heilbrunn.html) |
 | 2026 | [Beldibi — Türkisfarbenes Wasser & Russische Geschichten](https://torsten-fink.de/stories/beldibi.html) |

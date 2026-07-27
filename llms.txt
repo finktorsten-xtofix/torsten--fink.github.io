@@ -1,10 +1,11 @@
 # Torsten Fink — Die Welt durch ein Objektiv
 
 > Persönliche Website von Torsten Fink: Reisegeschichten, Fotografie und Golf.
-> Schwerpunkte: Tokio, Hongkong, Tessin (Locarno/Ascona), Türkische Riviera (Beldibi).
+> Schwerpunkte: Tokio, Kamakura & Enoshima, Hongkong, Tessin (Locarno/Ascona), Türkische Riviera (Beldibi).
 > Sprache: Deutsch. Alle Fotografien und Texte © Torsten Fink.
 
 ## Geschichten
+- [Kamakura: Wo die Shogun surften?](https://torsten-fink.de/stories/kamakura.html): Japan, Kanagawa, Juli 2026
 - [Passau: Hier fließt zusammen, was zusammengehört — Drei Flüsse, Lebenslust und Kultur](https://torsten-fink.de/stories/passau.html): Niederbayern, Mai 2026
 - [Bad Heilbrunn: Bayerisches Lakeland — in der Heimat ist es doch am schönsten](https://torsten-fink.de/stories/bad-heilbrunn.html): Oberbayern, April/Mai 2026
 - [Istanbul: Das Tor Asiens — zwischen 1001 Nacht und Megacity](https://torsten-fink.de/stories/istanbul.html): Türkei, September 2023
@@ -12,7 +13,7 @@
 - [Locarno & Ascona: Das Tessin im Entschleunigungsmodus](https://torsten-fink.de/stories/ascona.html): Lago Maggiore, September 2025
 - [Hongkong: Ein Duft von Abenteuer und Feuerwerk](https://torsten-fink.de/stories/hongkong.html): Chinesisches Neujahr, Februar 2019
 - [Tokio: Der Puls einer Welt, die niemals schläft](https://torsten-fink.de/stories/tokio.html): Japan, März 2017
-- [Singapur: Eine Stadt, die man nicht besucht, sondern absolviert](https://torsten-fink.de/stories/singapur.html): Singapur, Februar 2015
+- [Singapur: Eine Stadt, die man nicht besucht, sondern absolviert](https://torsten-fink.de/stories/singapur.html): Singapur, Februar/März 2015
 
 ## Rechtliches
 - [Impressum](https://torsten-fink.de/impressum.html)
