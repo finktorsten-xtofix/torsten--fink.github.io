@@ -9,13 +9,13 @@ Acht Reisegeschichten zwischen Kamakura und Bad Heilbrunn, erzählt in eigenem T
 
 | Jahr | Geschichte |
 |---|---|
-| 2026 | [Kamakura — Wo die Shogun surften?](https://torsten-fink.de/stories/kamakura.html) |
 | 2026 | [Passau — Hier fließt zusammen, was zusammengehört](https://torsten-fink.de/stories/passau.html) |
 | 2026 | [Bad Heilbrunn — Bayerisches Lakeland](https://torsten-fink.de/stories/bad-heilbrunn.html) |
 | 2026 | [Beldibi — Türkisfarbenes Wasser & Russische Geschichten](https://torsten-fink.de/stories/beldibi.html) |
 | 2025 | [Locarno & Ascona — Das Tessin im Entschleunigungsmodus](https://torsten-fink.de/stories/ascona.html) |
 | 2023 | [Istanbul — Das Tor Asiens](https://torsten-fink.de/stories/istanbul.html) |
 | 2019 | [Hongkong — Ein Duft von Abenteuer und Feuerwerk](https://torsten-fink.de/stories/hongkong.html) |
+| — | [Kamakura — Wo die Shogun surften?](https://torsten-fink.de/stories/kamakura.html) (mehrere Besuche) |
 | 2017 | [Tokio — Der Puls einer Welt, die niemals schläft](https://torsten-fink.de/stories/tokio.html) |
 | 2015 | [Singapur — Eine Stadt, die man nicht besucht, sondern absolviert](https://torsten-fink.de/stories/singapur.html) |
 
