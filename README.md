@@ -3,7 +3,7 @@
 **Live:** [https://torsten-fink.de](https://torsten-fink.de)
 
 Persönliche Website von **Torsten Fink** — Reiseerzähler, Fotograf und Golfer aus Fürth.
-Acht Reisegeschichten zwischen Kamakura und Bad Heilbrunn, erzählt in eigenem Ton und bebildert mit eigenen Fotografien.
+Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, erzählt in eigenem Ton und bebildert mit eigenen Fotografien.
 
 ## Geschichten
 
@@ -19,6 +19,12 @@ Acht Reisegeschichten zwischen Kamakura und Bad Heilbrunn, erzählt in eigenem T
 | 2017 | [Tokio — Der Puls einer Welt, die niemals schläft](https://torsten-fink.de/stories/tokio.html) |
 | 2015 | [Singapur — Eine Stadt, die man nicht besucht, sondern absolviert](https://torsten-fink.de/stories/singapur.html) |
 
+## Tools
+
+| Tool | Beschreibung |
+|---|---|
+| [Handicap-Rechner](https://torsten-fink.de/tools/handicap-rechner.html) | Golf-Handicap-Index nach WHS-Näherung, Course-Handicap-Berechnung. Reines Vanilla-JS, Speicherung nur im `localStorage` des Browsers, keine Anmeldung, kein Server-Backend. |
+
 ## Technik
 
 - **Hosting:** GitHub Pages, Custom Domain `torsten-fink.de` (CNAME-Datei im Root — nicht löschen!), HTTPS erzwungen
@@ -31,7 +37,8 @@ Acht Reisegeschichten zwischen Kamakura und Bad Heilbrunn, erzählt in eigenem T
 
 ```
 ├── index.html            Startseite
-├── stories/              Sieben Reisegeschichten
+├── stories/              Neun Reisegeschichten
+├── tools/                Interaktive Tools (z. B. Handicap-Rechner)
 ├── assets/
 │   ├── css/story.css     Stylesheet der Unterseiten
 │   └── images/           Optimierte Fotos (Startseite + stories/)
