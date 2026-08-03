@@ -15,6 +15,9 @@
 - [Tokio: Der Puls einer Welt, die niemals schläft](https://torsten-fink.de/stories/tokio.html): Japan, März 2017
 - [Singapur: Eine Stadt, die man nicht besucht, sondern absolviert](https://torsten-fink.de/stories/singapur.html): Singapur, Februar/März 2015
 
+## Tools
+- [Handicap-Rechner](https://torsten-fink.de/tools/handicap-rechner.html): Golf-Handicap-Index nach WHS-Näherung berechnen, Course Handicap für den nächsten Platz. Speicherung nur lokal im Browser, keine Anmeldung nötig.
+
 ## Rechtliches
 - [Impressum](https://torsten-fink.de/impressum.html)
 - [Datenschutz](https://torsten-fink.de/datenschutz.html)
