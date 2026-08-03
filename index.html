@@ -110,7 +110,29 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .navlinks a{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--paper-dim);transition:color .25s}
 .navlinks a:hover,.navlinks a:focus-visible{color:var(--neon)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
-@media(max-width:680px){.navlinks{display:none}}
+
+.navtoggle{display:none;background:none;border:1px solid var(--line);width:40px;height:40px;padding:0;cursor:pointer;
+  position:relative;flex-shrink:0}
+.navtoggle span,.navtoggle span::before,.navtoggle span::after{
+  content:"";position:absolute;left:9px;right:9px;height:1px;background:var(--paper);transition:.25s}
+.navtoggle span{top:19px}
+.navtoggle span::before{top:-6px}
+.navtoggle span::after{top:6px}
+.navtoggle[aria-expanded="true"] span{background:transparent}
+.navtoggle[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+.navtoggle[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+
+.navmobile{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;
+  background:var(--night);padding:100px clamp(20px,6vw,56px) 40px;flex-direction:column;gap:2px}
+.navmobile.open{display:flex}
+.navmobile a{font-family:var(--mono);font-size:1.1rem;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;color:var(--paper);padding:18px 0;border-bottom:1px solid var(--line)}
+.navmobile a:hover,.navmobile a:focus-visible{color:var(--neon)}
+
+@media(max-width:680px){
+  .navlinks{display:none}
+  .navtoggle{display:block}
+}
 
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;
@@ -265,7 +287,16 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
     <li><a href="#galerie">Galerie</a></li>
     <li><a href="#golf">Golf</a></li>
   </ul>
+  <button class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="navMobile" aria-label="Menü öffnen"><span></span></button>
 </nav>
+
+<div class="navmobile" id="navMobile">
+  <a href="#about">Über</a>
+  <a href="#orte">Orte</a>
+  <a href="#geschichten">Geschichten</a>
+  <a href="#galerie">Galerie</a>
+  <a href="#golf">Golf</a>
+</div>
 
 <header class="hero" id="top">
   <div class="hero-bg">
@@ -517,6 +548,7 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
         <li>Golfrange Nürnberg <span>Franken, DE</span></li>
         <li>GC Herzogenaurach <span>Heimatclub</span></li>
       </ul>
+      <a class="btn pink" href="tools/handicap-rechner.html" style="margin-top:24px">Handicap-Rechner öffnen</a>
     </div>
   </div>
   <div class="golf-pics">
@@ -564,6 +596,24 @@ if(!prefersReduced && 'IntersectionObserver' in window){
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 }else{
   document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+}
+
+// Mobiles Menü (Hamburger-Toggle)
+const navToggle = document.getElementById('navToggle');
+const navMobile = document.getElementById('navMobile');
+if(navToggle && navMobile){
+  navToggle.addEventListener('click', () => {
+    const isOpen = navMobile.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
+  });
+  navMobile.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navMobile.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+      navToggle.setAttribute('aria-label', 'Menü öffnen');
+    });
+  });
 }
 </script>
 </body>
