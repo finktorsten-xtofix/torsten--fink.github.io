@@ -1,1 +1,327 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Handicap-Rechner | Torsten Fink</title>
+<meta name="description" content="Kostenloser Golf-Handicap-Rechner: Handicap-Index nach WHS-Näherung berechnen, Course Handicap für den nächsten Platz. Speicherung nur lokal im Browser.">
+<meta name="author" content="Torsten Fink">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://torsten-fink.de/tools/handicap-rechner.html">
+<meta name="theme-color" content="#0B0D12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B0D12'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23FF5C8A' font-family='sans-serif' font-weight='bold'%3ETF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/story.css">
+<style>
+  .tool-hero{padding:120px clamp(20px,6vw,80px) 40px;max-width:860px;margin:0 auto}
+  .tool-hero .exif{margin-bottom:18px}
+  .tool-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,6vw,3.4rem);line-height:1.08;letter-spacing:-.01em}
+  .tool-hero .sub{color:var(--paper-dim);font-size:clamp(1rem,1.6vw,1.2rem);margin-top:14px;max-width:60ch}
 
+  .tool-wrap{max-width:760px;margin:0 auto;padding:0 clamp(20px,6vw,40px) 40px}
+
+  .card{border:1px solid var(--line);background:var(--night-2);padding:clamp(20px,3vw,32px);margin-bottom:22px}
+  .card h2{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:0 0 18px;color:var(--paper);display:flex;align-items:center;gap:10px}
+  .card h2 .tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--neon);border:1px solid var(--neon);padding:3px 8px}
+
+  .intro-note{font-size:.92rem;line-height:1.7;color:#CFCabf;margin:0}
+
+  .hi-hero{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+  .hi-value{font-family:var(--mono);font-weight:500;font-size:3.4rem;color:var(--neon);line-height:1}
+  .hi-count{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
+  .hi-meta{font-size:.85rem;color:var(--paper-dim)}
+  .hi-basis{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--paper-dim);margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+  .hi-basis .dot{color:var(--neon)}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1/-1}
+  label{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
+  input{background:var(--night);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:.95rem;padding:11px 12px;width:100%}
+  input:focus{outline:none;border-color:var(--neon)}
+  input::placeholder{color:#4a4a52}
+
+  .btn{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--neon);
+    background:transparent;border:1px solid var(--neon);padding:13px 22px;width:100%;margin-top:16px;cursor:pointer;transition:.25s}
+  .btn:hover{background:var(--neon);color:var(--night)}
+  .btn:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+
+  .ch-result{font-size:.9rem;color:var(--paper-dim);margin-top:14px}
+  .ch-result strong{font-family:var(--mono);color:var(--neon);font-weight:500}
+
+  .rounds{display:flex;flex-direction:column;gap:6px}
+  .round-row{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr auto;gap:10px;align-items:center;
+    padding:11px 12px;border:1px solid var(--line);font-family:var(--mono);font-size:.78rem;color:var(--paper-dim);position:relative}
+  .round-row.head{color:var(--paper-dim);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;border:none;padding:0 12px 4px}
+  .round-row .diff{color:var(--neon)}
+  .round-row.used{border-color:var(--neon)}
+  .empty{color:var(--paper-dim);font-size:.85rem;padding:20px;text-align:center;border:1px dashed var(--line)}
+  .del-btn{background:none;border:1px solid var(--line);color:var(--paper-dim);font-family:var(--mono);font-size:.7rem;padding:5px 9px;cursor:pointer;transition:.25s}
+  .del-btn:hover{color:var(--neon);border-color:var(--neon)}
+
+  @media(max-width:560px){
+    .grid{grid-template-columns:1fr}
+    .hi-value{font-size:2.6rem}
+    .round-row{grid-template-columns:1.2fr 1fr 1fr auto;font-size:.7rem}
+    .round-row .par-col{display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="../index.html">Torsten<em>·</em>Fink</a>
+  <a class="back" href="../index.html">← Startseite</a>
+</nav>
+
+<div class="tool-hero">
+  <p class="exif"><span>Tools</span><span class="dot">·</span><span>Handicap-Rechner</span></p>
+  <h1>Handicap-Rechner</h1>
+  <p class="sub">Runden eintragen, Handicap-Index nach WHS-Näherung berechnen, Course Handicap für die nächste Runde bestimmen.</p>
+</div>
+
+<div class="tool-wrap">
+
+  <div class="card">
+    <p class="intro-note">Trag deine letzten Runden ein, Score, Course Rating und Slope stehen auf jeder Scorecard, und der Rechner ermittelt deinen aktuellen Handicap-Index nach der offiziellen WHS-Näherungsformel. Zusätzlich lässt sich für jeden neuen Platz das Course Handicap ausrechnen, bevor es losgeht. Alles bleibt in diesem Browser gespeichert, es wird nichts irgendwohin hochgeladen. Auf einem anderen Gerät fängst du entsprechend neu an. Kein offizielles DGV-Tool, sondern eine Näherung zum Nachverfolgen der eigenen Entwicklung.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="tag">Index</span> Handicap-Index</h2>
+    <div class="hi-hero">
+      <div>
+        <div class="hi-value" id="hiValue">—</div>
+        <div class="hi-meta" id="hiMeta">Noch keine Runden erfasst</div>
+      </div>
+      <div class="hi-count" id="hiCount">0 Runden</div>
+    </div>
+    <div class="hi-basis"><span class="dot">●</span> markiert die Runden, die in die Berechnung einfließen</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="tag">Neu</span> Runde erfassen</h2>
+    <div class="grid">
+      <div class="field">
+        <label for="score">Score (brutto)</label>
+        <input type="number" id="score" placeholder="z. B. 89" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="cr">Course Rating</label>
+        <input type="number" id="cr" step="0.1" placeholder="z. B. 71.2" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="slope">Slope</label>
+        <input type="number" id="slope" placeholder="z. B. 128" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="date">Datum</label>
+        <input type="date" id="date">
+      </div>
+      <div class="field full">
+        <label for="course">Platz (optional)</label>
+        <input type="text" id="course" placeholder="z. B. GC Fürth">
+      </div>
+    </div>
+    <button class="btn" id="addRound">Runde speichern</button>
+  </div>
+
+  <div class="card">
+    <h2><span class="tag">CH</span> Course Handicap berechnen</h2>
+    <div class="grid">
+      <div class="field">
+        <label for="targetSlope">Slope des Platzes</label>
+        <input type="number" id="targetSlope" placeholder="z. B. 132" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="targetCr">Course Rating</label>
+        <input type="number" id="targetCr" step="0.1" placeholder="z. B. 72.4" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="targetPar">Par</label>
+        <input type="number" id="targetPar" placeholder="z. B. 72" inputmode="numeric">
+      </div>
+    </div>
+    <button class="btn" id="calcCH">Course Handicap anzeigen</button>
+    <div class="ch-result" id="chResult"></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="tag">Log</span> Rundenverlauf</h2>
+    <div class="rounds" id="roundsList">
+      <div class="empty">Lade Runden…</div>
+    </div>
+  </div>
+
+  <div class="topics">
+    <span>WHS-Näherung</span><span>Nur lokale Speicherung</span><span>Nicht offiziell zertifiziert</span>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 Torsten Fink</span>
+  <span><a href="../index.html">Startseite</a> · <a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></span>
+</footer>
+
+<script>
+const STORAGE_KEY = 'golf:rounds';
+
+function differentialsToUse(n){
+  if(n<3) return 0;
+  const table = {3:1,4:1,5:1,6:2,7:2,8:2,9:3,10:3,11:3,12:4,13:4,14:4,15:5,16:5,17:6,18:6,19:7,20:8};
+  return table[Math.min(n,20)];
+}
+
+function computeDifferential(score, cr, slope){
+  return (score - cr) * 113 / slope;
+}
+
+function computeHandicapIndex(rounds){
+  if(rounds.length < 3) return null;
+  const withDiff = rounds.map(r => ({...r, diff: computeDifferential(r.score, r.cr, r.slope)}));
+  const sorted = [...withDiff].sort((a,b)=>a.diff-b.diff);
+  const useCount = differentialsToUse(sorted.length);
+  const used = sorted.slice(0, useCount);
+  const avg = used.reduce((s,r)=>s+r.diff,0) / used.length;
+  const hi = Math.max(0, avg * 0.96);
+  return { hi, withDiff, usedIds: new Set(used.map(r=>r.id)) };
+}
+
+function fmt(n, d=1){ return n.toFixed(d); }
+
+let rounds = [];
+
+function loadRounds(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    rounds = raw ? JSON.parse(raw) : [];
+  }catch(e){
+    rounds = [];
+  }
+  render();
+}
+
+function saveRounds(){
+  try{
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(rounds));
+  }catch(e){
+    alert('Speichern hat nicht geklappt. Möglicherweise ist der private Modus deines Browsers aktiv.');
+  }
+}
+
+function render(){
+  const hiValue = document.getElementById('hiValue');
+  const hiMeta = document.getElementById('hiMeta');
+  const hiCount = document.getElementById('hiCount');
+  const list = document.getElementById('roundsList');
+
+  hiCount.textContent = rounds.length + (rounds.length === 1 ? ' Runde' : ' Runden');
+
+  const result = computeHandicapIndex(rounds);
+  if(!result){
+    hiValue.textContent = '—';
+    hiMeta.textContent = rounds.length === 0
+      ? 'Noch keine Runden erfasst'
+      : `Noch ${3 - rounds.length} Runde(n) bis zur ersten Berechnung`;
+  } else {
+    hiValue.textContent = fmt(result.hi);
+    const useCount = differentialsToUse(rounds.length);
+    hiMeta.textContent = `Aus den besten ${useCount} von ${rounds.length} Differentials`;
+  }
+
+  if(rounds.length === 0){
+    list.innerHTML = '<div class="empty">Noch keine Runden gespeichert. Trage oben die erste ein.</div>';
+    return;
+  }
+
+  const sortedByDate = [...rounds].sort((a,b) => new Date(b.date) - new Date(a.date));
+  const usedIds = result ? result.usedIds : new Set();
+  const diffMap = {};
+  if(result){ result.withDiff.forEach(r => diffMap[r.id] = r.diff); }
+
+  list.innerHTML = `
+    <div class="round-row head">
+      <span>Platz / Datum</span>
+      <span>Score</span>
+      <span class="par-col">CR / Slope</span>
+      <span>Diff.</span>
+      <span></span>
+    </div>
+  ` + sortedByDate.map(r => {
+    const diff = diffMap[r.id] !== undefined ? fmt(diffMap[r.id]) : fmt(computeDifferential(r.score, r.cr, r.slope));
+    const isUsed = usedIds.has(r.id);
+    return `
+      <div class="round-row ${isUsed ? 'used' : ''}">
+        <span>${r.course ? r.course + ' · ' : ''}${r.date || '—'}</span>
+        <span>${r.score}</span>
+        <span class="par-col">${r.cr} / ${r.slope}</span>
+        <span class="diff">${diff}</span>
+        <button class="del-btn" data-id="${r.id}" aria-label="Runde löschen">✕</button>
+      </div>
+    `;
+  }).join('');
+
+  list.querySelectorAll('button[data-id]').forEach(btn => {
+    btn.addEventListener('click', () => deleteRound(btn.dataset.id));
+  });
+}
+
+function deleteRound(id){
+  rounds = rounds.filter(r => String(r.id) !== String(id));
+  saveRounds();
+  render();
+}
+
+document.getElementById('addRound').addEventListener('click', () => {
+  const score = parseFloat(document.getElementById('score').value);
+  const cr = parseFloat(document.getElementById('cr').value);
+  const slope = parseFloat(document.getElementById('slope').value);
+  const date = document.getElementById('date').value || new Date().toISOString().slice(0,10);
+  const course = document.getElementById('course').value.trim();
+
+  if(!score || !cr || !slope){
+    alert('Bitte Score, Course Rating und Slope ausfüllen.');
+    return;
+  }
+  if(slope < 55 || slope > 155){
+    alert('Slope liegt normalerweise zwischen 55 und 155.');
+    return;
+  }
+
+  rounds.push({ id: Date.now(), score, cr, slope, date, course });
+  saveRounds();
+  render();
+
+  document.getElementById('score').value = '';
+  document.getElementById('cr').value = '';
+  document.getElementById('slope').value = '';
+  document.getElementById('course').value = '';
+  document.getElementById('date').value = '';
+});
+
+document.getElementById('calcCH').addEventListener('click', () => {
+  const slope = parseFloat(document.getElementById('targetSlope').value);
+  const cr = parseFloat(document.getElementById('targetCr').value);
+  const par = parseFloat(document.getElementById('targetPar').value);
+  const result = computeHandicapIndex(rounds);
+  const resultEl = document.getElementById('chResult');
+
+  if(!result){
+    resultEl.textContent = 'Es werden mindestens 3 Runden benötigt, um einen Handicap-Index zu berechnen.';
+    return;
+  }
+  if(!slope || !cr || !par){
+    resultEl.textContent = 'Bitte Slope, Course Rating und Par ausfüllen.';
+    return;
+  }
+
+  const ch = result.hi * (slope / 113) + (cr - par);
+  resultEl.innerHTML = `Course Handicap: <strong>${Math.round(ch)}</strong> (Index ${fmt(result.hi)})`;
+});
+
+loadRounds();
+</script>
+</body>
+</html>
