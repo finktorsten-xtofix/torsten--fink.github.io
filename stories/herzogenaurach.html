@@ -17,6 +17,7 @@
 <meta property="og:url" content="https://torsten-fink.de/stories/herzogenaurach.html">
 <meta property="og:image" content="https://torsten-fink.de/assets/images/stories/herzogenaurach-sonnenuntergang.jpg">
 <meta property="article:published_time" content="2026-08-14">
+<meta property="article:modified_time" content="2026-08-15">
 <meta property="article:author" content="Torsten Fink">
 <meta property="article:section" content="Golf">
 <meta property="article:tag" content="Herzogenaurach">
@@ -36,19 +37,82 @@
 .sources a{color:#ECE7DC;text-decoration:none;border-bottom:1px solid rgba(236,231,220,.28);padding-bottom:1px;transition:color .2s,border-color .2s}
 .sources a:hover,.sources a:focus-visible{color:#FF5C8A;border-color:#FF5C8A}
 @media(max-width:560px){.sources ul{display:block}.sources li{display:block;margin-bottom:8px}.sources li:not(:last-child)::after{display:none}}
+.faq{margin:40px 0 0}
+.faq-item{margin-bottom:26px}
+.faq-item:last-child{margin-bottom:0}
+.faq-item h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;color:#ECE7DC;margin:0 0 8px}
+.faq-item p{margin:0}
 </style>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
-  "@type":"BlogPosting",
-  "headline":"Golf Club Herzogenaurach: Golf spielen, weil es Spaß macht",
-  "description":"Der Golf-Club Herzogenaurach, die Craig Miller Golfschule und die Platzreife. Dazu die Geschichte, wie Adidas und Puma dieselbe Stadt und denselben Golfsport für sich beanspruchen.",
-  "inLanguage":"de",
-  "datePublished":"2026-08-14",
-  "image":"https://torsten-fink.de/assets/images/stories/herzogenaurach-sonnenuntergang.jpg",
-  "author":{"@type":"Person","name":"Torsten Fink","url":"https://torsten-fink.de/"},
-  "mainEntityOfPage":"https://torsten-fink.de/stories/herzogenaurach.html",
-  "keywords":"Golf-Club Herzogenaurach, Craig Miller Golfschule, Platzreife, Adidas, Puma, Cobra Golf, TaylorMade, Rickie Fowler, Dassler Brüder, Herzogenaurach"
+  "@graph":[
+    {
+      "@type":"BlogPosting",
+      "headline":"Golf Club Herzogenaurach: Golf spielen, weil es Spaß macht",
+      "description":"Der Golf-Club Herzogenaurach, die Craig Miller Golfschule und die Platzreife. Dazu die Geschichte, wie Adidas und Puma dieselbe Stadt und denselben Golfsport für sich beanspruchen.",
+      "inLanguage":"de",
+      "datePublished":"2026-08-14",
+      "dateModified":"2026-08-15",
+      "image":"https://torsten-fink.de/assets/images/stories/herzogenaurach-sonnenuntergang.jpg",
+      "author":{"@type":"Person","name":"Torsten Fink","url":"https://torsten-fink.de/"},
+      "mainEntityOfPage":"https://torsten-fink.de/stories/herzogenaurach.html",
+      "about":{"@id":"https://torsten-fink.de/stories/herzogenaurach.html#golfclub"},
+      "keywords":"Golf-Club Herzogenaurach, Craig Miller Golfschule, Platzreife, Adidas, Puma, Cobra Golf, TaylorMade, Rickie Fowler, Dassler Brüder, Herzogenaurach"
+    },
+    {
+      "@type":"GolfCourse",
+      "@id":"https://torsten-fink.de/stories/herzogenaurach.html#golfclub",
+      "name":"Golf-Club Herzogenaurach",
+      "url":"https://www.golfclub-herzogenaurach.de/",
+      "sameAs":"https://www.golfclub-herzogenaurach.de/",
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"Burgstall 1",
+        "postalCode":"91074",
+        "addressLocality":"Herzogenaurach",
+        "addressCountry":"DE"
+      },
+      "geo":{
+        "@type":"GeoCoordinates",
+        "latitude":49.5531,
+        "longitude":10.8794
+      }
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Startseite","item":"https://torsten-fink.de/"},
+        {"@type":"ListItem","position":2,"name":"Golf & Leidenschaft","item":"https://torsten-fink.de/index.html#golf"},
+        {"@type":"ListItem","position":3,"name":"Golf-Club Herzogenaurach","item":"https://torsten-fink.de/stories/herzogenaurach.html"}
+      ]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"Wann wurde der Golf-Club Herzogenaurach gegründet?",
+          "acceptedAnswer":{"@type":"Answer","text":"Der Golf-Club Herzogenaurach wurde am 21. März 1967 gegründet, von elf Golfbegeisterten in der Gaststätte Winkelmann im Ortsteil Niederndorf. Der heutige 18-Loch-Platz im Ortsteil Burgstall kam später dazu, mit Spatenstich 2001 und Eröffnung 2004."}
+        },
+        {
+          "@type":"Question",
+          "name":"Wo liegt der Golf-Club Herzogenaurach?",
+          "acceptedAnswer":{"@type":"Answer","text":"Der Club liegt im Ortsteil Burgstall bei Herzogenaurach in Franken, Adresse Burgstall 1, 91074 Herzogenaurach, auf 49.5531° N, 10.8794° O."}
+        },
+        {
+          "@type":"Question",
+          "name":"Wer unterrichtet an der Craig Miller Golfschule?",
+          "acceptedAnswer":{"@type":"Answer","text":"Vier Pros unterrichten an der Craig Miller Golfschule am Golf-Club Herzogenaurach. Craig J. Miller selbst. Martin Hastie. Stewart Kemp. Lukas Exner."}
+        },
+        {
+          "@type":"Question",
+          "name":"Warum liegen sich Adidas und Puma in Herzogenaurach gegenüber?",
+          "acceptedAnswer":{"@type":"Answer","text":"1948 zerstritten sich die Brüder Adolf und Rudolf Dassler endgültig. Die gemeinsame Schuhfabrik wurde geteilt. Adolf blieb auf der einen Seite der Aurach und gründete Adidas, Rudolf zog auf die andere Seite und gründete Puma. Seitdem sitzen beide Marken in derselben Stadt."}
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -60,7 +124,7 @@
 </nav>
 
 <header class="hero">
-  <img class="bg" src="../assets/images/stories/herzogenaurach-sonnenuntergang.jpg" alt="" aria-hidden="true" fetchpriority="high">
+  <img class="bg" src="../assets/images/stories/herzogenaurach-sonnenuntergang.jpg" alt="" aria-hidden="true" fetchpriority="high" width="1600" height="972">
   <div class="inner">
     <p class="exif"><span>Herzogenaurach</span><span class="dot">·</span><span>Heimatclub</span><span class="dot">·</span><span>49.5531° N, 10.8794° O</span></p>
     <h1>Golf Club Herzogenaurach: Golf spielen, weil es Spaß macht</h1>
@@ -76,7 +140,7 @@
   <p>Das gesamte Team am Club ist dabei absolute Spitze. Freundlich, geduldig, hilfsbereit, auch wenn ich zum wiederholten Mal den falschen Schläger aus dem Bag ziehe und trotzdem so tue, als sei das Absicht gewesen.</p>
 
   <figure>
-    <img src="../assets/images/stories/herzogenaurach-driving-range.jpg" alt="Golfer im Finish des Schwungs auf der Driving Range des Golf-Club Herzogenaurach, der Ball hoch am blauen Himmel" loading="lazy">
+    <img src="../assets/images/stories/herzogenaurach-driving-range.jpg" alt="Golfer im Finish des Schwungs auf der Driving Range des Golf-Club Herzogenaurach, der Ball hoch am blauen Himmel" loading="lazy" width="1083" height="1600">
     <figcaption>Driving Range, irgendwann zwischen Anfänger und Platzreife — der Ball fliegt inzwischen meistens dahin, wo er soll</figcaption>
   </figure>
 
@@ -85,7 +149,7 @@
   <p>Trainiert wird mit Video-Analyse und Computersimulation, Flightscope-Technik inklusive. Moderne Technik für einen Sport, der sich im Kern seit Jahrhunderten kaum verändert hat. Schläger schwingen, Ball suchen, alles von vorne.</p>
 
   <figure>
-    <img src="../assets/images/stories/herzogenaurach-trainingsausruestung.jpg" alt="Reihe von Golfbags mit Schlägern an einer Holzwand der Craig Miller Golfschule, davor Trainingsbälle" loading="lazy">
+    <img src="../assets/images/stories/herzogenaurach-trainingsausruestung.jpg" alt="Reihe von Golfbags mit Schlägern an einer Holzwand der Craig Miller Golfschule, davor Trainingsbälle" loading="lazy" width="1600" height="889">
     <figcaption>Trainingsausrüstung der Craig Miller Golfschule — mehr Bags als Mitglieder mancher kleiner Clubs</figcaption>
   </figure>
 
@@ -94,8 +158,8 @@
   <p>Gespielt wurde anfangs auf einem 9-Loch-Platz mit dem schönen Namen Steel Tree Course, angelegt von amerikanischen Streitkräften auf einem ehemaligen Wehrmachtsflugplatz. Golf auf einem alten Militärflugplatz. Erst 2001 folgte der Spatenstich für die heutige Anlage im Ortsteil Burgstall, 2004 die Eröffnung mit 18 Löchern. Dort steht heute das Clubhaus, bei Sonnenuntergang meist ein wunderschönes Bildmotiv, weil der Himmel über Franken es einfach darauf anlegt.</p>
 
   <div class="duo">
-    <figure><img src="../assets/images/stories/herzogenaurach-logo.jpg" alt="Grün-gelbes Vereinswappen des Golf-Club Herzogenaurach mit gekreuzten Schlägern und Flagge" loading="lazy"><figcaption>Das Wappen am Eingang — Löwe, Krone, seit 1967</figcaption></figure>
-    <figure><img src="../assets/images/stories/herzogenaurach-clubhaus.jpg" alt="Clubhaus des Golf-Club Herzogenaurach im dramatischen Abendlicht mit orange glühenden Wolken" loading="lazy"><figcaption>Clubhaus, Burgstall — eröffnet 2004, fotografiert seitdem bei jedem Sonnenuntergang</figcaption></figure>
+    <figure><img src="../assets/images/stories/herzogenaurach-logo.jpg" alt="Grün-gelbes Vereinswappen des Golf-Club Herzogenaurach mit gekreuzten Schlägern und Flagge" loading="lazy" width="1240" height="1600"><figcaption>Das Wappen am Eingang — Löwe, Krone, seit 1967</figcaption></figure>
+    <figure><img src="../assets/images/stories/herzogenaurach-clubhaus.jpg" alt="Clubhaus des Golf-Club Herzogenaurach im dramatischen Abendlicht mit orange glühenden Wolken" loading="lazy" width="1159" height="1600"><figcaption>Clubhaus, Burgstall — eröffnet 2004, fotografiert seitdem bei jedem Sonnenuntergang</figcaption></figure>
   </div>
 
   <h2>Zwei Flussufer, eine Fehde</h2>
@@ -111,12 +175,12 @@
   <p>Und weil die Craig Miller Golfschule offizieller Partner von Cobra und Puma Golf ist, hängt in ihren Räumen auch das Gesicht der Marke: Rickie Fowler, seit 2009 bei Cobra Puma unter Vertrag, bekannt für seine orangefarbenen Outfits. Im oberen Stockwerk der Academy hängt seine Unterschrift, auf einer weißen Puma-Kappe mit silbernem P.</p>
 
   <div class="duo">
-    <figure><img src="../assets/images/stories/herzogenaurach-cobra-center-aussen.jpg" alt="Cobra Performance Center am Übungsgelände des Golf-Club Herzogenaurach, im Vordergrund Bunker und rote Fahne auf dem Grün" loading="lazy"><figcaption>Cobra Performance Center — Pumas Antwort auf TaylorMades altes Fitting-Zentrum, nur ein paar Schwünge weiter</figcaption></figure>
-    <figure><img src="../assets/images/stories/herzogenaurach-cobra-center-innen.jpg" alt="Innenraum des Cobra Performance Center mit gelben Sesseln und Simulator-Bildschirm, an der Wand Fotos von Cobra-Puma-Profis" loading="lazy"><figcaption>Drinnen im Performance Center — Simulator statt Wetterrisiko</figcaption></figure>
+    <figure><img src="../assets/images/stories/herzogenaurach-cobra-center-aussen.jpg" alt="Cobra Performance Center am Übungsgelände des Golf-Club Herzogenaurach, im Vordergrund Bunker und rote Fahne auf dem Grün" loading="lazy" width="1361" height="1600"><figcaption>Cobra Performance Center — Pumas Antwort auf TaylorMades altes Fitting-Zentrum, nur ein paar Schwünge weiter</figcaption></figure>
+    <figure><img src="../assets/images/stories/herzogenaurach-cobra-center-innen.jpg" alt="Innenraum des Cobra Performance Center mit gelben Sesseln und Simulator-Bildschirm, an der Wand Fotos von Cobra-Puma-Profis" loading="lazy" width="1193" height="1600"><figcaption>Drinnen im Performance Center — Simulator statt Wetterrisiko</figcaption></figure>
   </div>
 
   <figure>
-    <img src="../assets/images/stories/herzogenaurach-cap-signatur.jpg" alt="Weiße Puma-Kappe mit silbernem P-Logo und der handschriftlichen Unterschrift von Rickie Fowler" loading="lazy">
+    <img src="../assets/images/stories/herzogenaurach-cap-signatur.jpg" alt="Weiße Puma-Kappe mit silbernem P-Logo und der handschriftlichen Unterschrift von Rickie Fowler" loading="lazy" width="1122" height="1600">
     <figcaption>Rickie Fowlers Unterschrift, silbernes P — mein liebstes Souvenir vom Übungsgelände</figcaption>
   </figure>
 
@@ -124,21 +188,41 @@
   <p>Wer nach Herzogenaurach kommt, kann beide Marken dieser jahrzehntelangen Fehde direkt einkaufen. Der Puma Brand Store liegt keine zehn Minuten vom Golfplatz entfernt, schwarzer Beton mit roten Lichtakzenten. Das Adidas Outlet liegt gleich um die Ecke, unübersehbar an den drei grauen Balken über dem Eingang. Ich mag beide.</p>
 
   <div class="duo">
-    <figure><img src="../assets/images/stories/herzogenaurach-puma-outlet.jpg" alt="Fassade des Puma Brand Store mit weißem Schriftzug und Puma-Logo vor rotem Gebäudeteil" loading="lazy"><figcaption>Puma Brand Store — schwarz, rot, keine zehn Minuten vom Abschlag</figcaption></figure>
-    <figure><img src="../assets/images/stories/herzogenaurach-adidas-outlet.jpg" alt="Adidas-Logo an einem Gebäude, im Vordergrund ein Fußball der UEFA Women's Euro" loading="lazy"><figcaption>Adidas Outlet, gleich um die Ecke — Fußball statt Golf, aber derselbe Konzern</figcaption></figure>
+    <figure><img src="../assets/images/stories/herzogenaurach-puma-outlet.jpg" alt="Fassade des Puma Brand Store mit weißem Schriftzug und Puma-Logo vor rotem Gebäudeteil" loading="lazy" width="1234" height="925"><figcaption>Puma Brand Store — schwarz, rot, keine zehn Minuten vom Abschlag</figcaption></figure>
+    <figure><img src="../assets/images/stories/herzogenaurach-adidas-outlet.jpg" alt="Adidas-Logo an einem Gebäude, im Vordergrund ein Fußball der UEFA Women's Euro" loading="lazy" width="1600" height="1200"><figcaption>Adidas Outlet, gleich um die Ecke — Fußball statt Golf, aber derselbe Konzern</figcaption></figure>
   </div>
 
   <h2>Das Highlight am 1. Abschlag</h2>
   <p>Am ersten Abschlag steht eine Standuhr, gestiftet vom Juwelier Winnebeck, die die offizielle Platzzeit anzeigt. Kein Handy, keine App. Ein goldener Uhrenkasten, der seit Jahren zuverlässiger tickt als mein Golfschwung. Man schaut kurz hoch, checkt die Zeit, und ab geht's auf die Runde.</p>
 
   <figure>
-    <img src="../assets/images/stories/herzogenaurach-standuhr.jpg" alt="Goldene Standuhr des Juweliers Winnebeck am ersten Abschlag des Golf-Club Herzogenaurach mit Blumenbeet" loading="lazy">
+    <img src="../assets/images/stories/herzogenaurach-standuhr.jpg" alt="Goldene Standuhr des Juweliers Winnebeck am ersten Abschlag des Golf-Club Herzogenaurach mit Blumenbeet" loading="lazy" width="1079" height="1600">
     <figcaption>Die offizielle Platzzeit — gestiftet vom Juwelier, gültig für alle</figcaption>
   </figure>
 
   <h2>Fazit: Ein Platz, eine Stadt, zwei Geschichten</h2>
   <p>Golf Club Herzogenaurach ist für mich mehr als ein Platz mit 18 Löchern. Es ist der Ort, an dem ich Golf gelernt habe, mit einem Pro, der Geduld bewiesen hat, die man selten findet. Es ist ein Verein mit Geschichte, von einem Militärflugplatz bis zum modernen Clubhaus. Der Neubau des Clubhauses soll im Mai 2027 eingeweiht werden. Und es ist mittendrin in einer Stadt, die zwei Weltmarken hervorgebracht hat und bis heute nicht ganz darüber hinweggekommen ist. Ich spiele hier sehr gern. Hier macht Golf Spaß. Selbst mit meinem Handicap.</p>
   <p><strong>Mein Rat?</strong> Vor dem ersten Schlägerkauf eine Schnupperstunde beim Pro-Shop buchen. So weiß man vorher, ob einem der Sport überhaupt liegt.</p>
+
+  <h2>Häufige Fragen zum Golf-Club Herzogenaurach</h2>
+  <div class="faq">
+    <div class="faq-item">
+      <h3>Wann wurde der Golf-Club Herzogenaurach gegründet?</h3>
+      <p>Am 21. März 1967, von elf Golfbegeisterten in der Gaststätte Winkelmann im Ortsteil Niederndorf. Der heutige 18-Loch-Platz im Ortsteil Burgstall kam später dazu, Spatenstich 2001, Eröffnung 2004.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Wo liegt der Golf-Club Herzogenaurach?</h3>
+      <p>Im Ortsteil Burgstall bei Herzogenaurach in Franken, Adresse Burgstall 1, 91074 Herzogenaurach, auf 49.5531° N, 10.8794° O.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Wer unterrichtet an der Craig Miller Golfschule?</h3>
+      <p>Vier Pros. Craig J. Miller selbst. Martin Hastie. Stewart Kemp, mein eigener Pro. Lukas Exner.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Warum liegen sich Adidas und Puma in Herzogenaurach gegenüber?</h3>
+      <p>1948 zerstritten sich die Brüder Adolf und Rudolf Dassler endgültig. Die gemeinsame Schuhfabrik wurde geteilt. Adolf blieb auf der einen Seite der Aurach und gründete Adidas, Rudolf zog auf die andere Seite und gründete Puma. Seitdem sitzen beide Marken in derselben Stadt.</p>
+    </div>
+  </div>
 
   <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Golf-Club+Herzogenaurach+Burgstall+1+91074+Herzogenaurach" rel="noopener">📍 Golf-Club Herzogenaurach auf Google Maps</a>
 
