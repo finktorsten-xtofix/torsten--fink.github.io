@@ -3,7 +3,7 @@
 **Live:** [https://torsten-fink.de](https://torsten-fink.de)
 
 Persönliche Website von **Torsten Fink** — Reiseerzähler, Fotograf und Golfer aus Fürth.
-Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, erzählt in eigenem Ton und bebildert mit eigenen Fotografien.
+Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story vom Heimatclub, erzählt in eigenem Ton und bebildert mit eigenen Fotografien.
 
 ## Geschichten
 
@@ -19,6 +19,12 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, erzählt in eigenem T
 | 2017 | [Tokio — Der Puls einer Welt, die niemals schläft](https://torsten-fink.de/stories/tokio.html) |
 | 2015 | [Singapur — Eine Stadt, die man nicht besucht, sondern absolviert](https://torsten-fink.de/stories/singapur.html) |
 
+## Golf
+
+| Story | Beschreibung |
+|---|---|
+| [Golf Club Herzogenaurach — Golf spielen, weil es Spaß macht](https://torsten-fink.de/stories/herzogenaurach.html) | Heimatclub, Craig Miller Golfschule, die Adidas/Puma-Geschichte der Stadt. Von der Startseite aus über den Golf-Bereich verlinkt, läuft nicht in der Pager-Reihenfolge der neun Reisegeschichten mit. |
+
 ## Tools
 
 | Tool | Beschreibung |
@@ -31,13 +37,13 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, erzählt in eigenem T
 - **Stack:** Pures HTML/CSS, kein Framework, kein Build-Prozess, keine Cookies, kein Tracking
 - **Design:** Dunkles Kino-Theme, EXIF-Daten als Gestaltungselement, japanische Typografie, Filmstreifen-Galerie
 - **Schriften:** Syne · Instrument Sans · IBM Plex Mono · Noto Serif JP (Google Fonts)
-- **SEO/KI:** JSON-LD (Person, WebSite, Blog + BlogPostings), `sitemap.xml`, `robots.txt`, `llms.txt`, Open Graph, Twitter Cards
+- **SEO/KI:** JSON-LD (Person, WebSite, Blog + BlogPostings), `sitemap.xml`, `robots.txt`, `llms.txt`, Open Graph, Twitter Cards, Quellenverzeichnis am Ende jeder Story (Kicker „Quellen & Recherche", verlinkte Quellenliste als GEO-Signal)
 
 ## Struktur
 
 ```
 ├── index.html            Startseite
-├── stories/              Neun Reisegeschichten
+├── stories/              Neun Reisegeschichten + eine Golf-Story (Herzogenaurach)
 ├── tools/                Interaktive Tools (z. B. Handicap-Rechner)
 ├── assets/
 │   ├── css/story.css     Stylesheet der Unterseiten
@@ -51,7 +57,7 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, erzählt in eigenem T
 
 1. **Bilder vor dem Upload optimieren:** max. 1600 px, JPEG-Qualität ~82, Ziel < 600 KB. Keine Umlaute oder Leerzeichen in Dateinamen.
 2. **Ordner beachten:** Story-Bilder nach `assets/images/stories/`, Story-Seiten nach `stories/` — beim GitHub-Upload immer erst **in den Zielordner navigieren**, dann hochladen.
-3. **Neue Geschichte = fünf Baustellen:** Story-HTML, Eintrag in `index.html` (Liste + JSON-LD + ggf. Galerie), `sitemap.xml`, `llms.txt`, Pager-Links der Nachbar-Stories.
+3. **Neue Geschichte = sechs Baustellen:** Story-HTML, Quellenverzeichnis am Artikelende, Eintrag in `index.html` (Liste + JSON-LD + ggf. Galerie), `sitemap.xml`, `llms.txt`, Pager-Links der Nachbar-Stories.
 4. **CNAME-Datei** und Custom-Domain-Einstellung nicht anfassen — sonst startet die Zertifikats-Ausstellung neu.
 5. Nach jedem Inhalts-Update: neue URL in der Google Search Console zur Indexierung einreichen.
 
