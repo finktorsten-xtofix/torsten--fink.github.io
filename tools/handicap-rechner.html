@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Handicap-Rechner | Torsten Fink</title>
-<meta name="description" content="Kostenloser Golf-Handicap-Rechner: Handicap-Index nach WHS-Näherung berechnen, Course Handicap für den nächsten Platz. Speicherung nur lokal im Browser.">
+<title>Golf-Handicap-Rechner | Torsten Fink</title>
+<meta name="description" content="Kostenloser Golf-Handicap-Rechner: Golf-Handicap-Index nach WHS-Näherung berechnen, Course Handicap für den nächsten Platz. Speicherung nur lokal im Browser.">
 <meta name="author" content="Torsten Fink">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://torsten-fink.de/tools/handicap-rechner.html">
@@ -77,19 +77,19 @@
 </nav>
 
 <div class="tool-hero">
-  <p class="exif"><span>Tools</span><span class="dot">·</span><span>Handicap-Rechner</span></p>
-  <h1>Handicap-Rechner</h1>
-  <p class="sub">Runden eintragen, Handicap-Index nach WHS-Näherung berechnen, Course Handicap für die nächste Runde bestimmen.</p>
+  <p class="exif"><span>Tools</span><span class="dot">·</span><span>Golf-Handicap-Rechner</span></p>
+  <h1>Golf-Handicap-Rechner</h1>
+  <p class="sub">Runden eintragen, Golf-Handicap-Index nach WHS-Näherung berechnen, Course Handicap für die nächste Runde bestimmen.</p>
 </div>
 
 <div class="tool-wrap">
 
   <div class="card">
-    <p class="intro-note">Trag deine letzten Runden ein, Score, Course Rating und Slope stehen auf jeder Scorecard, und der Rechner ermittelt deinen aktuellen Handicap-Index nach der offiziellen WHS-Näherungsformel. Zusätzlich lässt sich für jeden neuen Platz das Course Handicap ausrechnen, bevor es losgeht. Alles bleibt in diesem Browser gespeichert, es wird nichts irgendwohin hochgeladen. Auf einem anderen Gerät fängst du entsprechend neu an. Kein offizielles DGV-Tool, sondern eine Näherung zum Nachverfolgen der eigenen Entwicklung.</p>
+    <p class="intro-note">Trag deine letzten Runden ein, Score, Course Rating und Slope stehen auf jeder Scorecard, und der Rechner ermittelt deinen aktuellen Golf-Handicap-Index nach der offiziellen WHS-Näherungsformel. Zusätzlich lässt sich für jeden neuen Platz das Course Handicap ausrechnen, bevor es losgeht. Alles bleibt in diesem Browser gespeichert, es wird nichts irgendwohin hochgeladen. Auf einem anderen Gerät fängst du entsprechend neu an. Kein offizielles DGV-Tool, sondern eine Näherung zum Nachverfolgen der eigenen Entwicklung.</p>
   </div>
 
   <div class="card">
-    <h2><span class="tag">Index</span> Handicap-Index</h2>
+    <h2><span class="tag">Index</span> Golf-Handicap-Index</h2>
     <div class="hi-hero">
       <div>
         <div class="hi-value" id="hiValue">—</div>
@@ -309,7 +309,7 @@ document.getElementById('calcCH').addEventListener('click', () => {
   const resultEl = document.getElementById('chResult');
 
   if(!result){
-    resultEl.textContent = 'Es werden mindestens 3 Runden benötigt, um einen Handicap-Index zu berechnen.';
+    resultEl.textContent = 'Es werden mindestens 3 Runden benötigt, um einen Golf-Handicap-Index zu berechnen.';
     return;
   }
   if(!slope || !cr || !par){
