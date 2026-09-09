@@ -205,16 +205,14 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.6vw,3.4re
 @media(max-width:680px){.city-grid{grid-template-columns:1fr}.city img{aspect-ratio:4/3}}
 
 /* stories */
-.story-list{border-top:1px solid var(--line)}
-.story{display:grid;grid-template-columns:150px 1fr auto;gap:clamp(16px,3vw,44px);align-items:baseline;
-  padding:30px 6px;border-bottom:1px solid var(--line);text-decoration:none;transition:background .3s,padding-left .3s}
-.story:hover{background:rgba(255,92,138,.05);padding-left:18px}
-.story .date{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
-.story h3{font-family:var(--display);font-weight:700;font-size:clamp(1.1rem,2.2vw,1.5rem);line-height:1.25;margin-bottom:6px}
-.story p{color:var(--paper-dim);font-size:.95rem;max-width:64ch}
-.story .arrow{font-family:var(--mono);color:var(--neon);font-size:1.1rem;transition:transform .3s}
-.story:hover .arrow{transform:translateX(6px)}
-@media(max-width:680px){.story{grid-template-columns:1fr}.story .arrow{display:none}}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,20px)}
+.story-card{display:block;border:1px solid var(--line);border-radius:12px;padding:clamp(20px,2.6vw,26px) clamp(20px,2.8vw,28px);
+  text-decoration:none;transition:background .3s,border-color .3s}
+.story-card:hover{background:rgba(255,92,138,.06);border-color:rgba(255,92,138,.4)}
+.story-card .date{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+.story-card h3{font-family:var(--display);font-weight:700;font-size:clamp(1.05rem,1.8vw,1.3rem);line-height:1.3;margin-bottom:10px}
+.story-card p{color:var(--paper-dim);font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:680px){.story-grid{grid-template-columns:1fr}}
 
 /* filmstrip gallery */
 .film{background:var(--night-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-left:0;padding-right:0}
@@ -305,7 +303,7 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
   <div class="hero-inner">
     <p class="exif"><span>f/1.8</span><span class="dot">·</span><span>1/60&nbsp;s</span><span class="dot">·</span><span>ISO&nbsp;3200</span><span class="dot">·</span><span>Hongkong, 23:47&nbsp;Uhr</span></p>
     <h1>Die Welt durch <span class="neon">ein Objektiv</span></h1>
-    <p class="lede">Städtesammler aus Leidenschaft. <strong class="city-neon">Tokio</strong> ist mein absoluter Happy Place. Viermal da gewesen und immer noch nicht genug. <strong class="city-neon">Hongkong</strong>? Mein zweiter Wiederholungstäter, ebenfalls viermal erobert. Was bleibt: eine Kamera, randvolle Speicherkarten und Storys, die in die Welt gehören und nicht in die Cloud.</p>
+    <p class="lede"><strong class="city-neon">Tokio</strong> viermal. <strong class="city-neon">Hongkong</strong> viermal. Dazwischen alles, was hängen bleibt. Ich erzähle Städte so, wie ich sie sehe. Mit Kamera und Notizbuch. Keine Checklisten. Keine Bucket-List. Nur das, was wirklich bleibt.</p>
     <div class="hero-cta">
       <a class="btn pink" href="#geschichten">Geschichten lesen</a>
       <a class="btn" href="#galerie">Galerie öffnen</a>
@@ -323,8 +321,9 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
     <div class="about-text reveal">
       <p class="kicker">Über mich — Hinter der Linse</p>
       <h2>Geschichten&shy;erzähler mit Kamera</h2>
-      <p>Ich bin Torsten. <strong>Geschichtenerzähler mit Kamera</strong>, Golfer mit Ambitionen und Hang zur Selbstüberschätzung am ersten Abschlag, und ich bin echt ganz gern hinter der Kamera. Vor der Kamera eher so mittel.</p>
-      <p>Meine Route ist simpel: <strong>Tokio</strong>, wo Zen-Gärten und Neonreklamen sich die Stadt teilen wie ein altes Ehepaar die Fernbedienung. <strong>Hongkong</strong>, wo man um drei Uhr nachts schneller ein heißes Essen bekommt als anderswo ein Glas Wasser. Dazwischen alles, was türkis glitzert oder nach Espresso riecht. Das Material stapelt sich seitdem: Fotos, Notizen, halbe Sätze auf Bordkarten. Hier landet das Beste davon.</p>
+      <p>Ich bin Torsten. <strong>Geschichtenerzähler mit Kamera</strong>. Golfer mit Ambitionen und einem Handicap, über das man besser schweigt. Hinter der Kamera fühle ich mich zu Hause. Vor der Kamera eher so mittel.</p>
+      <p>Meine Route ist einfach: <strong>Tokio</strong>, wo Zen und Neon sich die Stadt teilen. <strong>Hongkong</strong>, wo man um drei Uhr nachts schneller etwas Warmes bekommt als anderswo ein Glas Wasser. Dazwischen Bayern. Das Tessin. Alles, was bleiben will.</p>
+      <p>Fotos, Notizen, halbe Sätze auf Bordkarten. Hier kommt das Beste davon hin.</p>
       <div class="tags">
         <span>Reisen</span><span>Fotografie</span><span>Golf</span><span>Tokio</span><span>Hongkong</span><span>Geschichten</span>
       </div>
@@ -365,60 +364,51 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
   <div class="wrap">
     <p class="kicker reveal">Kurze Geschichten</p>
     <h2 class="reveal">Momente, die bleiben</h2>
-    <div class="story-list reveal">
-      <a class="story" href="stories/passau.html">
+    <div class="story-grid reveal">
+      <a class="story-card" href="stories/passau.html">
         <span class="date">Mai 2026</span>
-        <div class="story-body"><h3>Passau – Wo drei Flüsse und tausend Jahre Geschichte zusammenfließen</h3>
-        <p>Ein verlängertes Wochenende an der Ortsspitze: die größte Domorgel der Welt, die Veste Oberhaus, Hochwassermarken, die sich wie Jahresringe an die Hauswände heften, und ein Künstlerviertel mit eigenem Humor…</p></div>
-        <span class="arrow">→</span>
+        <h3>Passau – Wo drei Flüsse und tausend Jahre Geschichte zusammenfließen</h3>
+        <p>Die größte Domorgel der Welt, die Veste Oberhaus, ein Künstlerviertel mit eigenem Humor…</p>
       </a>
-      <a class="story" href="stories/bad-heilbrunn.html">
+      <a class="story-card" href="stories/bad-heilbrunn.html">
         <span class="date">Mai 2026</span>
-        <div class="story-body"><h3>Bad Heilbrunn: Bayerisches Lakeland — Heimatliebe</h3>
-        <p>Zehn Tage Oberbayern: fünf Seen als Sternfahrten, ein Märchenkönig im Wasser gespiegelt und die Erkenntnis, dass das Fernweh auch mal Urlaub hat…</p></div>
-        <span class="arrow">→</span>
+        <h3>Bad Heilbrunn: Bayerisches Lakeland — Heimatliebe</h3>
+        <p>Fünf Seen, ein Märchenkönig, kein Flughafen…</p>
       </a>
-      <a class="story" href="stories/beldibi.html">
+      <a class="story-card" href="stories/beldibi.html">
         <span class="date">April 2026</span>
-        <div class="story-body"><h3>Beldibi: Türkisfarbenes Wasser &amp; Russische Geschichten</h3>
-        <p>Ein Hotel mit Zitronenbäumen statt Animationsteam, Wasser so türkis, dass es fast unverschämt ist. Strandgespräche auf Russisch. Auf Englisch. Mit Händen und Füßen…</p></div>
-        <span class="arrow">→</span>
+        <h3>Beldibi: Türkisfarbenes Wasser &amp; Russische Geschichten</h3>
+        <p>Zitronenbäume statt Animationsteam, Strandgespräche auf drei Sprachen…</p>
       </a>
-      <a class="story" href="stories/ascona.html">
+      <a class="story-card" href="stories/ascona.html">
         <span class="date">September 2025</span>
-        <div class="story-body"><h3>Locarno &amp; Ascona: Das Tessin im Entschleunigungsmodus</h3>
-        <p>Am Lago Maggiore dauert der Espresso fünf Minuten und der Aperitivo zwei Stunden. Niemand fragt, was du den ganzen Tag gemacht hast. Die Antwort wäre eh: nichts…</p></div>
-        <span class="arrow">→</span>
+        <h3>Locarno &amp; Ascona: Das Tessin im Entschleunigungsmodus</h3>
+        <p>Fünf Minuten Espresso, zwei Stunden Aperitivo, null schlechtes Gewissen…</p>
       </a>
-      <a class="story" href="stories/istanbul.html">
+      <a class="story-card" href="stories/istanbul.html">
         <span class="date">September 2023</span>
-        <div class="story-body"><h3>Istanbul: Das Tor Asiens — zwischen 1001 Nacht und Megacity</h3>
-        <p>Zwei Wochen, zwei Kontinente, ein Wiedersehen nach 33 Jahren: Blaue Moschee, Metro mit Stil, Street Art in Kadıköy. Ein Sonnenuntergang am Goldenen Horn, erste Reihe…</p></div>
-        <span class="arrow">→</span>
+        <h3>Istanbul: Das Tor Asiens — zwischen 1001 Nacht und Megacity</h3>
+        <p>Blaue Moschee, Metro mit Stil, ein Wiedersehen nach 33 Jahren…</p>
       </a>
-      <a class="story" href="stories/hongkong.html">
+      <a class="story-card" href="stories/hongkong.html">
         <span class="date">Februar 2019</span>
-        <div class="story-body"><h3>Hongkong: Ein Duft von Abenteuer und Feuerwerk</h3>
-        <p>Das vierte Mal in der Stadt, das erste Mal zum Frühlingsfest. Ich stehe vor genau dem Hostel, in dem ich früher in einem Zimmer von der Größe eines Koffers geschlafen habe…</p></div>
-        <span class="arrow">→</span>
+        <h3>Hongkong: Ein Duft von Abenteuer und Feuerwerk</h3>
+        <p>Das vierte Mal in der Stadt, das erste Mal zum Frühlingsfest…</p>
       </a>
-      <a class="story" href="stories/kamakura.html">
+      <a class="story-card" href="stories/kamakura.html">
         <span class="date">2017</span>
-        <div class="story-body"><h3>Kamakura: Wo die Shogun surften?</h3>
-        <p>Eine Stunde von Tokio: die erste Shogunatshauptstadt Japans, ein Großer Buddha ohne Dach seit 500 Jahren, die Göttin von Enoshima und der Strand, an dem schon Yoritomo rituell ins Wasser ging…</p></div>
-        <span class="arrow">→</span>
+        <h3>Kamakura: Wo die Shogun surften?</h3>
+        <p>Ein Großer Buddha ohne Dach seit 500 Jahren, ein Strand mit Geschichte…</p>
       </a>
-      <a class="story" href="stories/tokio.html">
+      <a class="story-card" href="stories/tokio.html">
         <span class="date">März 2017</span>
-        <div class="story-body"><h3>Tokio: Der Puls einer Welt, die niemals schläft</h3>
-        <p>14 Millionen Menschen, und keiner rempelt dich an. Eine Stadt wie eine Choreografie. Ja, danach fühlt sich jede andere Stadt ein bisschen … langsam an…</p></div>
-        <span class="arrow">→</span>
+        <h3>Tokio: Der Puls einer Welt, die niemals schläft</h3>
+        <p>14 Millionen Menschen, und keiner rempelt dich an…</p>
       </a>
-      <a class="story" href="stories/singapur.html">
+      <a class="story-card" href="stories/singapur.html">
         <span class="date">Februar/März 2015</span>
-        <div class="story-body"><h3>Singapur: Eine Stadt, die man nicht besucht, sondern absolviert</h3>
-        <p>Einmal hoch und runter im SG50-Jahr: Glücksmünzen über Chinatown. Ein Wimmelbild-Tempel in Little India. Ein Tiger, der nachts deutlich wacher ist als geplant…</p></div>
-        <span class="arrow">→</span>
+        <h3>Singapur: Eine Stadt, die man nicht besucht, sondern absolviert</h3>
+        <p>Glücksmünzen über Chinatown, ein Tiger, der nachts wach ist…</p>
       </a>
     </div>
   </div>
@@ -534,8 +524,8 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
     <div class="reveal">
       <p class="kicker">Auf dem Grün</p>
       <h2>Golf &amp; Leidenschaft</h2>
-      <p>Golf ist meine Ausrede, stundenlang über perfekt gemähten Rasen zu laufen und das <strong>Konzentration</strong> zu nennen. In Ascona mit Bergpanorama. Auf der Range in Nürnberg. Im Lieblingsclub in Herzogenaurach. Der Ball ist klein. Das Ego ist groß. Mein Handicap liegt irgendwo dazwischen.</p>
-      <p>Aber ehrlich: Nirgendwo sonst ist der Kopf so leer und so voll zugleich. Vier Stunden, ein Schläger, null Benachrichtigungen. Das ist meine Version von Meditation, nur mit mehr Fluchen.</p>
+      <p>Manchmal brauche ich Zeit für mich, in der nichts Wichtiges passiert. Nur Gras. Wind. Ein kleiner weißer Ball. Golf ist meine Ausrede, stundenlang über perfekt gemähten Rasen zu laufen und das <strong>Konzentration</strong> zu nennen. In Ascona mit Alpenblick und Lago-Maggiore-Feeling. Auf der Range in Nürnberg, wenn die Morgensonne über die Netze fällt. Und im Lieblingsclub in Herzogenaurach, wo ich meinen ersten Ball getroffen habe.</p>
+      <p>Der Ball ist klein. Das Ego ist groß. Mein Handicap liegt irgendwo dazwischen. Nirgendwo sonst ist der Kopf so leer und so voll zugleich. Viel Zeit. Ein Schläger. Null Benachrichtigungen. Das ist meine Version von Meditation, nur mit mehr Fluchen.</p>
       <blockquote>
         „Ich hab noch keine Runde gespielt, nach der ich nicht schlauer war. Meistens auf die schmerzhafte Art."
         <footer>— Torsten Fink</footer>
