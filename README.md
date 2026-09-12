@@ -2,7 +2,7 @@
 
 **Live:** [https://torsten-fink.de](https://torsten-fink.de)
 
-Persönliche Website von **Torsten Fink** — Reiseerzähler, Fotograf und Golfer aus Fürth.
+Website von **Torsten Fink** — Reiseerzähler, Fotograf und Golfer aus Fürth.
 Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story vom Heimatclub, erzählt in eigenem Ton und bebildert mit eigenen Fotografien.
 
 ## Geschichten
