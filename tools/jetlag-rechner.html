@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Jetlag-Rechner | Torsten Fink</title>
+<meta name="description" content="Kostenloser Jetlag-Rechner: Zeitzonen-Unterschied berechnen und einen Tag-für-Tag-Anpassungsplan für die Reise nach Tokio, Hongkong, Singapur und mehr erhalten.">
+<meta name="author" content="Torsten Fink">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://torsten-fink.de/tools/jetlag-rechner.html">
+<meta name="theme-color" content="#0B0D12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B0D12'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23FF5C8A' font-family='sans-serif' font-weight='bold'%3ETF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/story.css">
+<style>
+  .tool-hero{padding:120px clamp(20px,6vw,80px) 40px;max-width:860px;margin:0 auto}
+  .tool-hero .exif{margin-bottom:18px}
+  .tool-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,6vw,3.4rem);line-height:1.08;letter-spacing:-.01em}
+  .tool-hero .sub{color:var(--paper-dim);font-size:clamp(1rem,1.6vw,1.2rem);margin-top:14px;max-width:60ch}
+
+  .tool-wrap{max-width:760px;margin:0 auto;padding:0 clamp(20px,6vw,40px) 40px}
+
+  .card{border:1px solid var(--line);background:var(--night-2);padding:clamp(20px,3vw,32px);margin-bottom:22px}
+  .card h2{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:0 0 18px;color:var(--paper);display:flex;align-items:center;gap:10px}
+  .card h2 .tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--neon);border:1px solid var(--neon);padding:3px 8px}
+
+  .intro-note{font-size:.92rem;line-height:1.7;color:#CFCabf;margin:0}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1/-1}
+  label{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
+  input,select{background:var(--night);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:.95rem;padding:11px 12px;width:100%}
+  input:focus,select:focus{outline:none;border-color:var(--neon)}
+  select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%239C9890' d='M5 7l5 5 5-5z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+
+  .btn{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--neon);
+    background:transparent;border:1px solid var(--neon);padding:13px 22px;width:100%;margin-top:16px;cursor:pointer;transition:.25s}
+  .btn:hover{background:var(--neon);color:var(--night)}
+  .btn:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+
+  .jl-hero{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+  .jl-dir{font-family:var(--mono);font-weight:500;font-size:2.2rem;color:var(--neon);line-height:1}
+  .jl-meta{font-size:.85rem;color:var(--paper-dim)}
+  .jl-count{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
+  .jl-basis{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--paper-dim);margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
+
+  .prep{display:flex;flex-direction:column;gap:6px}
+  .prep li{list-style:none;padding:11px 12px;border:1px solid var(--line);font-size:.85rem;color:#CFCabf}
+
+  .days{display:flex;flex-direction:column;gap:6px}
+  .day-row{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;
+    padding:13px 14px;border:1px solid var(--line);font-size:.85rem;color:#CFCabf}
+  .day-row .day-label{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--neon);white-space:nowrap}
+  .day-row .day-progress{font-family:var(--mono);font-size:.72rem;color:var(--paper-dim);white-space:nowrap}
+  .empty{color:var(--paper-dim);font-size:.85rem;padding:20px;text-align:center;border:1px dashed var(--line)}
+
+  .sources{margin:0 0 22px;padding-top:0;border-top:none}
+  .sources .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+  .sources p{color:var(--paper-dim);font-size:.92rem;line-height:1.6;max-width:66ch;margin-bottom:16px}
+  .sources ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;column-gap:0;row-gap:8px;font-family:var(--mono);font-size:.78rem;line-height:1.7}
+  .sources li{color:#5B5850;padding:0;border:none}
+  .sources li:not(:last-child)::after{content:"·";color:var(--neon);margin:0 12px;font-size:.9em}
+  .sources a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(236,231,220,.28);padding-bottom:1px;transition:color .2s,border-color .2s}
+  .sources a:hover,.sources a:focus-visible{color:var(--neon);border-color:var(--neon)}
+
+  @media(max-width:560px){
+    .grid{grid-template-columns:1fr}
+    .jl-dir{font-size:1.7rem}
+    .day-row{grid-template-columns:auto 1fr;grid-template-areas:"label progress" "tip tip"}
+    .day-row .day-label{grid-area:label}
+    .day-row .day-progress{grid-area:progress}
+    .day-row .day-tip{grid-area:tip}
+    .sources ul{display:block}
+    .sources li{display:block;margin-bottom:8px}
+    .sources li:not(:last-child)::after{display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="../index.html">Torsten<em>·</em>Fink</a>
+  <a class="back" href="../index.html">← Startseite</a>
+</nav>
+
+<div class="tool-hero">
+  <p class="exif"><span>Tools</span><span class="dot">·</span><span>Jetlag-Rechner</span></p>
+  <h1>Jetlag-Rechner</h1>
+  <p class="sub">Start- und Zielzeitzone wählen, Abflugdatum eintragen, und einen Tag-für-Tag-Anpassungsplan für die innere Uhr bekommen.</p>
+</div>
+
+<div class="tool-wrap">
+
+  <div class="card">
+    <p class="intro-note">Ostreisen verlangen dem Körper mehr ab als Westreisen, die innere Uhr lässt sich abends leichter nach hinten schieben als morgens nach vorne. Dieser Rechner nimmt Start- und Zielzeitzone, ermittelt Richtung und Zeitverschiebung für das gewählte Datum inklusive Sommer-/Winterzeit und gibt daraus einen groben Tagesplan aus. Kein medizinischer Rat, sondern ein Anhaltspunkt. Individuelle Unterschiede wie Chronotyp und Alter bleiben unberücksichtigt.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="tag">Reise</span> Start &amp; Ziel</h2>
+    <div class="grid">
+      <div class="field">
+        <label for="startZone">Abflugort</label>
+        <select id="startZone">
+          <optgroup label="Heimat">
+            <option value="Europe/Berlin" selected>Deutschland (Nürnberg/Fürth)</option>
+          </optgroup>
+          <optgroup label="Meine Reiseziele">
+            <option value="Europe/Zurich">Ascona / Tessin</option>
+            <option value="Europe/Istanbul">Istanbul / Beldibi</option>
+            <option value="Asia/Tokyo">Tokio / Kamakura</option>
+            <option value="Asia/Hong_Kong">Hongkong</option>
+            <option value="Asia/Singapore">Singapur</option>
+          </optgroup>
+          <optgroup label="Weitere Zeitzonen">
+            <option value="Europe/London">London</option>
+            <option value="Europe/Moscow">Moskau</option>
+            <option value="Asia/Dubai">Dubai</option>
+            <option value="Asia/Bangkok">Bangkok</option>
+            <option value="America/New_York">New York</option>
+            <option value="America/Los_Angeles">Los Angeles</option>
+            <option value="Australia/Sydney">Sydney</option>
+            <option value="Pacific/Auckland">Auckland</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="field">
+        <label for="destZone">Zielort</label>
+        <select id="destZone">
+          <optgroup label="Meine Reiseziele">
+            <option value="Asia/Tokyo" selected>Tokio / Kamakura</option>
+            <option value="Asia/Hong_Kong">Hongkong</option>
+            <option value="Asia/Singapore">Singapur</option>
+            <option value="Europe/Istanbul">Istanbul / Beldibi</option>
+            <option value="Europe/Zurich">Ascona / Tessin</option>
+          </optgroup>
+          <optgroup label="Heimat">
+            <option value="Europe/Berlin">Deutschland (Nürnberg/Fürth)</option>
+          </optgroup>
+          <optgroup label="Weitere Zeitzonen">
+            <option value="Europe/London">London</option>
+            <option value="Europe/Moscow">Moskau</option>
+            <option value="Asia/Dubai">Dubai</option>
+            <option value="Asia/Bangkok">Bangkok</option>
+            <option value="America/New_York">New York</option>
+            <option value="America/Los_Angeles">Los Angeles</option>
+            <option value="Australia/Sydney">Sydney</option>
+            <option value="Pacific/Auckland">Auckland</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="field full">
+        <label for="depDate">Abflugdatum</label>
+        <input type="date" id="depDate">
+      </div>
+    </div>
+    <button class="btn" id="calcBtn">Anpassungsplan berechnen</button>
+  </div>
+
+  <div class="card" id="resultCard" style="display:none">
+    <h2><span class="tag">Ergebnis</span> Zeitverschiebung</h2>
+    <div class="jl-hero">
+      <div>
+        <div class="jl-dir" id="jlDir">—</div>
+        <div class="jl-meta" id="jlMeta">—</div>
+      </div>
+      <div class="jl-count" id="jlCount">—</div>
+    </div>
+    <div class="jl-basis" id="jlBasis"></div>
+  </div>
+
+  <div class="card" id="prepCard" style="display:none">
+    <h2><span class="tag">Vorher</span> Zwei, drei Tage vor Abflug</h2>
+    <ul class="prep" id="prepList"></ul>
+  </div>
+
+  <div class="card" id="daysCard" style="display:none">
+    <h2><span class="tag">Nachher</span> Tagesübersicht ab Ankunft</h2>
+    <div class="days" id="daysList"><div class="empty">Noch keine Berechnung.</div></div>
+  </div>
+
+  <div class="card sources">
+    <p class="kicker">Quellen &amp; Recherche</p>
+    <p>Die Anpassungsraten dieses Rechners (ca. 1 Stunde pro Tag bei Ostreisen, ca. 1,5 Stunden pro Tag bei Westreisen) basieren auf folgenden Quellen. Wer will, kann selbst nachlesen.</p>
+    <ul>
+      <li><a href="https://www.medlink.com/articles/jet-lag-disorder" rel="noopener">Jet Lag Disorder, MedLink Neurology</a></li>
+      <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11554432/" rel="noopener">Systematic Review zu zirkadianer Anpassung, PMC</a></li>
+      <li><a href="https://www.timeshifter.com/jet-lag/the-science-of-jet-lag" rel="noopener">The Science of Jet Lag, Timeshifter</a></li>
+    </ul>
+  </div>
+
+  <div class="topics">
+    <span>Zeitzonenrechner</span><span>Kein medizinischer Rat</span><span>Nur lokale Berechnung im Browser</span>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 Torsten Fink</span>
+  <span><a href="../index.html">Startseite</a> · <a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></span>
+</footer>
+
+<script>
+function getOffsetMinutes(timeZone, date){
+  try{
+    const dtf = new Intl.DateTimeFormat('en-US', {timeZone, timeZoneName:'shortOffset'});
+    const parts = dtf.formatToParts(date);
+    const tzPart = parts.find(p => p.type === 'timeZoneName').value; // z.B. "GMT+9"
+    const match = tzPart.match(/GMT([+-]?\d+)(?::(\d+))?/);
+    if(!match) return 0;
+    const hours = parseInt(match[1], 10) || 0;
+    const mins = match[2] ? parseInt(match[2], 10) : 0;
+    return hours * 60 + (hours < 0 ? -mins : mins);
+  }catch(e){
+    return 0;
+  }
+}
+
+function zoneLabel(select){
+  return select.options[select.selectedIndex].text;
+}
+
+const PREP_TIPS_OST = [
+  'Schlafenszeit schon zwei, drei Tage vorher schrittweise um je etwa eine Stunde nach vorne legen.',
+  'Am Morgen möglichst früh helles Licht suchen, das hilft der inneren Uhr beim Vorstellen.',
+  'Am Abend Bildschirme und helles Licht eher meiden, schon vor dem Abflug.'
+];
+const PREP_TIPS_WEST = [
+  'Schlafenszeit schon zwei, drei Tage vorher schrittweise um je etwa eine Stunde nach hinten legen.',
+  'Am Abend bewusst noch etwas länger im Hellen bleiben, das verzögert die innere Uhr angenehm.',
+  'Am Morgen kein Problem, ruhig etwas länger schlafen als sonst.'
+];
+
+const DAY_TIPS_OST = [
+  'Direkt nach dem Aufstehen raus ans Tageslicht, das stellt die innere Uhr am wirksamsten vor.',
+  'Ab dem späten Nachmittag Ortszeit helles Licht und Bildschirme eher reduzieren.',
+  'Sport und Bewegung eher in die erste Tageshälfte legen.',
+  'Koffein nach der Mittagszeit Ortszeit eher meiden, das erleichtert das frühere Einschlafen.'
+];
+const DAY_TIPS_WEST = [
+  'Am Abend noch etwas draußen bleiben oder helles Licht suchen, das verzögert die innere Uhr angenehm.',
+  'Am Morgen die Vorhänge notfalls zu lassen, wenn das Aufwachen zu früh kommt.',
+  'Kurze Nickerchen am frühen Nachmittag helfen, ohne den Abend zu gefährden.',
+  'Mahlzeiten möglichst an die neue Ortszeit anpassen, nicht an die alte.'
+];
+
+function render(diffHours, startLabel, destLabel){
+  const resultCard = document.getElementById('resultCard');
+  const prepCard = document.getElementById('prepCard');
+  const daysCard = document.getElementById('daysCard');
+  resultCard.style.display = 'block';
+  prepCard.style.display = 'block';
+  daysCard.style.display = 'block';
+
+  const jlDir = document.getElementById('jlDir');
+  const jlMeta = document.getElementById('jlMeta');
+  const jlCount = document.getElementById('jlCount');
+  const jlBasis = document.getElementById('jlBasis');
+  const prepList = document.getElementById('prepList');
+  const daysList = document.getElementById('daysList');
+
+  const absHours = Math.abs(diffHours);
+
+  if(absHours < 1){
+    jlDir.textContent = 'Kaum Unterschied';
+    jlMeta.textContent = `${startLabel} → ${destLabel}, weniger als eine Stunde Verschiebung`;
+    jlCount.textContent = '';
+    jlBasis.textContent = 'Bei unter einer Stunde Zeitverschiebung ist mit nennenswertem Jetlag normalerweise nicht zu rechnen.';
+    prepList.innerHTML = '';
+    daysList.innerHTML = '<div class="empty">Kein Anpassungsplan nötig.</div>';
+    return;
+  }
+
+  const isOst = diffHours > 0;
+  const rate = isOst ? 1 : 1.5;
+  const days = Math.ceil(absHours / rate);
+  const tips = isOst ? DAY_TIPS_OST : DAY_TIPS_WEST;
+  const prepTips = isOst ? PREP_TIPS_OST : PREP_TIPS_WEST;
+
+  jlDir.textContent = isOst ? 'Ostreise' : 'Westreise';
+  jlMeta.textContent = `${startLabel} → ${destLabel}, ${absHours} Stunde${absHours === 1 ? '' : 'n'} Unterschied`;
+  jlCount.textContent = `${days} Tag${days === 1 ? '' : 'e'} geschätzt`;
+  jlBasis.textContent = isOst
+    ? 'Ostreisen verschieben die innere Uhr nach vorne, das gelingt im Schnitt etwa eine Stunde pro Tag.'
+    : 'Westreisen verschieben die innere Uhr nach hinten, das gelingt im Schnitt etwa anderthalb Stunden pro Tag.';
+  if(absHours > 10){
+    jlBasis.textContent += ' Bei Zeitunterschieden nahe zwölf Stunden ist die Einschätzung unsicherer, die tatsächliche Flugrichtung spielt dann zusätzlich eine Rolle.';
+  }
+
+  prepList.innerHTML = prepTips.map(t => `<li>${t}</li>`).join('');
+
+  let rows = '';
+  for(let day = 1; day <= days; day++){
+    const recovered = Math.min(absHours, day * rate);
+    const remaining = Math.max(0, absHours - recovered);
+    const tip = tips[(day - 1) % tips.length];
+    const progressText = remaining <= 0.05
+      ? 'vollständig angepasst'
+      : `noch ca. ${fmt(remaining)}h Rest`;
+    rows += `
+      <div class="day-row">
+        <span class="day-label">Tag ${day}</span>
+        <span class="day-tip">${tip}</span>
+        <span class="day-progress">${progressText}</span>
+      </div>
+    `;
+  }
+  daysList.innerHTML = rows;
+}
+
+function fmt(n){
+  return (Math.round(n * 10) / 10).toString().replace('.', ',');
+}
+
+document.getElementById('calcBtn').addEventListener('click', () => {
+  const startSelect = document.getElementById('startZone');
+  const destSelect = document.getElementById('destZone');
+  const dateInput = document.getElementById('depDate');
+
+  const dateStr = dateInput.value || new Date().toISOString().slice(0, 10);
+  const date = new Date(dateStr + 'T12:00:00');
+
+  const offsetStart = getOffsetMinutes(startSelect.value, date);
+  const offsetDest = getOffsetMinutes(destSelect.value, date);
+
+  let diffHours = (offsetDest - offsetStart) / 60;
+  while(diffHours > 12) diffHours -= 24;
+  while(diffHours < -12) diffHours += 24;
+  diffHours = Math.round(diffHours * 2) / 2;
+
+  render(diffHours, zoneLabel(startSelect), zoneLabel(destSelect));
+});
+</script>
+</body>
+</html>
