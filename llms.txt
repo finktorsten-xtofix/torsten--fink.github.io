@@ -19,6 +19,9 @@
 - [Herzogenaurach – Mein Golfplatz zwischen drei Streifen und einer Raubkatze](https://torsten-fink.de/stories/herzogenaurach.html): Heimatclub, Craig Miller Golfschule, Adidas/Puma-Fehde seit 1948
 - [Golf-Handicap-Rechner](https://torsten-fink.de/tools/handicap-rechner.html): Golf-Handicap-Index nach WHS-Näherung berechnen, Course Handicap für den nächsten Platz. Speicherung nur lokal im Browser, keine Anmeldung nötig.
 
+## Tools
+- [Jetlag-Rechner](https://torsten-fink.de/tools/jetlag-rechner.html): Zeitzonen-Unterschied berechnen, Tag-für-Tag-Anpassungsplan für die innere Uhr. Keine Anmeldung, keine Serverkomponente.
+
 ## Rechtliches
 - [Impressum](https://torsten-fink.de/impressum.html)
 - [Datenschutz](https://torsten-fink.de/datenschutz.html)
