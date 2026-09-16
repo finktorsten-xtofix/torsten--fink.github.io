@@ -2,7 +2,7 @@
 
 **Live:** [https://torsten-fink.de](https://torsten-fink.de)
 
-Website von **Torsten Fink** — Reiseerzähler, Fotograf und Golfer aus Fürth.
+Persönliche Website von **Torsten Fink** — Reiseerzähler, Fotograf und Golfer aus Fürth.
 Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story vom Heimatclub, erzählt in eigenem Ton und bebildert mit eigenen Fotografien.
 
 ## Geschichten
@@ -30,6 +30,7 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 | Tool | Beschreibung |
 |---|---|
 | [Handicap-Rechner](https://torsten-fink.de/tools/handicap-rechner.html) | Golf-Handicap-Index nach WHS-Näherung, Course-Handicap-Berechnung. Reines Vanilla-JS, Speicherung nur im `localStorage` des Browsers, keine Anmeldung, kein Server-Backend. |
+| [Jetlag-Rechner](https://torsten-fink.de/tools/jetlag-rechner.html) | Zeitzonen-Unterschied inkl. Sommer-/Winterzeit berechnen, Tag-für-Tag-Anpassungsplan. Verlinkt aus Tokio, Kamakura, Hongkong und Singapur. Reines Vanilla-JS, keine Anmeldung, kein Server-Backend. |
 
 ## Technik
 
