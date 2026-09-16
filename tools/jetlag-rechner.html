@@ -247,7 +247,7 @@ const DAY_TIPS_WEST = [
   'Mahlzeiten möglichst an die neue Ortszeit anpassen, nicht an die alte.'
 ];
 
-function render(diffHours, startLabel, destLabel){
+function render(diffHours, startLabel, destLabel, depDate){
   const resultCard = document.getElementById('resultCard');
   const prepCard = document.getElementById('prepCard');
   const daysCard = document.getElementById('daysCard');
@@ -300,9 +300,12 @@ function render(diffHours, startLabel, destLabel){
     const progressText = remaining <= 0.05
       ? 'vollständig angepasst'
       : `noch ca. ${fmt(remaining)}h Rest`;
+    const dayDate = new Date(depDate.getTime());
+    dayDate.setDate(depDate.getDate() + (day - 1));
+    const dateLabel = dayDate.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit' });
     rows += `
       <div class="day-row">
-        <span class="day-label">Tag ${day}</span>
+        <span class="day-label">Tag ${day} · ${dateLabel}</span>
         <span class="day-tip">${tip}</span>
         <span class="day-progress">${progressText}</span>
       </div>
@@ -331,7 +334,7 @@ document.getElementById('calcBtn').addEventListener('click', () => {
   while(diffHours < -12) diffHours += 24;
   diffHours = Math.round(diffHours * 2) / 2;
 
-  render(diffHours, zoneLabel(startSelect), zoneLabel(destSelect));
+  render(diffHours, zoneLabel(startSelect), zoneLabel(destSelect), date);
 });
 </script>
 </body>
