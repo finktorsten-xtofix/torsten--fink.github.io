@@ -17,7 +17,7 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 | 2019 | [Hongkong — Ein Duft von Abenteuer und Feuerwerk](https://torsten-fink.de/stories/hongkong.html) |
 | 2017 | [Kamakura — Wo die Shogun surften?](https://torsten-fink.de/stories/kamakura.html) |
 | 2017 | [Tokio — Der Puls einer Welt, die niemals schläft](https://torsten-fink.de/stories/tokio.html) |
-| 2015 | [Singapur — Eine Stadt, die man nicht besucht, sondern absolviert](https://torsten-fink.de/stories/singapur.html) |
+| 2015 | [Singapur — Einmal hoch und runter im SG50-Jahr](https://torsten-fink.de/stories/singapur.html) |
 
 ## Golf
 
