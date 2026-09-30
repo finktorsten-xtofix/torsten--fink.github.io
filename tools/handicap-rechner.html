@@ -3,69 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Golf-Handicap-Rechner | Torsten Fink</title>
-<meta name="description" content="Kostenloser Golf-Handicap-Rechner: Golf-Handicap-Index nach WHS-Näherung berechnen, Course Handicap für den nächsten Platz. Speicherung nur lokal im Browser.">
+<title>Golf-Handicap-Rechner nach WHS mit Rechenweg</title>
+<meta name="description" content="Handicap-Index und Course Handicap nach WHS berechnen, 9-Loch-Runden und PCC inklusive. Jeder Rechenschritt sichtbar, ohne Anmeldung.">
 <meta name="author" content="Torsten Fink">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://torsten-fink.de/tools/handicap-rechner.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Golf-Handicap-Rechner nach WHS mit Rechenweg">
+<meta property="og:description" content="Handicap-Index und Course Handicap nach WHS berechnen, 9-Loch-Runden und PCC inklusive. Jeder Rechenschritt sichtbar, ohne Anmeldung.">
+<meta property="og:url" content="https://torsten-fink.de/tools/handicap-rechner.html">
 <meta name="theme-color" content="#0B0D12">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B0D12'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23FF5C8A' font-family='sans-serif' font-weight='bold'%3ETF%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Instrument+Sans:ital,wght@0,400;0,500;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/story.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Golf-Handicap-Rechner nach WHS",
+  "url":"https://torsten-fink.de/tools/handicap-rechner.html",
+  "applicationCategory":"SportsApplication",
+  "operatingSystem":"Browser",
+  "inLanguage":"de",
+  "isAccessibleForFree":true,
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+  "description":"Berechnet Score Differential, Handicap-Index und Course Handicap nach dem World Handicap System, mit 9-Loch-Runden, PCC und sichtbarem Rechenweg.",
+  "dateModified":"2026-09-30T00:00:00+02:00",
+  "author":{"@type":"Person","@id":"https://torsten-fink.de/#person","name":"Torsten Fink","url":"https://torsten-fink.de/"}
+}
+</script>
 <style>
   .tool-hero{padding:120px clamp(20px,6vw,80px) 40px;max-width:860px;margin:0 auto}
-  .tool-hero .exif{margin-bottom:18px}
-  .tool-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2rem,6vw,3.4rem);line-height:1.08;letter-spacing:-.01em}
-  .tool-hero .sub{color:var(--paper-dim);font-size:clamp(1rem,1.6vw,1.2rem);margin-top:14px;max-width:60ch}
+  .tool-hero h1{font-size:clamp(2rem,6vw,3.4rem)}
+  .tool-hero .sub{max-width:60ch}
+  .tool-wrap{max-width:760px;margin:0 auto;padding:0 clamp(16px,6vw,40px) 40px}
 
-  .tool-wrap{max-width:760px;margin:0 auto;padding:0 clamp(20px,6vw,40px) 40px}
-
-  .card{border:1px solid var(--line);background:var(--night-2);padding:clamp(20px,3vw,32px);margin-bottom:22px}
-  .card h2{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:0 0 18px;color:var(--paper);display:flex;align-items:center;gap:10px}
+  .card{border:1px solid var(--line);background:var(--night-2);padding:clamp(18px,3vw,32px);margin-bottom:22px}
+  .card h2{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:0 0 18px;color:var(--paper);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .card h2 .tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--neon);border:1px solid var(--neon);padding:3px 8px}
+  .card p{font-size:.95rem;line-height:1.7;color:#CFCabf;margin:0 0 12px}
+  .card p:last-child{margin-bottom:0}
+  .note{font-size:.82rem!important;color:var(--paper-dim)!important}
 
-  .intro-note{font-size:.92rem;line-height:1.7;color:#CFCabf;margin:0}
-
-  .hi-hero{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+  .hi-hero{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
   .hi-value{font-family:var(--mono);font-weight:500;font-size:3.4rem;color:var(--neon);line-height:1}
   .hi-count{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
-  .hi-meta{font-size:.85rem;color:var(--paper-dim)}
-  .hi-basis{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--paper-dim);margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}
-  .hi-basis .dot{color:var(--neon)}
+  .hi-meta{font-size:.85rem;color:var(--paper-dim);margin-top:8px}
 
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .field{display:flex;flex-direction:column;gap:6px}
+  .field{display:flex;flex-direction:column;gap:6px;min-width:0}
   .field.full{grid-column:1/-1}
-  label{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
-  input{background:var(--night);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:.95rem;padding:11px 12px;width:100%}
-  input:focus{outline:none;border-color:var(--neon)}
-  input::placeholder{color:#4a4a52}
+  label,.lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
+  input,select{background:var(--night);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:1rem;padding:11px 12px;width:100%;border-radius:0}
+  input:focus,select:focus{outline:none;border-color:var(--neon)}
+  input::placeholder{color:#5a5a62}
+
+  .seg{display:flex;border:1px solid var(--line)}
+  .seg label{flex:1;text-align:center;padding:11px 8px;cursor:pointer;font-size:.7rem;color:var(--paper-dim);transition:.2s;position:relative}
+  .seg input{position:absolute;opacity:0;width:1px;height:1px}
+  .seg label:has(input:checked){background:var(--neon);color:var(--night)}
+  .seg label:has(input:focus-visible){outline:2px solid var(--neon);outline-offset:2px}
+
+  .check{display:flex;gap:10px;align-items:flex-start;font-family:var(--body);font-size:.9rem;letter-spacing:0;text-transform:none;color:#CFCabf;cursor:pointer}
+  .check input{width:18px;height:18px;margin-top:3px;flex:0 0 auto;accent-color:var(--neon)}
 
   .btn{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--neon);
     background:transparent;border:1px solid var(--neon);padding:13px 22px;width:100%;margin-top:16px;cursor:pointer;transition:.25s}
   .btn:hover{background:var(--neon);color:var(--night)}
   .btn:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+  .btn.ghost{color:var(--paper-dim);border-color:var(--line)}
+  .btn.ghost:hover{color:var(--night);background:var(--paper-dim)}
+  .btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .btn-row .btn{margin-top:10px}
 
-  .ch-result{font-size:.9rem;color:var(--paper-dim);margin-top:14px}
-  .ch-result strong{font-family:var(--mono);color:var(--neon);font-weight:500}
+  .msg{font-size:.85rem;margin-top:12px;min-height:1em;color:var(--brass)}
+  .msg.err{color:var(--neon)}
+
+  .result{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+  .result .big{font-family:var(--mono);font-size:2.2rem;color:var(--neon);line-height:1}
+  .result .cap{font-size:.85rem;color:var(--paper-dim);margin-top:6px}
+
+  details.way{margin-top:14px;border:1px solid var(--line);background:var(--night)}
+  details.way summary{cursor:pointer;padding:10px 14px;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);list-style:none}
+  details.way summary::-webkit-details-marker{display:none}
+  details.way summary::before{content:"+ ";color:var(--neon)}
+  details.way[open] summary::before{content:"− "}
+  .steps{padding:4px 14px 14px;font-family:var(--mono);font-size:.76rem;line-height:1.75;color:#CFCabf;overflow-x:auto}
+  .steps div{white-space:pre-wrap;word-break:break-word}
+  .steps .hl{color:var(--neon)}
+  .steps .dim{color:var(--paper-dim)}
 
   .rounds{display:flex;flex-direction:column;gap:6px}
-  .round-row{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr auto;gap:10px;align-items:center;
-    padding:11px 12px;border:1px solid var(--line);font-family:var(--mono);font-size:.78rem;color:var(--paper-dim);position:relative}
-  .round-row.head{color:var(--paper-dim);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;border:none;padding:0 12px 4px}
-  .round-row .diff{color:var(--neon)}
-  .round-row.used{border-color:var(--neon)}
-  .empty{color:var(--paper-dim);font-size:.85rem;padding:20px;text-align:center;border:1px dashed var(--line)}
-  .del-btn{background:none;border:1px solid var(--line);color:var(--paper-dim);font-family:var(--mono);font-size:.7rem;padding:5px 9px;cursor:pointer;transition:.25s}
+  .round{border:1px solid var(--line)}
+  .round.used{border-color:var(--neon)}
+  .round.out{opacity:.45}
+  .round summary{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center;padding:11px 12px;cursor:pointer;list-style:none;font-family:var(--mono);font-size:.76rem;color:var(--paper-dim)}
+  .round summary::-webkit-details-marker{display:none}
+  .round .where{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .round .where b{color:var(--paper);font-weight:500}
+  .round .h9{font-size:.6rem;border:1px solid var(--brass);color:var(--brass);padding:1px 5px;margin-left:6px}
+  .round .diff{color:var(--neon);min-width:3.2em;text-align:right}
+  .round .gbe{min-width:2.4em;text-align:right}
+  .round .body{padding:0 12px 12px}
+  .del-btn{background:none;border:1px solid var(--line);color:var(--paper-dim);font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;cursor:pointer;margin-top:10px;transition:.25s}
   .del-btn:hover{color:var(--neon);border-color:var(--neon)}
+  .legend{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--paper-dim);margin-top:12px}
+  .legend .dot{color:var(--neon)}
+  .empty{color:var(--paper-dim);font-size:.85rem;padding:20px;text-align:center;border:1px dashed var(--line)}
+
+  .limits{margin:0;padding:0 0 0 1.1em;color:#CFCabf;font-size:.9rem;line-height:1.65}
+  .limits li{margin-bottom:.7em}
+  .limits strong{color:var(--paper);font-weight:500}
+
+  .sources{margin:40px 0 0;padding-top:30px;border-top:1px solid rgba(236,231,220,.14)}
+  .sources .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+  .sources p{color:var(--paper-dim);font-size:.92rem;line-height:1.6;max-width:66ch;margin-bottom:16px}
+  .sources ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;row-gap:8px;font-family:var(--mono);font-size:.78rem;line-height:1.7}
+  .sources li{color:#5B5850}
+  .sources li:not(:last-child)::after{content:"·";color:var(--neon);margin:0 12px;font-size:.9em}
+  .sources a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(236,231,220,.28);padding-bottom:1px;transition:color .2s,border-color .2s}
+  .sources a:hover,.sources a:focus-visible{color:var(--neon);border-color:var(--neon)}
 
   @media(max-width:560px){
-    .grid{grid-template-columns:1fr}
-    .hi-value{font-size:2.6rem}
-    .round-row{grid-template-columns:1.2fr 1fr 1fr auto;font-size:.7rem}
-    .round-row .par-col{display:none}
+    .grid{grid-template-columns:1fr 1fr}
+    .grid .field.wide{grid-column:1/-1}
+    .hi-value{font-size:2.8rem}
+    .round summary{font-size:.7rem;gap:8px}
   }
 </style>
 <script defer src="https://cloud.umami.is/script.js" data-website-id="b191da8b-4e9a-4245-b89f-618b3c6250c9"></script>
@@ -78,35 +144,56 @@
 </nav>
 
 <div class="tool-hero">
-  <p class="exif"><span>Tools</span><span class="dot">·</span><span>Golf-Handicap-Rechner</span></p>
+  <p class="exif"><span>Tools</span><span class="dot">·</span><span>Golf</span><span class="dot">·</span><span>WHS</span></p>
   <h1>Golf-Handicap-Rechner</h1>
-  <p class="sub">Runden eintragen, Golf-Handicap-Index nach WHS-Näherung berechnen, Course Handicap für die nächste Runde bestimmen.</p>
+  <p class="sub">Rechnet Score Differential und Handicap-Index nach dem World Handicap System. Dazu das Course Handicap für den nächsten Platz, 9-Loch-Runden inklusive, jeder Rechenschritt offen.</p>
 </div>
 
 <div class="tool-wrap">
 
   <div class="card">
-    <p class="intro-note">Trag deine letzten Runden ein, Score, Course Rating und Slope stehen auf jeder Scorecard, und der Rechner ermittelt deinen aktuellen Golf-Handicap-Index nach der offiziellen WHS-Näherungsformel. Zusätzlich lässt sich für jeden neuen Platz das Course Handicap ausrechnen, bevor es losgeht. Alles bleibt in diesem Browser gespeichert, es wird nichts irgendwohin hochgeladen. Auf einem anderen Gerät fängst du entsprechend neu an. Kein offizielles DGV-Tool, sondern eine Näherung zum Nachverfolgen der eigenen Entwicklung.</p>
+    <p>Trag deine Runden ein. Das gewertete Bruttoergebnis (GBE) steht auf der Ergebnisliste, Course Rating und Slope auf der Scorekarte. Bei jeder Zahl kannst du aufklappen, wie sie zustande kommt.</p>
+    <p>Gespeichert wird ausschließlich in diesem Browser. Kein Konto, kein Upload. Wer am Laptop anfängt, sieht auf dem Handy eine leere Liste, dafür gibt es unten Export und Import.</p>
+    <p>Eine Platzdatenbank fehlt hier mit Absicht. Course Rating und Slope hängen am Abschlag und ändern sich nach jeder Neubewertung, veraltete Werte wären schlimmer als gar keine. Jeden Platz, den du einmal einträgst, merkt sich der Rechner.</p>
+    <p class="note">Verbindlich ist allein der Handicap-Index, den dein Heimatclub über den DGV führt. Dieser Rechner rechnet ihn nach, so genau es die veröffentlichten Regeln erlauben.</p>
   </div>
 
-  <div class="card">
-    <h2><span class="tag">Index</span> Golf-Handicap-Index</h2>
+  <!-- HANDICAP-INDEX -->
+  <div class="card" id="index">
+    <h2><span class="tag">HCPI</span> Dein Handicap-Index</h2>
     <div class="hi-hero">
-      <div>
-        <div class="hi-value" id="hiValue">—</div>
-        <div class="hi-meta" id="hiMeta">Noch keine Runden erfasst</div>
-      </div>
+      <div class="hi-value" id="hiValue">··</div>
       <div class="hi-count" id="hiCount">0 Runden</div>
     </div>
-    <div class="hi-basis"><span class="dot">●</span> markiert die Runden, die in die Berechnung einfließen</div>
+    <div class="hi-meta" id="hiMeta">Noch keine Runden erfasst.</div>
+    <details class="way" id="hiWay" hidden>
+      <summary>Rechenweg Handicap-Index</summary>
+      <div class="steps" id="hiSteps"></div>
+    </details>
   </div>
 
-  <div class="card">
+  <!-- RUNDE ERFASSEN -->
+  <div class="card" id="erfassen">
     <h2><span class="tag">Neu</span> Runde erfassen</h2>
     <div class="grid">
+      <div class="field full">
+        <span class="lbl" id="holesLbl">Gespielte Löcher</span>
+        <div class="seg" role="radiogroup" aria-labelledby="holesLbl">
+          <label><input type="radio" name="holes" value="18" checked>18 Löcher</label>
+          <label><input type="radio" name="holes" value="9">9 Löcher</label>
+        </div>
+      </div>
+      <div class="field full">
+        <label for="course">Platz und Abschlag</label>
+        <input type="text" id="course" list="courseList" placeholder="z. B. GC Fürth Gelb" autocomplete="off">
+      </div>
       <div class="field">
-        <label for="score">Score (brutto)</label>
-        <input type="number" id="score" placeholder="z. B. 89" inputmode="numeric">
+        <label for="date">Datum</label>
+        <input type="date" id="date">
+      </div>
+      <div class="field">
+        <label for="gbe">GBE (gewertet)</label>
+        <input type="number" id="gbe" placeholder="z. B. 89" inputmode="numeric" min="1">
       </div>
       <div class="field">
         <label for="cr">Course Rating</label>
@@ -117,212 +204,571 @@
         <input type="number" id="slope" placeholder="z. B. 128" inputmode="numeric">
       </div>
       <div class="field">
-        <label for="date">Datum</label>
-        <input type="date" id="date">
+        <label for="par">Par (optional)</label>
+        <input type="number" id="par" placeholder="z. B. 72" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="pcc">PCC des Tages</label>
+        <select id="pcc">
+          <option value="-1">−1</option>
+          <option value="0" selected>0</option>
+          <option value="1">+1</option>
+          <option value="2">+2</option>
+          <option value="3">+3</option>
+        </select>
+      </div>
+    </div>
+    <p class="note" id="holesHint" style="margin-top:12px">Bei 18 Löchern die Werte für 18 Löcher eintragen. Die PCC steht auf der Ergebnisliste und ist meistens 0.</p>
+    <button class="btn" id="addRound" type="button">Runde speichern</button>
+    <div class="msg" id="addMsg" role="status" aria-live="polite"></div>
+  </div>
+
+  <!-- COURSE HANDICAP -->
+  <div class="card" id="course-handicap">
+    <h2><span class="tag">CH</span> Course Handicap für den nächsten Platz</h2>
+    <div class="grid">
+      <div class="field full">
+        <span class="lbl" id="chHolesLbl">Runde über</span>
+        <div class="seg" role="radiogroup" aria-labelledby="chHolesLbl">
+          <label><input type="radio" name="chHoles" value="18" checked>18 Löcher</label>
+          <label><input type="radio" name="chHoles" value="9">9 Löcher</label>
+        </div>
       </div>
       <div class="field full">
-        <label for="course">Platz (optional)</label>
-        <input type="text" id="course" placeholder="z. B. GC Fürth">
+        <label for="chCourse">Gespeicherter Platz (optional)</label>
+        <select id="chCourse"><option value="">Werte selbst eintragen</option></select>
+      </div>
+      <div class="field">
+        <label for="chCr">Course Rating</label>
+        <input type="number" id="chCr" step="0.1" placeholder="z. B. 72.4" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="chSlope">Slope</label>
+        <input type="number" id="chSlope" placeholder="z. B. 132" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="chPar">Par</label>
+        <input type="number" id="chPar" placeholder="z. B. 72" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="chHi">HCPI (leer = aktueller)</label>
+        <input type="number" id="chHi" step="0.1" placeholder="aus Runden" inputmode="decimal">
       </div>
     </div>
-    <button class="btn" id="addRound">Runde speichern</button>
-  </div>
-
-  <div class="card">
-    <h2><span class="tag">CH</span> Course Handicap berechnen</h2>
-    <div class="grid">
-      <div class="field">
-        <label for="targetSlope">Slope des Platzes</label>
-        <input type="number" id="targetSlope" placeholder="z. B. 132" inputmode="numeric">
-      </div>
-      <div class="field">
-        <label for="targetCr">Course Rating</label>
-        <input type="number" id="targetCr" step="0.1" placeholder="z. B. 72.4" inputmode="decimal">
-      </div>
-      <div class="field">
-        <label for="targetPar">Par</label>
-        <input type="number" id="targetPar" placeholder="z. B. 72" inputmode="numeric">
-      </div>
+    <button class="btn" id="calcCH" type="button">Course Handicap berechnen</button>
+    <div class="msg" id="chMsg" role="status" aria-live="polite"></div>
+    <div class="result" id="chResult" hidden>
+      <div class="big" id="chBig"></div>
+      <div class="cap" id="chCap"></div>
+      <details class="way">
+        <summary>Rechenweg Course Handicap</summary>
+        <div class="steps" id="chSteps"></div>
+      </details>
     </div>
-    <button class="btn" id="calcCH">Course Handicap anzeigen</button>
-    <div class="ch-result" id="chResult"></div>
   </div>
 
-  <div class="card">
+  <!-- VERLAUF -->
+  <div class="card" id="verlauf">
     <h2><span class="tag">Log</span> Rundenverlauf</h2>
-    <div class="rounds" id="roundsList">
-      <div class="empty">Lade Runden…</div>
-    </div>
+    <div class="rounds" id="roundsList"><div class="empty">Lade Runden …</div></div>
+    <p class="legend"><span class="dot">▢</span> pinker Rahmen: zählt für den Index. Blass: älter als die letzten 20 Runden. Antippen öffnet den Rechenweg.</p>
   </div>
 
-  <div class="topics">
-    <span>WHS-Näherung</span><span>Nur lokale Speicherung</span><span>Nicht offiziell zertifiziert</span>
+  <!-- EINSTELLUNGEN -->
+  <div class="card" id="einstellungen">
+    <h2><span class="tag">Set</span> Einstellungen und Daten</h2>
+    <div class="grid">
+      <div class="field full">
+        <label for="startHi">Aktueller Handicap-Index laut Club (optional)</label>
+        <input type="number" id="startHi" step="0.1" placeholder="z. B. 18.4" inputmode="decimal">
+      </div>
+    </div>
+    <p class="note" style="margin-top:10px">Dieser Wert dient als Ausgangspunkt, solange du hier noch keine eigenen Runden hast. 9-Loch-Runden brauchen einen Index zum Spielzeitpunkt, sonst lassen sie sich nicht hochrechnen.</p>
+    <label class="check" style="margin-top:14px"><input type="checkbox" id="brake" checked>26,5-Bremse des DGV anwenden. Zwischen 54 und 26,5 kann der Index dann nur fallen.</label>
+    <button class="btn" id="saveSettings" type="button">Einstellungen übernehmen</button>
+    <div class="btn-row">
+      <button class="btn ghost" id="exportBtn" type="button">Export (JSON)</button>
+      <button class="btn ghost" id="importBtn" type="button">Import</button>
+    </div>
+    <input type="file" id="importFile" accept="application/json,.json" hidden>
+    <button class="btn ghost" id="wipeBtn" type="button">Alle Daten löschen</button>
+    <div class="msg" id="setMsg" role="status" aria-live="polite"></div>
+  </div>
+
+  <!-- GRENZEN -->
+  <div class="card" id="grenzen">
+    <h2><span class="tag">Info</span> Was der Rechner kann und was nicht</h2>
+    <ul class="limits">
+      <li><strong>GBE statt Brutto.</strong> Eingetragen wird das gewertete Bruttoergebnis. Jedes Loch zählt darin höchstens mit Netto-Doppelbogey, also Par plus Handicap-Schläge plus 2. Wer das rohe Brutto einträgt, bekommt ein zu schlechtes Differential.</li>
+      <li><strong>9 Löcher.</strong> Das Differential der gespielten neun Löcher wird mit einem erwarteten Wert für die fehlenden neun ergänzt. Die Formel dafür stammt aus der DGV-Broschüre zu den Handicap-Regeln 2024. Laut Fachpresse arbeitet das WHS intern mit getrennten Modellen für Frauen und Männer, kleine Abweichungen zum Clubwert sind deshalb möglich. Bei 9 Löchern zählt die halbe PCC, so steht es in Regel 5.1b.</li>
+      <li><strong>Außergewöhnliche Runden.</strong> Liegt ein Differential 7,0 oder mehr unter dem Index zum Spielzeitpunkt, zieht der Rechner wie das WHS 1,0 oder 2,0 von den letzten 20 Differentials ab.</li>
+      <li><strong>Soft Cap und Hard Cap.</strong> Ab 20 Runden steigt der Index höchstens 3,0 über den tiefsten Wert der letzten 365 Tage, darüber nur zur Hälfte, bei plus 5,0 ist Schluss.</li>
+      <li><strong>Nicht abgebildet.</strong> Runden über 10 bis 17 Löcher, Entscheidungen des Handicap-Ausschusses, das Playing Handicap für Turnierformen mit Vorgabe-Prozenten.</li>
+    </ul>
+  </div>
+
+  <div class="tool-links">
+    <a class="toollink" href="jetlag-rechner.html">🕐 Jetlag-Rechner für die Golfreise</a>
+  </div>
+
+  <div class="topics"><span>Golf</span><span>World Handicap System</span><span>Handicap-Index</span><span>Course Handicap</span><span>9-Loch</span><span>Nur lokale Speicherung</span></div>
+
+  <div class="sources">
+    <p class="kicker">Quellen &amp; Recherche</p>
+    <p>Die Formeln hier sind nicht aus dem Gedächtnis übernommen. Ich habe sie mit den offiziellen Regeltexten abgeglichen. Wo DGV und USGA verschieden formulieren, gilt für diesen Rechner die DGV-Fassung.</p>
+    <ul>
+      <li><a href="https://www.gc-schloss-auel.de/wp-content/uploads/2024/03/5-a2400018-handicap-regeln-2024.pdf" rel="noopener">DGV: Handicap-Regeln 2024 (PDF, bereitgestellt vom GC Schloss Auel)</a></li>
+      <li><a href="https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm" rel="noopener">USGA Rules of Handicapping 5.1a</a></li>
+      <li><a href="https://www.usga.org/handicapping/roh/Content/rules/5%201b%20Calculation%20of%20a%20Score%20Differential9Hole.htm" rel="noopener">USGA Rules of Handicapping 5.1b</a></li>
+      <li><a href="https://www.usga.org/handicapping/roh/Content/rules/5%202a%20For%20Fewer%20Than%2020%20Scores.htm" rel="noopener">USGA Rules of Handicapping 5.2a</a></li>
+      <li><a href="https://www.usga.org/content/usga/home-page/handicapping/roh/Content/rules/5%209%20Submission%20of%20an%20Exceptional%20Score.htm" rel="noopener">USGA Rules of Handicapping 5.9</a></li>
+      <li><a href="https://www.usga.org/content/usga/home-page/handicapping/roh/Content/rules/6%201a%2018%20holes.htm" rel="noopener">USGA Rules of Handicapping 6.1a</a></li>
+      <li><a href="https://www.usga.org/handicapping/roh/Content/rules/6%201b%209%20holes.htm" rel="noopener">USGA Rules of Handicapping 6.1b</a></li>
+      <li><a href="https://digital-pd.usga.org/content/dam/usga/pdf/Handicap/Treatment%20of%209-Hole%20Scores%20Infographic.pdf" rel="noopener">USGA: Treatment of 9-Hole Scores</a></li>
+      <li><a href="https://todays-golfer.com/news-and-events/general-news/world-handicap-system-2024-changes-explained" rel="noopener">Today's Golfer: WHS-Änderungen 2024</a></li>
+    </ul>
   </div>
 
 </div>
+
+<datalist id="courseList"></datalist>
 
 <footer>
   <span>© 2026 Torsten Fink</span>
   <span><a href="../index.html">Startseite</a> · <a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></span>
 </footer>
 
+<script id="engine">
+/* ===== WHS-Rechenkern (ohne DOM, separat testbar) ===== */
+const WHS = (() => {
+  // Runden auf Zehntel bzw. ganze Zahl, .5 nach oben (WHS 5.1a, 6.1)
+  const r1 = x => Math.floor(x * 10 + 0.5 + 1e-9) / 10;
+  const r0 = x => Math.floor(x + 0.5 + 1e-9);
+
+  // DGV-Tabelle „Berechnung bei weniger als 20 Ergebnissen"
+  function table(n){
+    if (n <= 0) return null;
+    if (n <= 3)  return {use:1, adj:-2};
+    if (n === 4) return {use:1, adj:-1};
+    if (n === 5) return {use:1, adj:0};
+    if (n === 6) return {use:2, adj:-1};
+    if (n <= 8)  return {use:2, adj:0};
+    if (n <= 11) return {use:3, adj:0};
+    if (n <= 14) return {use:4, adj:0};
+    if (n <= 16) return {use:5, adj:0};
+    if (n <= 18) return {use:6, adj:0};
+    if (n === 19) return {use:7, adj:0};
+    return {use:8, adj:0};
+  }
+
+  const sd18 = (gbe, cr, slope, pcc) => (113 / slope) * (gbe - cr - pcc);
+  const sd9played = (gbe, cr, slope, pcc) => (113 / slope) * (gbe - cr - 0.5 * pcc);
+  const expected9 = hi => (hi * 1.04 + 2.4) / 2;           // DGV Handicap-Regeln 2024
+  const dayNum = d => Math.floor(Date.UTC(+d.slice(0,4), +d.slice(5,7) - 1, +d.slice(8,10)) / 864e5);
+
+  /* rounds: [{id,date,holes,gbe,cr,slope,pcc}], opts: {startHi, brake} */
+  function run(rounds, opts = {}){
+    const brake = opts.brake !== false;
+    const startHi = (typeof opts.startHi === 'number' && isFinite(opts.startHi)) ? opts.startHi : null;
+    const sorted = [...rounds].sort((a,b) => a.date < b.date ? -1 : a.date > b.date ? 1 : a.id - b.id);
+
+    const record = [];      // gewertete Einträge in Reihenfolge
+    const history = [];     // {day, hi} nach jeder Runde
+    const perRound = {};    // id -> Details
+    let current = null;     // HCPI nach letzter gewerteter Runde
+    let lowestEver = null;  // für 26,5-Bremse
+    let lastCalc = null;
+
+    for (const r of sorted){
+      const hiAtTime = current !== null ? current : startHi;
+      const pcc = Number(r.pcc) || 0;
+      const info = {id:r.id, holes:r.holes, hiAtTime, pcc};
+
+      let raw;
+      if (r.holes === 9){
+        if (hiAtTime === null){ info.status = 'noHi'; perRound[r.id] = info; continue; }
+        info.sdPlayed = sd9played(r.gbe, r.cr, r.slope, pcc);
+        info.expected = expected9(hiAtTime);
+        raw = info.sdPlayed + info.expected;
+      } else {
+        raw = sd18(r.gbe, r.cr, r.slope, pcc);
+      }
+      info.raw = raw;
+      info.sd = r1(raw);
+      info.status = 'ok';
+
+      const entry = {id:r.id, date:r.date, sd:info.sd, esr:0};
+      record.push(entry);
+
+      // Außergewöhnliches Ergebnis (Regel 5.9): unrundiertes SD gegen HCPI zum Spielzeitpunkt
+      if (hiAtTime !== null){
+        const gap = hiAtTime - raw;
+        const red = gap >= 10 ? 2 : gap >= 7 ? 1 : 0;
+        if (red){
+          info.esr = red;
+          record.slice(-20).forEach(e => e.esr += red);
+        }
+      }
+
+      const calc = computeIndex(record, history, dayNum(r.date), brake, lowestEver);
+      current = calc.hi;
+      lastCalc = calc;
+      history.push({day: dayNum(r.date), hi: current});
+      lowestEver = lowestEver === null ? current : Math.min(lowestEver, current);
+      info.hiAfter = current;
+      perRound[r.id] = info;
+    }
+
+    const windowIds = new Set(record.slice(-20).map(e => e.id));
+    return {
+      hi: current,
+      calc: lastCalc,
+      perRound,
+      record,
+      windowIds,
+      usedIds: lastCalc ? lastCalc.usedIds : new Set(),
+      counted: record.length
+    };
+  }
+
+  function computeIndex(record, history, today, brake, lowestEver){
+    const win = record.slice(-20);
+    const t = table(win.length);
+    const vals = win.map(e => ({id:e.id, sd:e.sd, adj: r1(e.sd - e.esr), esr:e.esr}));
+    const best = [...vals].sort((a,b) => a.adj - b.adj || a.id - b.id).slice(0, t.use);
+    const avg = best.reduce((s,v) => s + v.adj, 0) / t.use;
+    const base = r1(avg + t.adj);
+    const steps = {n: win.length, use: t.use, adj: t.adj, best, avg, base};
+
+    let hi = base;
+    // Soft/Hard Cap ab 20 Ergebnissen. Low HI = tiefster Index der 365 Tage vor dem Spieltag der letzten Runde (R&A-Definition)
+    if (win.length >= 20){
+      const prev = history.filter(h => h.day >= today - 365 && h.day < today).map(h => h.hi);
+      if (prev.length){
+        const low = Math.min(...prev);
+        steps.low = low;
+        if (hi - low > 3){
+          let capped = low + 3 + (hi - low - 3) / 2;
+          capped = Math.min(capped, low + 5);
+          steps.capped = r1(capped);
+          hi = steps.capped;
+        }
+      }
+    }
+    if (hi > 54){ steps.max54 = true; hi = 54; }
+    // 26,5-Bremse (DGV): oberhalb 26,5 steigt der Index nicht über den bisher tiefsten Wert
+    if (brake && lowestEver !== null && hi > 26.5 && lowestEver < hi){
+      const braked = Math.max(lowestEver, 26.5);
+      if (braked < hi){ steps.brake = {from: hi, to: braked}; hi = braked; }
+    }
+    steps.hi = r1(hi);
+    return {hi: r1(hi), steps, usedIds: new Set(best.map(b => b.id))};
+  }
+
+  function courseHandicap(hi, cr, slope, par, holes){
+    if (holes === 9){
+      const half = r1(hi / 2);
+      const val = half * (slope / 113) + (cr - par);
+      return {half, val, ch: r0(val)};
+    }
+    const val = hi * (slope / 113) + (cr - par);
+    return {val, ch: r0(val)};
+  }
+
+  return {r1, r0, table, sd18, sd9played, expected9, run, courseHandicap};
+})();
+if (typeof module !== 'undefined') module.exports = WHS;
+</script>
+
 <script>
-const STORAGE_KEY = 'golf:rounds';
+/* ===== Oberfläche ===== */
+(() => {
+  const K_ROUNDS = 'golf:rounds', K_COURSES = 'golf:courses', K_SET = 'golf:settings';
+  const $ = id => document.getElementById(id);
 
-function differentialsToUse(n){
-  if(n<3) return 0;
-  const table = {3:1,4:1,5:1,6:2,7:2,8:2,9:3,10:3,11:3,12:4,13:4,14:4,15:5,16:5,17:6,18:6,19:7,20:8};
-  return table[Math.min(n,20)];
-}
+  const load = (k, def) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : def; } catch(e){ return def; } };
+  const save = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch(e){ return false; } };
 
-function computeDifferential(score, cr, slope){
-  return (score - cr) * 113 / slope;
-}
+  // Alte Einträge (score statt gbe, ohne holes/pcc) übernehmen
+  let rounds = load(K_ROUNDS, []).map(r => ({
+    id: Number(r.id) || Date.now(),
+    date: r.date || new Date().toISOString().slice(0,10),
+    course: r.course || '',
+    holes: Number(r.holes) === 9 ? 9 : 18,
+    gbe: Number(r.gbe ?? r.score),
+    cr: Number(r.cr), slope: Number(r.slope),
+    par: r.par ? Number(r.par) : null,
+    pcc: Number(r.pcc) || 0
+  })).filter(r => isFinite(r.gbe) && isFinite(r.cr) && isFinite(r.slope) && r.slope > 0);
+  let courses = load(K_COURSES, []);
+  let settings = Object.assign({startHi: null, brake: true}, load(K_SET, {}));
 
-function computeHandicapIndex(rounds){
-  if(rounds.length < 3) return null;
-  const withDiff = rounds.map(r => ({...r, diff: computeDifferential(r.score, r.cr, r.slope)}));
-  const sorted = [...withDiff].sort((a,b)=>a.diff-b.diff);
-  const useCount = differentialsToUse(sorted.length);
-  const used = sorted.slice(0, useCount);
-  const avg = used.reduce((s,r)=>s+r.diff,0) / used.length;
-  const hi = Math.max(0, avg * 0.96);
-  return { hi, withDiff, usedIds: new Set(used.map(r=>r.id)) };
-}
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const num = (x, d = 1) => {
+    const s = Math.abs(x).toFixed(d).replace('.', ',');
+    return (x < 0 && Number(Math.abs(x).toFixed(d)) !== 0) ? '−' + s : s;
+  };
+  const hiTxt = hi => hi === null ? '··' : (hi < 0 ? '+' + num(-hi) : num(hi));
+  const dateTxt = d => d ? d.slice(8,10) + '.' + d.slice(5,7) + '.' + d.slice(0,4) : '';
+  const holes = name => Number(document.querySelector(`input[name="${name}"]:checked`).value);
+  const msg = (el, text, err) => { el.textContent = text; el.classList.toggle('err', !!err); };
 
-function fmt(n, d=1){ return n.toFixed(d); }
-
-let rounds = [];
-
-function loadRounds(){
-  try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    rounds = raw ? JSON.parse(raw) : [];
-  }catch(e){
-    rounds = [];
-  }
-  render();
-}
-
-function saveRounds(){
-  try{
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(rounds));
-  }catch(e){
-    alert('Speichern hat nicht geklappt. Möglicherweise ist der private Modus deines Browsers aktiv.');
-  }
-}
-
-function render(){
-  const hiValue = document.getElementById('hiValue');
-  const hiMeta = document.getElementById('hiMeta');
-  const hiCount = document.getElementById('hiCount');
-  const list = document.getElementById('roundsList');
-
-  hiCount.textContent = rounds.length + (rounds.length === 1 ? ' Runde' : ' Runden');
-
-  const result = computeHandicapIndex(rounds);
-  if(!result){
-    hiValue.textContent = '—';
-    hiMeta.textContent = rounds.length === 0
-      ? 'Noch keine Runden erfasst'
-      : `Noch ${3 - rounds.length} Runde(n) bis zur ersten Berechnung`;
-  } else {
-    hiValue.textContent = fmt(result.hi);
-    const useCount = differentialsToUse(rounds.length);
-    hiMeta.textContent = `Aus den besten ${useCount} von ${rounds.length} Differentials`;
+  function courseKey(name, h){ return name.trim().toLowerCase() + '|' + h; }
+  function rememberCourse(name, h, cr, slope, par){
+    if (!name) return;
+    const key = courseKey(name, h);
+    courses = courses.filter(c => c.key !== key);
+    courses.unshift({key, name: name.trim(), holes: h, cr, slope, par});
+    courses = courses.slice(0, 60);
+    save(K_COURSES, courses);
   }
 
-  if(rounds.length === 0){
-    list.innerHTML = '<div class="empty">Noch keine Runden gespeichert. Trage oben die erste ein.</div>';
-    return;
+  function renderCourses(){
+    $('courseList').innerHTML = courses.map(c => `<option value="${esc(c.name)}">`).join('');
+    const h = holes('chHoles');
+    $('chCourse').innerHTML = '<option value="">Werte selbst eintragen</option>' +
+      courses.filter(c => c.holes === h).map(c => `<option value="${esc(c.key)}">${esc(c.name)}</option>`).join('');
   }
 
-  const sortedByDate = [...rounds].sort((a,b) => new Date(b.date) - new Date(a.date));
-  const usedIds = result ? result.usedIds : new Set();
-  const diffMap = {};
-  if(result){ result.withDiff.forEach(r => diffMap[r.id] = r.diff); }
+  function stepsHtml(lines){
+    return lines.map(l => `<div class="${l.cls || ''}">${l.t}</div>`).join('');
+  }
 
-  list.innerHTML = `
-    <div class="round-row head">
-      <span>Platz / Datum</span>
-      <span>Score</span>
-      <span class="par-col">CR / Slope</span>
-      <span>Diff.</span>
-      <span></span>
-    </div>
-  ` + sortedByDate.map(r => {
-    const diff = diffMap[r.id] !== undefined ? fmt(diffMap[r.id]) : fmt(computeDifferential(r.score, r.cr, r.slope));
-    const isUsed = usedIds.has(r.id);
-    return `
-      <div class="round-row ${isUsed ? 'used' : ''}">
-        <span>${r.course ? r.course + ' · ' : ''}${r.date || '—'}</span>
-        <span>${r.score}</span>
-        <span class="par-col">${r.cr} / ${r.slope}</span>
-        <span class="diff">${diff}</span>
-        <button class="del-btn" data-id="${r.id}" aria-label="Runde löschen">✕</button>
-      </div>
-    `;
-  }).join('');
+  function roundSteps(r, info){
+    const L = [];
+    if (info.status === 'noHi'){
+      L.push({t:'Für diese 9-Loch-Runde gab es zum Spielzeitpunkt noch keinen Handicap-Index.', cls:'hl'});
+      L.push({t:'Trag unter Einstellungen deinen Club-Index ein oder erfasse vorher 18-Loch-Runden.', cls:'dim'});
+      return stepsHtml(L);
+    }
+    if (r.holes === 9){
+      L.push({t:`1) SD gespielte 9 = (113 ÷ Slope) × (GBE − CR − ½ × PCC)`, cls:'dim'});
+      L.push({t:`   = (113 ÷ ${r.slope}) × (${r.gbe} − ${num(r.cr)} − ${num(0.5*r.pcc)}) = ${num(info.sdPlayed,2)}`});
+      L.push({t:`2) SD erwartete 9 = ((HCPI × 1,04) + 2,4) ÷ 2`, cls:'dim'});
+      L.push({t:`   HCPI zum Spielzeitpunkt: ${hiTxt(info.hiAtTime)}`, cls:'dim'});
+      L.push({t:`   = ((${num(info.hiAtTime)} × 1,04) + 2,4) ÷ 2 = ${num(info.expected,2)}`});
+      L.push({t:`3) SD 18 = ${num(info.sdPlayed,2)} + ${num(info.expected,2)} = ${num(info.raw,2)}`});
+      L.push({t:`   gerundet: ${num(info.sd)}`, cls:'hl'});
+    } else {
+      L.push({t:`SD = (113 ÷ Slope) × (GBE − CR − PCC)`, cls:'dim'});
+      L.push({t:`   = (113 ÷ ${r.slope}) × (${r.gbe} − ${num(r.cr)} − ${num(r.pcc,0)}) = ${num(info.raw,2)}`});
+      L.push({t:`   gerundet: ${num(info.sd)}`, cls:'hl'});
+    }
+    if (info.esr){
+      L.push({t:`Außergewöhnliche Runde: ${num(info.hiAtTime - info.raw,2)} unter dem Index. Abzug ${num(-info.esr)} auf die letzten 20 Differentials.`, cls:'hl'});
+    }
+    if (typeof info.hiAfter === 'number') L.push({t:`HCPI nach dieser Runde: ${hiTxt(info.hiAfter)}`, cls:'dim'});
+    return stepsHtml(L);
+  }
 
-  list.querySelectorAll('button[data-id]').forEach(btn => {
-    btn.addEventListener('click', () => deleteRound(btn.dataset.id));
+  function indexSteps(res){
+    const s = res.calc.steps, L = [];
+    L.push({t:`Gewertet: die letzten ${s.n} Differentials (maximal 20).`, cls:'dim'});
+    L.push({t:`Laut Tabelle zählen bei ${s.n} Ergebnis${s.n === 1 ? '' : 'sen'} die besten ${s.use}` + (s.adj ? `, Anpassung ${num(s.adj)}.` : '.'), cls:'dim'});
+    const withEsr = s.best.some(b => b.esr);
+    L.push({t:`Beste ${s.use}: ` + s.best.map(b => num(b.adj) + (b.esr ? '*' : '')).join(' · ')});
+    if (withEsr) L.push({t:`* mit Abzug für außergewöhnliche Runden`, cls:'dim'});
+    L.push({t:`Durchschnitt = ${num(s.avg,2)}` + (s.adj ? `, ${num(s.adj)} = ${num(s.avg + s.adj,2)}` : '')});
+    L.push({t:`gerundet: ${num(s.base)}`});
+    if (typeof s.low === 'number'){
+      L.push({t:`Tiefster Index der letzten 365 Tage: ${hiTxt(s.low)}`, cls:'dim'});
+      if (typeof s.capped === 'number') L.push({t:`Cap greift: über +3,0 zählt nur die Hälfte, maximal +5,0 → ${hiTxt(s.capped)}`, cls:'hl'});
+    }
+    if (s.max54) L.push({t:`Höchstwert 54,0 greift.`, cls:'hl'});
+    if (s.brake) L.push({t:`26,5-Bremse: ${hiTxt(s.brake.from)} → ${hiTxt(s.brake.to)}`, cls:'hl'});
+    L.push({t:`Handicap-Index: ${hiTxt(s.hi)}`, cls:'hl'});
+    return stepsHtml(L);
+  }
+
+  let lastRes = null;
+  function render(){
+    const res = WHS.run(rounds, settings);
+    lastRes = res;
+
+    $('hiCount').textContent = rounds.length + (rounds.length === 1 ? ' Runde' : ' Runden');
+    if (res.hi !== null){
+      $('hiValue').textContent = hiTxt(res.hi);
+      const s = res.calc.steps;
+      $('hiMeta').textContent = `Aus den besten ${s.use} von ${s.n} Differentials.` + (res.counted < rounds.length ? ` ${rounds.length - res.counted} Runde(n) noch nicht wertbar.` : '');
+      $('hiSteps').innerHTML = indexSteps(res);
+      $('hiWay').hidden = false;
+    } else if (settings.startHi !== null){
+      $('hiValue').textContent = hiTxt(settings.startHi);
+      $('hiMeta').textContent = 'Club-Index aus den Einstellungen. Eigene Runden fehlen noch.';
+      $('hiWay').hidden = true;
+    } else {
+      $('hiValue').textContent = '··';
+      $('hiMeta').textContent = rounds.length ? 'Die erfassten 9-Loch-Runden brauchen einen Ausgangs-Index, siehe Einstellungen.' : 'Noch keine Runden erfasst.';
+      $('hiWay').hidden = true;
+    }
+
+    const list = $('roundsList');
+    if (!rounds.length){
+      list.innerHTML = '<div class="empty">Noch keine Runden gespeichert. Die erste trägst du oben ein.</div>';
+      return;
+    }
+    const byDate = [...rounds].sort((a,b) => a.date > b.date ? -1 : a.date < b.date ? 1 : b.id - a.id);
+    list.innerHTML = byDate.map(r => {
+      const info = res.perRound[r.id] || {};
+      const used = res.usedIds.has(r.id);
+      const out = info.status === 'ok' && !res.windowIds.has(r.id);
+      const diff = info.status === 'ok' ? num(info.sd) : '··';
+      return `<details class="round${used ? ' used' : ''}${out ? ' out' : ''}">
+        <summary>
+          <span class="where"><b>${esc(r.course || 'Ohne Platzname')}</b>${r.holes === 9 ? '<span class="h9">9L</span>' : ''}<br>${dateTxt(r.date)}</span>
+          <span class="gbe">${r.gbe}</span>
+          <span class="dim">${num(r.cr)}/${r.slope}</span>
+          <span class="diff">${diff}</span>
+        </summary>
+        <div class="body">
+          <div class="steps">${roundSteps(r, info)}</div>
+          <button class="del-btn" type="button" data-id="${r.id}">Runde löschen</button>
+        </div>
+      </details>`;
+    }).join('');
+    list.querySelectorAll('.del-btn').forEach(b => b.addEventListener('click', () => {
+      if (!confirm('Diese Runde löschen?')) return;
+      rounds = rounds.filter(r => r.id !== Number(b.dataset.id));
+      save(K_ROUNDS, rounds);
+      render();
+    }));
+  }
+
+  function updateHolesHint(){
+    const h = holes('holes');
+    $('holesHint').textContent = h === 9
+      ? 'Bei 9 Löchern die 9-Loch-Werte von der Scorekarte eintragen (CR etwa halb so groß wie bei 18). Die PCC des Tages einfach übernehmen, der Rechner halbiert sie.'
+      : 'Bei 18 Löchern die Werte für 18 Löcher eintragen. Die PCC steht auf der Ergebnisliste und ist meistens 0.';
+    $('gbe').placeholder = h === 9 ? 'z. B. 45' : 'z. B. 89';
+    $('cr').placeholder = h === 9 ? 'z. B. 35.6' : 'z. B. 71.2';
+    $('par').placeholder = h === 9 ? 'z. B. 36' : 'z. B. 72';
+    autofillRound();
+  }
+
+  function autofillRound(){
+    const c = courses.find(c => c.key === courseKey($('course').value, holes('holes')));
+    if (!c) return;
+    $('cr').value = c.cr; $('slope').value = c.slope; if (c.par) $('par').value = c.par;
+  }
+
+  function readNum(id){ const v = $(id).value.trim().replace(',', '.'); return v === '' ? NaN : Number(v); }
+
+  // Initialwerte
+  $('date').value = new Date().toISOString().slice(0,10);
+  if (settings.startHi !== null) $('startHi').value = settings.startHi;
+  $('brake').checked = settings.brake !== false;
+
+  document.querySelectorAll('input[name="holes"]').forEach(i => i.addEventListener('change', updateHolesHint));
+  document.querySelectorAll('input[name="chHoles"]').forEach(i => i.addEventListener('change', renderCourses));
+  $('course').addEventListener('change', autofillRound);
+  $('course').addEventListener('input', autofillRound);
+
+  $('chCourse').addEventListener('change', () => {
+    const c = courses.find(c => c.key === $('chCourse').value);
+    if (!c) return;
+    $('chCr').value = c.cr; $('chSlope').value = c.slope; $('chPar').value = c.par || '';
   });
-}
 
-function deleteRound(id){
-  rounds = rounds.filter(r => String(r.id) !== String(id));
-  saveRounds();
+  $('addRound').addEventListener('click', () => {
+    const h = holes('holes');
+    const gbe = readNum('gbe'), cr = readNum('cr'), slope = readNum('slope'), par = readNum('par');
+    const pcc = Number($('pcc').value);
+    const date = $('date').value || new Date().toISOString().slice(0,10);
+    const course = $('course').value.trim();
+    const el = $('addMsg');
+
+    if (!isFinite(gbe) || !isFinite(cr) || !isFinite(slope)) return msg(el, 'Bitte GBE, Course Rating und Slope eintragen.', true);
+    if (slope < 55 || slope > 155) return msg(el, 'Der Slope-Wert wirkt ungewöhnlich. Bitte auf der Scorekarte prüfen.', true);
+    const crMin = h === 9 ? 25 : 50, crMax = h === 9 ? 45 : 85;
+    if (cr < crMin || cr > crMax) return msg(el, h === 9 ? 'Das Course Rating passt nicht zu 9 Löchern. Steht auf der Karte vielleicht der 18-Loch-Wert?' : 'Das Course Rating wirkt ungewöhnlich. Bitte prüfen.', true);
+    if (gbe < cr - 20 || gbe > cr + 80) return msg(el, 'Das GBE passt nicht zum Course Rating. Bitte prüfen.', true);
+
+    rounds.push({id: Date.now(), date, course, holes: h, gbe, cr, slope, par: isFinite(par) ? par : null, pcc});
+    if (!save(K_ROUNDS, rounds)) return msg(el, 'Speichern hat nicht geklappt. Im privaten Modus blockiert der Browser das.', true);
+    rememberCourse(course, h, cr, slope, isFinite(par) ? par : null);
+    renderCourses();
+    render();
+
+    const info = lastRes.perRound[rounds[rounds.length - 1].id];
+    msg(el, info && info.status === 'ok' ? `Gespeichert. Differential ${num(info.sd)}.` : 'Gespeichert. Für die Wertung fehlt noch ein Ausgangs-Index.');
+    $('gbe').value = '';
+  });
+
+  $('calcCH').addEventListener('click', () => {
+    const h = holes('chHoles');
+    const cr = readNum('chCr'), slope = readNum('chSlope'), par = readNum('chPar');
+    let hi = readNum('chHi'), src = 'eingetragen';
+    const el = $('chMsg');
+    if (!isFinite(hi)){
+      if (lastRes && lastRes.hi !== null){ hi = lastRes.hi; src = 'aus deinen Runden'; }
+      else if (settings.startHi !== null){ hi = settings.startHi; src = 'Club-Index aus den Einstellungen'; }
+    }
+    $('chResult').hidden = true;
+    if (!isFinite(hi)) return msg(el, 'Es fehlt ein Handicap-Index. Runden erfassen oder oben einen Wert eintragen.', true);
+    if (!isFinite(cr) || !isFinite(slope) || !isFinite(par)) return msg(el, 'Bitte Course Rating, Slope und Par eintragen.', true);
+    msg(el, '');
+
+    const res = WHS.courseHandicap(hi, cr, slope, par, h);
+    $('chBig').textContent = res.ch;
+    $('chCap').textContent = `Vorgabeschläge über ${h} Löcher, mit HCPI ${hiTxt(hi)} (${src}).`;
+    const L = [];
+    if (h === 9){
+      L.push({t:'CH = (HCPI ÷ 2) × (Slope ÷ 113) + (CR − Par)', cls:'dim'});
+      L.push({t:`HCPI ÷ 2 = ${num(hi)} ÷ 2 = ${num(res.half)} (auf Zehntel gerundet)`, cls:'dim'});
+      L.push({t:`   = ${num(res.half)} × (${slope} ÷ 113) + (${num(cr)} − ${par}) = ${num(res.val,2)}`});
+    } else {
+      L.push({t:'CH = HCPI × (Slope ÷ 113) + (CR − Par)', cls:'dim'});
+      L.push({t:`   = ${num(hi)} × (${slope} ÷ 113) + (${num(cr)} − ${par}) = ${num(res.val,2)}`});
+    }
+    L.push({t:`gerundet auf ganze Schläge: ${res.ch}`, cls:'hl'});
+    $('chSteps').innerHTML = stepsHtml(L);
+    $('chResult').hidden = false;
+  });
+
+  $('saveSettings').addEventListener('click', () => {
+    const v = readNum('startHi');
+    if ($('startHi').value.trim() !== '' && (!isFinite(v) || v < -10 || v > 54)) return msg($('setMsg'), 'Der Index muss zwischen +10 und 54 liegen.', true);
+    settings.startHi = isFinite(v) ? v : null;
+    settings.brake = $('brake').checked;
+    save(K_SET, settings);
+    render();
+    msg($('setMsg'), 'Übernommen.');
+  });
+
+  $('exportBtn').addEventListener('click', () => {
+    const data = JSON.stringify({version: 2, exported: new Date().toISOString(), rounds, courses, settings}, null, 2);
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([data], {type: 'application/json'}));
+    a.download = 'handicap-rechner-' + new Date().toISOString().slice(0,10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    msg($('setMsg'), 'Export erstellt.');
+  });
+  $('importBtn').addEventListener('click', () => $('importFile').click());
+  $('importFile').addEventListener('change', e => {
+    const f = e.target.files[0]; if (!f) return;
+    const rd = new FileReader();
+    rd.onload = () => {
+      try {
+        const d = JSON.parse(rd.result);
+        if (!Array.isArray(d.rounds)) throw new Error();
+        if (!confirm(`${d.rounds.length} Runden importieren? Die aktuelle Liste wird ersetzt.`)) return;
+        save(K_ROUNDS, d.rounds); save(K_COURSES, d.courses || []); save(K_SET, d.settings || {});
+        location.reload();
+      } catch(err){ msg($('setMsg'), 'Die Datei ließ sich nicht lesen.', true); }
+    };
+    rd.readAsText(f);
+    e.target.value = '';
+  });
+  $('wipeBtn').addEventListener('click', () => {
+    if (!confirm('Alle Runden, Plätze und Einstellungen in diesem Browser löschen?')) return;
+    [K_ROUNDS, K_COURSES, K_SET].forEach(k => { try { localStorage.removeItem(k); } catch(e){} });
+    location.reload();
+  });
+
+  renderCourses();
   render();
-}
-
-document.getElementById('addRound').addEventListener('click', () => {
-  const score = parseFloat(document.getElementById('score').value);
-  const cr = parseFloat(document.getElementById('cr').value);
-  const slope = parseFloat(document.getElementById('slope').value);
-  const date = document.getElementById('date').value || new Date().toISOString().slice(0,10);
-  const course = document.getElementById('course').value.trim();
-
-  if(!score || !cr || !slope){
-    alert('Bitte Score, Course Rating und Slope ausfüllen.');
-    return;
-  }
-  if(slope < 55 || slope > 155){
-    alert('Slope liegt normalerweise zwischen 55 und 155.');
-    return;
-  }
-
-  rounds.push({ id: Date.now(), score, cr, slope, date, course });
-  saveRounds();
-  render();
-
-  document.getElementById('score').value = '';
-  document.getElementById('cr').value = '';
-  document.getElementById('slope').value = '';
-  document.getElementById('course').value = '';
-  document.getElementById('date').value = '';
-});
-
-document.getElementById('calcCH').addEventListener('click', () => {
-  const slope = parseFloat(document.getElementById('targetSlope').value);
-  const cr = parseFloat(document.getElementById('targetCr').value);
-  const par = parseFloat(document.getElementById('targetPar').value);
-  const result = computeHandicapIndex(rounds);
-  const resultEl = document.getElementById('chResult');
-
-  if(!result){
-    resultEl.textContent = 'Es werden mindestens 3 Runden benötigt, um einen Golf-Handicap-Index zu berechnen.';
-    return;
-  }
-  if(!slope || !cr || !par){
-    resultEl.textContent = 'Bitte Slope, Course Rating und Par ausfüllen.';
-    return;
-  }
-
-  const ch = result.hi * (slope / 113) + (cr - par);
-  resultEl.innerHTML = `Course Handicap: <strong>${Math.round(ch)}</strong> (Index ${fmt(result.hi)})`;
-});
-
-loadRounds();
+})();
 </script>
 </body>
 </html>
