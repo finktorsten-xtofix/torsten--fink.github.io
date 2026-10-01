@@ -55,14 +55,6 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 ├── sitemap.xml · robots.txt · llms.txt · 404.html · CNAME
 ```
 
-## Pflegehinweise (Notizen an mich selbst)
-
-1. **Bilder vor dem Upload optimieren:** max. 1600 px, JPEG-Qualität ~82, Ziel < 600 KB. Keine Umlaute oder Leerzeichen in Dateinamen.
-2. **Ordner beachten:** Story-Bilder nach `assets/images/stories/`, Story-Seiten nach `stories/` — beim GitHub-Upload immer erst **in den Zielordner navigieren**, dann hochladen.
-3. **Neue Geschichte = sechs Baustellen:** Story-HTML, Quellenverzeichnis am Artikelende, Eintrag in `index.html` (Liste + JSON-LD + ggf. Galerie), `sitemap.xml`, `llms.txt`, Pager-Links der Nachbar-Stories.
-4. **CNAME-Datei** und Custom-Domain-Einstellung nicht anfassen — sonst startet die Zertifikats-Ausstellung neu.
-5. Nach jedem Inhalts-Update: neue URL in der Google Search Console zur Indexierung einreichen.
-
 ## Rechtliches
 
 Alle Fotografien und Texte © Torsten Fink. Alle Rechte vorbehalten — keine Nutzung ohne schriftliche Zustimmung.
