@@ -29,13 +29,14 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 
 | Tool | Beschreibung |
 |---|---|
-| [Handicap-Rechner](https://torsten-fink.de/tools/handicap-rechner.html) | Golf-Handicap-Index nach WHS-Näherung, Course-Handicap-Berechnung. Reines Vanilla-JS, Speicherung nur im `localStorage` des Browsers, keine Anmeldung, kein Server-Backend. |
+| [Handicap-Rechner](https://torsten-fink.de/tools/handicap-rechner.html) | Score Differential, Handicap-Index und Course Handicap nach WHS inkl. 9-Loch-Runden, PCC, außergewöhnlichen Runden, Soft/Hard Cap und 26,5-Bremse, Rechenweg zum Aufklappen. Reines Vanilla-JS, Speicherung nur im `localStorage` des Browsers, Export/Import als JSON, keine Anmeldung, kein Server-Backend. |
 | [Jetlag-Rechner](https://torsten-fink.de/tools/jetlag-rechner.html) | Zeitzonen-Unterschied inkl. Sommer-/Winterzeit berechnen, Tag-für-Tag-Anpassungsplan. Verlinkt aus Tokio, Kamakura, Hongkong und Singapur. Reines Vanilla-JS, keine Anmeldung, kein Server-Backend. |
 
 ## Technik
 
 - **Hosting:** GitHub Pages, Custom Domain `torsten-fink.de` (CNAME-Datei im Root — nicht löschen!), HTTPS erzwungen
-- **Stack:** Pures HTML/CSS, kein Framework, kein Build-Prozess, keine Cookies, kein Tracking
+- **Stack:** Pures HTML/CSS, kein Framework, kein Build-Prozess, keine Cookies
+- **Reichweitenmessung:** Umami Cloud, cookielos, auf allen Seiten eingebunden. Der Handicap-Rechner speichert Eingaben nur im `localStorage` des Browsers. Details in `datenschutz.html`, Abschnitte 5 und 6.
 - **Design:** Dunkles Kino-Theme, EXIF-Daten als Gestaltungselement, japanische Typografie, Filmstreifen-Galerie
 - **Schriften:** Syne · Instrument Sans · IBM Plex Mono · Noto Serif JP (Google Fonts)
 - **SEO/KI:** JSON-LD (Person, WebSite, Blog + BlogPostings), `sitemap.xml`, `robots.txt`, `llms.txt`, Open Graph, Twitter Cards, Quellenverzeichnis am Ende jeder Story (Kicker „Quellen & Recherche", verlinkte Quellenliste als GEO-Signal)
