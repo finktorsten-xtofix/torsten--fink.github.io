@@ -30,13 +30,14 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 | Tool | Beschreibung |
 |---|---|
 | [Handicap-Rechner](https://torsten-fink.de/tools/handicap-rechner.html) | Score Differential, Handicap-Index und Course Handicap nach WHS inkl. 9-Loch-Runden, PCC, außergewöhnlichen Runden, Soft/Hard Cap und 26,5-Bremse, Rechenweg zum Aufklappen. Reines Vanilla-JS, Speicherung nur im `localStorage` des Browsers, Export/Import als JSON, keine Anmeldung, kein Server-Backend. |
+| [Stableford-Rechner](https://torsten-fink.de/tools/stableford-rechner.html) | Playing Handicap nach WHS mit Vorgabe-Prozentsatz, Vorgabeschläge pro Loch nach Stroke Index inkl. Plus-Handicaps, Netto- und Bruttopunkte für 18 oder 9 Löcher, Rechenweg zum Aufklappen. Speichert laufende Runde und gemerkte Plätze im `localStorage`, übernimmt den Index aus dem Handicap-Rechner (`golf:hi`). Plätze lassen sich per Link teilen (Daten im URL-Hash, Umami mit `data-exclude-hash`). |
 | [Jetlag-Rechner](https://torsten-fink.de/tools/jetlag-rechner.html) | Zeitzonen-Unterschied inkl. Sommer-/Winterzeit berechnen, Tag-für-Tag-Anpassungsplan. Verlinkt aus Tokio, Kamakura, Hongkong und Singapur. Reines Vanilla-JS, keine Anmeldung, kein Server-Backend. |
 
 ## Technik
 
 - **Hosting:** GitHub Pages, Custom Domain `torsten-fink.de` (CNAME-Datei im Root — nicht löschen!), HTTPS erzwungen
 - **Stack:** Pures HTML/CSS, kein Framework, kein Build-Prozess, keine Cookies
-- **Reichweitenmessung:** Umami Cloud, cookielos, auf allen Seiten eingebunden. Der Handicap-Rechner speichert Eingaben nur im `localStorage` des Browsers. Details in `datenschutz.html`, Abschnitte 5 und 6.
+- **Reichweitenmessung:** Umami Cloud, cookielos, auf allen Seiten eingebunden. Handicap-Rechner und Stableford-Rechner speichern Eingaben nur im `localStorage` des Browsers. Details in `datenschutz.html`, Abschnitte 5 und 6.
 - **Design:** Dunkles Kino-Theme, EXIF-Daten als Gestaltungselement, japanische Typografie, Filmstreifen-Galerie
 - **Schriften:** Syne · Instrument Sans · IBM Plex Mono · Noto Serif JP (Google Fonts)
 - **SEO/KI:** JSON-LD (Person, WebSite, Blog + BlogPostings), `sitemap.xml`, `robots.txt`, `llms.txt`, Open Graph, Twitter Cards, Quellenverzeichnis am Ende jeder Story (Kicker „Quellen & Recherche", verlinkte Quellenliste als GEO-Signal)
@@ -46,7 +47,7 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 ```
 ├── index.html            Startseite
 ├── stories/              Neun Reisegeschichten + eine Golf-Story (Herzogenaurach)
-├── tools/                Interaktive Tools (z. B. Handicap-Rechner)
+├── tools/                Interaktive Tools: Handicap-Rechner, Stableford-Rechner, Jetlag-Rechner
 ├── assets/
 │   ├── css/story.css     Stylesheet der Unterseiten
 │   └── images/           Optimierte Fotos (Startseite + stories/)

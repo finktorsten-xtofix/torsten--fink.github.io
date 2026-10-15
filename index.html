@@ -37,7 +37,7 @@
       "knowsAbout":["Reisefotografie","Tokio","Hongkong","Tessin","Türkische Riviera","Golf"],
       "knowsLanguage":["de","en","ru"],
       "sameAs":[
-        "https://www.instagram.com/xtofix",
+        "https://www.instagram.com/torstenfinkbayern/",
         "https://x.com/finktorsten",
         "https://www.linkedin.com/in/torsten-fink-20220860"
       ]
@@ -252,6 +252,19 @@ blockquote footer{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;te
 .golf-pics figcaption b{color:var(--brass);font-weight:500}
 @media(max-width:680px){.golf-pics{grid-template-columns:1fr}.golf-pics figure:last-child img{aspect-ratio:3/2}}
 
+/* tools */
+.tools{background:var(--night-2);border-top:1px solid var(--line)}
+.tools-lede{color:var(--paper-dim);max-width:58ch;margin:-6px 0 34px}
+.tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,20px)}
+.tool-card{display:flex;flex-direction:column;min-width:0;border:1px solid var(--line);border-radius:12px;background:var(--night);
+  padding:clamp(20px,2.6vw,28px);text-decoration:none;transition:background .3s,border-color .3s}
+.tool-card:hover{background:rgba(255,92,138,.06);border-color:rgba(255,92,138,.4)}
+.tool-card .tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+.tool-card h3{font-family:var(--display);font-weight:700;font-size:clamp(1.1rem,1.8vw,1.35rem);line-height:1.25;margin-bottom:10px}
+.tool-card p{color:var(--paper-dim);font-size:.92rem;flex:1}
+.tool-card .go{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--neon);margin-top:20px}
+@media(max-width:900px){.tool-grid{grid-template-columns:minmax(0,1fr)}}
+
 /* footer */
 footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;background:var(--night-2)}
 .foot{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:34px;align-items:end}
@@ -285,6 +298,7 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
     <li><a href="#geschichten">Geschichten</a></li>
     <li><a href="#galerie">Galerie</a></li>
     <li><a href="#golf">Golf</a></li>
+    <li><a href="#tools">Tools</a></li>
   </ul>
   <button class="navtoggle" id="navToggle" aria-expanded="false" aria-controls="navMobile" aria-label="Menü öffnen"><span></span></button>
 </nav>
@@ -295,6 +309,7 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
   <a href="#geschichten">Geschichten</a>
   <a href="#galerie">Galerie</a>
   <a href="#golf">Golf</a>
+  <a href="#tools">Tools</a>
 </div>
 
 <header class="hero" id="top">
@@ -561,6 +576,34 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
   </div>
 </section>
 
+<section id="tools" class="tools">
+  <div class="wrap">
+    <p class="kicker reveal">Tools</p>
+    <h2 class="reveal">Drei Rechner, null Anmeldung</h2>
+    <p class="tools-lede reveal">Kleine Rechner für den Golfplatz und für lange Flüge. Deine Eingaben bleiben im Browser, ein Konto braucht es nicht.</p>
+    <div class="tool-grid reveal">
+      <a class="tool-card" href="tools/handicap-rechner.html">
+        <span class="tag">Golf · WHS</span>
+        <h3>Golf-Handicap-Rechner</h3>
+        <p>Handicap-Index und Course Handicap nach dem World Handicap System. 9-Loch-Runden inklusive, jeder Rechenschritt zum Aufklappen.</p>
+        <span class="go">Rechner öffnen →</span>
+      </a>
+      <a class="tool-card" href="tools/stableford-rechner.html">
+        <span class="tag">Golf · Stableford</span>
+        <h3>Stableford-Rechner</h3>
+        <p>Vorgabeschläge pro Loch nach Stroke Index, dazu Netto- und Bruttopunkte. Läuft auf dem Handy mit, während du spielst.</p>
+        <span class="go">Rechner öffnen →</span>
+      </a>
+      <a class="tool-card" href="tools/jetlag-rechner.html">
+        <span class="tag">Reise · Zeitzonen</span>
+        <h3>Jetlag-Rechner</h3>
+        <p>Zeitverschiebung berechnen und die innere Uhr Tag für Tag auf das Reiseziel umstellen.</p>
+        <span class="go">Rechner öffnen →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="foot">
     <div>
@@ -569,7 +612,7 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
       <a class="mail" href="mailto:fink.torsten@gmail.com">fink.torsten@gmail.com</a>
     </div>
     <div class="socials">
-      <a href="https://www.instagram.com/xtofix" rel="noopener">Instagram</a>
+      <a href="https://www.instagram.com/torstenfinkbayern/" rel="noopener">Instagram</a>
       <a href="https://x.com/finktorsten" rel="noopener">X&nbsp;/&nbsp;Twitter</a>
       <a href="https://www.linkedin.com/in/torsten-fink-20220860" rel="noopener">LinkedIn</a>
     </div>
