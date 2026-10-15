@@ -1,0 +1,71 @@
+# Meldet geänderte Seiten per IndexNow an Bing und die anderen teilnehmenden
+# Suchmaschinen (Yandex, Seznam, Naver, Yep u. a.). Google nimmt nicht teil.
+# Doku: https://www.indexnow.org/documentation
+#
+# - Nach jedem Push auf main: alle neuen oder geänderten HTML-Seiten
+# - Von Hand (Actions > IndexNow > Run workflow): alle Seiten aus sitemap.xml
+#
+# Der Schlüssel liegt öffentlich in /705f3334de5bd9d14abfc21e1fd270c6.txt, das ist so vorgesehen.
+
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths: ['**.html']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    env:
+      HOST: torsten-fink.de
+      KEY: 705f3334de5bd9d14abfc21e1fd270c6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Geänderte Seiten ermitteln
+        id: urls
+        run: |
+          set -euo pipefail
+          BEFORE="${{ github.event.before }}"
+          if [ "${{ github.event_name }}" = "push" ] && [ -n "$BEFORE" ] \
+             && [ "$BEFORE" != "0000000000000000000000000000000000000000" ] \
+             && git cat-file -e "$BEFORE" 2>/dev/null; then
+            git diff --name-only --diff-filter=AMR "$BEFORE" "$GITHUB_SHA" -- '*.html' \
+              | grep -v '^404\.html$' \
+              | sed -e 's#^index\.html$##' -e "s#^#https://$HOST/#" > urls.txt || true
+          else
+            grep -o '<loc>[^<]*</loc>' sitemap.xml | sed -e 's#<loc>##' -e 's#</loc>##' > urls.txt
+          fi
+          echo "Zu melden:"; cat urls.txt
+          echo "count=$(grep -c . urls.txt || true)" >> "$GITHUB_OUTPUT"
+
+      - name: Warten, bis GitHub Pages die neue Fassung ausliefert
+        if: steps.urls.outputs.count != '0'
+        run: |
+          for i in $(seq 1 20); do
+            if curl -fsS "https://$HOST/$KEY.txt" | grep -qx "$KEY"; then break; fi
+            sleep 15
+          done
+          sleep 90
+
+      - name: An IndexNow senden
+        if: steps.urls.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          jq -Rn --arg host "$HOST" --arg key "$KEY" \
+            --arg loc "https://$HOST/$KEY.txt" \
+            '{host:$host, key:$key, keyLocation:$loc, urlList:[inputs | select(length>0)]}' \
+            < urls.txt > payload.json
+          cat payload.json
+          code=$(curl -sS -o resp.txt -w '%{http_code}' -X POST \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data @payload.json https://api.indexnow.org/indexnow)
+          echo "Antwort: $code"; cat resp.txt || true
+          case "$code" in 200|202) ;; *) exit 1 ;; esac
