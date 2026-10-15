@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Stableford-Rechner: Punkte pro Loch mit Vorgabe berechnen</title>
+<meta name="description" content="Stableford-Punkte berechnen: Playing Handicap nach WHS, Vorgabeschläge pro Loch nach Stroke Index, Netto- und Bruttopunkte. Jeder Schritt sichtbar.">
+<meta name="author" content="Torsten Fink">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://torsten-fink.de/tools/stableford-rechner.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Stableford-Rechner: Punkte pro Loch mit Vorgabe berechnen">
+<meta property="og:description" content="Stableford-Punkte berechnen: Playing Handicap nach WHS, Vorgabeschläge pro Loch nach Stroke Index, Netto- und Bruttopunkte. Jeder Schritt sichtbar.">
+<meta property="og:url" content="https://torsten-fink.de/tools/stableford-rechner.html">
+<meta name="theme-color" content="#0B0D12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B0D12'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23FF5C8A' font-family='sans-serif' font-weight='bold'%3ETF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&amp;family=Instrument+Sans:ital,wght@0,400;0,500;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/story.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Stableford-Rechner",
+  "url":"https://torsten-fink.de/tools/stableford-rechner.html",
+  "applicationCategory":"SportsApplication",
+  "operatingSystem":"Browser",
+  "inLanguage":"de",
+  "isAccessibleForFree":true,
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+  "description":"Berechnet Playing Handicap nach dem World Handicap System, verteilt die Vorgabeschläge nach Stroke Index auf die Löcher und zählt Netto- und Brutto-Stablefordpunkte für 18 oder 9 Löcher, mit sichtbarem Rechenweg.",
+  "datePublished":"2026-10-15T00:00:00+02:00",
+  "dateModified":"2026-10-15T00:00:00+02:00",
+  "author":{"@type":"Person","@id":"https://torsten-fink.de/#person","name":"Torsten Fink","url":"https://torsten-fink.de/"}
+}
+</script>
+<style>
+  .tool-hero{padding:120px clamp(20px,6vw,80px) 40px;max-width:860px;margin:0 auto}
+  .tool-hero h1{font-size:clamp(2rem,6vw,3.4rem)}
+  .tool-hero .sub{max-width:60ch}
+  .tool-wrap{max-width:760px;margin:0 auto;padding:0 clamp(16px,6vw,40px) 40px}
+
+  .card{border:1px solid var(--line);background:var(--night-2);padding:clamp(18px,3vw,32px);margin-bottom:22px}
+  .card h2{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:0 0 18px;color:var(--paper);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .card h2 .tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--neon);border:1px solid var(--neon);padding:3px 8px}
+  .card h3{font-family:var(--display);font-weight:700;font-size:.98rem;color:var(--paper);margin:22px 0 10px}
+  .card p{font-size:.95rem;line-height:1.7;color:#CFCabf;margin:0 0 12px}
+  .card p:last-child{margin-bottom:0}
+  .note{font-size:.82rem!important;color:var(--paper-dim)!important}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .field{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .field.full{grid-column:1/-1}
+  .field[hidden]{display:none}
+  label,.lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
+  input,select{background:var(--night);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:1rem;padding:11px 12px;width:100%;border-radius:0}
+  input:focus,select:focus{outline:none;border-color:var(--neon)}
+  input::placeholder{color:#5a5a62}
+  input[readonly]{color:var(--brass);border-style:dashed}
+  input.bad,select.bad{border-color:var(--neon)}
+
+  .seg{display:flex;border:1px solid var(--line)}
+  .seg label{flex:1;text-align:center;padding:11px 8px;cursor:pointer;font-size:.7rem;color:var(--paper-dim);transition:.2s;position:relative}
+  .seg input{position:absolute;opacity:0;width:1px;height:1px}
+  .seg label:has(input:checked){background:var(--neon);color:var(--night)}
+  .seg label:has(input:focus-visible){outline:2px solid var(--neon);outline-offset:2px}
+
+  .check{display:flex;gap:10px;align-items:flex-start;font-family:var(--body);font-size:.9rem;letter-spacing:0;text-transform:none;color:#CFCabf;cursor:pointer;margin-top:14px}
+  .check input{width:18px;height:18px;margin-top:3px;flex:0 0 auto;accent-color:var(--neon);padding:0}
+
+  .btn{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--neon);
+    background:transparent;border:1px solid var(--neon);padding:13px 22px;width:100%;margin-top:16px;cursor:pointer;transition:.25s}
+  .btn:hover{background:var(--neon);color:var(--night)}
+  .btn:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+  .btn.ghost{color:var(--paper-dim);border-color:var(--line)}
+  .btn.ghost:hover{color:var(--night);background:var(--paper-dim)}
+  .btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .btn-row .btn{margin-top:10px}
+
+  .msg{font-size:.85rem;margin-top:12px;min-height:1em;color:var(--brass)}
+  .msg.err{color:var(--neon)}
+
+  .result{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+  .big{font-family:var(--mono);font-size:2.2rem;color:var(--neon);line-height:1}
+  .cap{font-size:.85rem;color:var(--paper-dim);margin-top:6px}
+
+  .score-hero{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .score-hero .big{font-size:3.4rem}
+  .score-side{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim);text-align:right;line-height:1.9}
+  .score-side b{color:var(--paper);font-weight:500}
+
+  details.way{margin-top:14px;border:1px solid var(--line);background:var(--night)}
+  details.way summary{cursor:pointer;padding:10px 14px;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);list-style:none}
+  details.way summary::-webkit-details-marker{display:none}
+  details.way summary::before{content:"+ ";color:var(--neon)}
+  details.way[open] summary::before{content:"− "}
+  .steps{padding:4px 14px 14px;font-family:var(--mono);font-size:.76rem;line-height:1.75;color:#CFCabf;overflow-x:auto}
+  .steps div{white-space:pre-wrap;word-break:break-word}
+  .steps .hl{color:var(--neon)}
+  .steps .dim{color:var(--paper-dim)}
+
+  /* Scorekarte */
+  .sc{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.8rem;table-layout:fixed}
+  .sc th{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim);font-weight:400;padding:0 3px 8px;text-align:center}
+  .sc td{padding:3px;text-align:center;border-top:1px solid var(--line);color:var(--paper)}
+  .sc td.no{color:var(--brass)}
+  .sc td.vg,.sc td.zero{color:var(--paper-dim)}
+  .sc td.vg.has{color:var(--paper)}
+  .sc td.vg.minus{color:var(--brass)}
+  .sc td.pts{color:var(--neon);font-weight:500;font-size:.95rem}
+  .sc td.pts.nil{color:#5a5a62}
+  .sc input,.sc select{padding:8px 2px;font-size:.92rem;text-align:center;text-align-last:center}
+  .sc select{appearance:none;-webkit-appearance:none}
+  .sc tr.sum td{border-top:1px solid var(--paper-dim);color:var(--paper-dim);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:9px 3px}
+  .sc tr.sum td.pts{color:var(--neon);font-size:.95rem;letter-spacing:0}
+  .sc col.c-no{width:11%}.sc col.c-par{width:15%}.sc col.c-si{width:15%}.sc col.c-vg{width:11%}
+  .sc col.c-zero{width:12%}.sc col.c-sc{width:20%}.sc col.c-pts{width:16%}
+  .card p.legend{font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;line-height:1.7;color:var(--paper-dim);margin-top:12px}
+  .card p.legend b{color:var(--paper);font-weight:500}
+
+  .ptable{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:.78rem;margin:6px 0 14px}
+  .ptable td{padding:7px 8px;border-top:1px solid var(--line);color:#CFCabf}
+  .ptable td:last-child{text-align:right;color:var(--neon);width:5em}
+
+  .limits{margin:0;padding:0 0 0 1.1em;color:#CFCabf;font-size:.9rem;line-height:1.65}
+  .limits li{margin-bottom:.7em}
+  .limits strong{color:var(--paper);font-weight:500}
+
+  .sources{margin:40px 0 0;padding-top:30px;border-top:1px solid rgba(236,231,220,.14)}
+  .sources .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+  .sources p{color:var(--paper-dim);font-size:.92rem;line-height:1.6;max-width:66ch;margin-bottom:16px}
+  .sources ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;row-gap:8px;font-family:var(--mono);font-size:.78rem;line-height:1.7}
+  .sources li{color:#5B5850}
+  .sources li:not(:last-child)::after{content:"·";color:var(--neon);margin:0 12px;font-size:.9em}
+  .sources a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(236,231,220,.28);padding-bottom:1px;transition:color .2s,border-color .2s}
+  .sources a:hover,.sources a:focus-visible{color:var(--neon);border-color:var(--neon)}
+
+  @media(max-width:560px){
+    .score-hero .big{font-size:2.8rem}
+    .sc{font-size:.74rem}
+    .sc input,.sc select{font-size:.86rem;padding:8px 0}
+    .sc th{font-size:.52rem;letter-spacing:.06em}
+  }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="b191da8b-4e9a-4245-b89f-618b3c6250c9" data-exclude-hash="true"></script>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="../index.html">Torsten<em>·</em>Fink</a>
+  <a class="back" href="../index.html">← Startseite</a>
+</nav>
+
+<div class="tool-hero">
+  <p class="exif"><span>Tools</span><span class="dot">·</span><span>Golf</span><span class="dot">·</span><span>Stableford</span></p>
+  <h1>Stableford-Rechner</h1>
+  <p class="sub">Aus Handicap-Index und Scorekarte werden die Vorgabeschläge pro Loch, aus den Vorgabeschlägen deine Stablefordpunkte. Netto wie Brutto, jeder Schritt zum Aufklappen.</p>
+</div>
+
+<div class="tool-wrap">
+
+  <div class="card">
+    <p>Oben die Werte von der Scorekarte, darunter Loch für Loch deine Schläge. Die Punkte laufen sofort mit, das klappt auch auf dem Handy während der Runde.</p>
+    <p>Gespeichert wird ausschließlich in diesem Browser. Kein Konto, kein Upload, kein Server. Die laufende Runde überlebt so auch einen neu geladenen Tab, und jeden Platz, den du einmal merkst, hast du beim nächsten Mal sofort wieder. Wer schon den <a href="handicap-rechner.html">Handicap-Rechner</a> nutzt, bekommt seinen Index hier automatisch eingetragen.</p>
+    <p class="note">Verbindlich ist die Ergebnisliste deines Clubs. Der Rechner rechnet nach den veröffentlichten Regeln nach, eine Wettspielausschreibung kann davon abweichen.</p>
+  </div>
+
+  <!-- PLAYING HANDICAP -->
+  <div class="card" id="vorgabe">
+    <h2><span class="tag">PH</span> Playing Handicap</h2>
+    <div class="grid">
+      <div class="field full">
+        <span class="lbl" id="holesLbl">Gespielte Löcher</span>
+        <div class="seg" role="radiogroup" aria-labelledby="holesLbl">
+          <label><input type="radio" name="holes" value="18" checked>18 Löcher</label>
+          <label><input type="radio" name="holes" value="9">9 Löcher</label>
+        </div>
+      </div>
+      <div class="field full" id="nineWrap" hidden>
+        <span class="lbl" id="nineLbl">Welche neun</span>
+        <div class="seg" role="radiogroup" aria-labelledby="nineLbl">
+          <label><input type="radio" name="nine" value="front" checked>Loch 1–9</label>
+          <label><input type="radio" name="nine" value="back">Loch 10–18</label>
+        </div>
+      </div>
+      <div class="field full">
+        <label for="courseSel">Gemerkter Platz (optional)</label>
+        <select id="courseSel"><option value="">Platz selbst eintragen</option></select>
+      </div>
+      <div class="field calc">
+        <label for="hi">Handicap-Index</label>
+        <input type="text" id="hi" placeholder="z. B. 18,4" inputmode="decimal" autocomplete="off">
+      </div>
+      <div class="field calc">
+        <label for="cr">Course Rating</label>
+        <input type="text" id="cr" placeholder="z. B. 71,2" inputmode="decimal" autocomplete="off">
+      </div>
+      <div class="field calc">
+        <label for="slope">Slope</label>
+        <input type="text" id="slope" placeholder="z. B. 128" inputmode="numeric" autocomplete="off">
+      </div>
+      <div class="field calc">
+        <label for="par">Par gesamt</label>
+        <input type="text" id="par" readonly tabindex="-1" placeholder="··">
+      </div>
+      <div class="field calc full">
+        <label for="allow">Vorgabe-Prozentsatz</label>
+        <select id="allow">
+          <option value="100" selected>100 % · Privatrunde</option>
+          <option value="95">95 % · Einzel-Zählspiel</option>
+          <option value="custom">Eigener Wert</option>
+        </select>
+      </div>
+      <div class="field calc" id="pctWrap" hidden>
+        <label for="pct">Prozent</label>
+        <input type="text" id="pct" placeholder="z. B. 85" inputmode="numeric" autocomplete="off">
+      </div>
+      <div class="field" id="phWrap" hidden>
+        <label for="phDirect">Playing Handicap</label>
+        <input type="text" id="phDirect" placeholder="z. B. 19 oder +2" inputmode="text" autocomplete="off">
+      </div>
+    </div>
+    <label class="check"><input type="checkbox" id="direct">Playing Handicap direkt eintragen, etwa von der Startliste</label>
+    <p class="note" id="hiSrc" style="margin-top:12px" hidden></p>
+    <p class="note" id="phHint" style="margin-top:12px">Plus-Handicaps mit Pluszeichen eintragen, also +1,2. Course Rating und Slope stehen auf der Scorekarte beim jeweiligen Abschlag. Den Prozentsatz nennt im Wettspiel die Ausschreibung. 95 Prozent empfehlen die Regeln für Einzel-Zählspiel bei Feldern von 30 bis 100 Spielern, privat spielst du mit 100.</p>
+    <div class="msg" id="phMsg" role="status" aria-live="polite"></div>
+    <div class="result" id="phResult" hidden>
+      <div class="big" id="phBig"></div>
+      <div class="cap" id="phCap"></div>
+      <details class="way">
+        <summary>Rechenweg Playing Handicap</summary>
+        <div class="steps" id="phSteps"></div>
+      </details>
+    </div>
+  </div>
+
+  <!-- SCOREKARTE -->
+  <div class="card" id="scorekarte">
+    <h2><span class="tag">Loch</span> Scorekarte</h2>
+    <table class="sc" id="scTable">
+      <colgroup><col class="c-no"><col class="c-par"><col class="c-si"><col class="c-vg"><col class="c-zero"><col class="c-sc"><col class="c-pts"></colgroup>
+      <thead><tr><th scope="col">Loch</th><th scope="col">Par</th><th scope="col">SI</th><th scope="col">Vg</th><th scope="col">0 ab</th><th scope="col">Schläge</th><th scope="col">Pkt</th></tr></thead>
+      <tbody id="scBody"></tbody>
+    </table>
+    <p class="legend"><b>SI</b> Stroke Index, die Vorgabe-Zeile der Scorekarte. <b>Vg</b> Vorgabeschläge auf diesem Loch. <b>0 ab</b> Ab dieser Schlagzahl gibt es keinen Punkt mehr. Liegt der Ball einen Schlag vorher noch nicht im Loch, darfst du aufheben. <b>Schläge</b> leer heißt nicht gespielt, 0 heißt Strich.</p>
+    <div class="btn-row">
+      <button class="btn ghost" id="allPar4" type="button">Alle Löcher Par 4</button>
+      <button class="btn ghost" id="clearScores" type="button">Neue Runde</button>
+    </div>
+    <div class="msg" id="scMsg" role="status" aria-live="polite"></div>
+
+    <h3>Platz merken</h3>
+    <div class="grid">
+      <div class="field full">
+        <label for="courseName">Platz und Abschlag</label>
+        <input type="text" id="courseName" placeholder="z. B. GC Herzogenaurach Gelb" autocomplete="off">
+      </div>
+    </div>
+    <button class="btn" id="saveCourse" type="button">Platz in diesem Browser merken</button>
+
+    <h3>Zusatz: Platz mit Mitspielern teilen</h3>
+    <p class="note">Der Link enthält nur Platzdaten: Par und Stroke Index jedes Lochs, dazu Course Rating und Slope. Deine Schläge und dein Handicap stehen nicht darin. Wer den Link öffnet, hat den Platz sofort auf seiner Scorekarte. Die Werte landen dabei sichtbar in der Adresse und im Browserverlauf. Vor der Runde bitte mit der Scorekarte des Clubs abgleichen, verbindlich sind nur deren Angaben.</p>
+    <button class="btn ghost" id="saveLink" type="button">Link zum Platz erzeugen</button>
+    <div class="msg" id="saveMsg" role="status" aria-live="polite"></div>
+  </div>
+
+  <!-- ERGEBNIS -->
+  <div class="card" id="ergebnis">
+    <h2><span class="tag">Pkt</span> Deine Stablefordpunkte</h2>
+    <div class="score-hero">
+      <div>
+        <div class="big" id="netBig">··</div>
+        <div class="cap" id="netCap">Netto, sobald das erste Loch eingetragen ist.</div>
+      </div>
+      <div class="score-side" id="side"></div>
+    </div>
+    <details class="way" id="totWay" hidden>
+      <summary>Rechenweg Loch für Loch</summary>
+      <div class="steps" id="totSteps"></div>
+    </details>
+  </div>
+
+  <!-- ERKLÄRUNG -->
+  <div class="card" id="so-geht-es">
+    <h2><span class="tag">Info</span> So entstehen die Punkte</h2>
+    <h3>1. Course Handicap</h3>
+    <p>Der Handicap-Index bezieht sich auf einen Platz mit Slope 113. Für deinen Abschlag wird er umgerechnet: Course Handicap = Handicap-Index × (Slope ÷ 113) + (Course Rating − Par). Bei 9 Löchern startet die Formel mit dem halben Index.</p>
+    <h3>2. Playing Handicap</h3>
+    <p>Im Wettspiel legt die Ausschreibung einen Prozentsatz fest. Playing Handicap = Course Handicap × Prozentsatz, erst danach wird auf ganze Schläge gerundet. Für Einzel-Zählspielformen empfehlen die Regeln 95 Prozent, bei kleinen Feldern unter 30 Spielern kommen auch 100 Prozent in Frage.</p>
+    <h3>3. Vorgabeschläge pro Loch</h3>
+    <p>Die Schläge verteilt der Stroke Index. Mit Playing Handicap 14 gibt es je einen Schlag auf den Löchern mit SI 1 bis 14. Bei mehr als 18 geht es von vorn los, SI 1 bekommt dann als erstes Loch den zweiten Schlag. Plus-Spieler geben Schläge zurück, beginnend beim Loch mit SI 18.</p>
+    <h3>4. Punkte</h3>
+    <p>Gezählt wird das Nettoergebnis, also Schläge minus Vorgabeschläge, gegen das Par des Lochs:</p>
+    <table class="ptable">
+      <tr><td>Zwei über Par oder schlechter, kein Ergebnis</td><td>0</td></tr>
+      <tr><td>Bogey, einer über Par</td><td>1</td></tr>
+      <tr><td>Par</td><td>2</td></tr>
+      <tr><td>Birdie, einer unter Par</td><td>3</td></tr>
+      <tr><td>Eagle, zwei unter Par</td><td>4</td></tr>
+      <tr><td>Albatros, drei unter Par</td><td>5</td></tr>
+      <tr><td>Vier unter Par</td><td>6</td></tr>
+    </table>
+    <p>36 Punkte über 18 Löcher entsprechen Netto-Par auf jedem Loch. Ob netto Doppelbogey oder netto Zehn, mehr als die null Punkte kostet ein schlechtes Loch nicht. Deshalb verzeiht Stableford mehr als Zählspiel.</p>
+    <h3>Ein Beispiel</h3>
+    <p>Handicap-Index 18,4 auf einem Platz mit Course Rating 71,2, Slope 128 und Par 72. Course Handicap: 18,4 × 128 ÷ 113 + (71,2 − 72) = 20,04. Bei 100 Prozent ergibt das Playing Handicap 20: ein Schlag auf jedem Loch, auf SI 1 und SI 2 je ein zweiter. Ein Par 4 mit SI 1 in sechs Schlägen ist netto Par und bringt zwei Punkte. Im Wettspiel mit 95 Prozent werden aus 20,04 erst 19,04 und dann 19. Der zweite Schlag auf SI 2 fällt weg.</p>
+  </div>
+
+  <!-- GRENZEN -->
+  <div class="card" id="daten">
+    <h2><span class="tag">Set</span> Deine Daten in diesem Browser</h2>
+    <p>Die laufende Runde und gemerkte Plätze liegen im lokalen Speicher dieses Browsers. Wer am Handy anfängt, sieht am Laptop eine leere Karte. Im privaten Modus speichert der Browser meist gar nicht.</p>
+    <button class="btn ghost" id="wipeBtn" type="button">Alle Daten des Stableford-Rechners löschen</button>
+    <div class="msg" id="wipeMsg" role="status" aria-live="polite"></div>
+  </div>
+
+  <div class="card" id="grenzen">
+    <h2><span class="tag">Info</span> Was der Rechner kann und was nicht</h2>
+    <ul class="limits">
+      <li><strong>Prozentsätze.</strong> Fest hinterlegt sind 100 und 95 Prozent. Für Vierball oder Vierer steht der Wert in der Ausschreibung. Den trägst du als eigenen Prozentsatz ein.</li>
+      <li><strong>9 Löcher.</strong> Das Course Handicap rechnet mit dem halben Index wie Regel 6.1b. Die Vorgabeschläge gehen in aufsteigender Reihenfolge des 18-Loch-Stroke-Index auf die neun Löcher, so steht es in Anhang E. Hat dein Club eigene Indizes von 1 bis 9 vergeben, trag einfach diese ein.</li>
+      <li><strong>Rundung.</strong> Das Course Handicap bleibt bis zum Schluss ungerundet. Gerundet wird erst das Playing Handicap, x,5 nach oben. Plus-Handicaps runden dabei Richtung null, so beschreibt es Anhang C.</li>
+      <li><strong>Mehr als vier unter Par.</strong> Die Tabelle in Regel 21.1 endet bei vier unter Par mit 6 Punkten. Darüber zählt der Rechner pro Schlag einen Punkt weiter. Das steht so nicht ausdrücklich in der Tabelle, kommt aber praktisch nur mit vielen Vorgabeschlägen und einem Ass vor.</li>
+      <li><strong>Zielergebnis.</strong> Laut Regel 21.1 kann die Spielleitung ein anderes Zielergebnis als Par festlegen. Der Rechner nimmt immer Par.</li>
+      <li><strong>Nicht abgebildet.</strong> Mannschaftswertungen und Lochspiel. Par- oder Bogey-Wettspiele. Entscheidungen der Spielleitung.</li>
+    </ul>
+  </div>
+
+  <div class="tool-links">
+    <a class="toollink" href="handicap-rechner.html">⛳ Handicap-Index und Course Handicap berechnen</a>
+    <a class="toollink" href="../stories/herzogenaurach.html">📖 Mein Golfplatz in Herzogenaurach</a>
+  </div>
+
+  <div class="topics"><span>Golf</span><span>Stableford</span><span>Playing Handicap</span><span>Stroke Index</span><span>World Handicap System</span><span>Nur lokale Speicherung</span></div>
+
+  <div class="sources">
+    <p class="kicker">Quellen &amp; Recherche</p>
+    <p>Die Regeln habe ich mit den offiziellen Texten von R&amp;A und USGA abgeglichen. Die Punktetabelle aus Regel 21.1 zeigt die R&amp;A nur als Grafik, den Wortlaut habe ich deshalb beim Golfverband von Florida gegengelesen.</p>
+    <ul>
+      <li><a href="https://www.randa.org/en/rog/the-rules-of-golf/rule-21" rel="noopener">R&amp;A: Golfregel 21, Stableford</a></li>
+      <li><a href="https://www.fsga.org/sections/content/Other-Forms-of-Stroke-Play-and-Match-Play/961" rel="noopener">FSGA: Wortlaut Regel 21.1, Punktetabelle</a></li>
+      <li><a href="https://www.usga.org/content/usga/home-page/handicapping/world-handicap-system/world-handicap-system-usga-golf-faqs/faqs---calculate-course-handicap-and-playing-handicap.html" rel="noopener">USGA: Course Handicap und Playing Handicap</a></li>
+      <li><a href="https://www.usga.org/content/usga/home-page/handicapping/roh/Content/rules/6%201a%2018%20holes.htm" rel="noopener">USGA Rules of Handicapping 6.1a</a></li>
+      <li><a href="https://www.usga.org/handicapping/roh/Content/rules/6%201b%209%20holes.htm" rel="noopener">USGA Rules of Handicapping 6.1b</a></li>
+      <li><a href="https://www.randa.org/roh/appendices/appendix-c" rel="noopener">R&amp;A Rules of Handicapping, Anhang C: Vorgabe-Prozentsätze</a></li>
+      <li><a href="https://www.randa.org/roh/appendices/appendix-e" rel="noopener">R&amp;A Rules of Handicapping, Anhang E: Stroke Index</a></li>
+      <li><a href="https://www.usga.org/content/usga/home-page/handicapping/world-handicap-system/world-handicap-system-usga-golf-faqs/faqs---stroke-index-allocation.html" rel="noopener">USGA: Stroke Index Allocation</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 Torsten Fink</span>
+  <span><a href="../index.html">Startseite</a> · <a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></span>
+</footer>
+
+<script id="engine">
+/* ===== Stableford-Rechenkern (ohne DOM, separat testbar) ===== */
+const STB = (() => {
+  // Runden wie im Handicap-Rechner: Zehntel bzw. ganze Zahl, .5 nach oben
+  const r1 = x => Math.floor(x * 10 + 0.5 + 1e-9) / 10;
+  const r0 = x => Math.floor(x + 0.5 + 1e-9);
+
+  // Course Handicap ungerundet (Regel 6.1a / 6.1b)
+  function courseHandicap(hi, cr, slope, par, holes){
+    if (holes === 9){
+      const half = r1(hi / 2);
+      return {half, val: half * (slope / 113) + (cr - par)};
+    }
+    return {val: hi * (slope / 113) + (cr - par)};
+  }
+
+  // Playing Handicap: Prozentsatz auf das ungerundete Course Handicap, dann runden (Regel 6.2, Anhang C)
+  function playingHandicap(chVal, pct){
+    const raw = chVal * pct / 100;
+    return {raw, ph: r0(raw)};
+  }
+
+  // Vorgabeschläge nach Stroke Index (Anhang E). si: Array der SI-Werte der gespielten Löcher
+  function allocate(si, ph){
+    const n = si.length;
+    const order = si.map((v, i) => ({v, i})).sort((a, b) => a.v - b.v);
+    const rank = new Array(n);
+    order.forEach((o, k) => { rank[o.i] = k + 1; });          // 1 = schwerstes Loch
+    const p = Math.abs(ph), base = Math.floor(p / n), rem = p % n;
+    return rank.map(r => ph >= 0
+      ? base + (r <= rem ? 1 : 0)                               // Schläge ab SI 1 aufwärts
+      : -(base + (r > n - rem ? 1 : 0)));                       // Plus: zurück ab höchstem SI
+  }
+
+  // Punkte nach Regel 21.1: 2 + (Par − Netto), nie unter 0. score 0 = Strich
+  function points(par, strokes, score){
+    if (score === null || score === undefined) return null;
+    if (score === 0) return 0;
+    return Math.max(0, 2 + par - (score - strokes));
+  }
+  const zeroFrom = (par, strokes) => par + strokes + 2;
+
+  return {r1, r0, courseHandicap, playingHandicap, allocate, points, zeroFrom};
+})();
+if (typeof module !== 'undefined') module.exports = STB;
+</script>
+
+<script>
+/* ===== Oberfläche ===== */
+(() => {
+  const $ = id => document.getElementById(id);
+  const state = {par: new Array(18).fill(null), si: new Array(18).fill(null), sc: new Array(18).fill(null)};
+
+  /* --- Speicher: nur localStorage dieses Browsers --- */
+  const K_ROUND = 'golf:stableford:round', K_COURSES = 'golf:stableford:courses';
+  const K_HI = 'golf:hi', K_HC_SET = 'golf:settings';           // vom Handicap-Rechner, nur lesend
+  const load = (k, def) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : def; } catch(e){ return def; } };
+  const save = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch(e){ return false; } };
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const arr18 = a => Array.from({length: 18}, (_, i) => (Array.isArray(a) && Number.isFinite(a[i])) ? a[i] : null);
+  let courses = load(K_COURSES, []).filter(c => c && c.name);
+  let restoring = true;
+
+  const num = (x, d = 1) => {
+    const s = Math.abs(x).toFixed(d).replace('.', ',');
+    return (x < 0 && Number(Math.abs(x).toFixed(d)) !== 0) ? '−' + s : s;
+  };
+  const hcTxt = (x, d) => x < 0 ? '+' + num(-x, d) : num(x, d);          // Plus-Handicaps mit +
+  const radio = name => document.querySelector(`input[name="${name}"]:checked`).value;
+  const holes = () => Number(radio('holes'));
+  const idx = () => holes() === 18 ? [...Array(18).keys()] : (radio('nine') === 'back' ? [9,10,11,12,13,14,15,16,17] : [0,1,2,3,4,5,6,7,8]);
+  const msg = (el, text, err) => { el.textContent = text; el.classList.toggle('err', !!err); };
+  const stepsHtml = L => L.map(l => `<div class="${l.cls || ''}">${l.t}</div>`).join('');
+
+  // Eingabe lesen: Komma erlaubt, führendes + = Plus-Handicap (negativ)
+  function readHc(id){
+    let v = $(id).value.trim().replace(',', '.').replace('−', '-');
+    if (v === '') return NaN;
+    if (v.startsWith('+')) return -Number(v.slice(1));
+    return Number(v);
+  }
+  function readNum(id){ const v = $(id).value.trim().replace(',', '.'); return v === '' ? NaN : Number(v); }
+
+  /* --- Scorekarte aufbauen --- */
+  function buildTable(){
+    const rows = idx().map(i => `<tr data-i="${i}">
+      <td class="no">${i + 1}</td>
+      <td><select aria-label="Par Loch ${i + 1}" data-k="par"><option value="">·</option><option>3</option><option>4</option><option>5</option><option>6</option></select></td>
+      <td><input type="text" inputmode="numeric" aria-label="Stroke Index Loch ${i + 1}" data-k="si" autocomplete="off"></td>
+      <td class="vg">·</td>
+      <td class="zero">·</td>
+      <td><input type="text" inputmode="numeric" aria-label="Schläge Loch ${i + 1}" data-k="sc" autocomplete="off"></td>
+      <td class="pts nil">·</td>
+    </tr>`).join('');
+    $('scBody').innerHTML = rows + `<tr class="sum"><td colspan="2">Summe</td><td></td><td id="sumVg"></td><td></td><td id="sumSc"></td><td class="pts" id="sumPts"></td></tr>`;
+    $('scBody').querySelectorAll('tr[data-i]').forEach(tr => {
+      const i = Number(tr.dataset.i);
+      const sel = tr.querySelector('[data-k="par"]'), si = tr.querySelector('[data-k="si"]'), sc = tr.querySelector('[data-k="sc"]');
+      sel.value = state.par[i] ?? '';
+      si.value = state.si[i] ?? '';
+      sc.value = state.sc[i] ?? '';
+      sel.addEventListener('change', () => { state.par[i] = sel.value ? Number(sel.value) : null; update(); });
+      si.addEventListener('input', () => { const v = si.value.trim(); state.si[i] = v === '' ? null : Number(v); update(); });
+      sc.addEventListener('input', () => { const v = sc.value.trim(); state.sc[i] = v === '' ? null : Number(v); update(); });
+    });
+  }
+
+  /* --- Playing Handicap --- */
+  function calcPH(parTotal){
+    const h = holes();
+    if ($('direct').checked){
+      const ph = readHc('phDirect');
+      if (!isFinite(ph)) return {err: 'Playing Handicap eintragen.'};
+      if (!Number.isInteger(ph) || ph < -10 || ph > 60) return {err: 'Das Playing Handicap ist eine ganze Zahl, etwa 19 oder +2.'};
+      return {ph, direct: true};
+    }
+    const hi = readHc('hi'), cr = readNum('cr'), slope = readNum('slope');
+    if (!isFinite(hi) || !isFinite(cr) || !isFinite(slope)) return {err: 'Für die Vorgabe fehlen noch Handicap-Index, Course Rating oder Slope.'};
+    if (hi < -10 || hi > 54) return {err: 'Der Handicap-Index liegt zwischen +10 und 54.'};
+    if (slope < 55 || slope > 155) return {err: 'Der Slope liegt zwischen 55 und 155. Bitte auf der Scorekarte prüfen.'};
+    const crMin = h === 9 ? 25 : 50, crMax = h === 9 ? 45 : 85;
+    if (cr < crMin || cr > crMax) return {err: h === 9 ? 'Das Course Rating passt nicht zu 9 Löchern. Steht auf der Karte vielleicht der 18-Loch-Wert?' : 'Das Course Rating wirkt ungewöhnlich. Bitte prüfen.'};
+    if (parTotal === null) return {err: 'Für das Course Handicap fehlt noch das Par einzelner Löcher.'};
+    let pct = 100;
+    if ($('allow').value === 'custom'){
+      pct = readNum('pct');
+      if (!isFinite(pct) || pct <= 0 || pct > 100) return {err: 'Prozentsatz zwischen 1 und 100 eintragen.'};
+    } else pct = Number($('allow').value);
+    const ch = STB.courseHandicap(hi, cr, slope, parTotal, h);
+    const p = STB.playingHandicap(ch.val, pct);
+    return {ph: p.ph, raw: p.raw, ch, hi, cr, slope, par: parTotal, pct, h};
+  }
+
+  function phSteps(r){
+    const L = [];
+    if (r.h === 9){
+      L.push({t:'CH = (HCPI ÷ 2) × (Slope ÷ 113) + (CR − Par)', cls:'dim'});
+      L.push({t:`HCPI ÷ 2 = ${hcTxt(r.hi)} ÷ 2 = ${hcTxt(r.ch.half)} (auf Zehntel gerundet)`, cls:'dim'});
+      L.push({t:`   = ${num(r.ch.half)} × (${r.slope} ÷ 113) + (${num(r.cr)} − ${r.par}) = ${num(r.ch.val,2)}`});
+    } else {
+      L.push({t:'CH = HCPI × (Slope ÷ 113) + (CR − Par)', cls:'dim'});
+      L.push({t:`   = ${num(r.hi)} × (${r.slope} ÷ 113) + (${num(r.cr)} − ${r.par}) = ${num(r.ch.val,2)}`});
+    }
+    L.push({t:`PH = CH × ${r.pct} % = ${num(r.ch.val,2)} × ${num(r.pct/100,2)} = ${num(r.raw,2)}`});
+    L.push({t:`gerundet auf ganze Schläge: ${hcTxt(r.ph,0)}`, cls:'hl'});
+    return stepsHtml(L);
+  }
+
+  /* --- Hauptberechnung --- */
+  function update(){
+    const ids = idx(), n = ids.length;
+    const pars = ids.map(i => state.par[i]);
+    const parTotal = pars.every(p => p !== null) ? pars.reduce((s, p) => s + p, 0) : null;
+    $('par').value = parTotal ?? '';
+
+    // Stroke Index prüfen
+    const sis = ids.map(i => state.si[i]);
+    const siMax = 18;
+    let siErr = '', hard = false;
+    const filled = sis.filter(v => v !== null);
+    const missing = n - filled.length;
+    if (filled.some(v => !Number.isInteger(v) || v < 1 || v > siMax)){ siErr = 'Der Stroke Index liegt zwischen 1 und 18.'; hard = true; }
+    else if (new Set(filled).size !== filled.length){ siErr = 'Jeder Stroke Index darf nur einmal vorkommen.'; hard = true; }
+    else if (missing > 0 && filled.length) siErr = `Stroke Index fehlt noch auf ${missing} ${missing === 1 ? 'Loch' : 'Löchern'}.`;
+    const siOk = !hard && missing === 0;
+
+    // Schläge prüfen
+    let scErr = '';
+    const scs = ids.map(i => state.sc[i]);
+    if (scs.some(v => v !== null && (!Number.isInteger(v) || v < 0 || v > 20))) scErr = 'Schläge als ganze Zahl eintragen, 0 für einen Strich.';
+
+    // Playing Handicap
+    const r = calcPH(parTotal);
+    if (r.err){
+      $('phResult').hidden = true;
+      msg($('phMsg'), r.err, false);
+    } else {
+      msg($('phMsg'), '');
+      $('phBig').textContent = hcTxt(r.ph, 0);
+      if (r.direct){
+        $('phCap').textContent = `Playing Handicap direkt eingetragen, ${holes()} Löcher.`;
+        $('phSteps').innerHTML = stepsHtml([{t:'Wert übernommen, ohne Umrechnung.', cls:'dim'}]);
+      } else {
+        $('phCap').textContent = `Vorgabeschläge über ${r.h} Löcher bei ${r.pct} Prozent. Course Handicap ungerundet ${num(r.ch.val,2)}.`;
+        $('phSteps').innerHTML = phSteps(r);
+      }
+      $('phResult').hidden = false;
+    }
+    const havePH = !r.err;
+    const strokes = havePH && siOk ? STB.allocate(sis, r.ph) : null;
+
+    // Zeilen füllen
+    let net = 0, gross = 0, played = 0, sumSc = 0, sumVg = 0, f9 = 0, b9 = 0;
+    const L = [];
+    ids.forEach((i, k) => {
+      const tr = $('scBody').querySelector(`tr[data-i="${i}"]`);
+      const par = state.par[i], si = state.si[i], sc = state.sc[i];
+      const vg = strokes ? strokes[k] : null;
+      tr.querySelector('[data-k="si"]').classList.toggle('bad', si !== null && (!Number.isInteger(si) || si < 1 || si > siMax || filled.filter(v => v === si).length > 1));
+      tr.querySelector('[data-k="sc"]').classList.toggle('bad', sc !== null && (!Number.isInteger(sc) || sc < 0 || sc > 20));
+      const vgTd = tr.querySelector('.vg');
+      vgTd.textContent = vg === null ? '·' : (vg < 0 ? '+' + (-vg) : vg);
+      vgTd.classList.toggle('has', vg !== null && vg > 0);
+      vgTd.classList.toggle('minus', vg !== null && vg < 0);
+      tr.querySelector('.zero').textContent = (vg !== null && par !== null) ? STB.zeroFrom(par, vg) : '·';
+      const ptsTd = tr.querySelector('.pts');
+      const validSc = sc !== null && Number.isInteger(sc) && sc >= 0 && sc <= 20;
+      if (vg !== null) sumVg += vg;
+      if (validSc && par !== null && vg !== null){
+        const p = STB.points(par, vg, sc), g = STB.points(par, 0, sc);
+        ptsTd.textContent = p; ptsTd.classList.remove('nil');
+        net += p; gross += g; played++; if (sc > 0) sumSc += sc;
+        if (i < 9) f9 += p; else b9 += p;
+        L.push({t: sc === 0
+          ? `Loch ${i + 1}: Strich → 0 Punkte`
+          : `Loch ${i + 1}: Par ${par}, Vg ${vg < 0 ? '+' + (-vg) : vg}, ${sc} Schläge → netto ${sc - vg} → ${p} Pkt` + (g !== p ? ` (brutto ${g})` : '')});
+      } else {
+        ptsTd.textContent = '·'; ptsTd.classList.add('nil');
+      }
+    });
+    $('sumVg').textContent = strokes ? (sumVg < 0 ? '+' + (-sumVg) : sumVg) : '';
+    $('sumSc').textContent = sumSc || '';
+    $('sumPts').textContent = played ? net : '';
+
+    // Ergebnis
+    if (played){
+      $('netBig').textContent = net;
+      const target = 2 * played;
+      const diff = net - target;
+      $('netCap').textContent = `Netto nach ${played} von ${n} Löchern. Netto-Par wären ${target} Punkte` + (diff === 0 ? ', du liegst genau drauf.' : diff > 0 ? `, du liegst ${diff} drüber.` : (diff === -1 ? ', dir fehlt einer.' : `, dir fehlen ${-diff}.`));
+      $('side').innerHTML = `Brutto <b>${gross}</b>` + (n === 18 ? `<br>Loch 1–9 <b>${f9}</b><br>Loch 10–18 <b>${b9}</b>` : '');
+      $('totSteps').innerHTML = stepsHtml([{t:'Punkte = 2 + Par − (Schläge − Vg), mindestens 0', cls:'dim'}, ...L, {t:`Summe netto: ${net} Punkte, brutto: ${gross} Punkte`, cls:'hl'}]);
+      $('totWay').hidden = false;
+    } else {
+      $('netBig').textContent = '··';
+      $('netCap').textContent = havePH && siOk ? 'Netto, sobald das erste Loch eingetragen ist.' : 'Erst Playing Handicap und Stroke Index, dann gibt es Punkte.';
+      $('side').innerHTML = '';
+      $('totWay').hidden = true;
+    }
+
+    const hints = [siErr, scErr].filter(Boolean);
+    msg($('scMsg'), hints.join(' '), hard || !!scErr);
+    saveRound();
+  }
+
+  function saveRound(){
+    if (restoring) return;
+    save(K_ROUND, {
+      holes: holes(), nine: radio('nine'),
+      hi: $('hi').value, cr: $('cr').value, slope: $('slope').value,
+      allow: $('allow').value, pct: $('pct').value, direct: $('direct').checked, ph: $('phDirect').value,
+      name: $('courseName').value, par: state.par, si: state.si, sc: state.sc
+    });
+  }
+  function setRadio(name, v){ const el = document.querySelector(`input[name="${name}"][value="${v}"]`); if (el) el.checked = true; }
+  function restoreRound(){
+    const r = load(K_ROUND, null);
+    if (!r) return;
+    setRadio('holes', r.holes === 9 ? 9 : 18); setRadio('nine', r.nine === 'back' ? 'back' : 'front');
+    $('hi').value = r.hi || ''; $('cr').value = r.cr || ''; $('slope').value = r.slope || '';
+    if (['100','95','custom'].includes(r.allow)) $('allow').value = r.allow;
+    $('pct').value = r.pct || ''; $('direct').checked = !!r.direct; $('phDirect').value = r.ph || '';
+    $('courseName').value = r.name || '';
+    state.par = arr18(r.par); state.si = arr18(r.si); state.sc = arr18(r.sc);
+  }
+
+  /* --- Handicap-Index aus dem Handicap-Rechner --- */
+  function prefillHi(){
+    const src = $('hiSrc');
+    if ($('hi').value.trim() !== '') return;
+    const fromCalc = load(K_HI, null), set = load(K_HC_SET, null);
+    let hi = null, txt = '';
+    if (fromCalc && Number.isFinite(fromCalc.hi)){ hi = fromCalc.hi; txt = 'Handicap-Index aus deinem Handicap-Rechner übernommen.'; }
+    else if (set && Number.isFinite(set.startHi)){ hi = set.startHi; txt = 'Club-Index aus den Einstellungen deines Handicap-Rechners übernommen.'; }
+    if (hi === null) return;
+    $('hi').value = hi < 0 ? '+' + String(-hi).replace('.', ',') : String(hi).replace('.', ',');
+    src.textContent = txt + ' Du kannst ihn überschreiben.';
+    src.hidden = false;
+  }
+
+  /* --- Gemerkte Plätze --- */
+  const courseKey = (name, h) => name.trim().toLowerCase() + '|' + h;
+  function renderCourses(){
+    const h = holes();
+    $('courseSel').innerHTML = '<option value="">Platz selbst eintragen</option>' +
+      courses.filter(c => c.holes === h).map(c => `<option value="${esc(c.key)}">${esc(c.name)}</option>`).join('');
+  }
+  function applyCourse(c){
+    setRadio('holes', c.holes); if (c.holes === 9) setRadio('nine', c.nine === 'back' ? 'back' : 'front');
+    $('cr').value = c.cr ?? ''; $('slope').value = c.slope ?? ''; $('courseName').value = c.name;
+    const p = arr18(c.par), si = arr18(c.si);
+    for (let i = 0; i < 18; i++){ if (p[i] !== null) state.par[i] = p[i]; if (si[i] !== null) state.si[i] = si[i]; }
+  }
+
+  /* --- Link: Platz in der Adresse ablegen --- */
+  function toHash(){
+    const p = new URLSearchParams();
+    p.set('h', holes());
+    if (holes() === 9) p.set('n', radio('nine'));
+    p.set('par', state.par.map(v => v ?? 0).join(''));
+    p.set('si', state.si.map(v => v ?? '').join('.'));
+    if ($('cr').value.trim()) p.set('cr', $('cr').value.trim().replace(',', '.'));
+    if ($('slope').value.trim()) p.set('sl', $('slope').value.trim());
+    return '#' + p.toString();
+  }
+  function fromHash(){
+    if (!location.hash || location.hash.length < 3) return;
+    const p = new URLSearchParams(location.hash.slice(1));
+    if (p.get('h') === '9') document.querySelector('input[name="holes"][value="9"]').checked = true;
+    if (p.get('n') === 'back') document.querySelector('input[name="nine"][value="back"]').checked = true;
+    const par = (p.get('par') || '').slice(0, 18);
+    [...par].forEach((c, i) => { const v = Number(c); state.par[i] = v >= 3 && v <= 6 ? v : null; });
+    (p.get('si') || '').split('.').slice(0, 18).forEach((c, i) => { const v = parseInt(c, 10); state.si[i] = isFinite(v) ? v : null; });
+    if (p.get('cr')) $('cr').value = p.get('cr').replace('.', ',');
+    if (p.get('sl')) $('slope').value = p.get('sl');
+  }
+
+  /* --- Ereignisse --- */
+  function syncVisibility(){
+    $('nineWrap').hidden = holes() !== 9;
+    const direct = $('direct').checked;
+    document.querySelectorAll('#vorgabe .field.calc').forEach(f => { f.hidden = direct; });
+    $('pctWrap').hidden = direct || $('allow').value !== 'custom';
+    $('phWrap').hidden = !direct;
+    $('cr').placeholder = holes() === 9 ? 'z. B. 35,6' : 'z. B. 71,2';
+  }
+  document.querySelectorAll('input[name="holes"], input[name="nine"]').forEach(i => i.addEventListener('change', () => { syncVisibility(); renderCourses(); buildTable(); update(); }));
+  ['hi', 'cr', 'slope', 'pct', 'phDirect'].forEach(id => $(id).addEventListener('input', update));
+  $('hi').addEventListener('input', () => { $('hiSrc').hidden = true; });
+  $('courseName').addEventListener('input', saveRound);
+  $('allow').addEventListener('change', () => { syncVisibility(); update(); });
+  $('direct').addEventListener('change', () => { syncVisibility(); update(); });
+
+  $('courseSel').addEventListener('change', () => {
+    const c = courses.find(c => c.key === $('courseSel').value);
+    if (!c) return;
+    applyCourse(c);
+    syncVisibility(); buildTable(); update();
+    msg($('saveMsg'), `${c.name} geladen.`);
+  });
+
+  $('allPar4').addEventListener('click', () => {
+    idx().forEach(i => { state.par[i] = 4; });
+    buildTable(); update();
+    msg($('scMsg'), 'Alle Löcher stehen auf Par 4. Jetzt die Par 3 und Par 5 umstellen.');
+  });
+  $('clearScores').addEventListener('click', () => {
+    if (state.sc.some(v => v !== null) && !confirm('Alle Schläge dieser Runde löschen? Platzdaten bleiben stehen.')) return;
+    state.sc = new Array(18).fill(null);
+    buildTable(); update();
+    msg($('scMsg'), 'Neue Runde. Platzdaten und Handicap bleiben stehen.');
+  });
+
+  $('saveCourse').addEventListener('click', () => {
+    const name = $('courseName').value.trim(), h = holes(), ids = idx();
+    if (!name) return msg($('saveMsg'), 'Bitte einen Namen für Platz und Abschlag eintragen.', true);
+    if (ids.some(i => state.par[i] === null || state.si[i] === null)) return msg($('saveMsg'), 'Zum Merken braucht jedes Loch Par und Stroke Index.', true);
+    const par = new Array(18).fill(null), si = new Array(18).fill(null);
+    ids.forEach(i => { par[i] = state.par[i]; si[i] = state.si[i]; });
+    const cr = $('cr').value.trim(), slope = $('slope').value.trim();
+    const key = courseKey(name, h);
+    courses = [{key, name, holes: h, nine: h === 9 ? radio('nine') : null, cr, slope, par, si}, ...courses.filter(c => c.key !== key)].slice(0, 40);
+    if (!save(K_COURSES, courses)) return msg($('saveMsg'), 'Speichern hat nicht geklappt. Im privaten Modus blockiert der Browser das.', true);
+    renderCourses(); $('courseSel').value = key;
+    msg($('saveMsg'), `${name} gemerkt. Beim nächsten Mal oben unter „Gemerkter Platz“.`);
+  });
+
+  $('saveLink').addEventListener('click', async () => {
+    const hash = toHash();
+    history.replaceState(null, '', location.pathname + location.search + hash);
+    let copied = false;
+    try { await navigator.clipboard.writeText(location.href); copied = true; } catch(e){}
+    msg($('saveMsg'), copied
+      ? 'Link kopiert. Er steht auch in der Adresszeile und lässt sich per Messenger weitergeben.'
+      : 'Der Link steht jetzt in der Adresszeile. Von dort kopieren und weitergeben.');
+  });
+
+  $('wipeBtn').addEventListener('click', () => {
+    if (!confirm('Laufende Runde und alle gemerkten Plätze in diesem Browser löschen? Die Daten des Handicap-Rechners bleiben unberührt.')) return;
+    [K_ROUND, K_COURSES].forEach(k => { try { localStorage.removeItem(k); } catch(e){} });
+    location.replace(location.pathname);
+  });
+
+  // Start: gespeicherte Runde, dann ein geteilter Link (Platzdaten aus dem Link haben Vorrang, Schläge beginnen leer)
+  restoreRound();
+  if (location.hash && location.hash.length > 2){
+    state.par = new Array(18).fill(null); state.si = new Array(18).fill(null); state.sc = new Array(18).fill(null);
+    $('courseName').value = '';
+    fromHash();
+    msg($('saveMsg'), 'Platz aus einem geteilten Link geladen. Bitte mit der Scorekarte abgleichen.');
+  }
+  prefillHi();
+  syncVisibility();
+  renderCourses();
+  buildTable();
+  update();
+  restoring = false;   // ab jetzt speichert jede Eingabe, vorher nichts
+})();
+</script>
+</body>
+</html>
