@@ -25,7 +25,7 @@ jobs:
       HOST: torsten-fink.de
       KEY: 705f3334de5bd9d14abfc21e1fd270c6
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
