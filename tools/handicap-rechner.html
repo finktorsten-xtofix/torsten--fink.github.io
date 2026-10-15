@@ -31,7 +31,7 @@
   "isAccessibleForFree":true,
   "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
   "description":"Berechnet Score Differential, Handicap-Index und Course Handicap nach dem World Handicap System, mit 9-Loch-Runden, PCC und sichtbarem Rechenweg.",
-  "dateModified":"2026-09-30T00:00:00+02:00",
+  "dateModified":"2026-10-15T00:00:00+02:00",
   "author":{"@type":"Person","@id":"https://torsten-fink.de/#person","name":"Torsten Fink","url":"https://torsten-fink.de/"}
 }
 </script>
@@ -303,11 +303,13 @@
       <li><strong>9 Löcher.</strong> Das Differential der gespielten neun Löcher wird mit einem erwarteten Wert für die fehlenden neun ergänzt. Die Formel dafür stammt aus der DGV-Broschüre zu den Handicap-Regeln 2024. Laut Fachpresse arbeitet das WHS intern mit getrennten Modellen für Frauen und Männer, kleine Abweichungen zum Clubwert sind deshalb möglich. Bei 9 Löchern zählt die halbe PCC, so steht es in Regel 5.1b.</li>
       <li><strong>Außergewöhnliche Runden.</strong> Liegt ein Differential 7,0 oder mehr unter dem Index zum Spielzeitpunkt, zieht der Rechner wie das WHS 1,0 oder 2,0 von den letzten 20 Differentials ab.</li>
       <li><strong>Soft Cap und Hard Cap.</strong> Ab 20 Runden steigt der Index höchstens 3,0 über den tiefsten Wert der letzten 365 Tage, darüber nur zur Hälfte, bei plus 5,0 ist Schluss.</li>
-      <li><strong>Nicht abgebildet.</strong> Runden über 10 bis 17 Löcher, Entscheidungen des Handicap-Ausschusses, das Playing Handicap für Turnierformen mit Vorgabe-Prozenten.</li>
+      <li><strong>Nicht abgebildet.</strong> Runden über 10 bis 17 Löcher, Entscheidungen des Handicap-Ausschusses. Das Playing Handicap mit Vorgabe-Prozenten rechnet der <a href="stableford-rechner.html">Stableford-Rechner</a>.</li>
     </ul>
   </div>
 
   <div class="tool-links">
+    <a class="toollink" href="stableford-rechner.html">⛳ Stablefordpunkte pro Loch berechnen</a>
+    <a class="toollink" href="../stories/herzogenaurach.html">📖 Mein Golfplatz in Herzogenaurach</a>
     <a class="toollink" href="jetlag-rechner.html">🕐 Jetlag-Rechner für die Golfreise</a>
   </div>
 
@@ -584,6 +586,9 @@ if (typeof module !== 'undefined') module.exports = WHS;
   function render(){
     const res = WHS.run(rounds, settings);
     lastRes = res;
+    // Index für den Stableford-Rechner ablegen, nur in diesem Browser
+    if (res.hi !== null) save('golf:hi', {hi: res.hi, date: new Date().toISOString().slice(0,10)});
+    else { try { localStorage.removeItem('golf:hi'); } catch(e){} }
 
     $('hiCount').textContent = rounds.length + (rounds.length === 1 ? ' Runde' : ' Runden');
     if (res.hi !== null){
@@ -762,7 +767,7 @@ if (typeof module !== 'undefined') module.exports = WHS;
   });
   $('wipeBtn').addEventListener('click', () => {
     if (!confirm('Alle Runden, Plätze und Einstellungen in diesem Browser löschen?')) return;
-    [K_ROUNDS, K_COURSES, K_SET].forEach(k => { try { localStorage.removeItem(k); } catch(e){} });
+    [K_ROUNDS, K_COURSES, K_SET, 'golf:hi'].forEach(k => { try { localStorage.removeItem(k); } catch(e){} });
     location.reload();
   });
 
