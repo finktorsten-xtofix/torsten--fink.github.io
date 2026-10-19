@@ -23,6 +23,9 @@
 ## Tools
 - [Jetlag-Rechner](https://torsten-fink.de/tools/jetlag-rechner.html): Zeitzonen-Unterschied berechnen, Tag-für-Tag-Anpassungsplan für die innere Uhr. Keine Anmeldung, keine Serverkomponente.
 
+## Reise-Wissen
+- [Tokio zu Fuß: 8 Bahnhöfe, an denen Sightseeing direkt beginnt](https://torsten-fink.de/guides/tokio-bahnhoefe-zu-fuss.html): Shibuya, Harajuku, Asakusa, Shinjuku, Tokyo, Akihabara, Akabanebashi, Tameike-Sannō mit Gehzeiten aus offiziellen Quellen, schematischer Karte und eigenen Fotos. Stand Oktober 2026.
+
 ## Rechtliches
 - [Impressum](https://torsten-fink.de/impressum.html)
 - [Datenschutz](https://torsten-fink.de/datenschutz.html)

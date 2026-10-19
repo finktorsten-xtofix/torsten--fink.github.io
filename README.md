@@ -25,6 +25,12 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 |---|---|
 | [Golf Club Herzogenaurach — Golf spielen, weil es Spaß macht](https://torsten-fink.de/stories/herzogenaurach.html) | Heimatclub, Craig Miller Golfschule, die Adidas/Puma-Geschichte der Stadt. Von der Startseite aus über den Golf-Bereich verlinkt, läuft nicht in der Pager-Reihenfolge der neun Reisegeschichten mit. |
 
+## Reise-Wissen
+
+| Seite | Beschreibung |
+|---|---|
+| [Tokio zu Fuß: 8 Bahnhöfe](https://torsten-fink.de/guides/tokio-bahnhoefe-zu-fuss.html) | Acht Tokioter Bahnhöfe mit Gehzeiten aus offiziellen Quellen, schematischer Karte (Bild im Ring: KI-Fotomontage, gekennzeichnet) und eigenen Fotos. Schema Article + BreadcrumbList. Läuft außerhalb der Pager-Reihenfolge. |
+
 ## Tools
 
 | Tool | Beschreibung |
@@ -48,10 +54,11 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 ```
 ├── index.html            Startseite
 ├── stories/              Neun Reisegeschichten + eine Golf-Story (Herzogenaurach)
+├── guides/               Reise-Wissen: Tokio zu Fuß (Bahnhöfe)
 ├── tools/                Interaktive Tools: Handicap-Rechner, Stableford-Rechner, Jetlag-Rechner
 ├── assets/
 │   ├── css/story.css     Stylesheet der Unterseiten
-│   └── images/           Optimierte Fotos (Startseite + stories/)
+│   └── images/           Optimierte Fotos (Startseite, stories/, guides/, tools/)
 ├── impressum.html        § 5 DDG
 ├── datenschutz.html      DSGVO
 ├── sitemap.xml · robots.txt · llms.txt · 404.html · CNAME
