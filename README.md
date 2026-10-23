@@ -31,6 +31,7 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 |---|---|
 | [Tokio zu Fuß: 8 Bahnhöfe](https://torsten-fink.de/guides/tokio-bahnhoefe-zu-fuss.html) | Acht Tokioter Bahnhöfe mit Gehzeiten aus offiziellen Quellen, schematischer Karte (Bild im Ring: KI-Fotomontage, gekennzeichnet) und eigenen Fotos. Schema Article + BreadcrumbList. Läuft außerhalb der Pager-Reihenfolge. |
 | [Verbeugen in Japan](https://torsten-fink.de/guides/japan-verbeugung-ojigi.html) | Eshaku, Keirei, Saikeirei, Dogeza mit Winkeln, Anlässen und Beispielsätzen. Grafik selbst gesetzt, Figuren sind Fotos von Torsten (keine KI). |
+| [Tai Chi in Hongkong](https://torsten-fink.de/guides/hongkong-tai-chi.html) | Herkunft, belegte Wirkung und eine Beispielübung in vier Phasen. Grafik selbst gezeichnet (keine KI), Fotos von Torsten (Aberdeen 2015, Central 2019, mit Erlaubnis). |
 
 ## Tools
 
@@ -55,7 +56,7 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 ```
 ├── index.html            Startseite
 ├── stories/              Neun Reisegeschichten + eine Golf-Story (Herzogenaurach)
-├── guides/               Reise-Wissen: Tokio zu Fuß, Verbeugen in Japan
+├── guides/               Reise-Wissen: Tokio zu Fuß, Verbeugen in Japan, Tai Chi in Hongkong
 ├── tools/                Interaktive Tools: Handicap-Rechner, Stableford-Rechner, Jetlag-Rechner
 ├── assets/
 │   ├── css/story.css     Stylesheet der Unterseiten
