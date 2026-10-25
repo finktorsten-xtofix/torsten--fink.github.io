@@ -1,4 +1,4 @@
-# torsten-fink.de — Reisen, Fotografie & Geschichten
+# torsten-fink.de — Reisegeschichten, Fotos, Tipps
 
 **Live:** [https://torsten-fink.de](https://torsten-fink.de)
 
