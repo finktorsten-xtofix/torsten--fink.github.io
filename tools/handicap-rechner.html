@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Golf-Handicap-Rechner nach WHS mit Rechenweg</title>
-<meta name="description" content="Handicap-Index und Course Handicap nach WHS berechnen, 9-Loch-Runden und PCC inklusive. Jeder Rechenschritt sichtbar, ohne Anmeldung.">
+<title>Handicap-Rechner Golf (WHS, DGV) mit 9-Loch-Runden und Rechenweg</title>
+<meta name="description" content="Golf-Handicap kostenlos online berechnen: Handicap-Index und Course Handicap nach WHS und DGV-Regeln, 9-Loch-Runden inklusive. Ohne Anmeldung.">
 <meta name="author" content="Torsten Fink">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://torsten-fink.de/tools/handicap-rechner.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
-<meta property="og:title" content="Golf-Handicap-Rechner nach WHS mit Rechenweg">
-<meta property="og:description" content="Handicap-Index und Course Handicap nach WHS berechnen, 9-Loch-Runden und PCC inklusive. Jeder Rechenschritt sichtbar, ohne Anmeldung.">
+<meta property="og:title" content="Handicap-Rechner Golf (WHS, DGV) mit 9-Loch-Runden und Rechenweg">
+<meta property="og:description" content="Golf-Handicap kostenlos online berechnen: Handicap-Index und Course Handicap nach WHS und DGV-Regeln, 9-Loch-Runden inklusive. Ohne Anmeldung.">
 <meta property="og:url" content="https://torsten-fink.de/tools/handicap-rechner.html">
 <meta property="og:image" content="https://torsten-fink.de/assets/images/tools/og-handicap-rechner.jpg">
 <meta property="og:image:width" content="1200">
@@ -28,7 +28,7 @@
 {
   "@context":"https://schema.org",
   "@type":"WebApplication",
-  "name":"Golf-Handicap-Rechner nach WHS",
+  "name":"Handicap-Rechner Golf nach WHS und DGV",
   "url":"https://torsten-fink.de/tools/handicap-rechner.html",
   "applicationCategory":"SportsApplication",
   "operatingSystem":"Browser",
@@ -36,8 +36,48 @@
   "isAccessibleForFree":true,
   "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
   "description":"Berechnet Score Differential, Handicap-Index und Course Handicap nach dem World Handicap System, mit 9-Loch-Runden, PCC und sichtbarem Rechenweg.",
-  "dateModified":"2026-10-15T00:00:00+02:00",
+  "dateModified":"2026-10-29T00:00:00+01:00",
   "author":{"@type":"Person","@id":"https://torsten-fink.de/#person","name":"Torsten Fink","url":"https://torsten-fink.de/"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ist das Ergebnis mein offizielles Handicap?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. Verbindlich ist allein der Handicap-Index, den dein Heimatclub über den DGV führt. Der Rechner rechnet ihn nach den veröffentlichten Regeln nach. Kleine Abweichungen sind möglich, vor allem bei 9-Loch-Runden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist das GBE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Das gewertete Bruttoergebnis. Jedes Loch zählt darin höchstens mit Netto-Doppelbogey, also Par plus Handicap-Schläge plus 2. Du findest es auf der Ergebnisliste deines Clubs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wo finde ich Course Rating und Slope?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Auf der Scorekarte des Platzes, getrennt nach Abschlag. Der Rechner merkt sich jeden Platz, den du einmal einträgst."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kostet der Rechner etwas, brauche ich ein Konto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beides nein. Die Daten bleiben in deinem Browser. Für den Wechsel vom Laptop aufs Handy gibt es Export und Import."
+      }
+    }
+  ]
 }
 </script>
 <style>
@@ -151,7 +191,7 @@
 <div class="tool-hero">
   <p class="exif"><span>Tools</span><span class="dot">·</span><span>Golf</span><span class="dot">·</span><span>WHS</span></p>
   <h1>Golf-Handicap-Rechner</h1>
-  <p class="sub">Rechnet Score Differential und Handicap-Index nach dem World Handicap System. Dazu das Course Handicap für den nächsten Platz, 9-Loch-Runden inklusive, jeder Rechenschritt offen.</p>
+  <p class="sub">Rechnet dein Handicap nach dem World Handicap System in der Fassung des DGV. Aus deinen Score Differentials entsteht der Handicap-Index, daraus das Course Handicap für den nächsten Platz. 9-Loch-Runden zählen mit, jeder Rechenschritt bleibt offen.</p>
 </div>
 
 <div class="tool-wrap">
@@ -312,13 +352,60 @@
     </ul>
   </div>
 
+  <!-- ANLEITUNG -->
+  <div class="card" id="formel">
+    <h2><span class="tag">Formel</span> Handicap berechnen: Formel und Beispiel</h2>
+    <p>Jede Runde wird zuerst in ein Score Differential umgerechnet. Es zeigt, wie viele Schläge über dem Course Rating du gespielt hast, bereinigt um die Schwierigkeit des Platzes.</p>
+    <div class="steps">
+      <div class="dim">Score Differential = (113 ÷ Slope) × (GBE − Course Rating − PCC)</div>
+      <div>Beispiel: GBE 89, Course Rating 71,2, Slope 128, PCC 0</div>
+      <div>= (113 ÷ 128) × (89 − 71,2 − 0) = 15,71</div>
+      <div class="hl">gerundet: 15,7</div>
+    </div>
+    <p>Aus den letzten 20 Differentials zählen die besten acht. Ihr Durchschnitt ist dein Handicap-Index. Bei weniger als 20 Runden gilt eine Tabelle des DGV. Bei drei Runden zählt zum Beispiel nur die beste, mit einem Abzug von 2,0.</p>
+  </div>
+
+  <div class="card" id="neun-loch">
+    <h2><span class="tag">9L</span> 9-Loch-Handicap berechnen</h2>
+    <p>Eine 9-Loch-Runde wird auf 18 Löcher hochgerechnet. Zum Differential der gespielten neun Löcher kommt ein erwarteter Wert für die fehlenden neun. Er hängt an deinem Handicap-Index zum Spielzeitpunkt.</p>
+    <div class="steps">
+      <div class="dim">SD gespielte 9 = (113 ÷ Slope) × (GBE − CR − ½ × PCC)</div>
+      <div>Beispiel: GBE 45, CR 35,6, Slope 128, PCC 0 = 8,30</div>
+      <div class="dim">SD erwartete 9 = ((HCPI × 1,04) + 2,4) ÷ 2</div>
+      <div>Beispiel: HCPI 18,4 = 10,77</div>
+      <div>SD 18 = 8,30 + 10,77 = 19,07</div>
+      <div class="hl">gerundet: 19,1</div>
+    </div>
+    <p>Ohne bestehenden Index lässt sich eine 9-Loch-Runde deshalb nicht werten. Trag dann unter Einstellungen den Index aus deinem Club ein.</p>
+  </div>
+
+  <div class="card" id="spielvorgabe">
+    <h2><span class="tag">CH</span> Vom Handicap-Index zum Course Handicap</h2>
+    <p>Der Index gilt auf jedem Platz. Wie viele Vorgabeschläge du auf einem bestimmten Platz bekommst, sagt das Course Handicap.</p>
+    <div class="steps">
+      <div class="dim">Course Handicap = HCPI × (Slope ÷ 113) + (CR − Par)</div>
+      <div>Beispiel: HCPI 18,4, Slope 132, CR 72,4, Par 72</div>
+      <div>= 18,4 × (132 ÷ 113) + 0,4 = 21,89</div>
+      <div class="hl">gerundet: 22 Vorgabeschläge</div>
+    </div>
+    <p>Für die Spielvorgabe im Turnier kommt der Prozentsatz der Wettspielform dazu. Den rechnet der <a href="stableford-rechner.html">Stableford-Rechner</a> mit.</p>
+  </div>
+
+  <div class="card" id="fragen">
+    <h2><span class="tag">FAQ</span> Häufige Fragen</h2>
+    <p><strong>Ist das Ergebnis mein offizielles Handicap?</strong><br>Nein. Verbindlich ist allein der Handicap-Index, den dein Heimatclub über den DGV führt. Der Rechner rechnet ihn nach den veröffentlichten Regeln nach. Kleine Abweichungen sind möglich, vor allem bei 9-Loch-Runden.</p>
+    <p><strong>Was ist das GBE?</strong><br>Das gewertete Bruttoergebnis. Jedes Loch zählt darin höchstens mit Netto-Doppelbogey, also Par plus Handicap-Schläge plus 2. Du findest es auf der Ergebnisliste deines Clubs.</p>
+    <p><strong>Wo finde ich Course Rating und Slope?</strong><br>Auf der Scorekarte des Platzes, getrennt nach Abschlag. Der Rechner merkt sich jeden Platz, den du einmal einträgst.</p>
+    <p><strong>Kostet der Rechner etwas, brauche ich ein Konto?</strong><br>Beides nein. Die Daten bleiben in deinem Browser. Für den Wechsel vom Laptop aufs Handy gibt es Export und Import.</p>
+  </div>
+
   <div class="tool-links">
     <a class="toollink" href="stableford-rechner.html">⛳ Stablefordpunkte pro Loch berechnen</a>
     <a class="toollink" href="../stories/herzogenaurach.html">📖 Mein Golfplatz in Herzogenaurach</a>
     <a class="toollink" href="jetlag-rechner.html">🕐 Jetlag-Rechner für die Golfreise</a>
   </div>
 
-  <div class="topics"><span>Golf</span><span>World Handicap System</span><span>Handicap-Index</span><span>Course Handicap</span><span>9-Loch</span><span>Nur lokale Speicherung</span></div>
+  <div class="topics"><span>Golf</span><span>World Handicap System</span><span>Handicap-Index</span><span>Course Handicap</span><span>9-Loch</span><span>DGV</span><span>Nur lokale Speicherung</span></div>
 
   <div class="sources">
     <p class="kicker">Quellen &amp; Recherche</p>
