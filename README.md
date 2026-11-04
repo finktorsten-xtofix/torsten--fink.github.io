@@ -47,7 +47,7 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 - **Stack:** Pures HTML/CSS, kein Framework, kein Build-Prozess, keine Cookies
 - **Reichweitenmessung:** Umami Cloud, cookielos, auf allen Seiten eingebunden. Handicap-Rechner und Stableford-Rechner speichern Eingaben nur im `localStorage` des Browsers. Details in `datenschutz.html`, Abschnitte 5 und 6.
 - **Design:** Dunkles Kino-Theme, EXIF-Daten als Gestaltungselement, japanische Typografie, Filmstreifen-Galerie
-- **Schriften:** Syne · Instrument Sans · IBM Plex Mono · Noto Serif JP (Google Fonts)
+- **Schriften:** Syne · Instrument Sans · IBM Plex Mono · Noto Serif JP · Noto Serif SC, lokal gehostet in `assets/fonts/` (Fontsource, SIL Open Font License), eingebunden über `assets/css/fonts.css`. Noto Serif JP und SC enthalten nur die Zeichenbereiche, die auf der Website vorkommen. Für neue Kanji in einer Story den passenden Bereich aus dem Fontsource-Paket ergänzen, sonst zeigt der Browser für dieses Zeichen eine Ersatzschrift.
 - **IndexNow:** GitHub-Aktion `.github/workflows/indexnow.yml` meldet nach jedem Push auf `main` neue oder geänderte HTML-Seiten an Bing und die übrigen IndexNow-Suchmaschinen (nicht Google). Von Hand unter Actions → IndexNow → Run workflow: alle Seiten aus `sitemap.xml`. Schlüsseldatei `705f3334de5bd9d14abfc21e1fd270c6.txt` im Root nicht löschen.
 - **SEO/KI:** JSON-LD (Person, WebSite, Blog + BlogPostings), `sitemap.xml`, `robots.txt`, `llms.txt`, Open Graph, Twitter Cards, Quellenverzeichnis am Ende jeder Story (Kicker „Quellen & Recherche", verlinkte Quellenliste als GEO-Signal)
 
