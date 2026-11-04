@@ -14,9 +14,9 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 | 2026 | [Beldibi — Türkisfarbenes Wasser & Russische Geschichten](https://torsten-fink.de/stories/beldibi.html) |
 | 2025 | [Locarno & Ascona — Das Tessin im Entschleunigungsmodus](https://torsten-fink.de/stories/ascona.html) |
 | 2023 | [Istanbul — Das Tor Asiens](https://torsten-fink.de/stories/istanbul.html) |
-| 2019 | [Hongkong — Ein Duft von Abenteuer und Feuerwerk](https://torsten-fink.de/stories/hongkong.html) |
+| 2019 | [Hongkong: Meinen Platz am Rand gebe ich nicht mehr her](https://torsten-fink.de/stories/hongkong.html) |
 | 2017 | [Kamakura — Wo die Shogun surften?](https://torsten-fink.de/stories/kamakura.html) |
-| 2017 | [Tokio — Der Puls einer Welt, die niemals schläft](https://torsten-fink.de/stories/tokio.html) |
+| 2017 | [Tokio: Alle kannten die Schritte, nur ich nicht](https://torsten-fink.de/stories/tokio.html) |
 | 2015 | [Singapur — Einmal hoch und runter im SG50-Jahr](https://torsten-fink.de/stories/singapur.html) |
 
 ## Golf
