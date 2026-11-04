@@ -22,7 +22,7 @@
 <link rel="canonical" href="https://torsten-fink.de/">
 <link rel="sitemap" type="application/xml" href="sitemap.xml">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230B0D12'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle' fill='%23FF5C8A' font-family='sans-serif' font-weight='bold'%3ETF%3C/text%3E%3C/svg%3E">
-<link rel="preload" as="image" href="assets/images/hongkong-nacht.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/hongkong-nacht.webp" type="image/webp" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -253,6 +253,7 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.6vw,3.4re
   background-image:radial-gradient(circle,var(--night-2) 2.4px,transparent 2.6px);background-size:16px 8px;opacity:.9}
 .frame::before{top:1px}.frame::after{bottom:5px}
 .frame-link{display:block}
+picture{display:contents}
 .frame img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;filter:contrast(1.05)}
 .frame figcaption{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-dim);margin-top:10px;display:flex;justify-content:space-between;gap:10px}
 .frame figcaption b{color:var(--brass);font-weight:500}
@@ -357,7 +358,7 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
 
 <header class="hero" id="top">
   <div class="hero-bg">
-    <img src="assets/images/hongkong-nacht.jpg" width="1200" height="1600" alt="Blick von oben auf die nächtlichen Hochhausschluchten von Hongkong">
+    <picture><source type="image/webp" srcset="assets/images/hongkong-nacht.webp"><img src="assets/images/hongkong-nacht.jpg" width="1200" height="1600" alt="Blick von oben auf die nächtlichen Hochhausschluchten von Hongkong"></picture>
   </div>
   <div class="hero-inner">
     <p class="exif"><span>f/1.8</span><span class="dot">·</span><span>1/60&nbsp;s</span><span class="dot">·</span><span>ISO&nbsp;3200</span><span class="dot">·</span><span>Hongkong, 23:47&nbsp;Uhr</span></p>
@@ -376,7 +377,7 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
 <section id="about">
   <div class="wrap about-grid">
     <div class="about-photo reveal">
-      <img src="assets/images/portrait-torsten.jpg" width="1228" height="1600" alt="Torsten Fink – Selfie mit Cap und Sonnenbrille unterwegs in der Sonne" loading="lazy">
+      <picture><source type="image/webp" srcset="assets/images/portrait-torsten-800.webp 800w, assets/images/portrait-torsten-1200.webp 1200w, assets/images/portrait-torsten.webp 1228w" sizes="(max-width: 820px) 88vw, (max-width: 1360px) 38vw, 514px"><img src="assets/images/portrait-torsten.jpg" srcset="assets/images/portrait-torsten-800.jpg 800w, assets/images/portrait-torsten-1200.jpg 1200w, assets/images/portrait-torsten.jpg 1228w" sizes="(max-width: 820px) 88vw, (max-width: 1360px) 38vw, 514px" width="1228" height="1600" alt="Torsten Fink – Selfie mit Cap und Sonnenbrille unterwegs in der Sonne" loading="lazy"></picture>
     </div>
     <div class="about-text reveal">
       <p class="kicker">Über mich · Hinter der Linse</p>
@@ -535,12 +536,12 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
   </div>
   <div class="golf-pics">
     <figure>
-      <img src="assets/images/golf-nuernberg.jpg" width="1600" height="1378" alt="Golfer beim Putten auf dem Grün der Golfrange Nürnberg im goldenen Abendlicht" loading="lazy">
+      <picture><source type="image/webp" srcset="assets/images/golf-nuernberg-800.webp 800w, assets/images/golf-nuernberg-1200.webp 1200w, assets/images/golf-nuernberg.webp 1600w" sizes="(max-width: 680px) 82vw, (max-width: 1370px) 48vw, 664px"><img src="assets/images/golf-nuernberg.jpg" srcset="assets/images/golf-nuernberg-800.jpg 800w, assets/images/golf-nuernberg-1200.jpg 1200w, assets/images/golf-nuernberg.jpg 1600w" sizes="(max-width: 680px) 82vw, (max-width: 1370px) 48vw, 664px" width="1600" height="1378" alt="Golfer beim Putten auf dem Grün der Golfrange Nürnberg im goldenen Abendlicht" loading="lazy"></picture>
       <figcaption><span>Morgenrunde</span><b>Golfrange Nürnberg</b></figcaption>
     </figure>
     <figure>
       <a href="stories/herzogenaurach.html">
-      <img src="assets/images/golf-herzogenaurach.jpg" width="1075" height="1600" alt="Golfschwung im Finish auf der Driving Range des Golfclubs Herzogenaurach" loading="lazy">
+      <picture><source type="image/webp" srcset="assets/images/golf-herzogenaurach-800.webp 800w, assets/images/golf-herzogenaurach.webp 1075w" sizes="(max-width: 680px) 82vw, (max-width: 1370px) 34vw, 468px"><img src="assets/images/golf-herzogenaurach.jpg" srcset="assets/images/golf-herzogenaurach-800.jpg 800w, assets/images/golf-herzogenaurach.jpg 1075w" sizes="(max-width: 680px) 82vw, (max-width: 1370px) 34vw, 468px" width="1075" height="1600" alt="Golfschwung im Finish auf der Driving Range des Golfclubs Herzogenaurach" loading="lazy"></picture>
       </a>
       <figcaption><span>Finish</span><b>GC Herzogenaurach</b></figcaption>
     </figure>
@@ -554,103 +555,103 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
   </div>
   <div class="strip" tabindex="0" aria-label="Fotogalerie, horizontal scrollbar">
     <figure class="frame">
-      <a class="frame-link" href="stories/tokio.html" aria-label="Zur Story Tokio"><img src="assets/images/tokyo-1.jpg" width="1600" height="1200" alt="Anime-Werbetafeln in Akihabara, Tokio" loading="lazy"></a>
+      <a class="frame-link" href="stories/tokio.html" aria-label="Zur Story Tokio"><picture><source type="image/webp" srcset="assets/images/tokyo-1-800.webp 800w, assets/images/tokyo-1-1200.webp 1200w, assets/images/tokyo-1.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/tokyo-1.jpg" srcset="assets/images/tokyo-1-800.jpg 800w, assets/images/tokyo-1-1200.jpg 1200w, assets/images/tokyo-1.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="1200" alt="Anime-Werbetafeln in Akihabara, Tokio" loading="lazy"></picture></a>
       <figcaption><span>Frame 01</span><b>Tokio · Akihabara</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/hongkong.html" aria-label="Zur Story Hongkong"><img src="assets/images/hongkong-nacht.jpg" width="1200" height="1600" alt="Blick von oben auf die nächtlichen Hochhausschluchten von Hongkong" loading="lazy"></a>
+      <a class="frame-link" href="stories/hongkong.html" aria-label="Zur Story Hongkong"><picture><source type="image/webp" srcset="assets/images/hongkong-nacht-800.webp 800w, assets/images/hongkong-nacht.webp 1200w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/hongkong-nacht.jpg" srcset="assets/images/hongkong-nacht-800.jpg 800w, assets/images/hongkong-nacht.jpg 1200w" sizes="(max-width: 580px) 69vw, 400px" width="1200" height="1600" alt="Blick von oben auf die nächtlichen Hochhausschluchten von Hongkong" loading="lazy"></picture></a>
       <figcaption><span>Frame 02</span><b>Hongkong · 23:47 Uhr</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/tokio.html" aria-label="Zur Story Tokio"><img src="assets/images/tokyo-2.jpg" width="1067" height="1600" alt="No Music No Life Schild am Tower Records in Shibuya" loading="lazy"></a>
+      <a class="frame-link" href="stories/tokio.html" aria-label="Zur Story Tokio"><picture><source type="image/webp" srcset="assets/images/tokyo-2-800.webp 800w, assets/images/tokyo-2.webp 1067w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/tokyo-2.jpg" srcset="assets/images/tokyo-2-800.jpg 800w, assets/images/tokyo-2.jpg 1067w" sizes="(max-width: 580px) 69vw, 400px" width="1067" height="1600" alt="No Music No Life Schild am Tower Records in Shibuya" loading="lazy"></picture></a>
       <figcaption><span>Frame 03</span><b>Shibuya · Tower Records</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><img src="assets/images/stories/Chinesisches_Neujahr_Singapur.jpeg" width="1600" height="1600" alt="Leuchtende Glücksmünzen-Laternen über Chinatown in Singapur" loading="lazy"></a>
+      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><picture><source type="image/webp" srcset="assets/images/stories/Chinesisches_Neujahr_Singapur-800.webp 800w, assets/images/stories/Chinesisches_Neujahr_Singapur-1200.webp 1200w, assets/images/stories/Chinesisches_Neujahr_Singapur.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/Chinesisches_Neujahr_Singapur.jpeg" srcset="assets/images/stories/Chinesisches_Neujahr_Singapur-800.jpeg 800w, assets/images/stories/Chinesisches_Neujahr_Singapur-1200.jpeg 1200w, assets/images/stories/Chinesisches_Neujahr_Singapur.jpeg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="1600" alt="Leuchtende Glücksmünzen-Laternen über Chinatown in Singapur" loading="lazy"></picture></a>
       <figcaption><span>Frame 04</span><b>Singapur · Neujahr</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/hongkong.html" aria-label="Zur Story Hongkong"><img src="assets/images/hongkong-1.jpg" width="1600" height="1200" alt="Skyline von Hongkong Central am Harbourfront" loading="lazy"></a>
+      <a class="frame-link" href="stories/hongkong.html" aria-label="Zur Story Hongkong"><picture><source type="image/webp" srcset="assets/images/hongkong-1-800.webp 800w, assets/images/hongkong-1-1200.webp 1200w, assets/images/hongkong-1.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/hongkong-1.jpg" srcset="assets/images/hongkong-1-800.jpg 800w, assets/images/hongkong-1-1200.jpg 1200w, assets/images/hongkong-1.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="1200" alt="Skyline von Hongkong Central am Harbourfront" loading="lazy"></picture></a>
       <figcaption><span>Frame 05</span><b>Hongkong · Harbourfront</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/beldibi.html" aria-label="Zur Story Beldibi"><img src="assets/images/stories/beldibi-meer.jpg" width="1201" height="1600" alt="Türkisfarbenes Meer an der Küste von Beldibi" loading="lazy"></a>
+      <a class="frame-link" href="stories/beldibi.html" aria-label="Zur Story Beldibi"><picture><source type="image/webp" srcset="assets/images/stories/beldibi-meer-800.webp 800w, assets/images/stories/beldibi-meer-1200.webp 1200w, assets/images/stories/beldibi-meer.webp 1201w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/beldibi-meer.jpg" srcset="assets/images/stories/beldibi-meer-800.jpg 800w, assets/images/stories/beldibi-meer-1200.jpg 1200w, assets/images/stories/beldibi-meer.jpg 1201w" sizes="(max-width: 580px) 69vw, 400px" width="1201" height="1600" alt="Türkisfarbenes Meer an der Küste von Beldibi" loading="lazy"></picture></a>
       <figcaption><span>Frame 06</span><b>Beldibi · Türkis</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/hongkong.html" aria-label="Zur Story Hongkong"><img src="assets/images/stories/hongkong-taxi.jpg" width="1245" height="1600" alt="Rotes Taxi vor Kompositfassade in Hongkong" loading="lazy"></a>
+      <a class="frame-link" href="stories/hongkong.html" aria-label="Zur Story Hongkong"><picture><source type="image/webp" srcset="assets/images/stories/hongkong-taxi-800.webp 800w, assets/images/stories/hongkong-taxi-1200.webp 1200w, assets/images/stories/hongkong-taxi.webp 1245w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/hongkong-taxi.jpg" srcset="assets/images/stories/hongkong-taxi-800.jpg 800w, assets/images/stories/hongkong-taxi-1200.jpg 1200w, assets/images/stories/hongkong-taxi.jpg 1245w" sizes="(max-width: 580px) 69vw, 400px" width="1245" height="1600" alt="Rotes Taxi vor Kompositfassade in Hongkong" loading="lazy"></picture></a>
       <figcaption><span>Frame 07</span><b>Hongkong · Rotes Taxi</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/tokio.html" aria-label="Zur Story Tokio"><img src="assets/images/stories/tokio-meiji.jpg" width="1110" height="1600" alt="Shintō-Hochzeit am Meiji-jingū in Tokio" loading="lazy"></a>
+      <a class="frame-link" href="stories/tokio.html" aria-label="Zur Story Tokio"><picture><source type="image/webp" srcset="assets/images/stories/tokio-meiji-800.webp 800w, assets/images/stories/tokio-meiji.webp 1110w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/tokio-meiji.jpg" srcset="assets/images/stories/tokio-meiji-800.jpg 800w, assets/images/stories/tokio-meiji.jpg 1110w" sizes="(max-width: 580px) 69vw, 400px" width="1110" height="1600" alt="Shintō-Hochzeit am Meiji-jingū in Tokio" loading="lazy"></picture></a>
       <figcaption><span>Frame 08</span><b>Tokio · Meiji-jingū</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/hongkong.html" aria-label="Zur Story Hongkong"><img src="assets/images/stories/hongkong-wanchai.jpg" width="1600" height="792" alt="Boote im Typhoon Shelter vor der Skyline von Wan Chai" loading="lazy"></a>
+      <a class="frame-link" href="stories/hongkong.html" aria-label="Zur Story Hongkong"><picture><source type="image/webp" srcset="assets/images/stories/hongkong-wanchai-800.webp 800w, assets/images/stories/hongkong-wanchai-1200.webp 1200w, assets/images/stories/hongkong-wanchai.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/hongkong-wanchai.jpg" srcset="assets/images/stories/hongkong-wanchai-800.jpg 800w, assets/images/stories/hongkong-wanchai-1200.jpg 1200w, assets/images/stories/hongkong-wanchai.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="792" alt="Boote im Typhoon Shelter vor der Skyline von Wan Chai" loading="lazy"></picture></a>
       <figcaption><span>Frame 09</span><b>Hongkong · Wan Chai</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/istanbul.html" aria-label="Zur Story Istanbul"><img src="assets/images/stories/istanbul-goldenes-horn.jpg" width="1600" height="900" alt="Moschee-Silhouette im Abendrot über dem Goldenen Horn" loading="lazy"></a>
+      <a class="frame-link" href="stories/istanbul.html" aria-label="Zur Story Istanbul"><picture><source type="image/webp" srcset="assets/images/stories/istanbul-goldenes-horn-800.webp 800w, assets/images/stories/istanbul-goldenes-horn-1200.webp 1200w, assets/images/stories/istanbul-goldenes-horn.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/istanbul-goldenes-horn.jpg" srcset="assets/images/stories/istanbul-goldenes-horn-800.jpg 800w, assets/images/stories/istanbul-goldenes-horn-1200.jpg 1200w, assets/images/stories/istanbul-goldenes-horn.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="900" alt="Moschee-Silhouette im Abendrot über dem Goldenen Horn" loading="lazy"></picture></a>
       <figcaption><span>Frame 10</span><b>Istanbul · Goldenes Horn</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/istanbul.html" aria-label="Zur Story Istanbul"><img src="assets/images/stories/istanbul-metro-tuer.jpg" width="1600" height="900" alt="Frau in der Tür eines Istanbuler Metrowagens mit bunter Werbefolie" loading="lazy"></a>
+      <a class="frame-link" href="stories/istanbul.html" aria-label="Zur Story Istanbul"><picture><source type="image/webp" srcset="assets/images/stories/istanbul-metro-tuer-800.webp 800w, assets/images/stories/istanbul-metro-tuer-1200.webp 1200w, assets/images/stories/istanbul-metro-tuer.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/istanbul-metro-tuer.jpg" srcset="assets/images/stories/istanbul-metro-tuer-800.jpg 800w, assets/images/stories/istanbul-metro-tuer-1200.jpg 1200w, assets/images/stories/istanbul-metro-tuer.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="900" alt="Frau in der Tür eines Istanbuler Metrowagens mit bunter Werbefolie" loading="lazy"></picture></a>
       <figcaption><span>Frame 11</span><b>Istanbul · Untergrund</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/istanbul.html" aria-label="Zur Story Istanbul"><img src="assets/images/stories/istanbul-halic-sunset.jpg" width="1600" height="900" alt="Haliç-Metrobrücke im Sonnenuntergang" loading="lazy"></a>
+      <a class="frame-link" href="stories/istanbul.html" aria-label="Zur Story Istanbul"><picture><source type="image/webp" srcset="assets/images/stories/istanbul-halic-sunset-800.webp 800w, assets/images/stories/istanbul-halic-sunset-1200.webp 1200w, assets/images/stories/istanbul-halic-sunset.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/istanbul-halic-sunset.jpg" srcset="assets/images/stories/istanbul-halic-sunset-800.jpg 800w, assets/images/stories/istanbul-halic-sunset-1200.jpg 1200w, assets/images/stories/istanbul-halic-sunset.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="900" alt="Haliç-Metrobrücke im Sonnenuntergang" loading="lazy"></picture></a>
       <figcaption><span>Frame 12</span><b>Istanbul · Haliç</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/bad-heilbrunn.html" aria-label="Zur Story Bad Heilbrunn"><img src="assets/images/stories/heilbrunn-alpenblick.jpg" width="1600" height="1200" alt="Voralpenpanorama im Abendlicht bei Bad Heilbrunn" loading="lazy"></a>
+      <a class="frame-link" href="stories/bad-heilbrunn.html" aria-label="Zur Story Bad Heilbrunn"><picture><source type="image/webp" srcset="assets/images/stories/heilbrunn-alpenblick-800.webp 800w, assets/images/stories/heilbrunn-alpenblick-1200.webp 1200w, assets/images/stories/heilbrunn-alpenblick.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/heilbrunn-alpenblick.jpg" srcset="assets/images/stories/heilbrunn-alpenblick-800.jpg 800w, assets/images/stories/heilbrunn-alpenblick-1200.jpg 1200w, assets/images/stories/heilbrunn-alpenblick.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="1200" alt="Voralpenpanorama im Abendlicht bei Bad Heilbrunn" loading="lazy"></picture></a>
       <figcaption><span>Frame 13</span><b>Oberbayern · Alpenblick</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/bad-heilbrunn.html" aria-label="Zur Story Bad Heilbrunn"><img src="assets/images/stories/heilbrunn-bootshaus.jpg" width="1035" height="1600" alt="Bootshaus am Tegernsee mit glasklarem Wasser" loading="lazy"></a>
+      <a class="frame-link" href="stories/bad-heilbrunn.html" aria-label="Zur Story Bad Heilbrunn"><picture><source type="image/webp" srcset="assets/images/stories/heilbrunn-bootshaus-800.webp 800w, assets/images/stories/heilbrunn-bootshaus.webp 1035w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/heilbrunn-bootshaus.jpg" srcset="assets/images/stories/heilbrunn-bootshaus-800.jpg 800w, assets/images/stories/heilbrunn-bootshaus.jpg 1035w" sizes="(max-width: 580px) 69vw, 400px" width="1035" height="1600" alt="Bootshaus am Tegernsee mit glasklarem Wasser" loading="lazy"></picture></a>
       <figcaption><span>Frame 14</span><b>Tegernsee · Bootshaus</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/passau.html" aria-label="Zur Story Passau"><img src="assets/images/stories/passau-veste-oberhaus-frame.jpg" width="1600" height="1066" alt="Blick von der Passauer Altstadt hinauf zur Veste Oberhaus" loading="lazy"></a>
+      <a class="frame-link" href="stories/passau.html" aria-label="Zur Story Passau"><picture><source type="image/webp" srcset="assets/images/stories/passau-veste-oberhaus-frame-800.webp 800w, assets/images/stories/passau-veste-oberhaus-frame-1200.webp 1200w, assets/images/stories/passau-veste-oberhaus-frame.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/passau-veste-oberhaus-frame.jpg" srcset="assets/images/stories/passau-veste-oberhaus-frame-800.jpg 800w, assets/images/stories/passau-veste-oberhaus-frame-1200.jpg 1200w, assets/images/stories/passau-veste-oberhaus-frame.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="1066" alt="Blick von der Passauer Altstadt hinauf zur Veste Oberhaus" loading="lazy"></picture></a>
       <figcaption><span>Frame 15</span><b>Passau · Veste Oberhaus</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/passau.html" aria-label="Zur Story Passau"><img src="assets/images/stories/passau-dom-innen.jpg" width="947" height="1599" alt="Barockes Deckenfresko im Passauer Dom St. Stephan" loading="lazy"></a>
+      <a class="frame-link" href="stories/passau.html" aria-label="Zur Story Passau"><picture><source type="image/webp" srcset="assets/images/stories/passau-dom-innen-800.webp 800w, assets/images/stories/passau-dom-innen.webp 947w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/passau-dom-innen.jpg" srcset="assets/images/stories/passau-dom-innen-800.jpg 800w, assets/images/stories/passau-dom-innen.jpg 947w" sizes="(max-width: 580px) 69vw, 400px" width="947" height="1599" alt="Barockes Deckenfresko im Passauer Dom St. Stephan" loading="lazy"></picture></a>
       <figcaption><span>Frame 16</span><b>Passau · Dom St. Stephan</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><img src="assets/images/stories/Marina_Bay.jpeg" width="1600" height="1600" alt="Marina Bay Sands mit den drei Türmen und dem SkyPark von unten" loading="lazy"></a>
+      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><picture><source type="image/webp" srcset="assets/images/stories/Marina_Bay-800.webp 800w, assets/images/stories/Marina_Bay-1200.webp 1200w, assets/images/stories/Marina_Bay.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/Marina_Bay.jpeg" srcset="assets/images/stories/Marina_Bay-800.jpeg 800w, assets/images/stories/Marina_Bay-1200.jpeg 1200w, assets/images/stories/Marina_Bay.jpeg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="1600" alt="Marina Bay Sands mit den drei Türmen und dem SkyPark von unten" loading="lazy"></picture></a>
       <figcaption><span>Frame 17</span><b>Singapur · Marina Bay</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><img src="assets/images/stories/Tempel.jpeg" width="1600" height="1600" alt="Farbenprächtiger Gopuram des Sri Thendayuthapani Temple an der Tank Road, Singapur" loading="lazy"></a>
+      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><picture><source type="image/webp" srcset="assets/images/stories/Tempel-800.webp 800w, assets/images/stories/Tempel-1200.webp 1200w, assets/images/stories/Tempel.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/Tempel.jpeg" srcset="assets/images/stories/Tempel-800.jpeg 800w, assets/images/stories/Tempel-1200.jpeg 1200w, assets/images/stories/Tempel.jpeg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="1600" alt="Farbenprächtiger Gopuram des Sri Thendayuthapani Temple an der Tank Road, Singapur" loading="lazy"></picture></a>
       <figcaption><span>Frame 18</span><b>Singapur · Tank Road</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><img src="assets/images/stories/singapur-merlion.jpg" width="1600" height="1072" alt="Der Merlion spuckt Wasser vor der Skyline von Marina Bay in Singapur" loading="lazy"></a>
+      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><picture><source type="image/webp" srcset="assets/images/stories/singapur-merlion-800.webp 800w, assets/images/stories/singapur-merlion-1200.webp 1200w, assets/images/stories/singapur-merlion.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/singapur-merlion.jpg" srcset="assets/images/stories/singapur-merlion-800.jpg 800w, assets/images/stories/singapur-merlion-1200.jpg 1200w, assets/images/stories/singapur-merlion.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="1072" alt="Der Merlion spuckt Wasser vor der Skyline von Marina Bay in Singapur" loading="lazy"></picture></a>
       <figcaption><span>Frame 19</span><b>Singapur · Merlion</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><img src="assets/images/stories/singapur-clarke-quay.jpg" width="1600" height="1071" alt="Die Angels-Sonnendächer von Clarke Quay vor dem Novotel-Hotel in Singapur" loading="lazy"></a>
+      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><picture><source type="image/webp" srcset="assets/images/stories/singapur-clarke-quay-800.webp 800w, assets/images/stories/singapur-clarke-quay-1200.webp 1200w, assets/images/stories/singapur-clarke-quay.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/singapur-clarke-quay.jpg" srcset="assets/images/stories/singapur-clarke-quay-800.jpg 800w, assets/images/stories/singapur-clarke-quay-1200.jpg 1200w, assets/images/stories/singapur-clarke-quay.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="1071" alt="Die Angels-Sonnendächer von Clarke Quay vor dem Novotel-Hotel in Singapur" loading="lazy"></picture></a>
       <figcaption><span>Frame 20</span><b>Singapur · Clarke Quay</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><img src="assets/images/stories/singapur-chinatown-1.jpg" width="1600" height="1071" alt="Restaurantfassade mit Laternen und Neonschildern in Chinatown, Singapur" loading="lazy"></a>
+      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><picture><source type="image/webp" srcset="assets/images/stories/singapur-chinatown-1-800.webp 800w, assets/images/stories/singapur-chinatown-1-1200.webp 1200w, assets/images/stories/singapur-chinatown-1.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/singapur-chinatown-1.jpg" srcset="assets/images/stories/singapur-chinatown-1-800.jpg 800w, assets/images/stories/singapur-chinatown-1-1200.jpg 1200w, assets/images/stories/singapur-chinatown-1.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="1071" alt="Restaurantfassade mit Laternen und Neonschildern in Chinatown, Singapur" loading="lazy"></picture></a>
       <figcaption><span>Frame 21</span><b>Singapur · Chinatown</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><img src="assets/images/stories/singapur-chinatown-2.jpg" width="1600" height="1072" alt="Bunte Papierlaternen mit Opernmasken-Motiven in Chinatown, Singapur" loading="lazy"></a>
+      <a class="frame-link" href="stories/singapur.html" aria-label="Zur Story Singapur"><picture><source type="image/webp" srcset="assets/images/stories/singapur-chinatown-2-800.webp 800w, assets/images/stories/singapur-chinatown-2-1200.webp 1200w, assets/images/stories/singapur-chinatown-2.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/singapur-chinatown-2.jpg" srcset="assets/images/stories/singapur-chinatown-2-800.jpg 800w, assets/images/stories/singapur-chinatown-2-1200.jpg 1200w, assets/images/stories/singapur-chinatown-2.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="1072" alt="Bunte Papierlaternen mit Opernmasken-Motiven in Chinatown, Singapur" loading="lazy"></picture></a>
       <figcaption><span>Frame 22</span><b>Singapur · Chinatown</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/kamakura.html" aria-label="Zur Story Kamakura"><img src="assets/images/stories/kamakura-buddha.jpg" width="1600" height="854" alt="Der Große Buddha von Kamakura mit einer Gruppe Frauen in Kimono davor" loading="lazy"></a>
+      <a class="frame-link" href="stories/kamakura.html" aria-label="Zur Story Kamakura"><picture><source type="image/webp" srcset="assets/images/stories/kamakura-buddha-800.webp 800w, assets/images/stories/kamakura-buddha-1200.webp 1200w, assets/images/stories/kamakura-buddha.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/kamakura-buddha.jpg" srcset="assets/images/stories/kamakura-buddha-800.jpg 800w, assets/images/stories/kamakura-buddha-1200.jpg 1200w, assets/images/stories/kamakura-buddha.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="854" alt="Der Große Buddha von Kamakura mit einer Gruppe Frauen in Kimono davor" loading="lazy"></picture></a>
       <figcaption><span>Frame 23</span><b>Kamakura · Großer Buddha</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/kamakura.html" aria-label="Zur Story Kamakura"><img src="assets/images/stories/kamakura-enoshima-abend.jpg" width="1600" height="899" alt="Enoshima im Abendlicht mit Steg und gläserner Aussichtskonstruktion" loading="lazy"></a>
+      <a class="frame-link" href="stories/kamakura.html" aria-label="Zur Story Kamakura"><picture><source type="image/webp" srcset="assets/images/stories/kamakura-enoshima-abend-800.webp 800w, assets/images/stories/kamakura-enoshima-abend-1200.webp 1200w, assets/images/stories/kamakura-enoshima-abend.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/kamakura-enoshima-abend.jpg" srcset="assets/images/stories/kamakura-enoshima-abend-800.jpg 800w, assets/images/stories/kamakura-enoshima-abend-1200.jpg 1200w, assets/images/stories/kamakura-enoshima-abend.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="899" alt="Enoshima im Abendlicht mit Steg und gläserner Aussichtskonstruktion" loading="lazy"></picture></a>
       <figcaption><span>Frame 24</span><b>Kamakura · Enoshima</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/hongkong.html" aria-label="Zur Story Hongkong"><img src="assets/images/stories/hongkong-star-ferry.jpg" width="1600" height="900" alt="Torsten Fink vor dem Star-Ferry-Pier, dahinter die Skyline von Hong Kong Island mit dem Bank of China Tower" loading="lazy"></a>
+      <a class="frame-link" href="stories/hongkong.html" aria-label="Zur Story Hongkong"><picture><source type="image/webp" srcset="assets/images/stories/hongkong-star-ferry-800.webp 800w, assets/images/stories/hongkong-star-ferry-1200.webp 1200w, assets/images/stories/hongkong-star-ferry.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/hongkong-star-ferry.jpg" srcset="assets/images/stories/hongkong-star-ferry-800.jpg 800w, assets/images/stories/hongkong-star-ferry-1200.jpg 1200w, assets/images/stories/hongkong-star-ferry.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="900" alt="Torsten Fink vor dem Star-Ferry-Pier, dahinter die Skyline von Hong Kong Island mit dem Bank of China Tower" loading="lazy"></picture></a>
       <figcaption><span>Frame 25</span><b>Hongkong · Star Ferry</b></figcaption>
     </figure>
   </div>
