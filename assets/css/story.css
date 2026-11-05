@@ -17,6 +17,9 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
   background:rgba(11,13,18,.8);border-bottom:1px solid var(--line)}
 .brand{font-family:var(--display);font-weight:800;font-size:1rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
 .brand em{font-style:normal;color:var(--neon)}
+.brand{display:inline-flex;align-items:center;gap:12px}
+.brand-mark{height:22px;width:auto;flex-shrink:0;display:block}
+@media(max-width:480px){nav{gap:16px}.brand{font-size:.86rem;letter-spacing:.1em;gap:9px}.brand-mark{height:18px}}
 nav .back{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--paper-dim);transition:color .25s}
 nav .back:hover{color:var(--neon)}
 .hero{position:relative;min-height:62svh;display:flex;align-items:flex-end;overflow:hidden;
