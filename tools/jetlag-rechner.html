@@ -6,7 +6,7 @@
 <title>Jetlag-Rechner: Zeitverschiebung und Anpassungsplan für Fernreisen</title>
 <meta name="description" content="Kostenloser Jetlag-Rechner: Zeitzonen-Unterschied berechnen und einen Tag-für-Tag-Anpassungsplan für die Reise nach Tokio, Hongkong, Singapur und mehr erhalten.">
 <meta name="author" content="Torsten Fink">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://torsten-fink.de/tools/jetlag-rechner.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
@@ -35,7 +35,7 @@
   "isAccessibleForFree":true,
   "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
   "description":"Berechnet die Zeitverschiebung zwischen zwei Zeitzonen inklusive Sommer- und Winterzeit und erstellt einen Tag-für-Tag-Anpassungsplan für die innere Uhr.",
-  "dateModified":"2026-10-15T00:00:00+02:00",
+  "dateModified":"2026-11-07T00:00:00+01:00",
   "author":{"@type":"Person","@id":"https://torsten-fink.de/#person","name":"Torsten Fink","url":"https://torsten-fink.de/"}
 }
 </script>
@@ -51,6 +51,10 @@
   .card h2{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:0 0 18px;color:var(--paper);display:flex;align-items:center;gap:10px}
   .card h2 .tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--neon);border:1px solid var(--neon);padding:3px 8px}
 
+  .tz{width:100%;border-collapse:collapse;margin:0 0 16px;font-size:.92rem}
+  .tz th{font-family:var(--mono);font-weight:400;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);text-align:left;padding:0 8px 10px 0;border-bottom:1px solid rgba(236,231,220,.18)}
+  .tz td{padding:9px 8px 9px 0;border-bottom:1px solid rgba(236,231,220,.08);color:var(--paper)}
+  .tz td+td{font-family:var(--mono);color:var(--neon);white-space:nowrap}
   .intro-note{font-size:.92rem;line-height:1.7;color:#CFCabf;margin:0}
 
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -115,13 +119,13 @@
 <div class="tool-hero">
   <p class="exif"><span>Tools</span><span class="dot">·</span><span>Jetlag-Rechner</span></p>
   <h1>Jetlag-Rechner</h1>
-  <p class="sub">Start- und Zielzeitzone wählen, Abflugdatum eintragen, und einen Tag-für-Tag-Anpassungsplan für die innere Uhr bekommen.</p>
+  <p class="sub">Start- und Zielort wählen, Abflugdatum eintragen. Heraus kommt ein Tag-für-Tag-Plan für die innere Uhr.</p>
 </div>
 
 <div class="tool-wrap">
 
   <div class="card">
-    <p class="intro-note">Ostreisen verlangen dem Körper mehr ab als Westreisen, die innere Uhr lässt sich abends leichter nach hinten schieben als morgens nach vorne. Dieser Rechner nimmt Start- und Zielzeitzone, ermittelt Richtung und Zeitverschiebung für das gewählte Datum inklusive Sommer-/Winterzeit und gibt daraus einen groben Tagesplan aus. Kein medizinischer Rat, sondern ein Anhaltspunkt. Individuelle Unterschiede wie Chronotyp und Alter bleiben unberücksichtigt.</p>
+    <p class="intro-note">Ostreisen verlangen dem Körper mehr ab als Westreisen, die innere Uhr lässt sich abends leichter nach hinten schieben als morgens nach vorne. Dieser Rechner nimmt Start- und Zielzeitzone, ermittelt Richtung und Zeitverschiebung für das gewählte Datum inklusive Sommer-/Winterzeit und gibt daraus einen groben Tagesplan aus. Kein medizinischer Rat. Ein Anhaltspunkt. Individuelle Unterschiede wie Chronotyp und Alter bleiben unberücksichtigt.</p>
   </div>
 
   <div class="card">
@@ -203,19 +207,44 @@
   </div>
 
   <div class="card" id="daysCard" style="display:none">
-    <h2><span class="tag">Nachher</span> Tagesübersicht ab Ankunft</h2>
+    <h2><span class="tag">Nachher</span> Tagesübersicht ab Abflugtag</h2>
     <div class="days" id="daysList"><div class="empty">Noch keine Berechnung.</div></div>
+  </div>
+
+  <div class="card" id="zeitverschiebung">
+    <h2><span class="tag">Tabelle</span> Zeitverschiebung ab Deutschland</h2>
+    <table class="tz">
+      <thead><tr><th>Ziel</th><th>Winter (MEZ)</th><th>Sommer (MESZ)</th></tr></thead>
+      <tbody>
+        <tr><td>Tokio, Kamakura</td><td>+8 h</td><td>+7 h</td></tr>
+        <tr><td>Hongkong</td><td>+7 h</td><td>+6 h</td></tr>
+        <tr><td>Singapur</td><td>+7 h</td><td>+6 h</td></tr>
+        <tr><td>Istanbul, Beldibi</td><td>+2 h</td><td>+1 h</td></tr>
+      </tbody>
+    </table>
+    <p class="intro-note">Keines der vier Ziele stellt die Uhr um. Deshalb schrumpft der Abstand im deutschen Sommer um eine Stunde. Sommerzeit gilt in Deutschland vom letzten Sonntag im März bis zum letzten Sonntag im Oktober. Faustregel nach Osten: etwa ein Tag Anpassung pro Stunde. Nach Tokio im Winter sind das rund acht Tage.</p>
   </div>
 
   <div class="card sources">
     <p class="kicker">Quellen &amp; Recherche</p>
-    <p>Die Anpassungsraten dieses Rechners (ca. 1 Stunde pro Tag bei Ostreisen, ca. 1,5 Stunden pro Tag bei Westreisen) folgen der CDC-Reisemedizin-Leitlinie, die sich auf die klinischen AASM-Leitlinien stützt, und decken sich mit einer Piloten-Studie zur Schlafanpassung. Eine systematische Übersichtsarbeit nennt für Westreisen abweichend einen höheren Wert von etwa 2 Stunden pro Tag. Da drei der vier hier genutzten Quellen bei 1,5 Stunden übereinstimmen, wird im Rechner dieser Wert verwendet, die abweichende Angabe steht der Vollständigkeit halber trotzdem mit in der Liste. Wer will, kann selbst nachlesen.</p>
+    <p>Die Anpassungsraten dieses Rechners (ca. 1 Stunde pro Tag bei Ostreisen, ca. 1,5 Stunden pro Tag bei Westreisen) folgen der CDC-Reisemedizin-Leitlinie, die sich auf die klinischen AASM-Leitlinien stützt, und decken sich mit einer Studie mit Flugpersonal. Eine systematische Übersichtsarbeit nennt für Westreisen abweichend einen höheren Wert von etwa 2 Stunden pro Tag. Da drei der vier hier genutzten Quellen bei 1,5 Stunden übereinstimmen, wird im Rechner dieser Wert verwendet, die abweichende Angabe steht der Vollständigkeit halber trotzdem mit in der Liste. Wer will, kann selbst nachlesen. Die Tagestipps stammen aus dem CDC Yellow Book, der Hinweis zu großen Ostsprüngen aus der Übersicht von Eastman und Burgess. Stand November 2026.</p>
     <ul>
-      <li><a href="https://www.ncbi.nlm.nih.gov/books/n/yellowbook/jetlagdisorder/" rel="noopener">Jet Lag Disorder, CDC Yellow Book 2026</a></li>
+      <li><a href="https://www.cdc.gov/yellow-book/hcp/travel-air-sea/jet-lag-disorder.html" rel="noopener">Jet Lag Disorder, CDC Yellow Book 2026</a></li>
       <li><a href="https://www.medlink.com/articles/jet-lag-disorder" rel="noopener">Jet Lag Disorder, MedLink Neurology</a></li>
       <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0952197624020086" rel="noopener">Zirkadiane Resynchronisation bei Flugpersonal, ScienceDirect</a></li>
+      <li><a href="https://stacks.cdc.gov/view/cdc/223129/cdc_223129_DS1.pdf" rel="noopener">How to Travel the World Without Jet Lag, Eastman &amp; Burgess (PDF)</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Time_in_Germany" rel="noopener">Zeit in Deutschland, Wikipedia</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Japan_Standard_Time" rel="noopener">Japan Standard Time, Wikipedia</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Hong_Kong_Time" rel="noopener">Hong Kong Time, Wikipedia</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Singapore_Time" rel="noopener">Singapore Time, Wikipedia</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Time_in_Turkey" rel="noopener">Zeit in der Türkei, Wikipedia</a></li>
       <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11554432/" rel="noopener">Systematic Review zu zirkadianer Anpassung (abweichender Wert für Westreisen), PMC</a></li>
     </ul>
+  </div>
+
+  <div class="tool-links">
+    <a class="toollink" href="../guides/tokio-bahnhoefe-zu-fuss.html">🚉 Tokio zu Fuß: 8 Bahnhöfe</a>
+    <a class="toollink" href="handicap-rechner.html">⛳ Handicap-Rechner für die Golfreise</a>
   </div>
 
   <div class="topics">
@@ -261,15 +290,17 @@ const PREP_TIPS_WEST = [
 ];
 
 const DAY_TIPS_OST = [
-  'Direkt nach dem Aufstehen raus ans Tageslicht, das stellt die innere Uhr am wirksamsten vor.',
+  'Morgens raus ans Tageslicht, das hilft der inneren Uhr beim Vorstellen.',
   'Ab dem späten Nachmittag Ortszeit helles Licht und Bildschirme eher reduzieren.',
-  'Sport und Bewegung eher in die erste Tageshälfte legen.',
-  'Koffein nach der Mittagszeit Ortszeit eher meiden, das erleichtert das frühere Einschlafen.'
+  'Tagsüber wach bleiben, Nickerchen höchstens 20 bis 30 Minuten.',
+  'Ab 16 Uhr Ortszeit keinen Kaffee mehr, das erleichtert das frühere Einschlafen.'
 ];
+// Licht vor dem Temperaturminimum verzögert die innere Uhr; nach großen Ostsprüngen fällt Morgenlicht in diese Phase (Eastman & Burgess 2009)
+const BIG_EAST_TIP = 'Die ersten Tage grelles Licht direkt nach dem Aufstehen meiden, Tageslicht erst ab dem späten Vormittag. Zu frühes Licht kann die innere Uhr in die falsche Richtung schieben, vor allem ab acht Stunden Zeitverschiebung.';
 const DAY_TIPS_WEST = [
   'Am Abend noch etwas draußen bleiben oder helles Licht suchen, das verzögert die innere Uhr angenehm.',
   'Am Morgen die Vorhänge notfalls zu lassen, wenn das Aufwachen zu früh kommt.',
-  'Kurze Nickerchen am frühen Nachmittag helfen, ohne den Abend zu gefährden.',
+  'Kurze Nickerchen von 20 bis 30 Minuten helfen, längere stören den Nachtschlaf.',
   'Mahlzeiten möglichst an die neue Ortszeit anpassen, nicht an die alte.'
 ];
 
@@ -303,7 +334,7 @@ function render(diffHours, startLabel, destLabel, depDate){
   const isOst = diffHours > 0;
   const rate = isOst ? 1 : 1.5;
   const days = Math.ceil(absHours / rate);
-  const tips = isOst ? DAY_TIPS_OST : DAY_TIPS_WEST;
+  const tips = isOst ? (absHours >= 6 ? [BIG_EAST_TIP, ...DAY_TIPS_OST.slice(1)] : DAY_TIPS_OST) : DAY_TIPS_WEST;
   const prepTips = isOst ? PREP_TIPS_OST : PREP_TIPS_WEST;
 
   jlDir.textContent = isOst ? 'Ostreise' : 'Westreise';
