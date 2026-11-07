@@ -227,11 +227,12 @@
 
   <div class="card sources">
     <p class="kicker">Quellen &amp; Recherche</p>
-    <p>Die Anpassungsraten dieses Rechners (ca. 1 Stunde pro Tag bei Ostreisen, ca. 1,5 Stunden pro Tag bei Westreisen) folgen der CDC-Reisemedizin-Leitlinie, die sich auf die klinischen AASM-Leitlinien stützt, und decken sich mit einer Studie mit Flugpersonal. Eine systematische Übersichtsarbeit nennt für Westreisen abweichend einen höheren Wert von etwa 2 Stunden pro Tag. Da drei der vier hier genutzten Quellen bei 1,5 Stunden übereinstimmen, wird im Rechner dieser Wert verwendet, die abweichende Angabe steht der Vollständigkeit halber trotzdem mit in der Liste. Wer will, kann selbst nachlesen. Die Tagestipps stammen aus dem CDC Yellow Book, der Hinweis zu großen Ostsprüngen aus der Übersicht von Eastman und Burgess. Stand November 2026.</p>
+    <p>Die Anpassungsraten dieses Rechners (ca. 1 Stunde pro Tag bei Ostreisen, ca. 1,5 Stunden pro Tag bei Westreisen) folgen der CDC-Reisemedizin-Leitlinie, die sich auf die klinischen AASM-Leitlinien stützt, und decken sich mit einer Studie mit Flugpersonal. Eine systematische Übersichtsarbeit nennt für Westreisen abweichend einen höheren Wert von etwa 2 Stunden pro Tag. Da drei der vier hier genutzten Quellen bei 1,5 Stunden übereinstimmen, wird im Rechner dieser Wert verwendet, die abweichende Angabe steht der Vollständigkeit halber trotzdem mit in der Liste. Wer will, kann selbst nachlesen. Die Tagestipps stammen aus dem CDC Yellow Book. Die Uhrzeit im Lichttipp folgt Roach und Sargent: Nach einem Flug nach Osten liegt der Tiefpunkt der Körpertemperatur bei etwa 4 Uhr plus Zeitverschiebung, Licht davor verschiebt die innere Uhr nach hinten. Gerechnet ist mit einem durchschnittlichen Tagesrhythmus. Der Hinweis zu sehr großen Ostsprüngen stammt aus der Übersicht von Eastman und Burgess. Stand November 2026.</p>
     <ul>
       <li><a href="https://www.cdc.gov/yellow-book/hcp/travel-air-sea/jet-lag-disorder.html" rel="noopener">Jet Lag Disorder, CDC Yellow Book 2026</a></li>
       <li><a href="https://www.medlink.com/articles/jet-lag-disorder" rel="noopener">Jet Lag Disorder, MedLink Neurology</a></li>
       <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0952197624020086" rel="noopener">Zirkadiane Resynchronisation bei Flugpersonal, ScienceDirect</a></li>
+      <li><a href="https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2019.00927/full" rel="noopener">Interventions to Minimize Jet Lag, Roach &amp; Sargent, Frontiers in Physiology</a></li>
       <li><a href="https://stacks.cdc.gov/view/cdc/223129/cdc_223129_DS1.pdf" rel="noopener">How to Travel the World Without Jet Lag, Eastman &amp; Burgess (PDF)</a></li>
       <li><a href="https://en.wikipedia.org/wiki/Time_in_Germany" rel="noopener">Zeit in Deutschland, Wikipedia</a></li>
       <li><a href="https://en.wikipedia.org/wiki/Japan_Standard_Time" rel="noopener">Japan Standard Time, Wikipedia</a></li>
@@ -295,8 +296,13 @@ const DAY_TIPS_OST = [
   'Tagsüber wach bleiben, Nickerchen höchstens 20 bis 30 Minuten.',
   'Ab 16 Uhr Ortszeit keinen Kaffee mehr, das erleichtert das frühere Einschlafen.'
 ];
-// Licht vor dem Temperaturminimum verzögert die innere Uhr; nach großen Ostsprüngen fällt Morgenlicht in diese Phase (Eastman & Burgess 2009)
-const BIG_EAST_TIP = 'Die ersten Tage grelles Licht direkt nach dem Aufstehen meiden, Tageslicht erst ab dem späten Vormittag. Zu frühes Licht kann die innere Uhr in die falsche Richtung schieben, vor allem ab acht Stunden Zeitverschiebung.';
+// Licht vor dem Temperaturminimum verzögert die innere Uhr (Roach & Sargent 2019). Nach Ostflügen liegt es bei etwa 4 Uhr plus Zeitverschiebung Ortszeit;
+// ab acht Zeitzonen dreht die Uhr oft in die falsche Richtung (Eastman & Burgess 2009)
+function bigEastTip(h){
+  const later = 'Früheres Licht kann die innere Uhr in die falsche Richtung schieben, vor allem ab acht Stunden Zeitverschiebung.';
+  if(h <= 9) return `Die ersten Tage morgens kein grelles Licht, Tageslicht erst ab etwa ${Math.round(4 + h)} Uhr Ortszeit. ${later}`;
+  return `Die ersten Tage morgens kein grelles Licht, Tageslicht erst ab dem Nachmittag. ${later}`;
+}
 const DAY_TIPS_WEST = [
   'Am Abend noch etwas draußen bleiben oder helles Licht suchen, das verzögert die innere Uhr angenehm.',
   'Am Morgen die Vorhänge notfalls zu lassen, wenn das Aufwachen zu früh kommt.',
@@ -334,7 +340,7 @@ function render(diffHours, startLabel, destLabel, depDate){
   const isOst = diffHours > 0;
   const rate = isOst ? 1 : 1.5;
   const days = Math.ceil(absHours / rate);
-  const tips = isOst ? (absHours >= 6 ? [BIG_EAST_TIP, ...DAY_TIPS_OST.slice(1)] : DAY_TIPS_OST) : DAY_TIPS_WEST;
+  const tips = isOst ? (absHours >= 6 ? [bigEastTip(absHours), ...DAY_TIPS_OST.slice(1)] : DAY_TIPS_OST) : DAY_TIPS_WEST;
   const prepTips = isOst ? PREP_TIPS_OST : PREP_TIPS_WEST;
 
   jlDir.textContent = isOst ? 'Ostreise' : 'Westreise';
