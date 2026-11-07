@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Handicap-Rechner Golf (WHS, DGV) mit 9-Loch-Runden und Rechenweg</title>
+<title>Handicap-Rechner Golf: Handicap berechnen (WHS, DGV, 9 Loch)</title>
 <meta name="description" content="Golf-Handicap kostenlos online berechnen: Handicap-Index und Course Handicap nach WHS und DGV-Regeln, 9-Loch-Runden inklusive. Ohne Anmeldung.">
 <meta name="author" content="Torsten Fink">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://torsten-fink.de/tools/handicap-rechner.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
-<meta property="og:title" content="Handicap-Rechner Golf (WHS, DGV) mit 9-Loch-Runden und Rechenweg">
+<meta property="og:title" content="Handicap-Rechner Golf: Handicap berechnen (WHS, DGV, 9 Loch)">
 <meta property="og:description" content="Golf-Handicap kostenlos online berechnen: Handicap-Index und Course Handicap nach WHS und DGV-Regeln, 9-Loch-Runden inklusive. Ohne Anmeldung.">
 <meta property="og:url" content="https://torsten-fink.de/tools/handicap-rechner.html">
 <meta property="og:image" content="https://torsten-fink.de/assets/images/tools/og-handicap-rechner.jpg">
@@ -35,7 +35,7 @@
   "isAccessibleForFree":true,
   "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
   "description":"Berechnet Score Differential, Handicap-Index und Course Handicap nach dem World Handicap System, mit 9-Loch-Runden, PCC und sichtbarem Rechenweg.",
-  "dateModified":"2026-10-29T00:00:00+01:00",
+  "dateModified":"2026-11-07T00:00:00+01:00",
   "author":{"@type":"Person","@id":"https://torsten-fink.de/#person","name":"Torsten Fink","url":"https://torsten-fink.de/"}
 }
 </script>
@@ -50,6 +50,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Nein. Verbindlich ist allein der Handicap-Index, den dein Heimatclub über den DGV führt. Der Rechner rechnet ihn nach den veröffentlichten Regeln nach. Kleine Abweichungen sind möglich, vor allem bei 9-Loch-Runden."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie wird das Handicap berechnet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jede Runde wird zum Score Differential: (113 ÷ Slope) × (GBE − Course Rating − PCC). Der Handicap-Index ist der Durchschnitt der besten acht aus den letzten 20 Differentials. Bei weniger Runden gilt die Tabelle des DGV."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie zählt eine 9-Loch-Runde?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Das Differential der gespielten neun Löcher bekommt einen erwarteten Wert für die fehlenden neun dazu: (Handicap-Index × 1,04 + 2,4) ÷ 2. Deshalb braucht eine 9-Loch-Runde einen Index zum Spielzeitpunkt."
       }
     },
     {
@@ -393,6 +409,8 @@
   <div class="card" id="fragen">
     <h2><span class="tag">FAQ</span> Häufige Fragen</h2>
     <p><strong>Ist das Ergebnis mein offizielles Handicap?</strong><br>Nein. Verbindlich ist allein der Handicap-Index, den dein Heimatclub über den DGV führt. Der Rechner rechnet ihn nach den veröffentlichten Regeln nach. Kleine Abweichungen sind möglich, vor allem bei 9-Loch-Runden.</p>
+    <p><strong>Wie wird das Handicap berechnet?</strong><br>Jede Runde wird zum Score Differential: (113 ÷ Slope) × (GBE − Course Rating − PCC). Der Handicap-Index ist der Durchschnitt der besten acht aus den letzten 20 Differentials. Bei weniger Runden gilt die Tabelle des DGV.</p>
+    <p><strong>Wie zählt eine 9-Loch-Runde?</strong><br>Das Differential der gespielten neun Löcher bekommt einen erwarteten Wert für die fehlenden neun dazu: (Handicap-Index × 1,04 + 2,4) ÷ 2. Deshalb braucht eine 9-Loch-Runde einen Index zum Spielzeitpunkt.</p>
     <p><strong>Was ist das GBE?</strong><br>Das gewertete Bruttoergebnis. Jedes Loch zählt darin höchstens mit Netto-Doppelbogey, also Par plus Handicap-Schläge plus 2. Du findest es auf der Ergebnisliste deines Clubs.</p>
     <p><strong>Wo finde ich Course Rating und Slope?</strong><br>Auf der Scorekarte des Platzes, getrennt nach Abschlag. Der Rechner merkt sich jeden Platz, den du einmal einträgst.</p>
     <p><strong>Kostet der Rechner etwas, brauche ich ein Konto?</strong><br>Beides nein. Die Daten bleiben in deinem Browser. Für den Wechsel vom Laptop aufs Handy gibt es Export und Import.</p>
@@ -401,6 +419,7 @@
   <div class="tool-links">
     <a class="toollink" href="stableford-rechner.html">⛳ Stablefordpunkte pro Loch berechnen</a>
     <a class="toollink" href="../stories/herzogenaurach.html">📖 Mein Golfplatz in Herzogenaurach</a>
+    <a class="toollink" href="../stories/ascona.html">📖 Golf in Losone bei Ascona</a>
     <a class="toollink" href="jetlag-rechner.html">🕐 Jetlag-Rechner für die Golfreise</a>
   </div>
 
@@ -414,6 +433,7 @@
       <li><a href="https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm" rel="noopener">USGA Rules of Handicapping 5.1a</a></li>
       <li><a href="https://www.usga.org/handicapping/roh/Content/rules/5%201b%20Calculation%20of%20a%20Score%20Differential9Hole.htm" rel="noopener">USGA Rules of Handicapping 5.1b</a></li>
       <li><a href="https://www.usga.org/handicapping/roh/Content/rules/5%202a%20For%20Fewer%20Than%2020%20Scores.htm" rel="noopener">USGA Rules of Handicapping 5.2a</a></li>
+      <li><a href="https://www.usga.org/handicapping/roh/Content/rules/5%207%20Low%20Handicap%20Index.htm" rel="noopener">USGA Rules of Handicapping 5.7</a></li>
       <li><a href="https://www.usga.org/content/usga/home-page/handicapping/roh/Content/rules/5%209%20Submission%20of%20an%20Exceptional%20Score.htm" rel="noopener">USGA Rules of Handicapping 5.9</a></li>
       <li><a href="https://www.usga.org/content/usga/home-page/handicapping/roh/Content/rules/6%201a%2018%20holes.htm" rel="noopener">USGA Rules of Handicapping 6.1a</a></li>
       <li><a href="https://www.usga.org/handicapping/roh/Content/rules/6%201b%209%20holes.htm" rel="noopener">USGA Rules of Handicapping 6.1b</a></li>
@@ -534,9 +554,10 @@ const WHS = (() => {
     const steps = {n: win.length, use: t.use, adj: t.adj, best, avg, base};
 
     let hi = base;
-    // Soft/Hard Cap ab 20 Ergebnissen. Low HI = tiefster Index der 365 Tage vor dem Spieltag der letzten Runde (R&A-Definition)
+    // Soft/Hard Cap ab 20 Ergebnissen. Low HI = tiefster Index der 365 Tage vor dem Spieltag der bisher letzten Runde (Regel 5.7 mit 5.7/1, 5.7/2)
     if (win.length >= 20){
-      const prev = history.filter(h => h.day >= today - 365 && h.day < today).map(h => h.hi);
+      const ref = history.length ? history[history.length - 1].day : null;   // Regel 5.7: 365 Tage vor der zuletzt gespielten Runde
+      const prev = ref === null ? [] : history.filter(h => h.day >= ref - 365 && h.day <= ref).map(h => h.hi);
       if (prev.length){
         const low = Math.min(...prev);
         steps.low = low;
