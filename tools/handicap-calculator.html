@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Golf Handicap Calculator: WHS Handicap Index and Course Handicap</title>
+<meta name="description" content="Free golf handicap calculator: Handicap Index and Course Handicap under the World Handicap System, 9-hole rounds included, every step shown. No sign-up.">
+<meta name="author" content="Torsten Fink">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://torsten-fink.de/tools/handicap-calculator.html">
+<link rel="alternate" hreflang="en" href="https://torsten-fink.de/tools/handicap-calculator.html">
+<link rel="alternate" hreflang="de" href="https://torsten-fink.de/tools/handicap-rechner.html">
+<link rel="alternate" hreflang="x-default" href="https://torsten-fink.de/tools/handicap-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:title" content="Golf Handicap Calculator: WHS Handicap Index and Course Handicap">
+<meta property="og:description" content="Free golf handicap calculator: Handicap Index and Course Handicap under the World Handicap System, 9-hole rounds included, every step shown. No sign-up.">
+<meta property="og:url" content="https://torsten-fink.de/tools/handicap-calculator.html">
+<meta property="og:image" content="https://torsten-fink.de/assets/images/tools/og-handicap-calculator.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Preview image Handicap Calculator: lit golf ball against a dark background, Course Handicap formula">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B0D12">
+<link rel="icon" href="../assets/images/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/images/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/story.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Golf Handicap Calculator (World Handicap System)",
+  "url":"https://torsten-fink.de/tools/handicap-calculator.html",
+  "applicationCategory":"SportsApplication",
+  "operatingSystem":"Browser",
+  "inLanguage":"en",
+  "isAccessibleForFree":true,
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+  "description":"Calculates Score Differential, Handicap Index and Course Handicap under the World Handicap System, with 9-hole rounds, PCC, an optional German DGV mode and every step shown.",
+  "dateModified":"2026-11-09T00:00:00+01:00",
+  "workTranslation":{"@type":"WebApplication","url":"https://torsten-fink.de/tools/handicap-rechner.html","inLanguage":"de"},
+  "author":{"@type":"Person","@id":"https://torsten-fink.de/#person","name":"Torsten Fink","url":"https://torsten-fink.de/","sameAs":["https://www.instagram.com/torstenfinkbayern/"]}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is the result my official handicap?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Your official Handicap Index is the one your home club keeps through its national association. The calculator recalculates it from the published Rules of Handicapping. Small differences are possible, especially with 9-hole rounds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is a golf handicap calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every round becomes a Score Differential: (113 ÷ Slope) × (adjusted gross score − Course Rating − PCC). The Handicap Index is the average of the best eight of your last 20 differentials. With fewer than 20 scores a table applies, and you need at least three scores for a first index."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does a 9-hole round count?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The differential for the nine holes played is combined with an expected value for the nine not played: (Handicap Index × 1.04 + 2.4) ÷ 2. That is why a 9-hole round needs a Handicap Index at the time it was played."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the adjusted gross score?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your gross score with every hole capped at net double bogey, which is par plus handicap strokes plus 2. Your club's results list usually shows it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do I find Course Rating and Slope?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On the course's scorecard, listed per tee. The calculator remembers every course you enter once."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it cost anything, do I need an account?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No to both. Your data stays in your browser. Export and import move it from laptop to phone."
+      }
+    }
+  ]
+}
+</script>
+<style>
+  .tool-hero{padding:120px clamp(20px,6vw,80px) 40px;max-width:860px;margin:0 auto}
+  .tool-hero h1{font-size:clamp(2rem,6vw,3.4rem)}
+  .tool-hero .sub{max-width:60ch}
+  .tool-wrap{max-width:760px;margin:0 auto;padding:0 clamp(16px,6vw,40px) 40px}
+
+  .card{border:1px solid var(--line);background:var(--night-2);padding:clamp(18px,3vw,32px);margin-bottom:22px}
+  .card h2{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:0 0 18px;color:var(--paper);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .card h2 .tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--neon);border:1px solid var(--neon);padding:3px 8px}
+  .card p{font-size:.95rem;line-height:1.7;color:#CFCabf;margin:0 0 12px}
+  .card p:last-child{margin-bottom:0}
+  .note{font-size:.82rem!important;color:var(--paper-dim)!important}
+
+  .hi-hero{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  .hi-value{font-family:var(--mono);font-weight:500;font-size:3.4rem;color:var(--neon);line-height:1}
+  .hi-count{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
+  .hi-meta{font-size:.85rem;color:var(--paper-dim);margin-top:8px}
+
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .field{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .field.full{grid-column:1/-1}
+  label,.lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
+  input,select{background:var(--night);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:1rem;padding:11px 12px;width:100%;border-radius:0}
+  input:focus,select:focus{outline:none;border-color:var(--neon)}
+  input::placeholder{color:#5a5a62}
+
+  .seg{display:flex;border:1px solid var(--line)}
+  .seg label{flex:1;text-align:center;padding:11px 8px;cursor:pointer;font-size:.7rem;color:var(--paper-dim);transition:.2s;position:relative}
+  .seg input{position:absolute;opacity:0;width:1px;height:1px}
+  .seg label:has(input:checked){background:var(--neon);color:var(--night)}
+  .seg label:has(input:focus-visible){outline:2px solid var(--neon);outline-offset:2px}
+
+  .check{display:flex;gap:10px;align-items:flex-start;font-family:var(--body);font-size:.9rem;letter-spacing:0;text-transform:none;color:#CFCabf;cursor:pointer}
+  .check input{width:18px;height:18px;margin-top:3px;flex:0 0 auto;accent-color:var(--neon)}
+
+  .btn{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--neon);
+    background:transparent;border:1px solid var(--neon);padding:13px 22px;width:100%;margin-top:16px;cursor:pointer;transition:.25s}
+  .btn:hover{background:var(--neon);color:var(--night)}
+  .btn:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+  .btn.ghost{color:var(--paper-dim);border-color:var(--line)}
+  .btn.ghost:hover{color:var(--night);background:var(--paper-dim)}
+  .btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .btn-row .btn{margin-top:10px}
+
+  .msg{font-size:.85rem;margin-top:12px;min-height:1em;color:var(--brass)}
+  .msg.err{color:var(--neon)}
+
+  .result{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+  .result .big{font-family:var(--mono);font-size:2.2rem;color:var(--neon);line-height:1}
+  .result .cap{font-size:.85rem;color:var(--paper-dim);margin-top:6px}
+
+  details.way{margin-top:14px;border:1px solid var(--line);background:var(--night)}
+  details.way summary{cursor:pointer;padding:10px 14px;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);list-style:none}
+  details.way summary::-webkit-details-marker{display:none}
+  details.way summary::before{content:"+ ";color:var(--neon)}
+  details.way[open] summary::before{content:"− "}
+  .steps{padding:4px 14px 14px;font-family:var(--mono);font-size:.76rem;line-height:1.75;color:#CFCabf;overflow-x:auto}
+  .steps div{white-space:pre-wrap;word-break:break-word}
+  .steps .hl{color:var(--neon)}
+  .steps .dim{color:var(--paper-dim)}
+
+  .rounds{display:flex;flex-direction:column;gap:6px}
+  .round{border:1px solid var(--line)}
+  .round.used{border-color:var(--neon)}
+  .round.out{opacity:.45}
+  .round summary{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center;padding:11px 12px;cursor:pointer;list-style:none;font-family:var(--mono);font-size:.76rem;color:var(--paper-dim)}
+  .round summary::-webkit-details-marker{display:none}
+  .round .where{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .round .where b{color:var(--paper);font-weight:500}
+  .round .h9{font-size:.6rem;border:1px solid var(--brass);color:var(--brass);padding:1px 5px;margin-left:6px}
+  .round .diff{color:var(--neon);min-width:3.2em;text-align:right}
+  .round .gbe{min-width:2.4em;text-align:right}
+  .round .body{padding:0 12px 12px}
+  .del-btn{background:none;border:1px solid var(--line);color:var(--paper-dim);font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 10px;cursor:pointer;margin-top:10px;transition:.25s}
+  .del-btn:hover{color:var(--neon);border-color:var(--neon)}
+  .legend{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--paper-dim);margin-top:12px}
+  .legend .dot{color:var(--neon)}
+  .empty{color:var(--paper-dim);font-size:.85rem;padding:20px;text-align:center;border:1px dashed var(--line)}
+
+  .limits{margin:0;padding:0 0 0 1.1em;color:#CFCabf;font-size:.9rem;line-height:1.65}
+  .limits li{margin-bottom:.7em}
+  .limits strong{color:var(--paper);font-weight:500}
+
+  .sources{margin:40px 0 0;padding-top:30px;border-top:1px solid rgba(236,231,220,.14)}
+  .sources .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+  .sources p{color:var(--paper-dim);font-size:.92rem;line-height:1.6;max-width:66ch;margin-bottom:16px}
+  .sources ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;row-gap:8px;font-family:var(--mono);font-size:.78rem;line-height:1.7}
+  .sources li{color:#5B5850}
+  .sources li:not(:last-child)::after{content:"·";color:var(--neon);margin:0 12px;font-size:.9em}
+  .sources a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(236,231,220,.28);padding-bottom:1px;transition:color .2s,border-color .2s}
+  .sources a:hover,.sources a:focus-visible{color:var(--neon);border-color:var(--neon)}
+
+  @media(max-width:560px){
+    .grid{grid-template-columns:1fr 1fr}
+    .grid .field.wide{grid-column:1/-1}
+    .hi-value{font-size:2.8rem}
+    .round summary{font-size:.7rem;gap:8px}
+  }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="b191da8b-4e9a-4245-b89f-618b3c6250c9"></script>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="../index.html"><svg class="brand-mark" aria-hidden="true" focusable="false" viewBox="6 26 108 68"><path fill="#ECE7DC" d="M12 26H75A7 7 0 0 0 89 26H108A6 6 0 0 1 114 32V88A6 6 0 0 1 108 94H89A7 7 0 0 0 75 94H12A6 6 0 0 1 6 88V32A6 6 0 0 1 12 26Z"/><line x1="82" y1="38" x2="82" y2="82" stroke="#0B0D12" stroke-width="2.6" stroke-dasharray="4 4"/><line x1="16" y1="71" x2="72" y2="71" stroke="#0B0D12" stroke-width="5"/><circle cx="53" cy="49" r="7.5" fill="#FF5C8A"/><g stroke="#0B0D12" stroke-width="3.2" stroke-linecap="round"><line x1="90" y1="49" x2="105" y2="49"/><line x1="90" y1="59" x2="100" y2="59"/><line x1="90" y1="69" x2="95" y2="69"/></g></svg><span>Torsten<em>·</em>Fink</span></a>
+  <a class="back" href="handicap-rechner.html" hreflang="de" lang="de">Deutsch</a>
+</nav>
+
+<div class="tool-hero">
+  <p class="exif"><span>Tools</span><span class="dot">·</span><span>Golf</span><span class="dot">·</span><span>WHS</span></p>
+  <h1>Golf Handicap Calculator</h1>
+  <p class="sub">Calculates your handicap under the World Handicap System. Your Score Differentials give the Handicap Index, the index gives the Course Handicap for your next round. 9-hole rounds count, and every step of the maths stays visible.</p>
+</div>
+
+<div class="tool-wrap">
+
+  <div class="card">
+    <p>Enter your rounds. The adjusted gross score is on your club's results list, Course Rating and Slope are on the scorecard. Every number can be expanded to show how it was calculated.</p>
+    <p>Everything is stored in this browser only. No account, no upload. If you start on your laptop, your phone will show an empty list, so there is export and import further down.</p>
+    <p>There is no course database on purpose. Course Rating and Slope depend on the tee and change with every re-rating, and outdated values would be worse than none. The calculator remembers every course you enter once.</p>
+    <p class="note">The rules: WHS standard as published by the USGA and The R&amp;A, used by national associations in 135 countries. If your home club is in Germany, switch to the German DGV version under Settings.</p>
+    <p class="note">Your official Handicap Index is the one your home club keeps. This calculator recalculates it as closely as the published rules allow.</p>
+  </div>
+
+  <!-- HANDICAP INDEX -->
+  <div class="card" id="index">
+    <h2><span class="tag">HI</span> Your Handicap Index</h2>
+    <div class="hi-hero">
+      <div class="hi-value" id="hiValue">··</div>
+      <div class="hi-count" id="hiCount">0 rounds</div>
+    </div>
+    <div class="hi-meta" id="hiMeta">No rounds entered yet.</div>
+    <details class="way" id="hiWay" hidden>
+      <summary>How the Handicap Index is calculated</summary>
+      <div class="steps" id="hiSteps"></div>
+    </details>
+  </div>
+
+  <!-- ADD ROUND -->
+  <div class="card" id="add-round">
+    <h2><span class="tag">New</span> Add a round</h2>
+    <div class="grid">
+      <div class="field full">
+        <span class="lbl" id="holesLbl">Holes played</span>
+        <div class="seg" role="radiogroup" aria-labelledby="holesLbl">
+          <label><input type="radio" name="holes" value="18" checked>18 holes</label>
+          <label><input type="radio" name="holes" value="9">9 holes</label>
+        </div>
+      </div>
+      <div class="field full">
+        <label for="course">Course and tee</label>
+        <input type="text" id="course" list="courseList" placeholder="e.g. Fanling Old Course, white" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="date">Date</label>
+        <input type="date" id="date">
+      </div>
+      <div class="field">
+        <label for="gbe">Adjusted gross score</label>
+        <input type="number" id="gbe" placeholder="e.g. 89" inputmode="numeric" min="1">
+      </div>
+      <div class="field">
+        <label for="cr">Course Rating</label>
+        <input type="number" id="cr" step="0.1" placeholder="e.g. 71.2" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="slope">Slope</label>
+        <input type="number" id="slope" placeholder="e.g. 128" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="par">Par (optional)</label>
+        <input type="number" id="par" placeholder="e.g. 72" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="pcc">PCC of the day</label>
+        <select id="pcc">
+          <option value="-1">−1</option>
+          <option value="0" selected>0</option>
+          <option value="1">+1</option>
+          <option value="2">+2</option>
+          <option value="3">+3</option>
+        </select>
+      </div>
+    </div>
+    <p class="note" id="holesHint" style="margin-top:12px">For 18 holes, enter the 18-hole values. The PCC is on the results list and is usually 0.</p>
+    <button class="btn" id="addRound" type="button">Save round</button>
+    <div class="msg" id="addMsg" role="status" aria-live="polite"></div>
+  </div>
+
+  <!-- COURSE HANDICAP -->
+  <div class="card" id="course-handicap">
+    <h2><span class="tag">CH</span> Course Handicap for your next round</h2>
+    <div class="grid">
+      <div class="field full">
+        <span class="lbl" id="chHolesLbl">Round over</span>
+        <div class="seg" role="radiogroup" aria-labelledby="chHolesLbl">
+          <label><input type="radio" name="chHoles" value="18" checked>18 holes</label>
+          <label><input type="radio" name="chHoles" value="9">9 holes</label>
+        </div>
+      </div>
+      <div class="field full">
+        <label for="chCourse">Saved course (optional)</label>
+        <select id="chCourse"><option value="">Enter values yourself</option></select>
+      </div>
+      <div class="field">
+        <label for="chCr">Course Rating</label>
+        <input type="number" id="chCr" step="0.1" placeholder="e.g. 72.4" inputmode="decimal">
+      </div>
+      <div class="field">
+        <label for="chSlope">Slope</label>
+        <input type="number" id="chSlope" placeholder="e.g. 132" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="chPar">Par</label>
+        <input type="number" id="chPar" placeholder="e.g. 72" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="chHi">HI (empty = current)</label>
+        <input type="number" id="chHi" step="0.1" placeholder="from rounds" inputmode="decimal">
+      </div>
+    </div>
+    <button class="btn" id="calcCH" type="button">Calculate Course Handicap</button>
+    <div class="msg" id="chMsg" role="status" aria-live="polite"></div>
+    <div class="result" id="chResult" hidden>
+      <div class="big" id="chBig"></div>
+      <div class="cap" id="chCap"></div>
+      <details class="way">
+        <summary>How the Course Handicap is calculated</summary>
+        <div class="steps" id="chSteps"></div>
+      </details>
+    </div>
+  </div>
+
+  <!-- LOG -->
+  <div class="card" id="rounds">
+    <h2><span class="tag">Log</span> Your rounds</h2>
+    <div class="rounds" id="roundsList"><div class="empty">Loading rounds …</div></div>
+    <p class="legend"><span class="dot">▢</span> pink frame: counts for the index. Faded: older than the last 20 rounds. Tap to see the calculation.</p>
+  </div>
+
+  <!-- SETTINGS -->
+  <div class="card" id="settings">
+    <h2><span class="tag">Set</span> Settings and data</h2>
+    <div class="grid">
+      <div class="field full">
+        <label for="startHi">Current Handicap Index from your club (optional)</label>
+        <input type="number" id="startHi" step="0.1" placeholder="e.g. 18.4" inputmode="decimal">
+      </div>
+    </div>
+    <p class="note" style="margin-top:10px">This value is the starting point as long as you have no rounds of your own here. 9-hole rounds need an index at the time of play, otherwise they cannot be converted to 18 holes.</p>
+    <label class="check" style="margin-top:14px"><input type="checkbox" id="dgv">My home club is in Germany: use the German DGV version. A first index from one score instead of three, and the DGV's 26.5 rule, under which an index between 54 and 26.5 can only go down.</label>
+    <button class="btn" id="saveSettings" type="button">Apply settings</button>
+    <div class="btn-row">
+      <button class="btn ghost" id="exportBtn" type="button">Export (JSON)</button>
+      <button class="btn ghost" id="importBtn" type="button">Import</button>
+    </div>
+    <input type="file" id="importFile" accept="application/json,.json" hidden>
+    <button class="btn ghost" id="wipeBtn" type="button">Delete all data</button>
+    <div class="msg" id="setMsg" role="status" aria-live="polite"></div>
+    <p class="note" style="margin-top:12px">Rounds and courses are shared with the <a href="handicap-rechner.html" hreflang="de" lang="de">German version</a> in this browser. The settings are kept separately.</p>
+  </div>
+
+  <!-- LIMITS -->
+  <div class="card" id="limits">
+    <h2><span class="tag">Info</span> What the calculator does and does not do</h2>
+    <ul class="limits">
+      <li><strong>Adjusted gross score, not gross.</strong> Enter the adjusted gross score, with every hole capped at net double bogey, which is par plus handicap strokes plus 2. If you enter the raw gross score, your differential will come out too high.</li>
+      <li><strong>9 holes.</strong> The differential for the nine holes played is combined with an expected value for the nine not played. The formula used here is the one the German Golf Association (DGV) publishes in its 2024 handicap brochure. According to the golf press, the WHS works internally with separate models for women and men, so small differences from your club's value are possible. For 9 holes half the PCC counts, as set out in Rule 5.1b.</li>
+      <li><strong>Fewer than 20 scores.</strong> WHS standard: a first index after three scores, then the table in Rule 5.2a. The German DGV version issues an index from the first score.</li>
+      <li><strong>Exceptional scores.</strong> If a differential is 7.0 or more below the index at the time of play, the calculator subtracts 1.0 or 2.0 from the last 20 differentials, as the WHS does.</li>
+      <li><strong>Soft cap and hard cap.</strong> From 20 scores on, any rise of more than 3.0 above your lowest index of the last 365 days is halved. The index never rises more than 5.0 above that lowest value.</li>
+      <li><strong>Not covered.</strong> Rounds of 10 to 17 holes, decisions of the handicap committee, local rules of individual national associations other than the German DGV version. Playing Handicap with handicap allowances is in the <a href="stableford-rechner.html" hreflang="de" lang="de">Stableford calculator (in German)</a>.</li>
+    </ul>
+  </div>
+
+  <!-- HOW TO -->
+  <div class="card" id="formula">
+    <h2><span class="tag">Formula</span> How to calculate your handicap: formula and example</h2>
+    <p>Every round is first turned into a Score Differential. It shows how many strokes above the Course Rating you played, adjusted for how difficult the course is.</p>
+    <div class="steps">
+      <div class="dim">Score Differential = (113 ÷ Slope) × (adjusted gross score − Course Rating − PCC)</div>
+      <div>Example: adjusted gross score 89, Course Rating 71.2, Slope 128, PCC 0</div>
+      <div>= (113 ÷ 128) × (89 − 71.2 − 0) = 15.71</div>
+      <div class="hl">rounded: 15.7</div>
+    </div>
+    <p>The best eight of your last 20 differentials count. Their average is your Handicap Index. With fewer than 20 scores, a table applies. With three scores, for example, only the best one counts, minus 2.0.</p>
+  </div>
+
+  <div class="card" id="nine-holes">
+    <h2><span class="tag">9H</span> How to calculate a 9-hole handicap</h2>
+    <p>A 9-hole round is converted to 18 holes. The differential for the nine holes played gets an expected value for the nine not played. That value depends on your Handicap Index at the time of play.</p>
+    <div class="steps">
+      <div class="dim">SD nine played = (113 ÷ Slope) × (score − CR − ½ × PCC)</div>
+      <div>Example: score 45, CR 35.6, Slope 128, PCC 0 = 8.30</div>
+      <div class="dim">SD nine expected = ((HI × 1.04) + 2.4) ÷ 2</div>
+      <div>Example: HI 18.4 = 10.77</div>
+      <div>SD 18 = 8.30 + 10.77 = 19.07</div>
+      <div class="hl">rounded: 19.1</div>
+    </div>
+    <p>Without an existing index the calculator cannot count a 9-hole round. In that case enter your club's index under Settings.</p>
+  </div>
+
+  <div class="card" id="course-handicap-formula">
+    <h2><span class="tag">CH</span> From Handicap Index to Course Handicap</h2>
+    <p>The index is the same on every course. How many strokes you receive on a particular course and tee is the Course Handicap.</p>
+    <div class="steps">
+      <div class="dim">Course Handicap = HI × (Slope ÷ 113) + (CR − Par)</div>
+      <div>Example: HI 18.4, Slope 132, CR 72.4, Par 72</div>
+      <div>= 18.4 × (132 ÷ 113) + 0.4 = 21.89</div>
+      <div class="hl">rounded: 22 strokes</div>
+    </div>
+    <p>For competitions, the handicap allowance of the format is applied on top. The <a href="stableford-rechner.html" hreflang="de" lang="de">Stableford calculator (in German)</a> does that.</p>
+  </div>
+
+  <div class="card" id="faq">
+    <h2><span class="tag">FAQ</span> Frequently asked questions</h2>
+    <p><strong>Is the result my official handicap?</strong><br>No. Your official Handicap Index is the one your home club keeps through its national association. The calculator recalculates it from the published Rules of Handicapping. Small differences are possible, especially with 9-hole rounds.</p>
+    <p><strong>How is a golf handicap calculated?</strong><br>Every round becomes a Score Differential: (113 ÷ Slope) × (adjusted gross score − Course Rating − PCC). The Handicap Index is the average of the best eight of your last 20 differentials. With fewer than 20 scores a table applies, and you need at least three scores for a first index.</p>
+    <p><strong>How does a 9-hole round count?</strong><br>The differential for the nine holes played is combined with an expected value for the nine not played: (Handicap Index × 1.04 + 2.4) ÷ 2. That is why a 9-hole round needs a Handicap Index at the time it was played.</p>
+    <p><strong>What is the adjusted gross score?</strong><br>Your gross score with every hole capped at net double bogey, which is par plus handicap strokes plus 2. Your club's results list usually shows it.</p>
+    <p><strong>Where do I find Course Rating and Slope?</strong><br>On the course's scorecard, listed per tee. The calculator remembers every course you enter once.</p>
+    <p><strong>Does it cost anything, do I need an account?</strong><br>No to both. Your data stays in your browser. Export and import move it from laptop to phone.</p>
+  </div>
+
+  <div class="tool-links">
+    <a class="toollink" href="handicap-rechner.html" hreflang="de" lang="de">🇩🇪 Deutsche Version</a>
+    <a class="toollink" href="stableford-rechner.html" hreflang="de">⛳ Stableford calculator (in German)</a>
+    <a class="toollink" href="jetlag-rechner.html" hreflang="de">🕐 Jet lag calculator (in German)</a>
+  </div>
+
+  <div class="topics"><span>Golf</span><span>World Handicap System</span><span>Handicap Index</span><span>Course Handicap</span><span>9 holes</span><span>Stored locally only</span></div>
+
+  <div class="sources">
+    <p class="kicker">Sources &amp; research</p>
+    <p>The formulas here are not written from memory. I checked them against the official rule texts, as of November 2026. The WHS standard follows the USGA and R&amp;A Rules of Handicapping, the German mode follows the DGV brochure. The figure of 135 countries is from the World Handicap System website.</p>
+    <ul>
+      <li><a href="https://www.whs.com/" rel="noopener">World Handicap System (USGA, The R&amp;A)</a></li>
+      <li><a href="https://www.usga.org/handicapping/roh/Content/rules/5%201a%20Calculation%20of%20a%20Score%20Differential18Hole.htm" rel="noopener">USGA Rules of Handicapping 5.1a</a></li>
+      <li><a href="https://www.usga.org/handicapping/roh/Content/rules/5%201b%20Calculation%20of%20a%20Score%20Differential9Hole.htm" rel="noopener">USGA Rules of Handicapping 5.1b</a></li>
+      <li><a href="https://www.usga.org/handicapping/roh/Content/rules/5%202a%20For%20Fewer%20Than%2020%20Scores.htm" rel="noopener">USGA Rules of Handicapping 5.2a</a></li>
+      <li><a href="https://www.usga.org/handicapping/roh/Content/rules/5%207%20Low%20Handicap%20Index.htm" rel="noopener">USGA Rules of Handicapping 5.7</a></li>
+      <li><a href="https://www.usga.org/content/usga/home-page/handicapping/roh/Content/rules/5%209%20Submission%20of%20an%20Exceptional%20Score.htm" rel="noopener">USGA Rules of Handicapping 5.9</a></li>
+      <li><a href="https://www.usga.org/content/usga/home-page/handicapping/roh/Content/rules/6%201a%2018%20holes.htm" rel="noopener">USGA Rules of Handicapping 6.1a</a></li>
+      <li><a href="https://www.usga.org/handicapping/roh/Content/rules/6%201b%209%20holes.htm" rel="noopener">USGA Rules of Handicapping 6.1b</a></li>
+      <li><a href="https://digital-pd.usga.org/content/dam/usga/pdf/Handicap/Treatment%20of%209-Hole%20Scores%20Infographic.pdf" rel="noopener">USGA: Treatment of 9-Hole Scores</a></li>
+      <li><a href="https://www.gc-schloss-auel.de/wp-content/uploads/2024/03/5-a2400018-handicap-regeln-2024.pdf" rel="noopener">DGV: Handicap-Regeln 2024 (PDF, in German)</a></li>
+      <li><a href="https://todays-golfer.com/news-and-events/general-news/world-handicap-system-2024-changes-explained" rel="noopener">Today's Golfer: WHS changes 2024</a></li>
+    </ul>
+  </div>
+
+</div>
+
+<datalist id="courseList"></datalist>
+
+<footer>
+  <span>© 2026 Torsten Fink</span>
+  <span><a href="../index.html" hreflang="de">Home (German)</a> · <a href="../impressum.html" hreflang="de">Legal notice (German)</a> · <a href="../datenschutz.html" hreflang="de">Privacy (German)</a></span>
+</footer>
+
+<script id="engine">
+/* ===== WHS engine (no DOM, testable) ===== */
+const WHS = (() => {
+  // Round to tenths / whole numbers, .5 upwards (WHS 5.1a, 6.1)
+  const r1 = x => Math.floor(x * 10 + 0.5 + 1e-9) / 10;
+  const r0 = x => Math.floor(x + 0.5 + 1e-9);
+
+  // Rule 5.2a table; the German DGV table starts at one score
+  function table(n, dgv){
+    if (n <= 0) return null;
+    if (n < 3 && !dgv) return null;
+    if (n <= 3)  return {use:1, adj:-2};
+    if (n === 4) return {use:1, adj:-1};
+    if (n === 5) return {use:1, adj:0};
+    if (n === 6) return {use:2, adj:-1};
+    if (n <= 8)  return {use:2, adj:0};
+    if (n <= 11) return {use:3, adj:0};
+    if (n <= 14) return {use:4, adj:0};
+    if (n <= 16) return {use:5, adj:0};
+    if (n <= 18) return {use:6, adj:0};
+    if (n === 19) return {use:7, adj:0};
+    return {use:8, adj:0};
+  }
+
+  const sd18 = (gbe, cr, slope, pcc) => (113 / slope) * (gbe - cr - pcc);
+  const sd9played = (gbe, cr, slope, pcc) => (113 / slope) * (gbe - cr - 0.5 * pcc);
+  const expected9 = hi => (hi * 1.04 + 2.4) / 2;           // formula as published by the DGV (2024)
+  const dayNum = d => Math.floor(Date.UTC(+d.slice(0,4), +d.slice(5,7) - 1, +d.slice(8,10)) / 864e5);
+
+  /* rounds: [{id,date,holes,gbe,cr,slope,pcc}], opts: {startHi, dgv} */
+  function run(rounds, opts = {}){
+    const dgv = opts.dgv === true;
+    const startHi = (typeof opts.startHi === 'number' && isFinite(opts.startHi)) ? opts.startHi : null;
+    const sorted = [...rounds].sort((a,b) => a.date < b.date ? -1 : a.date > b.date ? 1 : a.id - b.id);
+
+    const record = [];
+    const history = [];
+    const perRound = {};
+    let current = null;
+    let lowestEver = null;
+    let lastCalc = null;
+
+    for (const r of sorted){
+      const hiAtTime = current !== null ? current : startHi;
+      const pcc = Number(r.pcc) || 0;
+      const info = {id:r.id, holes:r.holes, hiAtTime, pcc};
+
+      let raw;
+      if (r.holes === 9){
+        if (hiAtTime === null){ info.status = 'noHi'; perRound[r.id] = info; continue; }
+        info.sdPlayed = sd9played(r.gbe, r.cr, r.slope, pcc);
+        info.expected = expected9(hiAtTime);
+        raw = info.sdPlayed + info.expected;
+      } else {
+        raw = sd18(r.gbe, r.cr, r.slope, pcc);
+      }
+      info.raw = raw;
+      info.sd = r1(raw);
+      info.status = 'ok';
+
+      const entry = {id:r.id, date:r.date, sd:info.sd, esr:0};
+      record.push(entry);
+
+      // Exceptional score (Rule 5.9): unrounded differential against the index at the time of play
+      if (hiAtTime !== null){
+        const gap = hiAtTime - raw;
+        const red = gap >= 10 ? 2 : gap >= 7 ? 1 : 0;
+        if (red){
+          info.esr = red;
+          record.slice(-20).forEach(e => e.esr += red);
+        }
+      }
+
+      const calc = computeIndex(record, history, dgv, lowestEver);
+      lastCalc = calc;
+      if (calc.hi !== null){
+        current = calc.hi;
+        history.push({day: dayNum(r.date), hi: current});
+        lowestEver = lowestEver === null ? current : Math.min(lowestEver, current);
+        info.hiAfter = current;
+      }
+      perRound[r.id] = info;
+    }
+
+    const windowIds = new Set(record.slice(-20).map(e => e.id));
+    return {
+      hi: current,
+      calc: lastCalc,
+      perRound,
+      record,
+      windowIds,
+      usedIds: lastCalc ? lastCalc.usedIds : new Set(),
+      counted: record.length
+    };
+  }
+
+  function computeIndex(record, history, dgv, lowestEver){
+    const win = record.slice(-20);
+    const t = table(win.length, dgv);
+    if (!t) return {hi: null, steps: {n: win.length, need: 3}, usedIds: new Set()};
+    const vals = win.map(e => ({id:e.id, sd:e.sd, adj: r1(e.sd - e.esr), esr:e.esr}));
+    const best = [...vals].sort((a,b) => a.adj - b.adj || a.id - b.id).slice(0, t.use);
+    const avg = best.reduce((s,v) => s + v.adj, 0) / t.use;
+    const base = r1(avg + t.adj);
+    const steps = {n: win.length, use: t.use, adj: t.adj, best, avg, base};
+
+    let hi = base;
+    // Soft/hard cap from 20 scores. Low HI = lowest index in the 365 days before the previous round (Rule 5.7, 5.7/1, 5.7/2)
+    if (win.length >= 20){
+      const ref = history.length ? history[history.length - 1].day : null;
+      const prev = ref === null ? [] : history.filter(h => h.day >= ref - 365 && h.day <= ref).map(h => h.hi);
+      if (prev.length){
+        const low = Math.min(...prev);
+        steps.low = low;
+        if (hi - low > 3){
+          let capped = low + 3 + (hi - low - 3) / 2;
+          capped = Math.min(capped, low + 5);
+          steps.capped = r1(capped);
+          hi = steps.capped;
+        }
+      }
+    }
+    if (hi > 54){ steps.max54 = true; hi = 54; }
+    // 26.5 rule (German DGV only): above 26.5 the index does not rise above the lowest so far
+    if (dgv && lowestEver !== null && hi > 26.5 && lowestEver < hi){
+      const braked = Math.max(lowestEver, 26.5);
+      if (braked < hi){ steps.brake = {from: hi, to: braked}; hi = braked; }
+    }
+    steps.hi = r1(hi);
+    return {hi: r1(hi), steps, usedIds: new Set(best.map(b => b.id))};
+  }
+
+  function courseHandicap(hi, cr, slope, par, holes){
+    if (holes === 9){
+      const half = r1(hi / 2);
+      const val = half * (slope / 113) + (cr - par);
+      return {half, val, ch: r0(val)};
+    }
+    const val = hi * (slope / 113) + (cr - par);
+    return {val, ch: r0(val)};
+  }
+
+  return {r1, r0, table, sd18, sd9played, expected9, run, courseHandicap};
+})();
+if (typeof module !== 'undefined') module.exports = WHS;
+</script>
+
+<script>
+/* ===== Interface ===== */
+(() => {
+  const K_ROUNDS = 'golf:rounds', K_COURSES = 'golf:courses', K_SET = 'golf:settings:en';
+  const $ = id => document.getElementById(id);
+  const track = (name, data) => { try { if (window.umami) window.umami.track(name, data); } catch(e){} };
+
+  const load = (k, def) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : def; } catch(e){ return def; } };
+  const save = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch(e){ return false; } };
+
+  let rounds = load(K_ROUNDS, []).map(r => ({
+    id: Number(r.id) || Date.now(),
+    date: r.date || new Date().toISOString().slice(0,10),
+    course: r.course || '',
+    holes: Number(r.holes) === 9 ? 9 : 18,
+    gbe: Number(r.gbe ?? r.score),
+    cr: Number(r.cr), slope: Number(r.slope),
+    par: r.par ? Number(r.par) : null,
+    pcc: Number(r.pcc) || 0
+  })).filter(r => isFinite(r.gbe) && isFinite(r.cr) && isFinite(r.slope) && r.slope > 0);
+  let courses = load(K_COURSES, []);
+  let settings = Object.assign({startHi: null, dgv: false}, load(K_SET, {}));
+
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const num = (x, d = 1) => {
+    const s = Math.abs(x).toFixed(d);
+    return (x < 0 && Number(Math.abs(x).toFixed(d)) !== 0) ? '−' + s : s;
+  };
+  const hiTxt = hi => hi === null ? '··' : (hi < 0 ? '+' + num(-hi) : num(hi));
+  const dateTxt = d => { try { return new Date(d + 'T00:00:00').toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}); } catch(e){ return d; } };
+  const holes = name => Number(document.querySelector(`input[name="${name}"]:checked`).value);
+  const msg = (el, text, err) => { el.textContent = text; el.classList.toggle('err', !!err); };
+  const plural = (n, one, many) => n + ' ' + (n === 1 ? one : many);
+
+  function courseKey(name, h){ return name.trim().toLowerCase() + '|' + h; }
+  function rememberCourse(name, h, cr, slope, par){
+    if (!name) return;
+    const key = courseKey(name, h);
+    courses = courses.filter(c => c.key !== key);
+    courses.unshift({key, name: name.trim(), holes: h, cr, slope, par});
+    courses = courses.slice(0, 60);
+    save(K_COURSES, courses);
+  }
+
+  function renderCourses(){
+    $('courseList').innerHTML = courses.map(c => `<option value="${esc(c.name)}">`).join('');
+    const h = holes('chHoles');
+    $('chCourse').innerHTML = '<option value="">Enter values yourself</option>' +
+      courses.filter(c => c.holes === h).map(c => `<option value="${esc(c.key)}">${esc(c.name)}</option>`).join('');
+  }
+
+  function stepsHtml(lines){
+    return lines.map(l => `<div class="${l.cls || ''}">${l.t}</div>`).join('');
+  }
+
+  function roundSteps(r, info){
+    const L = [];
+    if (info.status === 'noHi'){
+      L.push({t:'There was no Handicap Index yet when this 9-hole round was played.', cls:'hl'});
+      L.push({t:'Enter your club index under Settings or add 18-hole rounds first.', cls:'dim'});
+      return stepsHtml(L);
+    }
+    if (r.holes === 9){
+      L.push({t:`1) SD nine played = (113 ÷ Slope) × (score − CR − ½ × PCC)`, cls:'dim'});
+      L.push({t:`   = (113 ÷ ${r.slope}) × (${r.gbe} − ${num(r.cr)} − ${num(0.5*r.pcc)}) = ${num(info.sdPlayed,2)}`});
+      L.push({t:`2) SD nine expected = ((HI × 1.04) + 2.4) ÷ 2`, cls:'dim'});
+      L.push({t:`   HI at the time of play: ${hiTxt(info.hiAtTime)}`, cls:'dim'});
+      L.push({t:`   = ((${num(info.hiAtTime)} × 1.04) + 2.4) ÷ 2 = ${num(info.expected,2)}`});
+      L.push({t:`3) SD 18 = ${num(info.sdPlayed,2)} + ${num(info.expected,2)} = ${num(info.raw,2)}`});
+      L.push({t:`   rounded: ${num(info.sd)}`, cls:'hl'});
+    } else {
+      L.push({t:`SD = (113 ÷ Slope) × (score − CR − PCC)`, cls:'dim'});
+      L.push({t:`   = (113 ÷ ${r.slope}) × (${r.gbe} − ${num(r.cr)} − ${num(r.pcc,0)}) = ${num(info.raw,2)}`});
+      L.push({t:`   rounded: ${num(info.sd)}`, cls:'hl'});
+    }
+    if (info.esr){
+      L.push({t:`Exceptional score: ${num(info.hiAtTime - info.raw,2)} below the index. ${num(-info.esr)} applied to the last 20 differentials.`, cls:'hl'});
+    }
+    if (typeof info.hiAfter === 'number') L.push({t:`HI after this round: ${hiTxt(info.hiAfter)}`, cls:'dim'});
+    return stepsHtml(L);
+  }
+
+  function indexSteps(res){
+    const s = res.calc.steps, L = [];
+    L.push({t:`Counted: the last ${s.n} differentials (20 at most).`, cls:'dim'});
+    L.push({t:`With ${plural(s.n, 'score', 'scores')}, the table counts the best ${s.use}` + (s.adj ? `, adjustment ${num(s.adj)}.` : '.'), cls:'dim'});
+    const withEsr = s.best.some(b => b.esr);
+    L.push({t:`Best ${s.use}: ` + s.best.map(b => num(b.adj) + (b.esr ? '*' : '')).join(' · ')});
+    if (withEsr) L.push({t:`* with exceptional score reduction`, cls:'dim'});
+    L.push({t:`Average = ${num(s.avg,2)}` + (s.adj ? `, ${num(s.adj)} = ${num(s.avg + s.adj,2)}` : '')});
+    L.push({t:`rounded: ${num(s.base)}`});
+    if (typeof s.low === 'number'){
+      L.push({t:`Low Handicap Index of the last 365 days: ${hiTxt(s.low)}`, cls:'dim'});
+      if (typeof s.capped === 'number') L.push({t:`Cap applies: above +3.0 only half counts, +5.0 at most → ${hiTxt(s.capped)}`, cls:'hl'});
+    }
+    if (s.max54) L.push({t:`Maximum of 54.0 applies.`, cls:'hl'});
+    if (s.brake) L.push({t:`DGV 26.5 rule: ${hiTxt(s.brake.from)} → ${hiTxt(s.brake.to)}`, cls:'hl'});
+    L.push({t:`Handicap Index: ${hiTxt(s.hi)}`, cls:'hl'});
+    return stepsHtml(L);
+  }
+
+  let lastRes = null;
+  function render(){
+    const res = WHS.run(rounds, settings);
+    lastRes = res;
+    if (res.hi !== null) save('golf:hi', {hi: res.hi, date: new Date().toISOString().slice(0,10)});
+    else { try { localStorage.removeItem('golf:hi'); } catch(e){} }
+
+    $('hiCount').textContent = plural(rounds.length, 'round', 'rounds');
+    if (res.hi !== null){
+      $('hiValue').textContent = hiTxt(res.hi);
+      const s = res.calc.steps;
+      $('hiMeta').textContent = `From the best ${s.use} of ${s.n} differentials.` + (res.counted < rounds.length ? ` ${plural(rounds.length - res.counted, 'round', 'rounds')} not countable yet.` : '');
+      $('hiSteps').innerHTML = indexSteps(res);
+      $('hiWay').hidden = false;
+    } else if (res.calc && res.calc.steps && res.calc.steps.need){
+      $('hiValue').textContent = settings.startHi !== null ? hiTxt(settings.startHi) : '··';
+      $('hiMeta').textContent = `A first Handicap Index needs three scores (Rule 5.2a). ${res.calc.steps.n} of 3 entered.` + (settings.startHi !== null ? ' Shown: your club index from Settings.' : '');
+      $('hiWay').hidden = true;
+    } else if (settings.startHi !== null){
+      $('hiValue').textContent = hiTxt(settings.startHi);
+      $('hiMeta').textContent = 'Club index from Settings. No rounds of your own yet.';
+      $('hiWay').hidden = true;
+    } else {
+      $('hiValue').textContent = '··';
+      $('hiMeta').textContent = rounds.length ? 'The 9-hole rounds you entered need a starting index, see Settings.' : 'No rounds entered yet.';
+      $('hiWay').hidden = true;
+    }
+
+    const list = $('roundsList');
+    if (!rounds.length){
+      list.innerHTML = '<div class="empty">No rounds saved yet. Enter your first one above.</div>';
+      return;
+    }
+    const byDate = [...rounds].sort((a,b) => a.date > b.date ? -1 : a.date < b.date ? 1 : b.id - a.id);
+    list.innerHTML = byDate.map(r => {
+      const info = res.perRound[r.id] || {};
+      const used = res.usedIds.has(r.id);
+      const out = info.status === 'ok' && !res.windowIds.has(r.id);
+      const diff = info.status === 'ok' ? num(info.sd) : '··';
+      return `<details class="round${used ? ' used' : ''}${out ? ' out' : ''}">
+        <summary>
+          <span class="where"><b>${esc(r.course || 'No course name')}</b>${r.holes === 9 ? '<span class="h9">9H</span>' : ''}<br>${dateTxt(r.date)}</span>
+          <span class="gbe">${r.gbe}</span>
+          <span class="dim">${num(r.cr)}/${r.slope}</span>
+          <span class="diff">${diff}</span>
+        </summary>
+        <div class="body">
+          <div class="steps">${roundSteps(r, info)}</div>
+          <button class="del-btn" type="button" data-id="${r.id}">Delete round</button>
+        </div>
+      </details>`;
+    }).join('');
+    list.querySelectorAll('.del-btn').forEach(b => b.addEventListener('click', () => {
+      if (!confirm('Delete this round?')) return;
+      rounds = rounds.filter(r => r.id !== Number(b.dataset.id));
+      save(K_ROUNDS, rounds);
+      render();
+    }));
+  }
+
+  function updateHolesHint(){
+    const h = holes('holes');
+    $('holesHint').textContent = h === 9
+      ? 'For 9 holes, enter the 9-hole values from the scorecard (CR roughly half the 18-hole value). Enter the PCC of the day as it is, the calculator halves it.'
+      : 'For 18 holes, enter the 18-hole values. The PCC is on the results list and is usually 0.';
+    $('gbe').placeholder = h === 9 ? 'e.g. 45' : 'e.g. 89';
+    $('cr').placeholder = h === 9 ? 'e.g. 35.6' : 'e.g. 71.2';
+    $('par').placeholder = h === 9 ? 'e.g. 36' : 'e.g. 72';
+    autofillRound();
+  }
+
+  function autofillRound(){
+    const c = courses.find(c => c.key === courseKey($('course').value, holes('holes')));
+    if (!c) return;
+    $('cr').value = c.cr; $('slope').value = c.slope; if (c.par) $('par').value = c.par;
+  }
+
+  function readNum(id){ const v = $(id).value.trim().replace(',', '.'); return v === '' ? NaN : Number(v); }
+
+  $('date').value = new Date().toISOString().slice(0,10);
+  if (settings.startHi !== null) $('startHi').value = settings.startHi;
+  $('dgv').checked = settings.dgv === true;
+
+  document.querySelectorAll('input[name="holes"]').forEach(i => i.addEventListener('change', updateHolesHint));
+  document.querySelectorAll('input[name="chHoles"]').forEach(i => i.addEventListener('change', renderCourses));
+  $('course').addEventListener('change', autofillRound);
+  $('course').addEventListener('input', autofillRound);
+
+  $('chCourse').addEventListener('change', () => {
+    const c = courses.find(c => c.key === $('chCourse').value);
+    if (!c) return;
+    $('chCr').value = c.cr; $('chSlope').value = c.slope; $('chPar').value = c.par || '';
+  });
+
+  $('addRound').addEventListener('click', () => {
+    const h = holes('holes');
+    const gbe = readNum('gbe'), cr = readNum('cr'), slope = readNum('slope'), par = readNum('par');
+    const pcc = Number($('pcc').value);
+    const date = $('date').value || new Date().toISOString().slice(0,10);
+    const course = $('course').value.trim();
+    const el = $('addMsg');
+
+    if (!isFinite(gbe) || !isFinite(cr) || !isFinite(slope)) return msg(el, 'Please enter adjusted gross score, Course Rating and Slope.', true);
+    if (slope < 55 || slope > 155) return msg(el, 'That Slope looks unusual. Please check the scorecard.', true);
+    const crMin = h === 9 ? 25 : 50, crMax = h === 9 ? 45 : 85;
+    if (cr < crMin || cr > crMax) return msg(el, h === 9 ? 'That Course Rating does not fit 9 holes. Is it the 18-hole value?' : 'That Course Rating looks unusual. Please check.', true);
+    if (gbe < cr - 20 || gbe > cr + 80) return msg(el, 'The score does not fit the Course Rating. Please check.', true);
+
+    rounds.push({id: Date.now(), date, course, holes: h, gbe, cr, slope, par: isFinite(par) ? par : null, pcc});
+    if (!save(K_ROUNDS, rounds)) return msg(el, 'Saving failed. Private browsing usually blocks it.', true);
+    rememberCourse(course, h, cr, slope, isFinite(par) ? par : null);
+    renderCourses();
+    render();
+    track('hcp-round-saved', {lang: 'en', holes: String(h)});
+
+    const info = lastRes.perRound[rounds[rounds.length - 1].id];
+    msg(el, info && info.status === 'ok' ? `Saved. Differential ${num(info.sd)}.` : 'Saved. A starting index is still missing to count it.');
+    $('gbe').value = '';
+  });
+
+  $('calcCH').addEventListener('click', () => {
+    const h = holes('chHoles');
+    const cr = readNum('chCr'), slope = readNum('chSlope'), par = readNum('chPar');
+    let hi = readNum('chHi'), src = 'entered';
+    const el = $('chMsg');
+    if (!isFinite(hi)){
+      if (lastRes && lastRes.hi !== null){ hi = lastRes.hi; src = 'from your rounds'; }
+      else if (settings.startHi !== null){ hi = settings.startHi; src = 'club index from Settings'; }
+    }
+    $('chResult').hidden = true;
+    if (!isFinite(hi)) return msg(el, 'A Handicap Index is missing. Add rounds or enter a value above.', true);
+    if (!isFinite(cr) || !isFinite(slope) || !isFinite(par)) return msg(el, 'Please enter Course Rating, Slope and Par.', true);
+    msg(el, '');
+
+    const res = WHS.courseHandicap(hi, cr, slope, par, h);
+    $('chBig').textContent = res.ch;
+    $('chCap').textContent = `Strokes received over ${h} holes, with HI ${hiTxt(hi)} (${src}).`;
+    const L = [];
+    if (h === 9){
+      L.push({t:'CH = (HI ÷ 2) × (Slope ÷ 113) + (CR − Par)', cls:'dim'});
+      L.push({t:`HI ÷ 2 = ${num(hi)} ÷ 2 = ${num(res.half)} (rounded to tenths)`, cls:'dim'});
+      L.push({t:`   = ${num(res.half)} × (${slope} ÷ 113) + (${num(cr)} − ${par}) = ${num(res.val,2)}`});
+    } else {
+      L.push({t:'CH = HI × (Slope ÷ 113) + (CR − Par)', cls:'dim'});
+      L.push({t:`   = ${num(hi)} × (${slope} ÷ 113) + (${num(cr)} − ${par}) = ${num(res.val,2)}`});
+    }
+    L.push({t:`rounded to whole strokes: ${res.ch}`, cls:'hl'});
+    $('chSteps').innerHTML = stepsHtml(L);
+    $('chResult').hidden = false;
+    track('hcp-course-handicap', {lang: 'en', holes: String(h)});
+  });
+
+  $('saveSettings').addEventListener('click', () => {
+    const v = readNum('startHi');
+    if ($('startHi').value.trim() !== '' && (!isFinite(v) || v < -10 || v > 54)) return msg($('setMsg'), 'The index must be between +10 and 54.', true);
+    settings.startHi = isFinite(v) ? v : null;
+    settings.dgv = $('dgv').checked;
+    save(K_SET, settings);
+    render();
+    msg($('setMsg'), 'Applied.');
+  });
+
+  $('exportBtn').addEventListener('click', () => {
+    const data = JSON.stringify({version: 2, exported: new Date().toISOString(), rounds, courses, settings}, null, 2);
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([data], {type: 'application/json'}));
+    a.download = 'handicap-calculator-' + new Date().toISOString().slice(0,10) + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    msg($('setMsg'), 'Export created.');
+  });
+  $('importBtn').addEventListener('click', () => $('importFile').click());
+  $('importFile').addEventListener('change', e => {
+    const f = e.target.files[0]; if (!f) return;
+    const rd = new FileReader();
+    rd.onload = () => {
+      try {
+        const d = JSON.parse(rd.result);
+        if (!Array.isArray(d.rounds)) throw new Error();
+        if (!confirm(`Import ${d.rounds.length} rounds? Your current list will be replaced.`)) return;
+        save(K_ROUNDS, d.rounds); save(K_COURSES, d.courses || []);
+        const st = d.settings || {};
+        save(K_SET, {startHi: typeof st.startHi === 'number' ? st.startHi : null, dgv: st.dgv === true});
+        location.reload();
+      } catch(err){ msg($('setMsg'), 'The file could not be read.', true); }
+    };
+    rd.readAsText(f);
+    e.target.value = '';
+  });
+  $('wipeBtn').addEventListener('click', () => {
+    if (!confirm('Delete all rounds, courses and settings in this browser? This also clears the German version.')) return;
+    [K_ROUNDS, K_COURSES, K_SET, 'golf:settings', 'golf:hi'].forEach(k => { try { localStorage.removeItem(k); } catch(e){} });
+    location.reload();
+  });
+
+  renderCourses();
+  render();
+})();
+</script>
+</body>
+</html>

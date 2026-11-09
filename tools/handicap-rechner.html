@@ -8,8 +8,12 @@
 <meta name="author" content="Torsten Fink">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://torsten-fink.de/tools/handicap-rechner.html">
+<link rel="alternate" hreflang="de" href="https://torsten-fink.de/tools/handicap-rechner.html">
+<link rel="alternate" hreflang="en" href="https://torsten-fink.de/tools/handicap-calculator.html">
+<link rel="alternate" hreflang="x-default" href="https://torsten-fink.de/tools/handicap-calculator.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_GB">
 <meta property="og:title" content="Handicap-Rechner Golf: Handicap berechnen (WHS, DGV, 9 Loch)">
 <meta property="og:description" content="Golf-Handicap kostenlos online berechnen: Handicap-Index und Course Handicap nach WHS und DGV-Regeln, 9-Loch-Runden inklusive. Ohne Anmeldung.">
 <meta property="og:url" content="https://torsten-fink.de/tools/handicap-rechner.html">
@@ -35,7 +39,8 @@
   "isAccessibleForFree":true,
   "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
   "description":"Berechnet Score Differential, Handicap-Index und Course Handicap nach dem World Handicap System, mit 9-Loch-Runden, PCC und sichtbarem Rechenweg.",
-  "dateModified":"2026-11-07T00:00:00+01:00",
+  "dateModified":"2026-11-09T00:00:00+01:00",
+  "workTranslation":{"@type":"WebApplication","url":"https://torsten-fink.de/tools/handicap-calculator.html","inLanguage":"en"},
   "author":{"@type":"Person","@id":"https://torsten-fink.de/#person","name":"Torsten Fink","url":"https://torsten-fink.de/"}
 }
 </script>
@@ -215,6 +220,7 @@
     <p>Trag deine Runden ein. Das gewertete Bruttoergebnis (GBE) steht auf der Ergebnisliste, Course Rating und Slope auf der Scorekarte. Bei jeder Zahl kannst du aufklappen, wie sie zustande kommt.</p>
     <p>Gespeichert wird ausschließlich in diesem Browser. Kein Konto, kein Upload. Wer am Laptop anfängt, sieht auf dem Handy eine leere Liste, dafür gibt es unten Export und Import.</p>
     <p>Eine Platzdatenbank fehlt hier mit Absicht. Course Rating und Slope hängen am Abschlag und ändern sich nach jeder Neubewertung, veraltete Werte wären schlimmer als gar keine. Jeden Platz, den du einmal einträgst, merkt sich der Rechner.</p>
+    <p class="note">Spielst du in einem Club außerhalb Deutschlands? Die <a href="handicap-calculator.html" hreflang="en" lang="en">English version</a> rechnet nach dem internationalen WHS-Standard.</p>
     <p class="note">Verbindlich ist allein der Handicap-Index, den dein Heimatclub über den DGV führt. Dieser Rechner rechnet ihn nach, so genau es die veröffentlichten Regeln erlauben.</p>
   </div>
 
@@ -417,6 +423,7 @@
   </div>
 
   <div class="tool-links">
+    <a class="toollink" href="handicap-calculator.html" hreflang="en" lang="en">🇬🇧 Handicap calculator in English</a>
     <a class="toollink" href="stableford-rechner.html">⛳ Stablefordpunkte pro Loch berechnen</a>
     <a class="toollink" href="../stories/herzogenaurach.html">📖 Mein Golfplatz in Herzogenaurach</a>
     <a class="toollink" href="../stories/ascona.html">📖 Golf in Losone bei Ascona</a>
@@ -602,6 +609,7 @@ if (typeof module !== 'undefined') module.exports = WHS;
 
   const load = (k, def) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : def; } catch(e){ return def; } };
   const save = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch(e){ return false; } };
+  const track = (name, data) => { try { if (window.umami) window.umami.track(name, data); } catch(e){} };
 
   // Alte Einträge (score statt gbe, ohne holes/pcc) übernehmen
   let rounds = load(K_ROUNDS, []).map(r => ({
@@ -805,6 +813,7 @@ if (typeof module !== 'undefined') module.exports = WHS;
     rememberCourse(course, h, cr, slope, isFinite(par) ? par : null);
     renderCourses();
     render();
+    track('hcp-round-saved', {lang: 'de', holes: String(h)});
 
     const info = lastRes.perRound[rounds[rounds.length - 1].id];
     msg(el, info && info.status === 'ok' ? `Gespeichert. Differential ${num(info.sd)}.` : 'Gespeichert. Für die Wertung fehlt noch ein Ausgangs-Index.');
@@ -840,6 +849,7 @@ if (typeof module !== 'undefined') module.exports = WHS;
     L.push({t:`gerundet auf ganze Schläge: ${res.ch}`, cls:'hl'});
     $('chSteps').innerHTML = stepsHtml(L);
     $('chResult').hidden = false;
+    track('hcp-course-handicap', {lang: 'de', holes: String(h)});
   });
 
   $('saveSettings').addEventListener('click', () => {

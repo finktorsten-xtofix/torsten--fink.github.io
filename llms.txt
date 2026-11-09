@@ -2,7 +2,7 @@
 
 > Persönliche Website von Torsten Fink: Reisegeschichten mit eigenen Fotos, Reise-Tipps mit Quellen, Golf.
 > Schwerpunkte: Tokio, Kamakura & Enoshima, Hongkong, Tessin (Locarno/Ascona), Türkische Riviera (Beldibi).
-> Inhalte: neun Reisegeschichten, eine Golf-Story, drei Ratgeber mit Quellen (Tokio zu Fuß, Verbeugen in Japan, Tai Chi in Hongkong), drei kostenlose Rechner (Golf-Handicap nach WHS, Stableford, Jetlag).
+> Inhalte: neun Reisegeschichten, eine Golf-Story, drei Ratgeber mit Quellen (Tokio zu Fuß, Verbeugen in Japan, Tai Chi in Hongkong), drei kostenlose Rechner (Golf-Handicap nach WHS, auch auf Englisch, Stableford, Jetlag).
 > Sprache: Deutsch. Alle Fotografien und Texte © Torsten Fink.
 
 ## Geschichten
@@ -19,6 +19,7 @@
 ## Golf
 - [Herzogenaurach – Mein Golfplatz zwischen drei Streifen und einer Raubkatze](https://torsten-fink.de/stories/herzogenaurach.html): Heimatclub, Craig Miller Golfschule, Adidas/Puma-Fehde seit 1948
 - [Golf-Handicap-Rechner](https://torsten-fink.de/tools/handicap-rechner.html): Score Differential, Handicap-Index und Course Handicap nach dem World Handicap System (WHS) in der DGV-Fassung, mit 9-Loch-Runden und PCC. Jeder Rechenschritt sichtbar, dazu Formeln mit Rechenbeispielen. Speicherung nur lokal im Browser, keine Anmeldung nötig.
+- [Golf Handicap Calculator (English)](https://torsten-fink.de/tools/handicap-calculator.html): Englische Fassung des Handicap-Rechners. Rechnet nach dem internationalen WHS-Standard (erster Index ab drei Ergebnissen), mit umschaltbarer DGV-Fassung für Clubs in Deutschland. Teilt Runden und Plätze mit der deutschen Fassung im selben Browser.
 - [Stableford-Rechner](https://torsten-fink.de/tools/stableford-rechner.html): Playing Handicap nach WHS, Vorgabeschläge pro Loch nach Stroke Index, Netto- und Brutto-Stablefordpunkte für 18 oder 9 Löcher. Rechenweg sichtbar. Speicherung nur lokal im Browser, keine Anmeldung nötig.
 
 ## Tools
