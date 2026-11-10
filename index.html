@@ -23,7 +23,7 @@
 <link rel="sitemap" type="application/xml" href="sitemap.xml">
 <link rel="icon" href="assets/images/brand/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/images/brand/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/images/hongkong-nacht.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/images/hongkong-nacht.webp" imagesrcset="assets/images/hongkong-nacht-800.webp 800w, assets/images/hongkong-nacht.webp 1200w" imagesizes="100vw" type="image/webp" fetchpriority="high">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -96,8 +96,9 @@
       "url":"https://torsten-fink.de/#tools",
       "itemListElement":[
         {"@type":"ListItem","position":1,"item":{"@type":"WebApplication","name":"Golf-Handicap-Rechner nach WHS","url":"https://torsten-fink.de/tools/handicap-rechner.html","applicationCategory":"SportsApplication","operatingSystem":"Browser","description":"Handicap-Index und Course Handicap nach dem World Handicap System, mit 9-Loch-Runden und Rechenweg.","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://torsten-fink.de/#person"}}},
-        {"@type":"ListItem","position":2,"item":{"@type":"WebApplication","name":"Stableford-Rechner","url":"https://torsten-fink.de/tools/stableford-rechner.html","applicationCategory":"SportsApplication","operatingSystem":"Browser","description":"Vorgabeschläge pro Loch nach Stroke Index, Netto- und Bruttopunkte nach WHS.","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://torsten-fink.de/#person"}}},
-        {"@type":"ListItem","position":3,"item":{"@type":"WebApplication","name":"Jetlag-Rechner","url":"https://torsten-fink.de/tools/jetlag-rechner.html","applicationCategory":"TravelApplication","operatingSystem":"Browser","description":"Zeitverschiebung berechnen und die innere Uhr Tag für Tag auf das Reiseziel umstellen.","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://torsten-fink.de/#person"}}}
+        {"@type":"ListItem","position":2,"item":{"@type":"WebApplication","name":"Golf Handicap Calculator (WHS)","url":"https://torsten-fink.de/tools/handicap-calculator.html","applicationCategory":"SportsApplication","operatingSystem":"Browser","description":"Handicap Index and Course Handicap under the World Handicap System, with 9-hole rounds and an optional DGV mode.","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://torsten-fink.de/#person"}}},
+        {"@type":"ListItem","position":3,"item":{"@type":"WebApplication","name":"Stableford-Rechner","url":"https://torsten-fink.de/tools/stableford-rechner.html","applicationCategory":"SportsApplication","operatingSystem":"Browser","description":"Vorgabeschläge pro Loch nach Stroke Index, Netto- und Bruttopunkte nach WHS.","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://torsten-fink.de/#person"}}},
+        {"@type":"ListItem","position":4,"item":{"@type":"WebApplication","name":"Jetlag-Rechner","url":"https://torsten-fink.de/tools/jetlag-rechner.html","applicationCategory":"TravelApplication","operatingSystem":"Browser","description":"Zeitverschiebung berechnen und die innere Uhr Tag für Tag auf das Reiseziel umstellen.","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://torsten-fink.de/#person"}}}
       ]
     }
   ]
@@ -213,7 +214,7 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.6vw,3.4re
 .about-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(30px,5vw,70px);align-items:center}
 .about-photo{position:relative}
 .about-photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;filter:grayscale(28%) contrast(1.06)}
-.about-photo::before{content:"35.6762° N · 139.6503° O";position:absolute;top:-1.9em;left:0;font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;color:var(--paper-dim)}
+.about-photo::before{content:"36.7214° N · 30.5600° O";position:absolute;top:-1.9em;left:0;font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;color:var(--paper-dim)}
 .about-photo::after{content:"";position:absolute;inset:14px;border:1px solid rgba(255,92,138,.45);pointer-events:none}
 .about-text p{color:var(--paper-dim);margin-bottom:1.2em;max-width:56ch}
 .about-text p strong{color:var(--paper);font-weight:500}
@@ -364,13 +365,13 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
 
 <header class="hero" id="top">
   <div class="hero-bg">
-    <picture><source type="image/webp" srcset="assets/images/hongkong-nacht.webp"><img src="assets/images/hongkong-nacht.jpg" width="1200" height="1600" alt="Blick von oben auf die nächtlichen Hochhausschluchten von Hongkong"></picture>
+    <picture><source type="image/webp" srcset="assets/images/hongkong-nacht-800.webp 800w, assets/images/hongkong-nacht.webp 1200w" sizes="100vw"><img src="assets/images/hongkong-nacht.jpg" srcset="assets/images/hongkong-nacht-800.jpg 800w, assets/images/hongkong-nacht.jpg 1200w" sizes="100vw" width="1200" height="1600" alt="Blick von oben auf die nächtlichen Hochhausschluchten von Hongkong"></picture>
   </div>
   <div class="hero-inner">
     <p class="exif"><span>f/1.8</span><span class="dot">·</span><span>1/60&nbsp;s</span><span class="dot">·</span><span>ISO&nbsp;3200</span><span class="dot">·</span><span>Hongkong, 23:47&nbsp;Uhr</span></p>
     <p class="kicker" style="margin:14px 0 0">Die Welt durch ein Objektiv</p>
     <h1>Reise&shy;geschichten zwischen <span class="neon">Tokio und Bayern</span></h1>
-    <p class="lede"><strong class="city-neon">Tokio</strong> viermal. <strong class="city-neon">Hongkong</strong> viermal. Dazwischen alles, was hängen bleibt. Ich erzähle Städte so, wie ich sie sehe, mit Kamera und Notizbuch. Checklisten und Bucket-Lists gibt es woanders.</p>
+    <p class="lede">In <strong class="city-neon">Tokio</strong> und <strong class="city-neon">Hongkong</strong> komme ich immer wieder an, dazwischen liegt alles, was hängen bleibt. Ich erzähle Städte so, wie ich sie sehe, mit Kamera und Notizbuch. Checklisten und Bucket-Lists gibt es woanders.</p>
     <div class="hero-cta">
       <a class="btn pink" href="#geschichten">Geschichten lesen</a>
       <a class="btn" href="#tools">Zu den Rechnern</a>
@@ -383,14 +384,14 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
 <section id="about">
   <div class="wrap about-grid">
     <div class="about-photo reveal">
-      <picture><source type="image/webp" srcset="assets/images/portrait-torsten-800.webp 800w, assets/images/portrait-torsten-1200.webp 1200w, assets/images/portrait-torsten.webp 1228w" sizes="(max-width: 820px) 88vw, (max-width: 1360px) 38vw, 514px"><img src="assets/images/portrait-torsten.jpg" srcset="assets/images/portrait-torsten-800.jpg 800w, assets/images/portrait-torsten-1200.jpg 1200w, assets/images/portrait-torsten.jpg 1228w" sizes="(max-width: 820px) 88vw, (max-width: 1360px) 38vw, 514px" width="1228" height="1600" alt="Torsten Fink – Selfie mit Cap und Sonnenbrille unterwegs in der Sonne" loading="lazy"></picture>
+      <picture><source type="image/webp" srcset="assets/images/portrait-torsten-800.webp 800w, assets/images/portrait-torsten-1200.webp 1200w, assets/images/portrait-torsten.webp 1228w" sizes="(max-width: 820px) 88vw, (max-width: 1360px) 38vw, 514px"><img src="assets/images/portrait-torsten.jpg" srcset="assets/images/portrait-torsten-800.jpg 800w, assets/images/portrait-torsten-1200.jpg 1200w, assets/images/portrait-torsten.jpg 1228w" sizes="(max-width: 820px) 88vw, (max-width: 1360px) 38vw, 514px" width="1228" height="1600" alt="Torsten Fink, Selfie mit Cap und Sonnenbrille unterwegs in der Sonne" loading="lazy"></picture>
     </div>
     <div class="about-text reveal">
       <p class="kicker">Über mich · Hinter der Linse</p>
       <h2>Geschichten&shy;erzähler mit Kamera</h2>
       <p>Ich bin Torsten. <strong>Geschichtenerzähler mit Kamera</strong> aus Fürth. Ich reise, seit ich sechs bin, und genauso lange fotografiere ich. Am Anfang waren meine Aufnahmen nur in Schwarz-Weiß. Die Filme und Bilder habe ich dann selbst entwickelt. Beigebracht hat es mir mein Vater. Hinter der Kamera bin ich ganz gut aufgehoben. Davor eher so mittel.</p>
-      <p>Meine Route ist einfach: <strong>Tokio</strong>, wo Zen und Neon sich die Stadt teilen. <strong>Hongkong</strong>, wo man um drei Uhr nachts schneller etwas Warmes bekommt als anderswo ein Glas Wasser. Dazwischen Bayern. Das Tessin.</p>
-      <p>Fotos, Notizen, halbe Sätze auf Bordkarten. Hier kommt das Beste davon hin, mit belastbaren Quellen am Ende jeder Geschichte. Daneben ein paar Rechner fürs Golfen und fürs Reisen.</p>
+      <p>Meine Route ist einfach: <strong>Tokio</strong>, das Wechselspiel aus futuristischem Chaos und meditativer Stille. <strong>Hongkong</strong>, wo man um drei Uhr nachts schneller etwas Warmes bekommt als anderswo ein Glas Wasser. Dazwischen liegen Bayern und das Tessin.</p>
+      <p>Unterwegs sammle ich Fotos und Notizen, manchmal nur halbe Sätze auf einer Bordkarte. Hier kommt das Beste davon hin, mit belastbaren Quellen am Ende jeder Geschichte. Daneben ein paar Rechner fürs Golfen und fürs Reisen.</p>
       <div class="tags">
         <span>Reisen</span><span>Fotografie</span><span>Golf</span><span>Tokio</span><span>Hongkong</span><span>Geschichten</span>
       </div>
@@ -431,12 +432,12 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
       <a class="story-card" href="stories/hongkong.html">
         <span class="date">Februar 2019</span>
         <h3>Hongkong: Meinen Platz am Rand gebe ich nicht mehr her</h3>
-        <p>Das vierte Mal in der Stadt, das erste Mal zum Frühlingsfest.</p>
+        <p>Viertes Mal Hongkong, erstes Mal zum Frühlingsfest.</p>
       </a>
       <a class="story-card" href="stories/kamakura.html">
         <span class="date">2009 bis 2017</span>
         <h3>Kamakura: Wo die Shogun surften?</h3>
-        <p>Ein Großer Buddha ohne Dach seit 500 Jahren, ein Strand mit Geschichte.</p>
+        <p>Ein Buddha ohne Dach, ein Strand mit Geschichte.</p>
       </a>
       <a class="story-card" href="stories/tokio.html">
         <span class="date">März 2017</span>
@@ -446,7 +447,7 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
       <a class="story-card" href="stories/singapur.html">
         <span class="date">Februar/März 2015</span>
         <h3>Singapur: Einmal hoch und runter im SG50-Jahr</h3>
-        <p>Glücksmünzen über Chinatown, ein Tiger, näher als geplant.</p>
+        <p>Glücksmünzen in Chinatown, ein Tiger näher als geplant.</p>
       </a>
     </div>
   </div>
@@ -459,21 +460,21 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
     <p class="tools-lede reveal">Kleine Rechner für den Golfplatz und für lange Flüge. Deine Eingaben bleiben im Browser, ein Konto braucht es nicht.</p>
     <div class="tool-grid reveal">
       <a class="tool-card" href="tools/handicap-rechner.html">
-        <img class="tool-img" src="assets/images/tools/tool-handicap-rechner.jpg" width="1200" height="675" alt="" loading="lazy">
+        <picture><source type="image/webp" srcset="assets/images/tools/tool-handicap-rechner.webp"><img class="tool-img" src="assets/images/tools/tool-handicap-rechner.jpg" width="1200" height="675" alt="" loading="lazy"></picture>
         <span class="tag">Golf · WHS</span>
         <h3>Golf-Handicap-Rechner</h3>
         <p>Handicap-Index und Course Handicap nach dem World Handicap System. 9-Loch-Runden inklusive, jeder Rechenschritt zum Aufklappen.</p>
         <span class="go">Rechner öffnen →</span>
       </a>
       <a class="tool-card" href="tools/stableford-rechner.html">
-        <img class="tool-img" src="assets/images/tools/tool-stableford-rechner.jpg" width="1200" height="675" alt="" loading="lazy">
+        <picture><source type="image/webp" srcset="assets/images/tools/tool-stableford-rechner.webp"><img class="tool-img" src="assets/images/tools/tool-stableford-rechner.jpg" width="1200" height="675" alt="" loading="lazy"></picture>
         <span class="tag">Golf · Stableford</span>
         <h3>Stableford-Rechner</h3>
         <p>Vorgabeschläge pro Loch nach Stroke Index, dazu Netto- und Bruttopunkte. Läuft auf dem Handy mit, während du spielst.</p>
         <span class="go">Rechner öffnen →</span>
       </a>
       <a class="tool-card" href="tools/jetlag-rechner.html">
-        <img class="tool-img" src="assets/images/tools/tool-jetlag-rechner.jpg" width="1200" height="675" alt="" loading="lazy">
+        <picture><source type="image/webp" srcset="assets/images/tools/tool-jetlag-rechner.webp"><img class="tool-img" src="assets/images/tools/tool-jetlag-rechner.jpg" width="1200" height="675" alt="" loading="lazy"></picture>
         <span class="tag">Reise · Zeitzonen</span>
         <h3>Jetlag-Rechner</h3>
         <p>Zeitverschiebung berechnen und die innere Uhr Tag für Tag auf das Reiseziel umstellen.</p>
@@ -523,7 +524,7 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
     <div class="reveal">
       <p class="kicker">Auf dem Grün</p>
       <h2>Golf &amp; Leidenschaft</h2>
-      <p>Manchmal brauche ich Zeit, in der nichts Wichtiges passiert. Dafür reichen Gras und ein kleiner weißer Ball. Golf ist meine Ausrede, stundenlang über perfekt gemähten Rasen zu laufen und das <strong>Konzentration</strong> zu nennen. In Ascona mit Alpenblick und Lago-Maggiore-Feeling, auf der Range in Nürnberg, wenn die Morgensonne über die Netze fällt. Meinen ersten Ball habe ich im Lieblingsclub in Herzogenaurach getroffen.</p>
+      <p>Manchmal brauche ich Zeit, in der nichts Wichtiges passiert. Dafür reichen Gras und ein kleiner weißer Ball. Golf ist meine Ausrede, stundenlang über perfekt gemähten Rasen zu laufen und das <strong>Konzentration</strong> zu nennen. In Losone bei Ascona mit Alpenblick und Lago-Maggiore-Feeling, auf der Range in Nürnberg, wenn die Morgensonne über die Netze fällt. Meinen ersten Ball habe ich im Lieblingsclub in Herzogenaurach getroffen.</p>
       <p>Der Ball ist klein, das Ego ist groß. Mein Handicap liegt irgendwo dazwischen. Eine Runde lang bleibt das Handy still. Fast wie Meditation, nur mit mehr Fluchen.</p>
       <blockquote>
         „Ich hab noch keine Runde gespielt, nach der ich nicht schlauer war. Meistens auf die schmerzhafte Art.“
@@ -532,7 +533,7 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
     <div class="green-card reveal">
       <p class="exif"><span>Scorecard</span><span class="dot">·</span><span>Lieblingsplätze</span></p>
       <ul>
-        <li>Ascona · Lago Maggiore <span>Tessin, CH</span></li>
+        <li>Golf Gerre Losone <span>Tessin, CH</span></li>
         <li>Golfrange Nürnberg <span>Franken, DE</span></li>
         <li>GC Herzogenaurach <span>Heimatclub</span></li>
       </ul>
@@ -654,7 +655,7 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
       <figcaption><span>Frame 23</span><b>Kamakura · Großer Buddha</b></figcaption>
     </figure>
     <figure class="frame">
-      <a class="frame-link" href="stories/kamakura.html" aria-label="Zur Story Kamakura"><picture><source type="image/webp" srcset="assets/images/stories/kamakura-enoshima-abend-800.webp 800w, assets/images/stories/kamakura-enoshima-abend-1200.webp 1200w, assets/images/stories/kamakura-enoshima-abend.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/kamakura-enoshima-abend.jpg" srcset="assets/images/stories/kamakura-enoshima-abend-800.jpg 800w, assets/images/stories/kamakura-enoshima-abend-1200.jpg 1200w, assets/images/stories/kamakura-enoshima-abend.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="899" alt="Enoshima im Abendlicht mit Steg und gläserner Aussichtskonstruktion" loading="lazy"></picture></a>
+      <a class="frame-link" href="stories/kamakura.html" aria-label="Zur Story Kamakura"><picture><source type="image/webp" srcset="assets/images/stories/kamakura-enoshima-abend-800.webp 800w, assets/images/stories/kamakura-enoshima-abend-1200.webp 1200w, assets/images/stories/kamakura-enoshima-abend.webp 1600w" sizes="(max-width: 580px) 69vw, 400px"><img src="assets/images/stories/kamakura-enoshima-abend.jpg" srcset="assets/images/stories/kamakura-enoshima-abend-800.jpg 800w, assets/images/stories/kamakura-enoshima-abend-1200.jpg 1200w, assets/images/stories/kamakura-enoshima-abend.jpg 1600w" sizes="(max-width: 580px) 69vw, 400px" width="1600" height="899" alt="Enoshima im Abendlicht mit Steg und dem Aussichtsturm Sea Candle" loading="lazy"></picture></a>
       <figcaption><span>Frame 24</span><b>Kamakura · Enoshima</b></figcaption>
     </figure>
     <figure class="frame">
