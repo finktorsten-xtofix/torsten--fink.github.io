@@ -10,20 +10,20 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 | Jahr | Geschichte |
 |---|---|
 | 2026 | [Passau: Am Dreiflüsseeck, wo Inn und Ilz in die Donau fließen](https://torsten-fink.de/stories/passau.html) |
-| 2026 | [Bad Heilbrunn — Bayerisches Lakeland](https://torsten-fink.de/stories/bad-heilbrunn.html) |
-| 2026 | [Beldibi — Türkisfarbenes Wasser & Russische Geschichten](https://torsten-fink.de/stories/beldibi.html) |
-| 2025 | [Locarno & Ascona — Das Tessin im Entschleunigungsmodus](https://torsten-fink.de/stories/ascona.html) |
-| 2023 | [Istanbul — Das Tor Asiens](https://torsten-fink.de/stories/istanbul.html) |
+| 2026 | [Bad Heilbrunn: Ein Kompass, der immer auf Wasser zeigt](https://torsten-fink.de/stories/bad-heilbrunn.html) |
+| 2026 | [Beldibi: Türkisfarbenes Wasser & Russische Geschichten](https://torsten-fink.de/stories/beldibi.html) |
+| 2025 | [Locarno & Ascona: Das Tessin im Entschleunigungsmodus](https://torsten-fink.de/stories/ascona.html) |
+| 2023 | [Istanbul: Andere Städte haben Stadtteile, Istanbul hat Erdteile](https://torsten-fink.de/stories/istanbul.html) |
 | 2019 | [Hongkong: Meinen Platz am Rand gebe ich nicht mehr her](https://torsten-fink.de/stories/hongkong.html) |
-| 2017 | [Kamakura — Wo die Shogun surften?](https://torsten-fink.de/stories/kamakura.html) |
+| 2017 | [Kamakura: Wo die Shogun surften?](https://torsten-fink.de/stories/kamakura.html) |
 | 2017 | [Tokio: Alle kannten die Schritte, nur ich nicht](https://torsten-fink.de/stories/tokio.html) |
-| 2015 | [Singapur — Einmal hoch und runter im SG50-Jahr](https://torsten-fink.de/stories/singapur.html) |
+| 2015 | [Singapur: Einmal hoch und runter im SG50-Jahr](https://torsten-fink.de/stories/singapur.html) |
 
 ## Golf
 
 | Story | Beschreibung |
 |---|---|
-| [Golf Club Herzogenaurach — Golf spielen, weil es Spaß macht](https://torsten-fink.de/stories/herzogenaurach.html) | Heimatclub, Craig Miller Golfschule, die Adidas/Puma-Geschichte der Stadt. Von der Startseite aus über den Golf-Bereich verlinkt, läuft nicht in der Pager-Reihenfolge der neun Reisegeschichten mit. |
+| [Golfplatz Herzogenaurach: zwischen drei Streifen und einer Raubkatze](https://torsten-fink.de/stories/herzogenaurach.html) | Heimatclub, Craig Miller Golfschule, die Adidas/Puma-Geschichte der Stadt. Von der Startseite aus über den Golf-Bereich verlinkt, läuft nicht in der Pager-Reihenfolge der neun Reisegeschichten mit. |
 
 ## Reise-Wissen
 
@@ -58,7 +58,7 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 ├── index.html            Startseite
 ├── stories/              Neun Reisegeschichten + eine Golf-Story (Herzogenaurach)
 ├── guides/               Reise-Wissen: Tokio zu Fuß, Verbeugen in Japan, Tai Chi in Hongkong
-├── tools/                Interaktive Tools: Handicap-Rechner, Stableford-Rechner, Jetlag-Rechner
+├── tools/                Interaktive Tools: Handicap-Rechner (deutsch und englisch), Stableford-Rechner, Jetlag-Rechner
 ├── assets/
 │   ├── css/story.css     Stylesheet der Unterseiten
 │   └── images/           Optimierte Fotos (Startseite, stories/, guides/, tools/)
