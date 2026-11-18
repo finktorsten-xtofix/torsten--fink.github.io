@@ -73,7 +73,7 @@ article p a.inline-link:hover,article p a.inline-link:focus-visible,.sub a.inlin
 @media(max-width:620px){.pager{grid-template-columns:1fr}.pager a.next{text-align:left}}
 footer{border-top:1px solid var(--line);padding:34px clamp(20px,6vw,56px);background:var(--night-2);
   display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
 footer a{color:var(--paper-dim);text-decoration:none}
 footer a:hover{color:var(--paper)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
