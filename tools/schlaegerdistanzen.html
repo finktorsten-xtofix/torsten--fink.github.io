@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Mein Bag: Schlägerdistanzen eintragen und Lücken finden</title>
+<meta name="description" content="Trag die Carry-Weite jedes Schlägers ein und sieh, wo im Bag Lücken sind. Mit Vergleich zu Durchschnittswerten nach Handicap, ohne Anmeldung.">
+<meta name="author" content="Torsten Fink">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://torsten-fink.de/tools/schlaegerdistanzen.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Mein Bag: Schlägerdistanzen eintragen und Lücken finden">
+<meta property="og:description" content="Trag die Carry-Weite jedes Schlägers ein und sieh, wo im Bag Lücken sind. Mit Vergleich zu Durchschnittswerten nach Handicap, ohne Anmeldung.">
+<meta property="og:url" content="https://torsten-fink.de/tools/schlaegerdistanzen.html">
+<meta property="og:site_name" content="Torsten Fink">
+<meta property="og:image" content="https://torsten-fink.de/assets/images/tools/og-schlaegerdistanzen.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Vorschaubild Mein Bag: Schriftzug Schlägerdistanzen, daneben ein Golfbag mit Schlägern">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B0D12">
+<link rel="icon" href="../assets/images/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/images/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/story.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "Mein Bag: Schlägerdistanzen eintragen und Lücken finden",
+   "url": "https://torsten-fink.de/tools/schlaegerdistanzen.html",
+   "applicationCategory": "SportsApplication",
+   "operatingSystem": "Browser",
+   "inLanguage": "de",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "EUR"
+   },
+   "description": "Tabelle für die Carry-Weite jedes Schlägers. Sortiert die Werte, zeigt Abstände zwischen den Schlägern und vergleicht mit Durchschnittswerten von Shot Scope nach Handicap. Speichert nur im Browser.",
+   "datePublished": "2026-12-01T00:00:00+01:00",
+   "dateModified": "2026-12-01T00:00:00+01:00",
+   "author": {
+    "@type": "Person",
+    "@id": "https://torsten-fink.de/#person",
+    "name": "Torsten Fink",
+    "url": "https://torsten-fink.de/"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Wie viele Schläger darf ich im Bag haben?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Höchstens 14. So steht es in Regel 4 der Golfregeln. Die Seite warnt, sobald mehr als 14 Schläger eingetragen sind."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Was ist Carry?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Laut TrackMan die gerade Strecke vom Abschlag bis zu dem Punkt, an dem der Ball wieder auf Abschlaghöhe ist. Das Ausrollen zählt nicht mit."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Wie weit trägt das Eisen 7 im Durchschnitt?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nach den Shot-Scope-Daten für 2026 bei Handicap 15 rund 141 Meter (154 Yards), bei Handicap 25 rund 121 Meter (132 Yards)."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+<style>
+  .tool-hero{padding:120px clamp(20px,6vw,80px) 40px;max-width:860px;margin:0 auto}
+  .tool-hero .exif{margin-bottom:18px}
+  .tool-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,5.2vw,3.1rem);line-height:1.08;letter-spacing:-.01em;hyphens:manual;-webkit-hyphens:manual;overflow-wrap:normal}
+  .tool-hero .sub{color:var(--paper-dim);font-size:clamp(1rem,1.6vw,1.2rem);margin-top:14px;max-width:60ch}
+
+  .tool-wrap{max-width:860px;margin:0 auto;padding:0 clamp(20px,6vw,40px) 40px}
+
+  .card{border:1px solid var(--line);background:var(--night-2);padding:clamp(20px,3vw,32px);margin-bottom:22px}
+  .card h2{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:0 0 18px;color:var(--paper);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .card h2 .tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--neon);border:1px solid var(--neon);padding:3px 8px}
+  .card p{font-size:.95rem;line-height:1.7;color:#CFCabf;margin:0 0 12px}
+  .card p:last-child{margin-bottom:0}
+  .card a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(236,231,220,.28)}
+  .card a:hover{color:var(--neon);border-color:var(--neon)}
+
+
+  .presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .preset{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim);background:var(--night);border:1px solid var(--line);padding:9px 12px;cursor:pointer;transition:.2s}
+  .preset:hover,.preset[aria-pressed="true"]{color:var(--brass);border-color:var(--brass)}
+  .preset:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
+
+  .ctl{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .ctl label{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 10px;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
+  .ctl output{margin-left:auto;color:var(--brass);letter-spacing:.04em;text-transform:none;font-size:.78rem;white-space:nowrap}
+
+
+  .readout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
+  .ro{border:1px solid var(--line);background:var(--night);padding:10px 12px;min-width:0}
+  .ro .k{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
+  .ro .v{font-family:var(--mono);font-size:1rem;color:var(--paper);margin-top:2px}
+  .ro .v small{display:block;font-size:.7rem;color:var(--paper-dim)}
+  .ro.main{border-color:rgba(201,169,106,.5)}
+  .ro.main .v{color:var(--brass);font-size:1.25rem}
+  .note{font-size:.84rem!important;color:var(--paper-dim)!important;margin-top:12px!important}
+
+
+  .cal{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:.86rem}
+  .cal th{font-family:var(--mono);font-weight:400;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);text-align:left;padding:0 8px 8px 0;border-bottom:1px solid rgba(236,231,220,.18)}
+  .cal td{padding:8px 8px 8px 0;border-bottom:1px solid rgba(236,231,220,.08);color:#CFCabf}
+  .cal td+td{font-family:var(--mono);white-space:nowrap}
+  .cal tr.sep td{color:var(--paper-dim);font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding-top:14px}
+  .table-wrap{overflow-x:auto}
+
+  .sources{margin:0 0 22px;padding-top:0;border-top:none}
+  .sources .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+  .sources p{color:var(--paper-dim);font-size:.92rem;line-height:1.6;max-width:66ch;margin-bottom:16px}
+  .sources ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;column-gap:0;row-gap:8px;font-family:var(--mono);font-size:.78rem;line-height:1.7}
+  .sources li{color:#5B5850;padding:0;border:none}
+  .sources li:not(:last-child)::after{content:"·";color:var(--neon);margin:0 12px;font-size:.9em}
+  .sources a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(236,231,220,.28);padding-bottom:1px;transition:color .2s,border-color .2s}
+  .sources a:hover,.sources a:focus-visible{color:var(--neon);border-color:var(--neon)}
+
+  @media(max-width:640px){
+    .readout{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .sources ul{display:block}
+    .sources li{display:block;margin-bottom:8px}
+    .sources li:not(:last-child)::after{display:none}
+  }
+
+  .bag-head,.bag-row{display:grid;grid-template-columns:minmax(0,1fr) 96px 84px 34px;gap:8px;align-items:center}
+  .bag-head{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim);padding:0 0 6px}
+  .bag{display:flex;flex-direction:column;gap:6px}
+  .bag-row input{width:100%;min-width:0;background:var(--night);border:1px solid var(--line);color:var(--paper);font-family:var(--body);font-size:.95rem;padding:9px 10px}
+  .bag-row input[type=number]{font-family:var(--mono);text-align:right;-moz-appearance:textfield;appearance:textfield}
+  .bag-row input[type=number]::-webkit-inner-spin-button,.bag-row input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+  .bag-row input:focus-visible{outline:2px solid var(--neon);outline-offset:1px}
+  .bag-row input:disabled{color:var(--paper-dim);opacity:.6}
+  .bag-row .gap{font-family:var(--mono);font-size:.8rem;color:var(--paper-dim);text-align:right;white-space:nowrap}
+  .bag-row .gap.hi{color:var(--neon)}
+  .bag-row .gap.lo{color:var(--brass)}
+  .bag-row .del{background:none;border:1px solid var(--line);color:var(--paper-dim);font-size:1.1rem;line-height:1;height:38px;cursor:pointer}
+  .bag-row .del:hover{color:var(--neon);border-color:var(--neon)}
+  .bag-actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+  .ctl.hcp{max-width:260px;margin:4px 0 14px}
+  .ctl label{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
+  .ctl select{background:var(--night);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:.85rem;padding:9px 10px}
+  @media(max-width:640px){
+    .bag-head,.bag-row{grid-template-columns:minmax(0,1fr) 76px 66px 34px;gap:6px}
+    .readout{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .ro.main{grid-column:1/-1}
+  }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="b191da8b-4e9a-4245-b89f-618b3c6250c9"></script>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="../index.html"><svg class="brand-mark" aria-hidden="true" focusable="false" viewBox="6 26 108 68"><path fill="#ECE7DC" d="M12 26H75A7 7 0 0 0 89 26H108A6 6 0 0 1 114 32V88A6 6 0 0 1 108 94H89A7 7 0 0 0 75 94H12A6 6 0 0 1 6 88V32A6 6 0 0 1 12 26Z"/><line x1="82" y1="38" x2="82" y2="82" stroke="#0B0D12" stroke-width="2.6" stroke-dasharray="4 4"/><line x1="16" y1="71" x2="72" y2="71" stroke="#0B0D12" stroke-width="5"/><circle cx="53" cy="49" r="7.5" fill="#FF5C8A"/><g stroke="#0B0D12" stroke-width="3.2" stroke-linecap="round"><line x1="90" y1="49" x2="105" y2="49"/><line x1="90" y1="59" x2="100" y2="59"/><line x1="90" y1="69" x2="95" y2="69"/></g></svg><span>Torsten<em>·</em>Fink</span></a>
+  <a class="back" href="../index.html">← Startseite</a>
+</nav>
+
+<div class="tool-hero">
+  <p class="exif"><span>Tools</span><span class="dot">·</span><span>Golf</span><span class="dot">·</span><span>Schläger</span></p>
+  <h1>Mein Bag: Schläger&shy;distanzen eintragen und Lücken finden</h1>
+  <p class="sub">Trag ein, wie weit jeder Schläger in der Luft fliegt. Die Seite sortiert die Werte und zeigt, wo im Bag Lücken oder Doppelungen sind.</p>
+</div>
+
+<div class="tool-wrap">
+
+  <div class="card">
+    <p>Auf dem Platz entscheidet die Carry-Weite über die Schlägerwahl, also die Strecke, die der Ball in der Luft zurücklegt. Hier trägst du sie für jeden Schläger ein. Wo zwei Schläger fast gleich weit tragen, verschenkst du einen Platz im Bag. Wo eine große Lücke klafft, fehlt dir eine Weite. Beides zeigt die Tabelle sofort. Zum Vergleich stehen weiter unten Durchschnittswerte anderer Golfer nach Handicap.</p>
+  </div>
+
+  <div class="card" id="rechner">
+    <h2><span class="tag">Rechner</span> Deine Schlägerdistanzen</h2>
+    <div class="presets" role="group" aria-label="Einheit und Beispiel">
+      <button type="button" class="preset" data-unit="m" aria-pressed="true">Meter</button>
+      <button type="button" class="preset" data-unit="yd" aria-pressed="false">Yards</button>
+      <button type="button" class="preset" id="btnExample">Beispiel Handicap 15</button>
+    </div>
+    <div class="bag-head" aria-hidden="true"><span>Schläger</span><span>Carry</span><span>Abstand</span><span></span></div>
+    <div class="bag" id="bag"></div>
+    <div class="bag-actions">
+      <button type="button" class="preset" id="btnAdd">+ Schläger</button>
+      <button type="button" class="preset" id="btnClear">Alles leeren</button>
+    </div>
+    <div class="readout" aria-live="polite">
+      <div class="ro"><div class="k">Schläger im Bag</div><div class="v" id="roCount">0</div></div>
+      <div class="ro main"><div class="k">Größte Lücke</div><div class="v" id="roMax">–</div></div>
+      <div class="ro"><div class="k">Kleinste Lücke</div><div class="v" id="roMin">–</div></div>
+    </div>
+    <p class="note" id="warn14" hidden>Mehr als 14 Schläger eingetragen. Laut Regel 4 der Golfregeln sind höchstens 14 erlaubt.</p>
+    <p class="note">Abstand heißt: so viel weiter trägt dieser Schläger als der nächstkürzere. Die Reihenfolge ergibt sich aus deinen Werten. Alles bleibt in deinem Browser gespeichert, auf keinem Server.</p>
+  </div>
+
+  <div class="card" id="vergleich">
+    <h2><span class="tag">Vergleich</span> Wie weit tragen andere Golfer?</h2>
+    <p>Die Durchschnittswerte stammen von Shot Scope. Der Hersteller von Golf-Trackern wertet die Runden seiner Nutzer aus, Golf Monthly hat die Zahlen für 2026 nach Handicap veröffentlicht. Bei den Eisen und beim Pitching Wedge ist es die Carry-Weite. Beim Driver sagt die Quelle nicht, ob Carry oder Gesamtweite gemeint ist.</p>
+    <div class="ctl hcp">
+      <label for="selHcp">Handicap-Klasse</label>
+      <select id="selHcp">
+        <option value="0">Scratch (0)</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15" selected>15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+      </select>
+    </div>
+    <div class="table-wrap">
+      <table class="cal" id="cmp">
+        <thead><tr><th>Schläger</th><th>Dein Carry</th><th>Durchschnitt</th><th>Unterschied</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="note">Auffällig: Mit dem Eisen 5 trägt Handicap 10 im Schnitt weiter als Handicap 5, 187 gegen 183 Yards. So steht es in der Quelle. Die Durchschnitte enthalten auch schwächere Schläge und sind deshalb kein Ziel, das jeder Schlag erreichen muss.</p>
+  </div>
+
+  <div class="card" id="fragen">
+    <h2><span class="tag">FAQ</span> Häufige Fragen</h2>
+    <p><strong>Wie viele Schläger darf ich im Bag haben?</strong><br>Höchstens 14. So steht es in Regel 4 der Golfregeln. Die Seite warnt, sobald mehr als 14 Schläger eingetragen sind.</p>
+    <p><strong>Was ist Carry?</strong><br>Laut TrackMan die gerade Strecke vom Abschlag bis zu dem Punkt, an dem der Ball wieder auf Abschlaghöhe ist. Das Ausrollen zählt nicht mit.</p>
+    <p><strong>Wie weit trägt das Eisen 7 im Durchschnitt?</strong><br>Nach den Shot-Scope-Daten für 2026 bei Handicap 15 rund 141 Meter (154 Yards), bei Handicap 25 rund 121 Meter (132 Yards).</p>
+  </div>
+
+  <div class="card sources">
+    <p class="kicker">Quellen &amp; Recherche</p>
+    <p>Die Durchschnittswerte nach Handicap stammen aus Shot-Scope-Daten, veröffentlicht von Golf Monthly zwischen Mai und August 2026. Eine Tabelle direkt bei Shot Scope gibt es dafür nicht. Die Driver-Werte für Scratch, Handicap 5, 10 und 20 bestätigt Shot Scope im eigenen Blog als Performance-Average, bei dem Ausreißer herausgerechnet sind. Meter sind aus Yards umgerechnet (1 Yard = 0,9144 m) und gerundet. Stand November 2026.</p>
+    <ul>
+      <li><a href="https://golfmonthly.com/features/how-far-does-the-average-amateur-golfer-drive-the-golf-ball-in-2026" rel="noopener">Driver nach Handicap, Golf Monthly</a></li>
+      <li><a href="https://www.golfmonthly.com/features/how-far-amateur-golfer-hit-5-iron-2026" rel="noopener">Eisen 5 nach Handicap, Golf Monthly</a></li>
+      <li><a href="https://www.golfmonthly.com/features/average-amateur-golfer-distance-7-iron-2026" rel="noopener">Eisen 7 nach Handicap, Golf Monthly</a></li>
+      <li><a href="https://www.golfmonthly.com/features/how-far-amateur-golfer-hit-pitching-wedge-2026" rel="noopener">Pitching Wedge nach Handicap, Golf Monthly</a></li>
+      <li><a href="https://shotscope.com/blog/practice-green/game-improvement/reduce-hcp-law-of-averages-0hcp/" rel="noopener">Driver Scratch bis Handicap 10, Shot Scope</a></li>
+      <li><a href="https://shotscope.com/blog/practice-green/game-improvement/reduce-your-handicap-20hcp-averages/" rel="noopener">Driver Handicap 20, Shot Scope</a></li>
+      <li><a href="https://www.trackman.com/blog/what-is-carry" rel="noopener">Was ist Carry, TrackMan</a></li>
+      <li><a href="https://www.randa.org/sw/rog/the-rules-of-golf/rule-4" rel="noopener">Golfregeln, Regel 4, R&amp;A</a></li>
+    </ul>
+  </div>
+
+  <div class="tool-links">
+    <a class="toollink" href="golf-physik.html">⛳ Golf-Physik: Flugbahn beim Drive berechnen</a>
+    <a class="toollink" href="handicap-rechner.html">⛳ Golf-Handicap-Rechner</a>
+    <a class="toollink" href="stableford-rechner.html">⛳ Stablefordpunkte pro Loch berechnen</a>
+  </div>
+
+  <div class="topics">
+    <span>Golf</span><span>Schlägerdistanzen</span><span>Carry</span><span>Gapping</span><span>Nur lokale Speicherung im Browser</span>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 Torsten Fink</span>
+  <span><a href="../index.html">Startseite</a> · <a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></span>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  const KEY = 'golf:bag';
+  const YD = 0.9144;
+  const DEFAULTS = [
+    ['dr','Driver'],['h3','Holz 3'],['h5','Holz 5'],['hy4','Hybrid 4'],
+    ['i5','Eisen 5'],['i6','Eisen 6'],['i7','Eisen 7'],['i8','Eisen 8'],['i9','Eisen 9'],
+    ['pw','Pitching Wedge'],['gw','Gap Wedge'],['sw','Sand Wedge'],['lw','Lob Wedge'],['pt','Putter']
+  ];
+  /* Shot Scope 2026 nach Golf Monthly, Yards; Driver: Carry oder Gesamtweite laut Quelle offen */
+  const REF = {
+    dr:{name:'Driver', yd:{0:285,5:261,10:259,15:236,20:225,25:204}},
+    i5:{name:'Eisen 5', yd:{0:200,5:183,10:187,15:169,20:162,25:143}},
+    i7:{name:'Eisen 7', yd:{0:178,5:164,10:161,15:154,20:146,25:132}},
+    pw:{name:'Pitching Wedge', yd:{0:141,5:126,10:127,15:121,20:108,25:90}}
+  };
+
+  const load = () => { try { const v = localStorage.getItem(KEY); return v ? JSON.parse(v) : null; } catch(e){ return null; } };
+  const save = v => { try { localStorage.setItem(KEY, JSON.stringify(v)); return true; } catch(e){ return false; } };
+  const track = (name, data) => { try { if (window.umami) window.umami.track(name, data); } catch(e){} };
+
+  let state = load();
+  if (!state || !Array.isArray(state.clubs)) {
+    state = { unit:'m', hcp:15, clubs: DEFAULTS.map(([k,n]) => ({k, n, c:null})) };
+  }
+  let tracked = false;
+
+  const $ = id => document.getElementById(id);
+  const bagEl = $('bag');
+  const fmt = (m, unit) => {
+    if (m == null) return '';
+    return unit === 'yd' ? String(Math.round(m / YD)) : String(Math.round(m));
+  };
+  const both = m => Math.round(m) + ' m (' + Math.round(m / YD) + ' yd)';
+  const unitLabel = () => state.unit === 'yd' ? 'yd' : 'm';
+
+  function persist(){
+    save(state);
+    if (!tracked) { tracked = true; track('bag-saved'); }
+  }
+
+  function gaps(){
+    const withCarry = state.clubs.filter(c => c.k !== 'pt' && c.c != null && c.c > 0)
+      .slice().sort((a,b) => b.c - a.c);
+    const map = {};
+    const list = [];
+    for (let i = 0; i < withCarry.length - 1; i++) {
+      const g = withCarry[i].c - withCarry[i+1].c;
+      map[withCarry[i].k] = g;
+      list.push({ from: withCarry[i], to: withCarry[i+1], g });
+    }
+    return { map, list };
+  }
+
+  function renderBag(){
+    bagEl.textContent = '';
+    state.clubs.forEach((club, idx) => {
+      const row = document.createElement('div');
+      row.className = 'bag-row';
+
+      const name = document.createElement('input');
+      name.type = 'text'; name.value = club.n; name.maxLength = 30;
+      name.setAttribute('aria-label', 'Name des Schlägers');
+      name.addEventListener('change', () => { club.n = name.value.trim() || club.n; persist(); renderCompare(); });
+
+      const carry = document.createElement('input');
+      carry.type = 'number'; carry.inputMode = 'numeric'; carry.min = '0'; carry.max = '400'; carry.step = '1';
+      carry.setAttribute('aria-label', 'Carry von ' + club.n + ' in ' + (state.unit === 'yd' ? 'Yards' : 'Metern'));
+      if (club.k === 'pt') { carry.disabled = true; carry.placeholder = '–'; }
+      else { carry.placeholder = unitLabel(); carry.value = fmt(club.c, state.unit); }
+      carry.addEventListener('input', () => {
+        const v = parseFloat(carry.value.replace(',', '.'));
+        club.c = isFinite(v) && v > 0 ? (state.unit === 'yd' ? v * YD : v) : null;
+        persist(); renderGaps(); renderCompare();
+      });
+
+      const gap = document.createElement('output');
+      gap.className = 'gap'; gap.dataset.k = club.k;
+
+      const del = document.createElement('button');
+      del.type = 'button'; del.className = 'del'; del.textContent = '×';
+      del.setAttribute('aria-label', club.n + ' entfernen');
+      del.addEventListener('click', () => { state.clubs.splice(idx, 1); persist(); render(); });
+
+      row.append(name, carry, gap, del);
+      bagEl.appendChild(row);
+    });
+    renderGaps();
+  }
+
+  function renderGaps(){
+    const { map, list } = gaps();
+    bagEl.querySelectorAll('output.gap').forEach(o => {
+      const g = map[o.dataset.k];
+      o.textContent = g == null ? '' : '+' + fmt(g, state.unit) + ' ' + unitLabel();
+      o.classList.remove('hi','lo');
+    });
+    $('roCount').textContent = String(state.clubs.length);
+    $('warn14').hidden = state.clubs.length <= 14;
+    if (list.length === 0) { $('roMax').textContent = '–'; $('roMin').textContent = '–'; return; }
+    const max = list.reduce((a,b) => b.g > a.g ? b : a);
+    const min = list.reduce((a,b) => b.g < a.g ? b : a);
+    const line = x => fmt(x.g, state.unit) + ' ' + unitLabel() + '<small>' + esc(x.from.n) + ' → ' + esc(x.to.n) + '</small>';
+    $('roMax').innerHTML = line(max);
+    $('roMin').innerHTML = line(min);
+    const om = bagEl.querySelector('output.gap[data-k="' + max.from.k + '"]'); if (om) om.classList.add('hi');
+    const on = bagEl.querySelector('output.gap[data-k="' + min.from.k + '"]'); if (on && list.length > 1) on.classList.add('lo');
+  }
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch])); }
+
+  function renderCompare(){
+    const tb = document.querySelector('#cmp tbody');
+    tb.textContent = '';
+    const h = String(state.hcp);
+    Object.keys(REF).forEach(k => {
+      const ref = REF[k];
+      const refM = ref.yd[h] * YD;
+      const mine = state.clubs.find(c => c.k === k);
+      const tr = document.createElement('tr');
+      const td = t => { const x = document.createElement('td'); x.textContent = t; return x; };
+      tr.appendChild(td(ref.name));
+      tr.appendChild(td(mine && mine.c ? both(mine.c) : '–'));
+      tr.appendChild(td(both(refM)));
+      if (mine && mine.c) {
+        const d = mine.c - refM;
+        tr.appendChild(td((d >= 0 ? '+' : '−') + Math.abs(Math.round(d)) + ' m'));
+      } else tr.appendChild(td('–'));
+      tb.appendChild(tr);
+    });
+  }
+
+  function render(){
+    document.querySelectorAll('[data-unit]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.unit === state.unit)));
+    $('selHcp').value = String(state.hcp);
+    renderBag(); renderCompare();
+  }
+
+  document.querySelectorAll('[data-unit]').forEach(b => b.addEventListener('click', () => {
+    state.unit = b.dataset.unit; save(state); render();
+  }));
+  $('selHcp').addEventListener('change', e => { state.hcp = parseInt(e.target.value, 10); save(state); renderCompare(); });
+  $('btnAdd').addEventListener('click', () => {
+    state.clubs.push({ k: 'c' + Date.now(), n: 'Neuer Schläger', c: null }); persist(); render();
+    const inputs = bagEl.querySelectorAll('.bag-row input[type=text]'); if (inputs.length) inputs[inputs.length - 1].select();
+  });
+  $('btnExample').addEventListener('click', () => {
+    Object.keys(REF).forEach(k => {
+      let club = state.clubs.find(c => c.k === k);
+      if (!club) { club = { k, n: REF[k].name, c: null }; state.clubs.push(club); }
+      club.c = REF[k].yd[15] * YD;
+    });
+    state.hcp = 15; persist(); track('bag-example'); render();
+  });
+  const clearBtn = $('btnClear');
+  let armed = false;
+  clearBtn.addEventListener('click', () => {
+    if (!armed) { armed = true; clearBtn.textContent = 'Wirklich leeren?'; setTimeout(() => { armed = false; clearBtn.textContent = 'Alles leeren'; }, 4000); return; }
+    armed = false; clearBtn.textContent = 'Alles leeren';
+    try { localStorage.removeItem(KEY); } catch(e){}
+    state = { unit: state.unit, hcp: 15, clubs: DEFAULTS.map(([k,n]) => ({k, n, c:null})) };
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
