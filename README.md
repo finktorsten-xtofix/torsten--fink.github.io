@@ -40,6 +40,7 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 | [Handicap-Rechner](https://torsten-fink.de/tools/handicap-rechner.html) | Score Differential, Handicap-Index und Course Handicap nach WHS inkl. 9-Loch-Runden, PCC, außergewöhnlichen Runden, Soft/Hard Cap und 26,5-Bremse, Rechenweg zum Aufklappen. Reines Vanilla-JS, Speicherung nur im `localStorage` des Browsers, Export/Import als JSON, keine Anmeldung, kein Server-Backend. |
 | [Handicap Calculator (EN)](https://torsten-fink.de/tools/handicap-calculator.html) | Englische Fassung des Handicap-Rechners mit demselben Rechenkern. Standard ist der internationale WHS (erster Index ab drei Ergebnissen, keine 26,5-Bremse), die DGV-Fassung lässt sich zuschalten. Teilt `golf:rounds` und `golf:courses` mit der deutschen Seite, eigene Einstellungen unter `golf:settings:en`. |
 | [Stableford-Rechner](https://torsten-fink.de/tools/stableford-rechner.html) | Playing Handicap nach WHS mit Vorgabe-Prozentsatz, Vorgabeschläge pro Loch nach Stroke Index inkl. Plus-Handicaps, Netto- und Bruttopunkte für 18 oder 9 Löcher, Rechenweg zum Aufklappen. Speichert laufende Runde und gemerkte Plätze im `localStorage`, übernimmt den Index aus dem Handicap-Rechner (`golf:hi`). Plätze lassen sich per Link teilen (Daten im URL-Hash, Umami mit `data-exclude-hash`). |
+| [Golf-Physik: Flugbahn-Rechner mit Smash Factor und Spin-Loft](https://torsten-fink.de/tools/golf-physik.html) | Flugbahn des Drivers aus Schlägerkopfgeschwindigkeit, Smash Factor, Abflugwinkel und Backspin, Anzeige in km/h mit mph in Klammern. 2D-Modell mit Luftwiderstand und Magnus-Auftrieb, Beiwerte an vier TrackMan-Messreihen geeicht und an neun weiteren geprüft (Tabelle auf der Seite). Grafik „Gleicher Schlag, drei Flugbahnen“ aus demselben Modell gezeichnet. Keine Speicherung, keine Umami-Ereignisse. |
 | [Jetlag-Rechner](https://torsten-fink.de/tools/jetlag-rechner.html) | Zeitzonen-Unterschied inkl. Sommer-/Winterzeit berechnen, Tag-für-Tag-Anpassungsplan. Verlinkt aus Tokio, Kamakura, Hongkong und Singapur. Reines Vanilla-JS, keine Anmeldung, kein Server-Backend. |
 
 ## Technik
@@ -58,7 +59,7 @@ Neun Reisegeschichten zwischen Kamakura und Bad Heilbrunn, dazu eine Golf-Story 
 ├── index.html            Startseite
 ├── stories/              Neun Reisegeschichten + eine Golf-Story (Herzogenaurach)
 ├── guides/               Reise-Wissen: Tokio zu Fuß, Verbeugen in Japan, Tai Chi in Hongkong
-├── tools/                Interaktive Tools: Handicap-Rechner (deutsch und englisch), Stableford-Rechner, Jetlag-Rechner
+├── tools/                Interaktive Tools: Handicap-Rechner (deutsch und englisch), Stableford-Rechner, Golf-Physik, Jetlag-Rechner
 ├── assets/
 │   ├── css/story.css     Stylesheet der Unterseiten
 │   └── images/           Optimierte Fotos (Startseite, stories/, guides/, tools/)

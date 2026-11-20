@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Golf-Physik: Flugbahn-Rechner mit Smash Factor und Spin-Loft</title>
+<meta name="description" content="Golf-Physik zum Ausprobieren: Der Flugbahn-Rechner zeigt, wie weit ein Drive bei welchem Abflug und Spin fliegt. Geeicht an TrackMan-Daten, Werte in km/h.">
+<meta name="author" content="Torsten Fink">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://torsten-fink.de/tools/golf-physik.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Golf-Physik: Flugbahn-Rechner mit Smash Factor und Spin-Loft">
+<meta property="og:description" content="Golf-Physik zum Ausprobieren: Der Flugbahn-Rechner zeigt, wie weit ein Drive bei welchem Abflug und Spin fliegt. Geeicht an TrackMan-Daten, Werte in km/h.">
+<meta property="og:url" content="https://torsten-fink.de/tools/golf-physik.html">
+<meta property="og:site_name" content="Torsten Fink">
+<meta property="og:image" content="https://torsten-fink.de/assets/images/tools/og-golf-physik.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Vorschaubild Golf-Physik: Schriftzug Golf-Physik, daneben ein Driver am Ball und drei gezeichnete Flugbahnen">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0B0D12">
+<link rel="icon" href="../assets/images/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/images/brand/apple-touch-icon.png">
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/story.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebApplication",
+      "name":"Golf-Physik: Flugbahn-Rechner mit Smash Factor und Spin-Loft",
+      "url":"https://torsten-fink.de/tools/golf-physik.html",
+      "applicationCategory":"SportsApplication",
+      "operatingSystem":"Browser",
+      "inLanguage":"de",
+      "isAccessibleForFree":true,
+      "offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},
+      "description":"Berechnet die Flugbahn eines Drives aus Schlägerkopfgeschwindigkeit, Smash Factor, Abflugwinkel und Backspin. Das Modell ist an TrackMan-Messwerten geeicht, die Carry-Weite weicht um höchstens rund 2 Prozent ab.",
+      "image":"https://torsten-fink.de/assets/images/tools/golf-physik-flugbahnen.jpg",
+      "datePublished":"2026-11-20T00:00:00+01:00",
+      "dateModified":"2026-11-20T00:00:00+01:00",
+      "author":{"@type":"Person","@id":"https://torsten-fink.de/#person","name":"Torsten Fink","url":"https://torsten-fink.de/"}
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"Wie weit fliegt der Drive eines durchschnittlichen Amateurs?","acceptedAnswer":{"@type":"Answer","text":"Laut TrackMan 204 Yards Carry, rund 187 Meter. Er schwingt dabei mit 150 km/h (93,4 mph), der Ball startet mit 12,6 Grad und 3.275 Umdrehungen pro Minute Backspin."}},
+        {"@type":"Question","name":"Was ist ein guter Smash Factor mit dem Driver?","acceptedAnswer":{"@type":"Answer","text":"Mitten getroffen liegt er nahe 1,50. Mehr erlauben die Golfregeln praktisch nicht, weil die Schlagfläche höchstens einen COR von 0,830 haben darf. Auf der PGA Tour lag der Schnitt laut TrackMan bei 1,48."}},
+        {"@type":"Question","name":"Wie genau ist der Flugbahn-Rechner?","acceptedAnswer":{"@type":"Answer","text":"Gegen 13 Messreihen von TrackMan und R&A weicht die Carry-Weite um höchstens 2,1 Prozent ab. Wind und Ausrollen rechnet er nicht mit, Temperatur und Höhe sind fest auf 20 Grad und Meereshöhe eingestellt."}}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+  .tool-hero{padding:120px clamp(20px,6vw,80px) 40px;max-width:860px;margin:0 auto}
+  .tool-hero .exif{margin-bottom:18px}
+  .tool-hero h1{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,5.2vw,3.1rem);line-height:1.08;letter-spacing:-.01em;hyphens:manual;-webkit-hyphens:manual;overflow-wrap:normal}
+  .tool-hero .sub{color:var(--paper-dim);font-size:clamp(1rem,1.6vw,1.2rem);margin-top:14px;max-width:60ch}
+
+  .tool-wrap{max-width:860px;margin:0 auto;padding:0 clamp(20px,6vw,40px) 40px}
+
+  .card{border:1px solid var(--line);background:var(--night-2);padding:clamp(20px,3vw,32px);margin-bottom:22px}
+  .card h2{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:0 0 18px;color:var(--paper);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .card h2 .tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--neon);border:1px solid var(--neon);padding:3px 8px}
+  .card p{font-size:.95rem;line-height:1.7;color:#CFCabf;margin:0 0 12px}
+  .card p:last-child{margin-bottom:0}
+  .card a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(236,231,220,.28)}
+  .card a:hover{color:var(--neon);border-color:var(--neon)}
+
+  .steps{padding:12px 14px;margin:4px 0 14px;border:1px solid var(--line);background:var(--night);font-family:var(--mono);font-size:.76rem;line-height:1.75;color:#CFCabf;overflow-x:auto}
+  .steps div{white-space:pre-wrap;word-break:break-word}
+  .steps .hl{color:var(--neon)}
+  .steps .dim{color:var(--paper-dim)}
+
+  .presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .preset{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim);background:var(--night);border:1px solid var(--line);padding:9px 12px;cursor:pointer;transition:.2s}
+  .preset:hover,.preset[aria-pressed="true"]{color:var(--brass);border-color:var(--brass)}
+  .preset:focus-visible{outline:2px solid var(--neon);outline-offset:2px}
+
+  .lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 22px}
+  .ctl{display:flex;flex-direction:column;gap:6px;min-width:0}
+  .ctl label{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 10px;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
+  .ctl output{margin-left:auto;color:var(--brass);letter-spacing:.04em;text-transform:none;font-size:.78rem;white-space:nowrap}
+  .ctl input[type=range]{width:100%;accent-color:#C9A96A;cursor:pointer;margin:2px 0}
+
+  .plot{position:relative;margin:22px 0 10px;border:1px solid var(--line);background:var(--night);aspect-ratio:16/7;min-height:190px}
+  .plot canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+  .readout{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:12px}
+  .ro{border:1px solid var(--line);background:var(--night);padding:10px 12px;min-width:0}
+  .ro .k{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-dim)}
+  .ro .v{font-family:var(--mono);font-size:1rem;color:var(--paper);margin-top:2px;white-space:nowrap}
+  .ro .v small{display:block;font-size:.7rem;color:var(--paper-dim)}
+  .ro.main{border-color:rgba(201,169,106,.5)}
+  .ro.main .v{color:var(--brass);font-size:1.25rem}
+  .note{font-size:.84rem!important;color:var(--paper-dim)!important;margin-top:12px!important}
+
+  figure.graphic{margin:0 0 22px}
+  figure.graphic img{width:100%;height:auto;border:1px solid var(--line)}
+  figure.graphic figcaption{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--paper-dim);margin-top:10px}
+
+  .cal{width:100%;border-collapse:collapse;margin:6px 0 14px;font-size:.86rem}
+  .cal th{font-family:var(--mono);font-weight:400;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);text-align:left;padding:0 8px 8px 0;border-bottom:1px solid rgba(236,231,220,.18)}
+  .cal td{padding:8px 8px 8px 0;border-bottom:1px solid rgba(236,231,220,.08);color:#CFCabf}
+  .cal td+td{font-family:var(--mono);white-space:nowrap}
+  .cal tr.sep td{color:var(--paper-dim);font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding-top:14px}
+  .table-wrap{overflow-x:auto}
+
+  .sources{margin:0 0 22px;padding-top:0;border-top:none}
+  .sources .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+  .sources p{color:var(--paper-dim);font-size:.92rem;line-height:1.6;max-width:66ch;margin-bottom:16px}
+  .sources ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;column-gap:0;row-gap:8px;font-family:var(--mono);font-size:.78rem;line-height:1.7}
+  .sources li{color:#5B5850;padding:0;border:none}
+  .sources li:not(:last-child)::after{content:"·";color:var(--neon);margin:0 12px;font-size:.9em}
+  .sources a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(236,231,220,.28);padding-bottom:1px;transition:color .2s,border-color .2s}
+  .sources a:hover,.sources a:focus-visible{color:var(--neon);border-color:var(--neon)}
+
+  @media(max-width:640px){
+    .lab{grid-template-columns:minmax(0,1fr)}
+    .readout{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .ro.main{grid-column:1/-1}
+    .plot{aspect-ratio:16/11}
+    .sources ul{display:block}
+    .sources li{display:block;margin-bottom:8px}
+    .sources li:not(:last-child)::after{display:none}
+  }
+</style>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="b191da8b-4e9a-4245-b89f-618b3c6250c9"></script>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="../index.html"><svg class="brand-mark" aria-hidden="true" focusable="false" viewBox="6 26 108 68"><path fill="#ECE7DC" d="M12 26H75A7 7 0 0 0 89 26H108A6 6 0 0 1 114 32V88A6 6 0 0 1 108 94H89A7 7 0 0 0 75 94H12A6 6 0 0 1 6 88V32A6 6 0 0 1 12 26Z"/><line x1="82" y1="38" x2="82" y2="82" stroke="#0B0D12" stroke-width="2.6" stroke-dasharray="4 4"/><line x1="16" y1="71" x2="72" y2="71" stroke="#0B0D12" stroke-width="5"/><circle cx="53" cy="49" r="7.5" fill="#FF5C8A"/><g stroke="#0B0D12" stroke-width="3.2" stroke-linecap="round"><line x1="90" y1="49" x2="105" y2="49"/><line x1="90" y1="59" x2="100" y2="59"/><line x1="90" y1="69" x2="95" y2="69"/></g></svg><span>Torsten<em>·</em>Fink</span></a>
+  <a class="back" href="../index.html">← Startseite</a>
+</nav>
+
+<div class="tool-hero">
+  <p class="exif"><span>Tools</span><span class="dot">·</span><span>Golf</span><span class="dot">·</span><span>Physik</span></p>
+  <h1>Golf-Physik: Flugbahn-Rechner mit Smash Factor und Spin-Loft</h1>
+  <p class="sub">Vier Werte einstellen, der Rechner zeichnet die Flugbahn des Drivers. Darunter steht, was hinter Smash Factor und Spin-Loft steckt.</p>
+</div>
+
+<div class="tool-wrap">
+
+  <div class="card">
+    <p>Beim Abschlag entscheiden zwei Dinge über die Weite: wie schnell der Ball die Schlagfläche verlässt und mit welchem Winkel und Drall er startet. Meine eigenen Werte vom Launch Monitor habe ich nie notiert. Sie waren zu schlecht dafür. Deshalb startet der Rechner mit dem durchschnittlichen Amateur aus den TrackMan-Daten. Er schwingt mit 150 km/h (93 mph), sein Ball startet mit 12,6 Grad und 3.275 Umdrehungen pro Minute Backspin. Das ergibt laut TrackMan 204 Yards Carry, rund 187 Meter.</p>
+  </div>
+
+  <div class="card" id="rechner">
+    <h2><span class="tag">Rechner</span> Flugbahn berechnen</h2>
+    <div class="presets" role="group" aria-label="Beispielwerte laden">
+      <button type="button" class="preset" data-preset="amateur" aria-pressed="true">Durchschnitt Amateur</button>
+      <button type="button" class="preset" data-preset="optimiert" aria-pressed="false">Optimiert nach TrackMan</button>
+      <button type="button" class="preset" data-preset="tour" aria-pressed="false">PGA Tour</button>
+    </div>
+    <div class="lab">
+      <div class="ctl">
+        <label for="inSpeed">Schlägerkopfgeschwindigkeit <output id="outSpeed" for="inSpeed"></output></label>
+        <input type="range" id="inSpeed" min="100" max="210" step="1" value="150">
+      </div>
+      <div class="ctl">
+        <label for="inSmash">Smash Factor <output id="outSmash" for="inSmash"></output></label>
+        <input type="range" id="inSmash" min="1.20" max="1.50" step="0.01" value="1.43">
+      </div>
+      <div class="ctl">
+        <label for="inLaunch">Abflugwinkel <output id="outLaunch" for="inLaunch"></output></label>
+        <input type="range" id="inLaunch" min="4" max="24" step="0.1" value="12.6">
+      </div>
+      <div class="ctl">
+        <label for="inSpin">Backspin <output id="outSpin" for="inSpin"></output></label>
+        <input type="range" id="inSpin" min="1500" max="6000" step="1" value="3275">
+      </div>
+    </div>
+    <div class="plot"><canvas id="plot" role="img" aria-label="Flugbahn"></canvas></div>
+    <div class="readout" aria-live="polite">
+      <div class="ro main"><div class="k">Carry</div><div class="v" id="roCarry">0</div></div>
+      <div class="ro"><div class="k">Ballgeschw.</div><div class="v" id="roBall">0</div></div>
+      <div class="ro"><div class="k">Scheitelhöhe</div><div class="v" id="roApex">0</div></div>
+      <div class="ro"><div class="k">Landewinkel</div><div class="v" id="roLand">0</div></div>
+      <div class="ro"><div class="k">Flugzeit</div><div class="v" id="roTime">0</div></div>
+    </div>
+    <p class="note">Höhe zweifach überhöht. Gepunktet zum Vergleich: der durchschnittliche Amateur. Gerechnet für Windstille auf Meereshöhe bei 20&nbsp;°C, ohne Ausrollen. Abflugwinkel und Spin hängen am Schläger zusammen, der Rechner lässt beide getrennt einstellen. Deshalb ist nicht jede Kombination mit einem echten Schwung erreichbar. Alles läuft in deinem Browser, gespeichert wird nichts.</p>
+  </div>
+
+  <figure class="graphic">
+    <picture>
+      <source type="image/webp" srcset="../assets/images/tools/golf-physik-flugbahnen.webp 1200w, ../assets/images/tools/golf-physik-flugbahnen-2x.webp 2400w" sizes="(max-width: 760px) 100vw, 680px">
+      <img src="../assets/images/tools/golf-physik-flugbahnen.jpg" srcset="../assets/images/tools/golf-physik-flugbahnen.jpg 1200w, ../assets/images/tools/golf-physik-flugbahnen-2x.jpg 2400w" sizes="(max-width: 760px) 100vw, 680px" width="1200" height="675" alt="Illustration: Driver am Ball auf dem Tee und drei Flugbahnen bei gleicher Ballgeschwindigkeit von 214 km/h. Zu flach mit 8 Grad und 2.200 Umdrehungen landet bei 161 Metern, zu viel Spin mit 20 Grad und 4.800 Umdrehungen steigt am höchsten und landet bei 186 Metern, optimal mit 16 Grad und 2.400 Umdrehungen fliegt 194 Meter." loading="lazy">
+    </picture>
+    <figcaption>Gleiche Ballgeschwindigkeit von 214 km/h (133 mph), drei Abflüge. Höhe zweifach überhöht, gerechnet mit dem Modell dieser Seite</figcaption>
+  </figure>
+
+  <div class="card" id="smash-factor">
+    <h2><span class="tag">Treffmoment</span> Smash Factor: wie viel Tempo beim Ball ankommt</h2>
+    <p>Der Smash Factor teilt die Ballgeschwindigkeit durch die Schlägerkopfgeschwindigkeit. Beim Driver liegt die Obergrenze bei etwa 1,50. Sie kommt aus den Golfregeln: Die Schlagfläche darf nur begrenzt federn, der COR liegt höchstens bei 0,830. Damit ist nach Tom Wishon rechnerisch kein höherer Wert als 1,495 möglich. Auf der PGA Tour lag der Schnitt laut TrackMan bei 1,48.</p>
+    <div class="steps">
+      <div class="dim">Smash Factor = Ballgeschwindigkeit ÷ Schlägerkopfgeschwindigkeit</div>
+      <div>Beispiel: 153 km/h (95 mph) × 1,41 = 216 km/h (134 mph) → 188 m Carry</div>
+      <div>Beispiel: 153 km/h (95 mph) × 1,49 = 228 km/h (142 mph) → 203 m Carry</div>
+      <div class="hl">gleicher Schwung, 15 m Unterschied</div>
+    </div>
+    <p>Beide Beispiele sind mit Abflug und Spin des Durchschnittsamateurs gerechnet. TrackMan nennt bis zu 2 Yards mehr Weite für jede mph Ballgeschwindigkeit, die 8 mph Unterschied passen also zu den 15 Metern.</p>
+  </div>
+
+  <div class="card" id="schlaegerkopf">
+    <h2><span class="tag">Tempo</span> Schlägerkopfgeschwindigkeit und Weite</h2>
+    <p>Mehr Tempo im Schlägerkopf bringt mehr Weite, solange der Treffpunkt stimmt. Eine USGA-Auswertung von Freizeitgolfern auf dem TrackMan kommt auf 2,84 Yards pro mph. Umgerechnet sind das rund 1,6 Meter für jeden km/h. Der durchschnittliche Amateur schwingt laut TrackMan mit 150 km/h (93,4 mph), Spieler der PGA Tour mit 185 km/h (115 mph).</p>
+  </div>
+
+  <div class="card" id="spin-loft">
+    <h2><span class="tag">Winkel</span> Abflugwinkel, Backspin und Spin-Loft</h2>
+    <p>Wie hoch der Ball startet und wie stark er dreht, hängt am Spin-Loft. TrackMan beschreibt ihn als Winkel zwischen der Richtung, in die sich der Schlägerkopf bewegt, und der Richtung, in die die Schlagfläche zeigt. Je größer der Spin-Loft, desto mehr Backspin.</p>
+    <div class="steps">
+      <div class="dim">Spin-Loft ≈ dynamischer Loft − Attack Angle (vereinfacht, von der Seite gesehen)</div>
+      <div>Beispiel: dynamischer Loft 14°, Attack Angle −2° → Spin-Loft 16°</div>
+      <div>Beispiel: dynamischer Loft 14°, Attack Angle +3° → Spin-Loft 11°</div>
+      <div class="hl">nach oben geschlagen: weniger Spin bei gleichem Loft</div>
+    </div>
+    <p>Bei 153 km/h (95 mph) nennt der TrackMan-Optimizer für einen Attack Angle von minus 5 Grad etwa 9,9 Grad Abflug und 3.630 U/min, für plus 5 Grad etwa 15,7 Grad und 2.595 U/min. Der durchschnittliche Amateur trifft laut TrackMan mit minus 1,6 Grad, also leicht von oben.</p>
+  </div>
+
+  <div class="card" id="magnus-effekt">
+    <h2><span class="tag">Aerodynamik</span> Magnus-Effekt: warum Backspin trägt</h2>
+    <p>Ein Ball mit Backspin bekommt Auftrieb, er fliegt höher und weiter als ein Ball ohne Drall. Die Dimples verstärken diesen Magnus-Effekt. Zu viel Drall bremst allerdings: Der Ball steigt steiler, verliert in der Luft Tempo und kommt früher herunter.</p>
+    <p>Bei 12,6 Grad Abflug fliegt der Ball des Durchschnittsamateurs im Modell mit 3.000 U/min am weitesten, 186 Meter. Mit 2.000 U/min sind es 183 Meter, mit 5.000 U/min nur noch 180 Meter, obwohl er gut drei Meter höher steigt als mit 3.000. Im Rechner lässt sich das mit dem Regler für den Backspin nachstellen.</p>
+  </div>
+
+  <div class="card" id="spinachse">
+    <h2><span class="tag">Kurve</span> Spinachse statt Sidespin</h2>
+    <p>TrackMan beschreibt die Kurve eines Balls über die Neigung seiner Spinachse. Kippt sie nach rechts, krümmt sich der Flug nach rechts, kippt sie nach links, nach links. Dieser Rechner bleibt in der Ebene und rechnet nur den geraden Flug.</p>
+  </div>
+
+  <div class="card" id="methode">
+    <h2><span class="tag">Methode</span> So rechnet das Modell</h2>
+    <p>Der Rechner verfolgt den Ball in Schritten von 5 Millisekunden. Auf ihn wirken die Schwerkraft und zwei Luftkräfte: der Widerstand gegen die Flugrichtung, quer dazu der Auftrieb aus dem Backspin. Beide hängen vom Spin-Verhältnis S ab, also davon, wie schnell sich die Balloberfläche im Vergleich zur Fluggeschwindigkeit dreht. Der Spin nimmt im Flug langsam ab.</p>
+    <div class="steps">
+      <div class="dim">S = Umfangsgeschwindigkeit ÷ Fluggeschwindigkeit</div>
+      <div>Widerstandsbeiwert cD = 0,190 + 0,397 × S</div>
+      <div>Auftriebsbeiwert cL = 0,417 × S^0,399</div>
+      <div>Spinabbau: Halbierung nach rund 24 s (Zeitkonstante 34,6 s)</div>
+      <div class="dim">Ball 45,93 g, 42,67 mm · Luft 1,204 kg/m³ (20&nbsp;°C, Meereshöhe)</div>
+    </div>
+    <p>Ballmasse und Durchmesser entsprechen den Grenzwerten der Golfregeln. Die vier Beiwerte sind an vier Messreihen von TrackMan geeicht und an neun weiteren geprüft.</p>
+    <div class="table-wrap">
+      <table class="cal">
+        <thead><tr><th>Messreihe</th><th>Messwert</th><th>Modell</th><th>Abweichung</th></tr></thead>
+        <tbody>
+          <tr class="sep"><td colspan="4">Eichung</td></tr>
+          <tr><td>Amateur, TrackMan-Studie</td><td>187 m</td><td>186 m</td><td>−0,6 %</td></tr>
+          <tr><td>PGA Tour 2019</td><td>251 m</td><td>249 m</td><td>−0,9 %</td></tr>
+          <tr><td>LPGA Tour 2019</td><td>199 m</td><td>202 m</td><td>+1,2 %</td></tr>
+          <tr><td>PGA Tour 2024</td><td>258 m</td><td>255 m</td><td>−1,1 %</td></tr>
+          <tr class="sep"><td colspan="4">Prüfung</td></tr>
+          <tr><td>Optimizer 153 km/h, AoA 0°</td><td>195 m</td><td>193 m</td><td>−1,0 %</td></tr>
+          <tr><td>Optimizer 153 km/h, AoA +5°</td><td>204 m</td><td>201 m</td><td>−1,3 %</td></tr>
+          <tr><td>Optimizer 161 km/h, AoA −5°</td><td>203 m</td><td>200 m</td><td>−1,7 %</td></tr>
+          <tr><td>Optimizer 161 km/h, AoA 0°</td><td>215 m</td><td>211 m</td><td>−1,9 %</td></tr>
+          <tr><td>Optimizer 161 km/h, AoA +5°</td><td>226 m</td><td>222 m</td><td>−1,9 %</td></tr>
+          <tr><td>Optimizer 121 km/h, AoA −5°</td><td>131 m</td><td>128 m</td><td>−2,1 %</td></tr>
+          <tr><td>Optimizer 121 km/h, AoA 0°</td><td>141 m</td><td>139 m</td><td>−1,5 %</td></tr>
+          <tr><td>World Long Drive, Männer</td><td>322 m</td><td>322 m</td><td>+0,2 %</td></tr>
+          <tr><td>World Long Drive, Frauen</td><td>258 m</td><td>260 m</td><td>+0,8 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" id="fragen">
+    <h2><span class="tag">FAQ</span> Häufige Fragen</h2>
+    <p><strong>Wie weit fliegt der Drive eines durchschnittlichen Amateurs?</strong><br>Laut TrackMan 204 Yards Carry, rund 187 Meter. Er schwingt dabei mit 150 km/h (93,4 mph), der Ball startet mit 12,6 Grad und 3.275 Umdrehungen pro Minute Backspin.</p>
+    <p><strong>Was ist ein guter Smash Factor mit dem Driver?</strong><br>Mitten getroffen liegt er nahe 1,50. Mehr erlauben die Golfregeln praktisch nicht, weil die Schlagfläche höchstens einen COR von 0,830 haben darf. Auf der PGA Tour lag der Schnitt laut TrackMan bei 1,48.</p>
+    <p><strong>Wie genau ist der Flugbahn-Rechner?</strong><br>Gegen 13 Messreihen von TrackMan und R&amp;A weicht die Carry-Weite um höchstens 2,1 Prozent ab. Wind und Ausrollen rechnet er nicht mit, Temperatur und Höhe sind fest auf 20 Grad und Meereshöhe eingestellt.</p>
+  </div>
+
+  <div class="card sources">
+    <p class="kicker">Quellen &amp; Recherche</p>
+    <p>Messwerte und Begriffe stammen von TrackMan, die Weite pro mph aus einer USGA-Auswertung, die Long-Drive-Werte aus einer R&amp;A-Auswertung von TrackMan-Daten. Die Optimizer-Werte für 121, 153 und 161 km/h liegen nur als Kopie einer TrackMan-Tabelle ohne Datum vor und dienen allein der Prüfung des Modells. Die Optimizer-Werte zum Attack Angle bei 95 mph stammen aus einem Bericht von MyGolfSpy über den TrackMan-Optimizer. Die Werte der PGA Tour 2024 hat Golf Monthly aus TrackMan-Daten veröffentlicht. Beiwerte und Eichung des Modells sind für diese Seite berechnet. Stand November 2026.</p>
+    <ul>
+      <li><a href="https://www.trackman.com/blog/how-to-gain-more-distance-without-swinging-faster" rel="noopener">Durchschnitt Amateur, TrackMan</a></li>
+      <li><a href="https://www.trackman.com/blog/what-is-club-speed" rel="noopener">Club Speed, TrackMan</a></li>
+      <li><a href="https://www.trackman.com/blog/golf/ball-speed" rel="noopener">Ball Speed, TrackMan</a></li>
+      <li><a href="https://www.trackman.com/blog/golf/launch-angle" rel="noopener">Launch Angle, TrackMan</a></li>
+      <li><a href="https://www.trackman.com/blog/golf/spin-rate" rel="noopener">Spin Rate, TrackMan</a></li>
+      <li><a href="https://www.trackman.com/blog/golf/spin-loft" rel="noopener">Spin Loft, TrackMan</a></li>
+      <li><a href="https://www.trackman.com/blog/golf/spin-axis" rel="noopener">Spin Axis, TrackMan</a></li>
+      <li><a href="https://support.trackmangolf.com/hc/en-us/article_attachments/7349801987483" rel="noopener">PGA und LPGA Tour Averages 2019, TrackMan (PDF)</a></li>
+      <li><a href="https://www.golfmonthly.com/tour/how-far-pga-tour-players-hit-every-club-in-the-bag" rel="noopener">PGA Tour 2024 nach TrackMan-Daten, Golf Monthly</a></li>
+      <li><a href="https://usga.org/content/dam/usga/images/course-care/GolferExperience/DI_Golfer_Performance_Measurement%202023%20Update.pdf" rel="noopener">Golfer Performance Measurement 2023, USGA (PDF)</a></li>
+      <li><a href="https://wishongolf.com/how-does-cor-affect-your-golf-game/" rel="noopener">COR und Smash Factor, Wishon Golf</a></li>
+      <li><a href="https://mygolfspy.com/news-opinion/instruction/optimal-launch-and-spin-chart-for-drivers-are-you-in-the-right-range/" rel="noopener">Optimal Launch and Spin Chart, MyGolfSpy</a></li>
+      <li><a href="https://www.scribd.com/doc/52117780/Driver-Opt-Chart" rel="noopener">Driver Fitting Chart, Kopie einer TrackMan-Tabelle (Scribd)</a></li>
+      <li><a href="https://assets.randa.org/c42c7bf4-dca7-00ea-4f2e-373223f80f76/550ab9f6-5dd3-45b0-b58c-7563d4256c04/R07%20-%20Analysis%20of%20Trackman%20data%20gathered%20at%20World%20Long%20Drive.pdf" rel="noopener">TrackMan-Daten World Long Drive, R&amp;A (PDF)</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Golf_ball" rel="noopener">Golf ball, Wikipedia</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Density_of_air" rel="noopener">Density of air, Wikipedia</a></li>
+    </ul>
+  </div>
+
+  <div class="tool-links">
+    <a class="toollink" href="handicap-rechner.html">⛳ Golf-Handicap-Rechner</a>
+    <a class="toollink" href="stableford-rechner.html">⛳ Stablefordpunkte pro Loch berechnen</a>
+    <a class="toollink" href="../stories/herzogenaurach.html">📖 Mein Golfplatz in Herzogenaurach</a>
+  </div>
+
+  <div class="topics">
+    <span>Golf</span><span>Physik</span><span>Smash Factor</span><span>Spin-Loft</span><span>Magnus-Effekt</span><span>Nur lokale Berechnung im Browser</span>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 Torsten Fink</span>
+  <span><a href="../index.html">Startseite</a> · <a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></span>
+</footer>
+
+<script>
+(function(){
+  // Flugbahnmodell, geeicht an TrackMan-Messwerten (siehe Abschnitt Methode)
+  const GP = {cd0:0.1895, cd1:0.3971, clA:0.4171, clB:0.3987, tau:34.58};
+  const MPH = 0.44704, KMH_PER_MPH = 1.609344;
+  function flight(ballMph, launchDeg, rpm){
+    const dt=0.005, m=0.04593, d=0.04267, A=Math.PI*d*d/4, rho=1.204, g=9.81, r=d/2, k=0.5*rho*A/m;
+    let v=ballMph*MPH, th=launchDeg*Math.PI/180, vx=v*Math.cos(th), vy=v*Math.sin(th), x=0, y=0, t=0, ymax=0, n=0;
+    const w0=rpm*2*Math.PI/60, pts=[[0,0]];
+    for(;;){
+      v=Math.hypot(vx,vy);
+      const S=w0*Math.exp(-t/GP.tau)*r/v, cd=GP.cd0+GP.cd1*S, cl=GP.clA*Math.pow(S,GP.clB);
+      const ax=-k*v*(cd*vx+cl*vy), ay=-g+k*v*(cl*vx-cd*vy);
+      const nvx=vx+ax*dt, nvy=vy+ay*dt, nx=x+vx*dt, ny=y+vy*dt;
+      if(ny<0 && t>0.1){
+        const f=y/(y-ny); x=x+(nx-x)*f; pts.push([x,0]);
+        return {carry:x, apex:ymax, land:Math.atan2(-nvy,nvx)*180/Math.PI, time:t, pts};
+      }
+      x=nx; y=ny; vx=nvx; vy=nvy; t+=dt; n++;
+      if(y>ymax) ymax=y;
+      if(n%8===0) pts.push([x,y]);
+      if(t>20) return {carry:x, apex:ymax, land:0, time:t, pts};
+    }
+  }
+  const PRESETS = {
+    amateur:   {kmh:150, smash:1.43, launch:12.6, spin:3275},
+    optimiert: {kmh:151, smash:1.46, launch:13.6, spin:2772},
+    tour:      {kmh:185, smash:1.49, launch:10.4, spin:2545}
+  };
+  const REF = flight(PRESETS.amateur.kmh/KMH_PER_MPH*PRESETS.amateur.smash, PRESETS.amateur.launch, PRESETS.amateur.spin);
+  const $ = id => document.getElementById(id);
+  const inS=$('inSpeed'), inF=$('inSmash'), inL=$('inLaunch'), inR=$('inSpin');
+  const de = (n,dig=0) => n.toLocaleString('de-DE',{minimumFractionDigits:dig,maximumFractionDigits:dig});
+  const canvas=$('plot'), ctx=canvas.getContext('2d');
+  let last=null;
+
+  function draw(res){
+    const box=canvas.getBoundingClientRect(), dpr=window.devicePixelRatio||1;
+    if(!box.width) return;
+    canvas.width=Math.round(box.width*dpr); canvas.height=Math.round(box.height*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    const w=box.width, h=box.height, padL=16, padR=16, padT=18, padB=30;
+    const far=Math.max(res.carry,REF.carry), maxX=Math.max(250,Math.ceil((far+25)/50)*50), sx=(w-padL-padR)/maxX, step=w<480?100:50;
+    const sy=Math.min(sx*2, (h-padT-padB)/60);   // Höhe zweifach überhöht, bei Bedarf weniger
+    const X=m=>padL+m*sx, Y=m=>h-padB-m*sy;
+    ctx.clearRect(0,0,w,h);
+    ctx.font='11px "IBM Plex Mono", monospace'; ctx.textAlign='center';
+    for(let m=step;m<=maxX;m+=step){
+      ctx.strokeStyle='rgba(236,231,220,.07)'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(X(m),padT); ctx.lineTo(X(m),h-padB); ctx.stroke();
+      ctx.fillStyle='#9C9890'; ctx.fillText(m+' m',X(m),h-10);
+    }
+    ctx.strokeStyle='rgba(201,169,106,.45)'; ctx.beginPath(); ctx.moveTo(padL,h-padB); ctx.lineTo(w-padR,h-padB); ctx.stroke();
+    const line=(pts,style,width,dash)=>{ctx.strokeStyle=style; ctx.lineWidth=width; ctx.setLineDash(dash||[]); ctx.lineCap='round'; ctx.beginPath();
+      pts.forEach((p,i)=>i?ctx.lineTo(X(p[0]),Y(p[1])):ctx.moveTo(X(p[0]),Y(p[1]))); ctx.stroke(); ctx.setLineDash([]);};
+    line(REF.pts,'rgba(156,152,144,.75)',2,[1,6]);
+    ctx.shadowColor='rgba(201,169,106,.55)'; ctx.shadowBlur=10;
+    line(res.pts,'#C9A96A',3);
+    ctx.shadowBlur=0;
+    const ap=res.pts.reduce((a,p)=>p[1]>a[1]?p:a,[0,0]);
+    ctx.fillStyle='#FF5C8A'; ctx.beginPath(); ctx.arc(X(ap[0]),Y(ap[1]),3.5,0,7); ctx.fill();
+    ctx.fillStyle='#C9A96A'; ctx.beginPath(); ctx.arc(X(res.carry),h-padB,4.5,0,7); ctx.fill();
+    ctx.fillStyle='#ECE7DC'; ctx.font='600 12px "IBM Plex Mono", monospace';
+    ctx.textAlign=X(res.carry)>w-60?'right':'center';
+    ctx.fillText(de(res.carry)+' m',Math.min(X(res.carry),w-padR),h-padB-10);
+  }
+
+  function update(fromPreset){
+    const kmh=+inS.value, smash=+inF.value, launch=+inL.value, spin=+inR.value;
+    const clubMph=kmh/KMH_PER_MPH, ballMph=clubMph*smash, ballKmh=ballMph*KMH_PER_MPH;
+    $('outSpeed').textContent=`${kmh} km/h (${de(clubMph)} mph)`;
+    $('outSmash').textContent=de(smash,2);
+    $('outLaunch').textContent=`${de(launch,1)}°`;
+    $('outSpin').textContent=`${de(spin)} U/min`;
+    const res=flight(ballMph,launch,spin); last=res;
+    $('roCarry').textContent=`${de(res.carry)} m`;
+    $('roBall').innerHTML=`${de(ballKmh)} km/h <small>(${de(ballMph)} mph)</small>`;
+    $('roApex').textContent=`${de(res.apex)} m`;
+    $('roLand').textContent=`${de(res.land)}°`;
+    $('roTime').textContent=`${de(res.time,1)} s`;
+    canvas.setAttribute('aria-label',`Flugbahn: ${de(res.carry)} Meter Carry, Scheitelhöhe ${de(res.apex)} Meter, Landewinkel ${de(res.land)} Grad. Zum Vergleich gepunktet der durchschnittliche Amateur mit ${de(REF.carry)} Metern.`);
+    if(!fromPreset) document.querySelectorAll('.preset').forEach(b=>b.setAttribute('aria-pressed','false'));
+    draw(res);
+  }
+
+  document.querySelectorAll('.preset').forEach(btn=>btn.addEventListener('click',()=>{
+    const p=PRESETS[btn.dataset.preset];
+    inS.value=p.kmh; inF.value=p.smash; inL.value=p.launch; inR.value=p.spin;
+    document.querySelectorAll('.preset').forEach(b=>b.setAttribute('aria-pressed',b===btn?'true':'false'));
+    update(true);
+  }));
+  [inS,inF,inL,inR].forEach(el=>el.addEventListener('input',()=>update(false)));
+  if('ResizeObserver' in window) new ResizeObserver(()=>{ if(last) draw(last); }).observe(canvas);
+  else window.addEventListener('resize',()=>{ if(last) draw(last); });
+  update(true);
+})();
+</script>
+</body>
+</html>
