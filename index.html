@@ -100,7 +100,8 @@
         {"@type":"ListItem","position":1,"item":{"@type":"WebApplication","name":"Golf-Handicap-Rechner nach WHS","url":"https://torsten-fink.de/tools/handicap-rechner.html","applicationCategory":"SportsApplication","operatingSystem":"Browser","description":"Handicap-Index und Course Handicap nach dem World Handicap System, mit 9-Loch-Runden und Rechenweg.","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://torsten-fink.de/#person"}}},
         {"@type":"ListItem","position":2,"item":{"@type":"WebApplication","name":"Golf Handicap Calculator (WHS)","url":"https://torsten-fink.de/tools/handicap-calculator.html","applicationCategory":"SportsApplication","operatingSystem":"Browser","description":"Handicap Index and Course Handicap under the World Handicap System, with 9-hole rounds and an optional DGV mode.","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://torsten-fink.de/#person"}}},
         {"@type":"ListItem","position":3,"item":{"@type":"WebApplication","name":"Stableford-Rechner","url":"https://torsten-fink.de/tools/stableford-rechner.html","applicationCategory":"SportsApplication","operatingSystem":"Browser","description":"Vorgabeschläge pro Loch nach Stroke Index, Netto- und Bruttopunkte nach WHS.","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://torsten-fink.de/#person"}}},
-        {"@type":"ListItem","position":4,"item":{"@type":"WebApplication","name":"Jetlag-Rechner","url":"https://torsten-fink.de/tools/jetlag-rechner.html","applicationCategory":"TravelApplication","operatingSystem":"Browser","description":"Zeitverschiebung berechnen und die innere Uhr Tag für Tag auf das Reiseziel umstellen.","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://torsten-fink.de/#person"}}}
+        {"@type":"ListItem","position":4,"item":{"@type":"WebApplication","name":"Golf-Physik: Flugbahn-Rechner mit Smash Factor und Spin-Loft","url":"https://torsten-fink.de/tools/golf-physik.html","applicationCategory":"SportsApplication","operatingSystem":"Browser","description":"Flugbahn eines Drives aus Schlägerkopfgeschwindigkeit, Smash Factor, Abflugwinkel und Backspin, geeicht an TrackMan-Daten.","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://torsten-fink.de/#person"}}},
+        {"@type":"ListItem","position":5,"item":{"@type":"WebApplication","name":"Jetlag-Rechner","url":"https://torsten-fink.de/tools/jetlag-rechner.html","applicationCategory":"TravelApplication","operatingSystem":"Browser","description":"Zeitverschiebung berechnen und die innere Uhr Tag für Tag auf das Reiseziel umstellen.","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://torsten-fink.de/#person"}}}
       ]
     }
   ]
@@ -309,7 +310,7 @@ blockquote footer{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;te
 /* tools */
 .tools{background:var(--night-2);border-top:1px solid var(--line)}
 .tools-lede{color:var(--paper-dim);max-width:58ch;margin:-6px 0 34px}
-.tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,20px)}
+.tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,20px)}
 .tool-card{--p:clamp(20px,2.6vw,28px);display:flex;flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:12px;background:var(--night);
   padding:var(--p);text-decoration:none;transition:background .3s,border-color .3s}
 .tool-img{display:block;width:calc(100% + 2*var(--p));max-width:none;height:auto;aspect-ratio:16/9;object-fit:cover;margin:calc(-1*var(--p)) calc(-1*var(--p)) 20px;border-bottom:1px solid var(--line);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -484,8 +485,8 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
 <section id="tools" class="tools">
   <div class="wrap">
     <p class="kicker reveal">Tools</p>
-    <h2 class="reveal">Drei Rechner, null Anmeldung</h2>
-    <p class="tools-lede reveal">Für alle Golfer und Langstrecken-Wiederholungstäter gibt es hier zwei kleine Rechner für den Golfplatz und einen Jetlag-Rechner für die innere Uhr nach Flügen über mehrere Zeitzonen. Deine Eingaben bleiben im Browser, ein Konto braucht es nicht.</p>
+    <h2 class="reveal">Vier Rechner, null Anmeldung</h2>
+    <p class="tools-lede reveal">Für alle Golfer und Langstrecken-Wiederholungstäter gibt es hier drei kleine Rechner für den Golfplatz und einen Jetlag-Rechner für die innere Uhr nach Flügen über mehrere Zeitzonen. Deine Eingaben bleiben im Browser, ein Konto braucht es nicht.</p>
     <div class="tool-grid reveal">
       <a class="tool-card" href="tools/handicap-rechner.html">
         <picture><source type="image/webp" srcset="assets/images/tools/tool-handicap-rechner.webp"><img class="tool-img" src="assets/images/tools/tool-handicap-rechner.jpg" width="1200" height="675" alt="Illustration: Oberseite eines silbergrauen Golfballs mit Dimples auf schwarzem Hintergrund, am Rand eine pinke Lichtkante" loading="lazy"></picture>
@@ -499,6 +500,13 @@ footer{border-top:1px solid var(--line);padding:60px clamp(20px,6vw,80px) 44px;b
         <span class="tag">Golf · Stableford</span>
         <h3>Stableford-Rechner</h3>
         <p>Vorgabeschläge pro Loch nach Stroke Index, dazu Netto- und Bruttopunkte. Läuft auf dem Handy mit, während du spielst.</p>
+        <span class="go">Rechner öffnen →</span>
+      </a>
+      <a class="tool-card" href="tools/golf-physik.html">
+        <picture><source type="image/webp" srcset="assets/images/tools/tool-golf-physik.webp"><img class="tool-img" src="assets/images/tools/tool-golf-physik.jpg" width="1200" height="675" alt="Illustration: Driver am Ball auf dem Tee, davor drei Flugbahnen über dunklem Grund, eine flache graue, eine hohe pinke und eine leuchtend goldene, die am weitesten fliegt" loading="lazy"></picture>
+        <span class="tag">Golf · Physik</span>
+        <h3>Golf-Physik: Flugbahn-Rechner mit Smash Factor und Spin-Loft</h3>
+        <p>Abflug und Backspin einstellen, der Rechner zeichnet die Flugbahn des Drivers. Geeicht an TrackMan-Daten.</p>
         <span class="go">Rechner öffnen →</span>
       </a>
       <a class="tool-card" href="tools/jetlag-rechner.html">
